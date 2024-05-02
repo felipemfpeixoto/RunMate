@@ -1,0 +1,867 @@
+{
+  "planoDeTreinamento": {
+    "semanas": [
+      {
+        "semana": 1,
+        "dias": [
+          {
+            "dia": "Segunda-feira",
+            "exercicios": [
+              {
+                "exercíciosDetalhados": [
+                  {
+                    "nome": "Corrida Leve",
+                    "descricao": "65% a 75% da FCM",
+                    "tempo": 30
+                  }
+                ],
+                "repeticoes": 1
+              }
+            ]
+          },
+          {
+            "dia": "Terça-feira",
+            "exercicios": []
+          },
+          {
+            "dia": "Quarta-feira",
+            "exercicios": [
+                {
+                  "exercíciosDetalhados": [
+                    {
+                      "nome": "Corrida Moderada",
+                      "descricao": "75% a 85% da FCM",
+                      "tempo": 30
+                    }
+                  ],
+                  "repeticoes": 1
+                },
+                {
+                  "exercíciosDetalhados": [
+                    {
+                      "nome": "Caminhada",
+                      "descricao": "50% a 65% da FCM",
+                      "tempo": 2
+                    },
+                    {
+                      "nome": "Corrida Forte",
+                      "descricao": "85% a 90% da FCM",
+                      "tempo": 2
+                    },
+                  ],
+                  "repeticoes": 4
+                }
+            ]
+          },
+          {
+            "dia": "Quinta-feira",
+            "exercicios": [
+                {
+                    "exercíciosDetalhados": [
+                        {
+                            "nome": "Corrida Moderada",
+                            "descricao": "65% a 75% da FCM",
+                            "tempo": 25
+                        },
+                        {
+                            "nome": "Caminhada",
+                            "descricao": "50% a 65% da FCM",
+                            "tempo": 10
+                        },
+                    ],
+                    "repeticoes": 1
+                },
+            ]
+          },
+          {
+            "dia": "Sexta-feira",
+            "exercicios": []
+          },
+          {
+            "dia": "Sábado",
+            "exercicios": [
+                {
+                  "exercíciosDetalhados": [
+                    {
+                      "nome": "Corrida Moderada",
+                      "descricao": "75% a 85% da FCM",
+                      "distancia": 2
+                    },
+                    {
+                      "nome": "Corrida Leve",
+                      "descricao": "65% a 75% da FCM",
+                      "distancia": 2
+                    },
+                  ],
+                  "repeticoes": 1
+                }
+            ]
+          },
+          {
+            "dia": "Domingo",
+            "exercicios": []
+          }
+        ]
+      },
+      {
+          "semana": 2,
+          "dias": [
+            {
+              "dia": "Segunda-feira",
+              "exercicios": [
+                  {
+                  "exercíciosDetalhados": [
+                    {
+                      "nome": "Corrida Moderada",
+                      "descricao": "75% a 85% da FCM",
+                      "tempo": 30
+                    }
+                  ],
+                  "repeticoes": 1
+                }
+              ]
+            },
+            {
+              "dia": "Terça-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Quarta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                      {
+                        "nome": "Corrida Moderada",
+                        "descricao": "75% a 85% da FCM",
+                        "tempo": 5
+                      },
+                    ],
+                    "repeticoes": 1
+                  },
+                  {
+                    "exercíciosDetalhados": [
+                      {
+                        "nome": "Corrida Forte",
+                        "descricao": "85% a 90% da FCM",
+                        "tempo": 5
+                      },
+                      {
+                        "nome": "Caminhada",
+                        "descricao": "50% a 65% da FCM",
+                        "tempo": 3
+                      },
+                    ],
+                    "repeticoes": 3
+                  }
+              ]
+            },
+            {
+              "dia": "Quinta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                      {
+                        "nome": "Corrida Leve",
+                        "descricao": "65% a 75% da FCM",
+                        "tempo": 20
+                      },
+                      {
+                        "nome": "Corrida Forte",
+                        "descricao": "85% a 90% da FCM",
+                        "tempo": 5
+                      },
+                      {
+                        "nome": "Caminhada",
+                        "descricao": "50% a 65% da FCM",
+                        "tempo": 10
+                      }
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Sexta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sábado",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                      {
+                        "nome": "Corrida Moderada",
+                        "descricao": "75% a 85% da FCM",
+                        "distancia": 3
+                      },
+                      {
+                        "nome": "Corrida Leve",
+                        "descricao": "65% a 75% da FCM",
+                        "distancia": 1
+                      }
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Domingo",
+              "exercicios": []
+            }
+          ]
+        },
+      {
+          "semana": 3,
+          "dias": [
+            {
+              "dia": "Segunda-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                      {
+                        "nome": "Corrida Moderada",
+                        "descricao": "75% a 85% da FCM",
+                        "tempo": 30
+                      }
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Terça-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Quarta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                      {
+                        "nome": "Corrida Moderada",
+                        "descricao": "75% a 85% da FCM",
+                        "tempo": 20
+                      },
+                    ],
+                    "repeticoes": 1
+                  },
+                  {
+                  "exercíciosDetalhados": [
+                      {
+                        "nome": "Corrida Forte",
+                        "descricao": "85% a 90% da FCM",
+                        "tempo": 5
+                      },
+                      {
+                      "nome": "Caminhada",
+                      "descricao": "50% a 65% da FCM",
+                      "tempo": 3
+                      },
+                  ],
+                  "repeticoes": 3
+                }
+              ]
+            },
+            {
+              "dia": "Quinta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 20
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 5
+                        },
+                        {
+                        "nome": "Caminhada",
+                        "descricao": "50% a 65% da FCM",
+                        "tempo": 10
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Sexta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sábado",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "distancia": 3
+                        },
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 1
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Domingo",
+              "exercicios": []
+            }
+          ]
+      },
+      {
+          "semana": 4,
+          "dias": [
+            {
+              "dia": "Segunda-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 10
+                        },
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 10
+                        },
+                    ],
+                    "repeticoes": 2
+                  },
+              ]
+            },
+            {
+              "dia": "Terça-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Quarta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 30
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 10
+                        },
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 3
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Quinta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sexta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sábado",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 35
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Domingo",
+              "exercicios": []
+            }
+          ]
+      },
+      {
+          "semana": 5,
+          "dias": [
+            {
+              "dia": "Segunda-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 5
+                        },
+                    ],
+                    "repeticoes": 1
+                  },
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 3
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 1
+                        },
+                        {
+                        "nome": "Caminhada",
+                        "descricao": "50% a 65% da FCM",
+                        "tempo": 1
+                        },
+                    ],
+                    "repeticoes": 5
+                  }
+              ]
+            },
+            {
+              "dia": "Terça-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Quarta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 30
+                        },
+                    ],
+                    "repeticoes": 1
+                  },
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 2
+                        },
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 2
+                        },
+                    ],
+                    "repeticoes": 2
+                  }
+              ]
+            },
+            {
+              "dia": "Quinta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 20
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 5
+                        },
+                        {
+                        "nome": "Caminhada",
+                        "descricao": "50% a 65% da FCM",
+                        "tempo": 10
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+                    
+              ]
+            },
+            {
+              "dia": "Sexta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sábado",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "distancia": 2
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "distancia": 1
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Domingo",
+              "exercicios": []
+            }
+          ]
+      },
+      {
+          "semana": 6,
+          "dias": [
+            {
+              "dia": "Segunda-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 20
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 15
+                        },
+                    ],
+                    "repeticoes": 1
+                  },
+              ]
+            },
+            {
+              "dia": "Terça-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Quarta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 5
+                        }
+                    ],
+                    "repeticoes": 1
+                  },
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 2
+                        },
+                        {
+                          "nome": "Corrida Muito Forte",
+                          "descricao": "90% a 100% da FCM",
+                          "tempo": 2
+                        },
+                        {
+                        "nome": "Caminhada",
+                        "descricao": "50% a 65% da FCM",
+                        "tempo": 3
+                        },
+                    ],
+                    "repeticoes": 3
+                  },
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 10
+                        },
+                    ],
+                    "repeticoes": 1
+                  },
+              ]
+            },
+            {
+              "dia": "Quinta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sexta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sábado",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 25
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 5
+                        },
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 5
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Domingo",
+              "exercicios": []
+            }
+          ]
+      },
+      {
+          "semana": 7,
+          "dias": [
+            {
+              "dia": "Segunda-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 30
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Terça-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Quarta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 5
+                        },
+                    ],
+                    "repeticoes": 1
+                  },
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 5
+                        },
+                        {
+                        "nome": "Caminhada",
+                        "descricao": "50% a 65% da FCM",
+                        "tempo": 3
+                        },
+                    ],
+                    "repeticoes": 3
+                  }
+              ]
+            },
+            {
+              "dia": "Quinta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 25
+                        },
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 15
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Sexta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sábado",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "distancia": 2
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "distancia": 1
+                        },
+                        {
+                          "nome": "Corrida Muito Forte",
+                          "descricao": "90% a 100% da FCM",
+                          "distancia": 1
+                        }
+
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Domingo",
+              "exercicios": []
+            }
+          ]
+      },
+      {
+          "semana": 8,
+          "dias": [
+            {
+              "dia": "Segunda-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 5
+                        },
+                    ],
+                    "repeticoes": 1
+                  },
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 2
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 2
+                        },
+                        {
+                          "nome": "Corrida Muito Forte",
+                          "descricao": "90% a 100% da FCM",
+                          "tempo": 2
+                        },
+                        {
+                        "nome": "Caminhada",
+                        "descricao": "50% a 65% da FCM",
+                        "tempo": 2
+                        },
+                    ],
+                    "repeticoes": 3
+                  },
+              ]
+            },
+            {
+              "dia": "Terça-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Quarta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 20
+                        },
+                        {
+                          "nome": "Corrida Forte",
+                          "descricao": "85% a 90% da FCM",
+                          "tempo": 5
+                        },
+                        {
+                          "nome": "Corrida Muito Forte",
+                          "descricao": "90% a 100% da FCM",
+                          "tempo": 5
+                        },
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 5
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Quinta-feira",
+              "exercicios": []
+            },
+            {
+              "dia": "Sexta-feira",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Leve",
+                          "descricao": "65% a 75% da FCM",
+                          "tempo": 30
+                        },
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            },
+            {
+              "dia": "Sábado",
+              "exercicios": []
+            },
+            {
+              "dia": "Domingo",
+              "exercicios": [
+                  {
+                    "exercíciosDetalhados": [
+                      {
+                        "nome": "Prova 5KM",
+                        "descricao": "Dia da Prova",
+                        "tempo": 0
+                      }
+                    ],
+                    "repeticoes": 1
+                  }
+              ]
+            }
+          ]
+      }
+    ]
+  }
+}
