@@ -21,6 +21,15 @@
 		0FA57B262BE4041200EA9D99 /* iniciante15K.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FA57B252BE4041200EA9D99 /* iniciante15K.json */; };
 		0FA57B282BE4042300EA9D99 /* intermediario15K.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FA57B272BE4042300EA9D99 /* intermediario15K.json */; };
 		0FA57B2A2BE4043700EA9D99 /* avancado15K.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FA57B292BE4043700EA9D99 /* avancado15K.json */; };
+		0FA57B2D2BE404F500EA9D99 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA57B2C2BE404F500EA9D99 /* CodableExtensions */; };
+		0FA57B2F2BE4072F00EA9D99 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B2E2BE4072F00EA9D99 /* DAO.swift */; };
+		0FA57B312BE40C9C00EA9D99 /* EscolhaNivelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B302BE40C9C00EA9D99 /* EscolhaNivelView.swift */; };
+		0FA57B332BE40CA900EA9D99 /* EscolhaObjetivoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B322BE40CA900EA9D99 /* EscolhaObjetivoView.swift */; };
+		0FA57B352BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B342BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift */; };
+		0FA57B372BE40E9400EA9D99 /* SemanaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B362BE40E9400EA9D99 /* SemanaView.swift */; };
+		0FA57B392BE40EA900EA9D99 /* AvisoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B382BE40EA900EA9D99 /* AvisoView.swift */; };
+		0FA57B3B2BE40EDA00EA9D99 /* SemanaConcluidaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */; };
+		0FA57B3D2BE40EE900EA9D99 /* RoadMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +48,14 @@
 		0FA57B252BE4041200EA9D99 /* iniciante15K.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = iniciante15K.json; sourceTree = "<group>"; };
 		0FA57B272BE4042300EA9D99 /* intermediario15K.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = intermediario15K.json; sourceTree = "<group>"; };
 		0FA57B292BE4043700EA9D99 /* avancado15K.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = avancado15K.json; sourceTree = "<group>"; };
+		0FA57B2E2BE4072F00EA9D99 /* DAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		0FA57B302BE40C9C00EA9D99 /* EscolhaNivelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhaNivelView.swift; sourceTree = "<group>"; };
+		0FA57B322BE40CA900EA9D99 /* EscolhaObjetivoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhaObjetivoView.swift; sourceTree = "<group>"; };
+		0FA57B342BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciciosDetalhadosView.swift; sourceTree = "<group>"; };
+		0FA57B362BE40E9400EA9D99 /* SemanaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaView.swift; sourceTree = "<group>"; };
+		0FA57B382BE40EA900EA9D99 /* AvisoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoView.swift; sourceTree = "<group>"; };
+		0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaConcluidaView.swift; sourceTree = "<group>"; };
+		0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA57B2D2BE404F500EA9D99 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +93,6 @@
 				0FA57B212BE4023000EA9D99 /* Views */,
 				0FA57B162BE4014700EA9D99 /* Data */,
 				0FA57B062BE400F900EA9D99 /* RunMateApp.swift */,
-				0FA57B082BE400F900EA9D99 /* ContentView.swift */,
 				0FA57B0A2BE400FD00EA9D99 /* Assets.xcassets */,
 				0FA57B0C2BE400FD00EA9D99 /* Preview Content */,
 			);
@@ -109,6 +126,15 @@
 		0FA57B212BE4023000EA9D99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0FA57B082BE400F900EA9D99 /* ContentView.swift */,
+				0FA57B2E2BE4072F00EA9D99 /* DAO.swift */,
+				0FA57B302BE40C9C00EA9D99 /* EscolhaNivelView.swift */,
+				0FA57B322BE40CA900EA9D99 /* EscolhaObjetivoView.swift */,
+				0FA57B342BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift */,
+				0FA57B362BE40E9400EA9D99 /* SemanaView.swift */,
+				0FA57B382BE40EA900EA9D99 /* AvisoView.swift */,
+				0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */,
+				0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -137,6 +163,9 @@
 			dependencies = (
 			);
 			name = RunMate;
+			packageProductDependencies = (
+				0FA57B2C2BE404F500EA9D99 /* CodableExtensions */,
+			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +194,9 @@
 				Base,
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
+			packageReferences = (
+				0FA57B2B2BE404F500EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -200,8 +232,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA57B3D2BE40EE900EA9D99 /* RoadMapView.swift in Sources */,
+				0FA57B2F2BE4072F00EA9D99 /* DAO.swift in Sources */,
+				0FA57B312BE40C9C00EA9D99 /* EscolhaNivelView.swift in Sources */,
 				0FA57B242BE4024100EA9D99 /* Models.swift in Sources */,
+				0FA57B372BE40E9400EA9D99 /* SemanaView.swift in Sources */,
+				0FA57B3B2BE40EDA00EA9D99 /* SemanaConcluidaView.swift in Sources */,
 				0FA57B092BE400F900EA9D99 /* ContentView.swift in Sources */,
+				0FA57B392BE40EA900EA9D99 /* AvisoView.swift in Sources */,
+				0FA57B352BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift in Sources */,
+				0FA57B332BE40CA900EA9D99 /* EscolhaObjetivoView.swift in Sources */,
 				0FA57B072BE400F900EA9D99 /* RunMateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +448,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0FA57B2B2BE404F500EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0FA57B2C2BE404F500EA9D99 /* CodableExtensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FA57B2B2BE404F500EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			productName = CodableExtensions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0FA57AFB2BE400F900EA9D99 /* Project object */;
 }
