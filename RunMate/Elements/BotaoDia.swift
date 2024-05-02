@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct BotaoDia: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct BotaoDia: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .frame(width: 72.22, height: 87.7, alignment: .center)
+            .background(Color.oceanBlue)
+            .cornerRadius(15)
     }
 }
 
-#Preview {
-    BotaoDia()
-}
