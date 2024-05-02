@@ -62,6 +62,10 @@
 		0FA57B3F2BE4116700EA9D99 /* BotaoEscolha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoEscolha.swift; sourceTree = "<group>"; };
 		0FA57B412BE4117000EA9D99 /* BotaoDia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoDia.swift; sourceTree = "<group>"; };
 		0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMap.swift; sourceTree = "<group>"; };
+		F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 				0FA57B212BE4023000EA9D99 /* Views */,
 				0FA57B162BE4014700EA9D99 /* Data */,
 				0FA57B062BE400F900EA9D99 /* RunMateApp.swift */,
+				F9B5BA8A2BE413070007E115 /* Resources */,
 				0FA57B0A2BE400FD00EA9D99 /* Assets.xcassets */,
 				0FA57B0C2BE400FD00EA9D99 /* Preview Content */,
 			);
@@ -162,6 +167,17 @@
 				0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		F9B5BA8A2BE413070007E115 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */,
+				F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */,
+				F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */,
+				F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
