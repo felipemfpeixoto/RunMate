@@ -1,19 +1,29 @@
-//
-//  BotaoEscolha.swift
-//  RunMate
-//
-//  Created by infra on 02/05/24.
-//
-
 import SwiftUI
 
 struct BotaoEscolha: View {
     
     let texto: String
     
+    @Binding var selectedLevel: String
+    
     var body: some View {
         Button(action: {
-            // faz nada ainda
+            switch texto {
+            case "Iniciante":
+                withAnimation() {
+                    selectedLevel = "Iniciante"
+                }
+            case "Intermediário":
+                withAnimation {
+                    selectedLevel = "Intermediário"
+                }
+            case "Avançado":
+                withAnimation {
+                    selectedLevel = "Avançado"
+                }
+            default:
+                break
+            }
         }, label: {
             ZStack {
                 Color.oceanBlue
@@ -23,10 +33,11 @@ struct BotaoEscolha: View {
             }
             .frame(width: 317, height: 69)
             .clipShape(RoundedRectangle(cornerRadius: 20))
+            .opacity(selectedLevel == texto ? 0.4 : 1)
         })
     }
 }
 
-#Preview {
-    BotaoEscolha(texto: "Iniciante")
-}
+//#Preview {
+//    BotaoEscolha(texto: "Iniciante")
+//}

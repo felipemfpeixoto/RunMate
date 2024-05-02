@@ -1,18 +1,17 @@
-//
-//  EscolhaNivelView.swift
-//  RunMate
-//
-//  Created by infra on 02/05/24.
-//
-
 import SwiftUI
 
 struct EscolhaNivelView: View {
+    
+    @State var isShowing: Bool = false
+    
+    @State var selectedLevel: String = ""
+    
     var body: some View {
         ZStack {
             Color.blackBlue
                 .ignoresSafeArea()
             VStack {
+                Spacer()
                 Text("Bora traçar nossa meta!")
                     .foregroundStyle(.white)
                     .font(.title.bold())
@@ -22,7 +21,7 @@ struct EscolhaNivelView: View {
                         .foregroundStyle(Color.oceanBlue)
                     HStack(spacing: 0) {
                         RoundedRectangle(cornerRadius: 100)
-                            .frame(width: 96, height: 8)
+                            .frame(width: isShowing ? 96 : 0, height: 8)
                             .foregroundStyle(Color.turquoiseGreen)
                         Text("🏃🏻‍♂️")
                             .font(.system(size: 40))
@@ -31,14 +30,27 @@ struct EscolhaNivelView: View {
                         Spacer()
                     }
                 }.frame(width: 320)
+                Spacer()
                 Text("Selecione seu nível de corredor:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
-                BotaoEscolha(texto: "Iniciante")
-                BotaoEscolha(texto: "Intermediário")
-                BotaoEscolha(texto: "Avançado")
                 Spacer()
-                NavigationLink(destination: EscolhaObjetivoView()) {
+                BotaoEscolha(texto: "Iniciante", selectedLevel: $selectedLevel)
+                BotaoEscolha(texto: "Intermediário", selectedLevel: $selectedLevel)
+                BotaoEscolha(texto: "Avançado", selectedLevel: $selectedLevel)
+                Spacer()
+                if selectedLevel != ""{
+                    NavigationLink(destination: EscolhaObjetivoView()) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundStyle(Color.turquoiseGreen)
+                                .frame(width: 243, height: 56)
+                            Text("Proximo")
+                                .foregroundStyle(.black)
+                                .font(.title3.bold())
+                        }
+                    }
+                } else {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(Color.turquoiseGreen)
@@ -47,8 +59,14 @@ struct EscolhaNivelView: View {
                             .foregroundStyle(.black)
                             .font(.title3.bold())
                     }
+                    .opacity(0.3)
                 }
                 Spacer()
+            }
+        }
+        .onAppear {
+            withAnimation(.easeInOut(duration: 2)) {
+                isShowing = true
             }
         }
     }
