@@ -21,7 +21,6 @@
 		0FA57B262BE4041200EA9D99 /* iniciante15K.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FA57B252BE4041200EA9D99 /* iniciante15K.json */; };
 		0FA57B282BE4042300EA9D99 /* intermediario15K.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FA57B272BE4042300EA9D99 /* intermediario15K.json */; };
 		0FA57B2A2BE4043700EA9D99 /* avancado15K.json in Resources */ = {isa = PBXBuildFile; fileRef = 0FA57B292BE4043700EA9D99 /* avancado15K.json */; };
-		0FA57B2D2BE404F500EA9D99 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA57B2C2BE404F500EA9D99 /* CodableExtensions */; };
 		0FA57B2F2BE4072F00EA9D99 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B2E2BE4072F00EA9D99 /* DAO.swift */; };
 		0FA57B312BE40C9C00EA9D99 /* EscolhaNivelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B302BE40C9C00EA9D99 /* EscolhaNivelView.swift */; };
 		0FA57B332BE40CA900EA9D99 /* EscolhaObjetivoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B322BE40CA900EA9D99 /* EscolhaObjetivoView.swift */; };
@@ -33,6 +32,7 @@
 		0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B3F2BE4116700EA9D99 /* BotaoEscolha.swift */; };
 		0FA57B422BE4117000EA9D99 /* BotaoDia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B412BE4117000EA9D99 /* BotaoDia.swift */; };
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
+		0FA57B472BE41E0A00EA9D99 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA57B462BE41E0A00EA9D99 /* CodableExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FA57B2D2BE404F500EA9D99 /* CodableExtensions in Frameworks */,
+				0FA57B472BE41E0A00EA9D99 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,7 +199,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				0FA57B2C2BE404F500EA9D99 /* CodableExtensions */,
+				0FA57B462BE41E0A00EA9D99 /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -230,7 +230,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				0FA57B2B2BE404F500EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				0FA57B452BE41E0A00EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -414,7 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = 973F3TA6FW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -444,7 +444,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = 973F3TA6FW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -490,20 +490,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0FA57B2B2BE404F500EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		0FA57B452BE41E0A00EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0FA57B2C2BE404F500EA9D99 /* CodableExtensions */ = {
+		0FA57B462BE41E0A00EA9D99 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0FA57B2B2BE404F500EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = 0FA57B452BE41E0A00EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
