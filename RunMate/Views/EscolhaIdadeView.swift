@@ -14,47 +14,39 @@ struct EscolhaIdadeView: View {
     
     var body: some View {
         ZStack {
-            Color.blackBlue
-                .ignoresSafeArea()
             VStack {
-                Spacer()
-                Text("Bora traçar nossa meta!")
-                    .foregroundStyle(.white)
-                    .font(.title.bold())
-                ZStack {
-                    RoundedRectangle(cornerRadius: 100)
-                        .frame(width: 320, height: 8)
-                        .foregroundStyle(Color.oceanBlue)
-                    HStack(spacing: 0) {
-                        RoundedRectangle(cornerRadius: 100)
-                            .frame(width: isShowing ? 179 : 0, height: 8)
-                            .foregroundStyle(Color.turquoiseGreen)
-                        Text("🏃🏻‍♂️")
-                            .font(.system(size: 40))
-                            .scaleEffect(x: -1, y: 1)
-                            .padding(.leading, -20)
-                        Spacer()
-                    }
-                }.frame(width: 320)
                 Spacer()
                 Text("Selecione sua idade:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
-                Button(action: {
-                    isShowingPopup = true
-                }, label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 321, height: 53)
-                            .foregroundStyle(Color.oceanBlue)
-                        RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 316, height: 48)
-                            .foregroundStyle(Color.blackBlue)
-                        Text("\(value)")
-                            .foregroundStyle(Color.turquoiseGreen)
-                    }
-                })
+//                Button(action: {
+//                    isShowingPopup = true
+//                }, label: {
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 20)
+//                            .frame(width: 321, height: 53)
+//                            .foregroundStyle(Color.oceanBlue)
+//                        RoundedRectangle(cornerRadius: 20)
+//                            .frame(width: 316, height: 48)
+//                            .foregroundStyle(Color.blackBlue)
+//                        Text("\(value)")
+//                            .foregroundStyle(Color.turquoiseGreen)
+//                            .font(.title3.bold())
+//                    }
+//                })
                 
+                VStack {
+                    Picker("Selecione sua idadde", selection: $value) {
+                        ForEach(0..<100) { number in
+                            Text("\(number)")
+                                .tag("\(number)")
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .background(Color.oceanBlue)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
                 Spacer()
                 if value != 0 {
                     NavigationLink(destination: SemanaView()) {
@@ -82,28 +74,13 @@ struct EscolhaIdadeView: View {
             }
         }
         .onAppear {
-            isShowing = true
+            withAnimation(Animation.easeInOut(duration: 2)) {
+                isShowing = true
+            }
         }
         .sheet(isPresented: $isShowingPopup, content: {
-            VStack {
-                Picker("Selecione sua idadde", selection: $value) {
-                    ForEach(0..<100) { number in
-                        Text("\(number)")
-                            .tag("\(number)")
-                            .foregroundStyle(.black)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                Button(action: {
-                    isShowingPopup.toggle()
-                }, label: {
-                    Text("Confirmar")
-                })
-            }
+            EscolheIdadeSheet(isShowingPopup: $isShowingPopup, value: $value)
         })
-        .navigationBarBackButtonHidden()
         .onDisappear {
             criaEscolhas()
         }
@@ -114,6 +91,37 @@ struct EscolhaIdadeView: View {
         let nomeArquivo = selectedLevel + selectedGoal
         print(nomeArquivo)
         dao.loadJsonFileFromObjective()
+    }
+}
+
+struct EscolheIdadeSheet: View {
+    
+    @Binding var isShowingPopup: Bool
+    
+    @Binding var value: Int
+    
+    var body: some View {
+        ZStack {
+            Color.blackBlue
+                .ignoresSafeArea()
+            VStack {
+                Picker("Selecione sua idadde", selection: $value) {
+                    ForEach(0..<100) { number in
+                        Text("\(number)")
+                            .tag("\(number)")
+                            .foregroundStyle(.white)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .background(Color.oceanBlue)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                Button(action: {
+                    isShowingPopup.toggle()
+                }, label: {
+                    Text("Confirmar")
+                })
+            }
+        }
     }
 }
 

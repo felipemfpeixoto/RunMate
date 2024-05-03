@@ -6,12 +6,10 @@ let dao = DAO.instance
 class DAO: Codable {
     static var instance = (try? DAO.load()) ?? DAO()
     
-    var planejamento: [Semana] = []
-    
     var paginaDeTreinamento: PaginaDeTreinamento = PaginaDeTreinamento(planoDeTreinamento: PlanoDeTreinamento(semanas: []))
     
     private init() {
-        loadTreino()
+//        loadTreino()
     }
     
     func loadJsonFileFromObjective() -> [Semana] {
@@ -21,8 +19,8 @@ class DAO: Codable {
         let data: PaginaDeTreinamento = Bundle.main.decode(file: filename)
         
         self.paginaDeTreinamento = data
-        savePaginaDeTerinamento()
-        loadTreino()
+//        savePaginaDeTerinamento()
+//        loadTreino()
         
         let plano: PlanoDeTreinamento = data.planoDeTreinamento
         let semanas = plano.semanas
