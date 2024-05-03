@@ -14,28 +14,7 @@ struct EscolhaIdadeView: View {
     
     var body: some View {
         ZStack {
-            Color.blackBlue
-                .ignoresSafeArea()
             VStack {
-                Spacer()
-                Text("Bora traçar nossa meta!")
-                    .foregroundStyle(.white)
-                    .font(.title.bold())
-                ZStack {
-                    RoundedRectangle(cornerRadius: 100)
-                        .frame(width: 320, height: 8)
-                        .foregroundStyle(Color.oceanBlue)
-                    HStack(spacing: 0) {
-                        RoundedRectangle(cornerRadius: 100)
-                            .frame(width: isShowing ? 179 : 0, height: 8)
-                            .foregroundStyle(Color.turquoiseGreen)
-                        Text("🏃🏻‍♂️")
-                            .font(.system(size: 40))
-                            .scaleEffect(x: -1, y: 1)
-                            .padding(.leading, -20)
-                        Spacer()
-                    }
-                }.frame(width: 320)
                 Spacer()
                 Text("Selecione sua idade:")
                     .foregroundStyle(.white)
@@ -54,7 +33,6 @@ struct EscolhaIdadeView: View {
                             .foregroundStyle(Color.turquoiseGreen)
                     }
                 })
-                
                 Spacer()
                 if value != 0 {
                     NavigationLink(destination: SemanaView()) {
@@ -82,7 +60,9 @@ struct EscolhaIdadeView: View {
             }
         }
         .onAppear {
-            isShowing = true
+            withAnimation(Animation.easeInOut(duration: 2)) {
+                isShowing = true
+            }
         }
         .sheet(isPresented: $isShowingPopup, content: {
             VStack {
@@ -103,7 +83,6 @@ struct EscolhaIdadeView: View {
                 })
             }
         })
-        .navigationBarBackButtonHidden()
         .onDisappear {
             criaEscolhas()
         }
