@@ -17,3 +17,13 @@ struct BotaoDia: ButtonStyle {
     }
 }
 
+
+struct BotaoDiaTurquesa: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(10)
+            .frame(width: 72.22, height: 87.7, alignment: .center)
+            .background(Color.turquoiseGreen)
+            .cornerRadius(15)
+    }
+}
