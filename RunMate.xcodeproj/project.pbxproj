@@ -34,6 +34,10 @@
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
 		0FA57B472BE41E0A00EA9D99 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA57B462BE41E0A00EA9D99 /* CodableExtensions */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
+		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
+		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
+		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
+		F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -249,6 +253,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */,
+				F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */,
+				F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */,
+				F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */,
 				0FA57B1A2BE4016F00EA9D99 /* avancado5K.json in Resources */,
 				0FA57B202BE401C900EA9D99 /* avancado10K.json in Resources */,
 				0FA57B182BE4015C00EA9D99 /* intermediario5K.json in Resources */,
@@ -418,7 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 973F3TA6FW;
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -448,7 +456,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 973F3TA6FW;
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
