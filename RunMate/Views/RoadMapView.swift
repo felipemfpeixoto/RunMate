@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RoadMapView: View {
+    @State var textoSemanas: [String] = ["Primeira", "Segunda", "Terceira"]
         var body: some View {
                 VStack {
                     HStack {
@@ -40,30 +41,31 @@ struct RoadMapView: View {
                     
                         
                     ScrollView {
-                    VStack {
+                    
                         ZStack {
                             Image("Road")
                                 .resizable()
                                 .scaledToFit()
+                            VStack(spacing: 55) {
+                                ForEach(Array(textoSemanas.enumerated()), id: \.self.element) { index, texto in
+                                    HStack {
+                                        if index % 2 == 0 {
+                                            Spacer()
+                                        }
+                                        Text(texto)
+                                            .font(.largeTitle)
+                                            .foregroundStyle(.white)
+                                        if index % 2 == 1 {
+                                            Spacer()
+                                        }
+                                    }
+                                }
+                           
+                            Spacer()
                             
-                            
-//                            ZStack(alignment: .leading) {
-//                                Rectangle()
-//                                    .foregroundColor(.red)
-//                                    .frame(width: 200, height: 70)
-//                                    .cornerRadius(18)
-//                                    .overlay(
-//                                        RoundedRectangle(cornerRadius: 18)
-//                                            .stroke(Color.green, lineWidth: 4)
-//                                    )
-//                                
-//                                Text("Semana 1")
-//                                    .foregroundColor(.white)
-//                                    .font(.title3)
-//                                    .fontWeight(.semibold)
-//                                    .padding(.horizontal) // Add padding to the text
-//                            }
+                          
                         }
+                            .padding(.top, 40)
                     }
                 }
             }
