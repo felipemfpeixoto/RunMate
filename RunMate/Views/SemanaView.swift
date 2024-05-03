@@ -9,7 +9,9 @@ import SwiftUI
 
 struct SemanaView: View {
     
+   
     @State var diaAtual: Int = 1
+//    let semana = Semana(semana: 1, dias: [Dia(dia: 1, exercicios: [])])
    
     var body: some View {
         ZStack{
@@ -48,7 +50,6 @@ struct SemanaView: View {
                     ScrollView(.horizontal, showsIndicators: true){
                         
                         HStack{
-//                            ForEach(semana.dias, id: \.self)
                             ForEach(1..<8){ dia in
                                 Group{
                                     if dia == diaAtual {

@@ -19,7 +19,7 @@ struct Exercicio: Codable {
 }
 
 struct Dia: Codable {
-    let dia: String
+    let dia: Int
     let exercicios: [Exercicio]
 }
 

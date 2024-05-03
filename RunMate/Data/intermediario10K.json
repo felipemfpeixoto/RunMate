@@ -5,7 +5,7 @@
         "semana": 1,
         "dias": [
           {
-            "dia": "Segunda-feira",
+            "dia": 1,
             "exercicios": [
               {
                 "exercíciosDetalhados": [
@@ -20,11 +20,11 @@
             ]
           },
           {
-            "dia": "Terça-feira",
+            "dia": 2,
             "exercicios": []
           },
           {
-            "dia": "Quarta-feira",
+            "dia": 3,
             "exercicios": [
                 {
                   "exercíciosDetalhados": [
@@ -64,15 +64,15 @@
             ]
           },
           {
-            "dia": "Quinta-feira",
+            "dia": 4,
             "exercicios": []
           },
           {
-            "dia": "Sexta-feira",
+            "dia": 5,
             "exercicios": []
           },
           {
-            "dia": "Sábado",
+            "dia": 6,
             "exercicios": [
                 {
                   "exercíciosDetalhados": [
@@ -87,7 +87,7 @@
             ]
           },
           {
-            "dia": "Domingo",
+            "dia": 7,
             "exercicios": []
           }
         ]
@@ -96,7 +96,7 @@
           "semana": 2,
           "dias": [
             {
-              "dia": "Segunda-feira",
+              "dia": 1,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -116,11 +116,11 @@
               ]
             },
             {
-              "dia": "Terça-feira",
+              "dia": 2,
               "exercicios": []
             },
             {
-              "dia": "Quarta-feira",
+              "dia": 3,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -150,7 +150,7 @@
               ]
             },
             {
-              "dia": "Quinta-feira",
+              "dia": 4,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -165,11 +165,11 @@
               ]
             },
             {
-              "dia": "Sexta-feira",
+              "dia": 5,
               "exercicios": []
             },
             {
-              "dia": "Sábado",
+              "dia": 6,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -184,7 +184,7 @@
               ]
             },
             {
-              "dia": "Domingo",
+              "dia": 7,
               "exercicios": []
             }
           ]
@@ -193,7 +193,7 @@
           "semana": 3,
           "dias": [
             {
-              "dia": "Segunda-feira",
+              "dia": 1,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -208,11 +208,11 @@
               ]
             },
             {
-              "dia": "Terça-feira",
+              "dia": 2,
               "exercicios": []
             },
             {
-              "dia": "Quarta-feira",
+              "dia": 3,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -257,15 +257,15 @@
               ]
             },
             {
-              "dia": "Quinta-feira",
+              "dia": 4,
               "exercicios": []
             },
             {
-              "dia": "Sexta-feira",
+              "dia": 5,
               "exercicios": []
             },
             {
-              "dia": "Sábado",
+              "dia": 6,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -285,7 +285,7 @@
               ]
             },
             {
-              "dia": "Domingo",
+              "dia": 7,
               "exercicios": []
             }
           ]
@@ -294,7 +294,7 @@
           "semana": 4,
           "dias": [
             {
-              "dia": "Segunda-feira",
+              "dia": 1,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -314,11 +314,11 @@
               ]
             },
             {
-              "dia": "Terça-feira",
+              "dia": 2,
               "exercicios": []
             },
             {
-              "dia": "Quarta-feira",
+              "dia": 3,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -333,7 +333,7 @@
               ]
             },
             {
-              "dia": "Quinta-feira",
+              "dia": 4,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -348,11 +348,11 @@
               ]
             },
             {
-              "dia": "Sexta-feira",
+              "dia": 5,
               "exercicios": []
             },
             {
-              "dia": "Sábado",
+              "dia": 6,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -367,7 +367,7 @@
               ]
             },
             {
-              "dia": "Domingo",
+              "dia": 7,
               "exercicios": []
             }
           ]
@@ -376,7 +376,7 @@
           "semana": 5,
           "dias": [
             {
-              "dia": "Segunda-feira",
+              "dia": 1,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -406,11 +406,11 @@
               ]
             },
             {
-              "dia": "Terça-feira",
+              "dia": 2,
               "exercicios": []
             },
             {
-              "dia": "Quarta-feira",
+              "dia": 3,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -455,15 +455,15 @@
               ]
             },
             {
-              "dia": "Quinta-feira",
+              "dia": 4,
               "exercicios": []
             },
             {
-              "dia": "Sexta-feira",
+              "dia": 5,
               "exercicios": []
             },
             {
-              "dia": "Sábado",
+              "dia": 6,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -483,7 +483,7 @@
               ]
             },
             {
-              "dia": "Domingo",
+              "dia": 7,
               "exercicios": []
             }
           ]
@@ -492,7 +492,7 @@
           "semana": 6,
           "dias": [
             {
-              "dia": "Segunda-feira",
+              "dia": 1,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -507,11 +507,11 @@
               ]
             },
             {
-              "dia": "Terça-feira",
+              "dia": 2,
               "exercicios": []
             },
             {
-              "dia": "Quarta-feira",
+              "dia": 3,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -526,7 +526,7 @@
               ]
             },
             {
-              "dia": "Quinta-feira",
+              "dia": 4,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -541,11 +541,11 @@
               ]
             },
             {
-              "dia": "Sexta-feira",
+              "dia": 5,
               "exercicios": []
             },
             {
-              "dia": "Sábado",
+              "dia": 6,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -565,7 +565,7 @@
               ]
             },
             {
-              "dia": "Domingo",
+              "dia": 7,
               "exercicios": []
             }
           ]
@@ -574,7 +574,7 @@
           "semana": 7,
           "dias": [
             {
-              "dia": "Segunda-feira",
+              "dia": 1,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -589,11 +589,11 @@
               ]
             },
             {
-              "dia": "Terça-feira",
+              "dia": 2,
               "exercicios": []
             },
             {
-              "dia": "Quarta-feira",
+              "dia": 3,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -628,15 +628,15 @@
               ]
             },
             {
-              "dia": "Quinta-feira",
+              "dia": 4,
               "exercicios": []
             },
             {
-              "dia": "Sexta-feira",
+              "dia": 5,
               "exercicios": []
             },
             {
-              "dia": "Sábado",
+              "dia": 6,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -651,7 +651,7 @@
               ]
             },
             {
-              "dia": "Domingo",
+              "dia": 7,
               "exercicios": []
             }
           ]
@@ -660,7 +660,7 @@
           "semana": 8,
           "dias": [
             {
-              "dia": "Segunda-feira",
+              "dia": 1,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -675,11 +675,11 @@
               ]
             },
             {
-              "dia": "Terça-feira",
+              "dia": 2,
               "exercicios": []
             },
             {
-              "dia": "Quarta-feira",
+              "dia": 3,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -694,11 +694,11 @@
               ]
             },
             {
-              "dia": "Quinta-feira",
+              "dia": 4,
               "exercicios": []
             },
             {
-              "dia": "Sexta-feira",
+              "dia": 5,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
@@ -713,11 +713,11 @@
               ]
             },
             {
-              "dia": "Sábado",
+              "dia": 6,
               "exercicios": []
             },
             {
-              "dia": "Domingo",
+              "dia": 7,
               "exercicios": [
                   {
                     "exercíciosDetalhados": [
