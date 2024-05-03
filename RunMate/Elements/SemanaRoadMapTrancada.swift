@@ -7,35 +7,30 @@
 
 import SwiftUI
 
+
 struct SemanaRoadMapTrancada: View {
+    let level: Level
+    
     var body: some View {
-        HStack(spacing: 0) {
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .foregroundColor(.blackBlue)
-                    .frame(width: 200, height: 70)
-                    .cornerRadius(18)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.turquoiseGreen, lineWidth: 4)
-                    )
-                Text("Semana 1")
-                    .foregroundColor(.turquoiseGreen)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .padding(.horizontal) // Add padding to the text
-                
-                
-                
-                
-            }
-                Image("Cadeado")
-                .offset(x: -50)
-      
-        }
+        EmptyView()
     }
 }
 
-#Preview {
-    SemanaRoadMapTrancada()
+struct RoadShape: Shape {
+    var right: Bool
+    func path(in rect: CGRect) -> Path {
+        
+        Path { path in
+            if right {
+                path.move(to: .zero)
+                path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+                path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+            } else {
+                path.move(to: CGPoint(x: rect.maxX, y: 0))
+                path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+                path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+                
+            }
+        }
+    }
 }

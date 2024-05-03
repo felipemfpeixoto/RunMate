@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RoadMapView: View {
     @State var textoSemanas: [String] = ["Primeira", "Segunda", "Terceira"]
+    
         var body: some View {
                 VStack {
                     HStack {
@@ -39,34 +40,48 @@ struct RoadMapView: View {
                     }
                     .padding(.leading, 30)
                     
+                    
                         
                     ScrollView {
+                        
                     
-                        ZStack {
-                            Image("Road")
-                                .resizable()
-                                .scaledToFit()
-                            VStack(spacing: 55) {
-                                ForEach(Array(textoSemanas.enumerated()), id: \.self.element) { index, texto in
-                                    HStack {
-                                        if index % 2 == 0 {
-                                            Spacer()
-                                        }
-                                        Text(texto)
-                                            .font(.largeTitle)
-                                            .foregroundStyle(.white)
-                                        if index % 2 == 1 {
-                                            Spacer()
-                                        }
-                                    }
-                                }
+                        SemanaRoadMap(level: .semana1, isLocked: false)
+                            .padding(.leading, 30)
+                            .padding(.trailing, 30)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            .overlay {
+                                RoadShape(right: true)
+                                    .stroke(LinearGradient(colors: [.darkPurple, .lilacPurple, .lakeBlue, .turquoiseGreen], startPoint: .leading, endPoint: .trailing),
+                                            style: .init(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                                    .shadow(color: .lilacPurple, radius: 8, x: 0, y: 0)
+                                    
+                                RoadShape(right: true)
+                                    .stroke(.white,
+                                            style: .init(lineWidth: 5, lineCap: .round, lineJoin: .round,
+                                                         dash: [10, 10])
+                                    )
+                            }
+                            .padding(.horizontal, 40)
                            
-                            Spacer()
-                            
-                          
-                        }
-                            .padding(.top, 40)
-                    }
+                        
+                        SemanaRoadMap(level: .semana2, isLocked: true)
+                            .padding(.trailing, 45)
+                            .padding(.leading, 30)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .overlay {
+                                RoadShape(right: false)
+                                    .stroke(LinearGradient(colors: [.darkPurple, .lilacPurple, .lakeBlue, .turquoiseGreen], startPoint: .leading, endPoint: .trailing),
+                                            style: .init(lineWidth: 20, lineCap: .round, lineJoin: .round))
+                                    .shadow(color: .lilacPurple, radius: 12, x: 0, y: 0)
+                                RoadShape(right: false)
+                                    .stroke(.white,
+                                            style: .init(lineWidth: 5, lineCap: .round, lineJoin: .round,
+                                                         dash: [10, 10])
+                                            
+                                    )
+                            }
+                            .padding(.horizontal, 40)
+                        
                 }
             }
             .background(.blackBlue)
