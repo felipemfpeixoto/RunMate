@@ -15,7 +15,7 @@ struct SemanaView: View {
         ZStack{
             Color(.blackBlue).ignoresSafeArea()
             VStack{
-                
+                Spacer()
                 VStack(alignment: .leading){
                     
                     HStack (alignment: .top){
@@ -39,6 +39,7 @@ struct SemanaView: View {
                             
                             
                     }
+//                    Spacer()
                     
                     Text("Primeira semana")
                         .font(Font.custom("Roboto-Bold", size: 24))
@@ -85,8 +86,19 @@ struct SemanaView: View {
                         }
                     }
                     
+//                    Spacer()
+                    VStack{
+                        ExerciciosDetalhadosView()
+                        ExerciciosDetalhadosView()
+                        ExerciciosDetalhadosView()
+                    
+                    }
+                    .padding(.vertical, 40)
+                    
+                 Spacer()
                 }
                 .padding(.leading)
+                .padding(.top, 40)
                 
                 VStack{
                     Button(action: {
@@ -105,6 +117,8 @@ struct SemanaView: View {
                     .background(Color.oceanBlue)
                     .cornerRadius(11)
                 }
+                .padding(.bottom, 40)
+                Spacer()
             }
         }
         
