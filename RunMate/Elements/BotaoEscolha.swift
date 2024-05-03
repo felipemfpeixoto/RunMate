@@ -46,14 +46,18 @@ struct BotaoEscolha: View {
             }
         }, label: {
             ZStack {
-                Color.oceanBlue
+                if selectedLevel == texto {
+                    Color.ourLightBlue
+                } else {
+                    Color.oceanBlue
+                }
                 Text(texto)
                     .foregroundStyle(.white)
                     .font(.title2.bold())
             }
             .frame(width: 317, height: 69)
             .clipShape(RoundedRectangle(cornerRadius: 20))
-            .opacity(selectedLevel == texto ? 0.4 : 1)
+            .overlay(selectedLevel == texto ? RoundedRectangle(cornerRadius: 20).stroke(Color.turquoiseGreen, lineWidth: 5) : nil)
         })
     }
 }

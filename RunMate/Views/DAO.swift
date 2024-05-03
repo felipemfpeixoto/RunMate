@@ -6,8 +6,6 @@ let dao = DAO.instance
 class DAO: Codable {
     static var instance = (try? DAO.load()) ?? DAO()
     
-    var planejamento: [Semana] = []
-    
     var paginaDeTreinamento: PaginaDeTreinamento = PaginaDeTreinamento(planoDeTreinamento: PlanoDeTreinamento(semanas: []))
     
     private init() {
