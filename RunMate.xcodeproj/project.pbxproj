@@ -32,12 +32,12 @@
 		0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B3F2BE4116700EA9D99 /* BotaoEscolha.swift */; };
 		0FA57B422BE4117000EA9D99 /* BotaoDia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B412BE4117000EA9D99 /* BotaoDia.swift */; };
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
-		0FA57B472BE41E0A00EA9D99 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA57B462BE41E0A00EA9D99 /* CodableExtensions */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
 		F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */; };
+		F9B5BAA02BE555530007E115 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9B5BA9F2BE555530007E115 /* CodableExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,11 +76,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0FA57B002BE400F900EA9D99 /* Frameworks */ = {
+		F9B5BA9C2BE553B30007E115 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FA57B472BE41E0A00EA9D99 /* CodableExtensions in Frameworks */,
+				F9B5BAA02BE555530007E115 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +92,7 @@
 			children = (
 				0FA57B052BE400F900EA9D99 /* RunMate */,
 				0FA57B042BE400F900EA9D99 /* Products */,
+				F9B5BA9D2BE553B90007E115 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,6 +190,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F9B5BA9D2BE553B90007E115 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -197,8 +205,8 @@
 			buildConfigurationList = 0FA57B112BE400FD00EA9D99 /* Build configuration list for PBXNativeTarget "RunMate" */;
 			buildPhases = (
 				0FA57AFF2BE400F900EA9D99 /* Sources */,
-				0FA57B002BE400F900EA9D99 /* Frameworks */,
 				0FA57B012BE400F900EA9D99 /* Resources */,
+				F9B5BA9C2BE553B30007E115 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -206,7 +214,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				0FA57B462BE41E0A00EA9D99 /* CodableExtensions */,
+				F9B5BA9F2BE555530007E115 /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -237,7 +245,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				0FA57B452BE41E0A00EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F9B5BA9E2BE555530007E115 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -502,20 +510,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0FA57B452BE41E0A00EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		F9B5BA9E2BE555530007E115 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0FA57B462BE41E0A00EA9D99 /* CodableExtensions */ = {
+		F9B5BA9F2BE555530007E115 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0FA57B452BE41E0A00EA9D99 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = F9B5BA9E2BE555530007E115 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
