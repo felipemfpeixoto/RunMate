@@ -11,7 +11,8 @@ struct SemanaView: View {
     
    
     @State var diaAtual: Int = 1
-//    let semana = Semana(semana: 1, dias: [Dia(dia: 1, exercicios: [])])
+    let semana: [Dia]
+    
    
     var body: some View {
         ZStack{
@@ -50,11 +51,11 @@ struct SemanaView: View {
                     ScrollView(.horizontal, showsIndicators: true){
                         
                         HStack{
-                            ForEach(1..<8){ dia in
+                            ForEach(semana, id: \.dia){ dia in
                                 Group{
-                                    if dia == diaAtual {
+                                    if dia.dia == diaAtual {
                                         Button(action: {
-                                            diaAtual = dia
+                                            diaAtual = dia.dia
                                         }, label: {
                                             VStack{
                                                 Text("\(dia)º")
@@ -68,7 +69,7 @@ struct SemanaView: View {
                                     }
                                     else {
                                         Button(action: {
-                                            diaAtual = dia
+                                            diaAtual = dia.dia
                                         }, label: {
                                             VStack{
                                                 Text("\(dia)º")
@@ -89,8 +90,6 @@ struct SemanaView: View {
                     
 //                    Spacer()
                     VStack{
-                        ExerciciosDetalhadosView()
-                        ExerciciosDetalhadosView()
                         ExerciciosDetalhadosView()
                     
                     }
@@ -127,5 +126,5 @@ struct SemanaView: View {
 }
 
 #Preview {
-    SemanaView()
+    SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas.first!.dias)
 }

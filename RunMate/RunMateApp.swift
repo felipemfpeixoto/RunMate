@@ -14,8 +14,8 @@ struct RunMateApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            RoadMapView()
+            ContentView()
+//            RoadMapView()
                 .onChange(of: scenePhase) {
                     switch scenePhase {
                         

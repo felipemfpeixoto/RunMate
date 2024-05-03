@@ -49,7 +49,7 @@ struct EscolhaIdadeView: View {
                 }
                 Spacer()
                 if value != 0 {
-                    NavigationLink(destination: SemanaView()) {
+                    NavigationLink(destination: EmptyView()) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color.turquoiseGreen)
