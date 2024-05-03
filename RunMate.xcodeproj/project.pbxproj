@@ -33,6 +33,7 @@
 		0FA57B422BE4117000EA9D99 /* BotaoDia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B412BE4117000EA9D99 /* BotaoDia.swift */; };
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
+		5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
@@ -68,6 +69,7 @@
 		0FA57B412BE4117000EA9D99 /* BotaoDia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoDia.swift; sourceTree = "<group>"; };
 		0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMap.swift; sourceTree = "<group>"; };
 		0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhaIdadeView.swift; sourceTree = "<group>"; };
+		5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMapTrancada.swift; sourceTree = "<group>"; };
 		F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				0FA57B3F2BE4116700EA9D99 /* BotaoEscolha.swift */,
 				0FA57B412BE4117000EA9D99 /* BotaoDia.swift */,
 				0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */,
+				5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				0FA57B352BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift in Sources */,
 				0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */,
 				0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */,
+				5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */,
 				0FA57B332BE40CA900EA9D99 /* EscolhaObjetivoView.swift in Sources */,
 				0FA57B072BE400F900EA9D99 /* RunMateApp.swift in Sources */,
 			);
@@ -434,7 +438,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = 3Z5N4XP49R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -448,7 +452,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.RunMate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.RunMatee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -464,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = 3Z5N4XP49R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -478,7 +482,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.RunMate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.RunMatee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
