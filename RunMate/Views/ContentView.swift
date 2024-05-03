@@ -16,20 +16,46 @@ struct ContentView: View {
     
     @State var filenameLevel: String = ""
     
+    @State var filenameGoal: String = ""
+    
+    var backslide: AnyTransition {
+            AnyTransition.asymmetric(
+                insertion: .move(edge: .trailing),
+                removal: .move(edge: .leading))}
+    
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color.blackBlue
-                    .ignoresSafeArea()
-                VStack {
-                    BonequinhoView(faseBonequinho: $faseBonequinho)
-                    if faseBonequinho == 0 {
-                        EscolhaNivelView(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel)
-                            .transition(.move(edge: .trailing))
-                    } else if faseBonequinho == 1 {
-                        EscolhaObjetivoView(faseBonequinho: $faseBonequinho, selectedLevel: <#T##Binding<String>#>)
+            if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count == 0 {
+                ZStack {
+                    Color.blackBlue
+                        .ignoresSafeArea()
+                    VStack {
+                        BonequinhoView(faseBonequinho: $faseBonequinho)
+                        Group {
+                            if faseBonequinho == 0 || faseBonequinho == 1 {
+                                EscolhaNivelView(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel)
+                                    .transition(self.backslide)
+                                    .padding(.horizontal)
+                            } else if faseBonequinho == 2 {
+                                EscolhaObjetivoView(faseBonequinho: $faseBonequinho, selectedLevel: $filenameLevel, filenameGoal: $filenameGoal)
+                                    .transition(self.backslide)
+                                    .padding(.horizontal)
+                            } else if faseBonequinho == 3 {
+                                EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal)
+                                    .transition(self.backslide)
+                                    .padding(.horizontal)
+                            }
+                        }
+                        .frame(height: 450)
                     }
                 }
+                .onAppear {
+                    withAnimation(Animation.easeInOut(duration: 0.75)) {
+                        faseBonequinho = 1
+                    }
+                }
+            } else {
+                SemanaView()
             }
         }
     }

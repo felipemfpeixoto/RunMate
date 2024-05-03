@@ -15,7 +15,6 @@ struct EscolhaNivelView: View {
                 Text("Selecione seu nível de corredor:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
-                Spacer()
                 BotaoEscolha(texto: "Iniciante", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
                 BotaoEscolha(texto: "Intermediário", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
                 BotaoEscolha(texto: "Avançado", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
@@ -23,7 +22,7 @@ struct EscolhaNivelView: View {
                 if selectedLevel != ""{
                     Button(action: {
                         withAnimation(Animation.easeInOut(duration: 0.75)) {
-                            faseBonequinho = 1
+                            faseBonequinho = 2
                         }
                     }, label: {
                         ZStack {

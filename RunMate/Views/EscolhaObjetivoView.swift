@@ -8,24 +8,25 @@ struct EscolhaObjetivoView: View {
     
     @State var selectedGoal: String = ""
     
-    @State var filenameGoal: String = ""
+    @Binding var filenameGoal: String
     
     var body: some View {
         ZStack {
-            Color.blackBlue
-                .ignoresSafeArea()
             VStack {
                 Spacer()
                 Text("Selecione seu objetivo:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
-                Spacer()
                 BotaoEscolha(texto: "5KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
                 BotaoEscolha(texto: "10KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
                 BotaoEscolha(texto: "15KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
                 Spacer()
                 if selectedGoal != "" {
-                    NavigationLink(destination: EscolhaIdadeView(selectedLevel: $selectedLevel, selectedGoal: $filenameGoal)) {
+                    Button(action: {
+                        withAnimation(Animation.easeInOut(duration: 0.75)) {
+                            faseBonequinho = 3
+                        }
+                    }, label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color.turquoiseGreen)
@@ -34,7 +35,7 @@ struct EscolhaObjetivoView: View {
                                 .foregroundStyle(.black)
                                 .font(.title3.bold())
                         }
-                    }
+                    })
                 } else {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
@@ -49,7 +50,6 @@ struct EscolhaObjetivoView: View {
                 Spacer()
             }
         }
-        .navigationBarBackButtonHidden()
     }
 }
 

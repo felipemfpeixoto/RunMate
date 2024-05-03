@@ -14,8 +14,6 @@ struct EscolhaIdadeView: View {
     
     var body: some View {
         ZStack {
-            Color.blackBlue
-                .ignoresSafeArea()
             VStack {
                 Spacer()
                 Text("Selecione sua idade:")
@@ -35,7 +33,6 @@ struct EscolhaIdadeView: View {
                             .foregroundStyle(Color.turquoiseGreen)
                     }
                 })
-                
                 Spacer()
                 if value != 0 {
                     NavigationLink(destination: SemanaView()) {
@@ -86,7 +83,6 @@ struct EscolhaIdadeView: View {
                 })
             }
         })
-        .navigationBarBackButtonHidden()
         .onDisappear {
             criaEscolhas()
         }
