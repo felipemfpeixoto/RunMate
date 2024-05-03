@@ -1,14 +1,16 @@
 import SwiftUI
 
-struct EscolhaObjetivoView: View {
+struct EscolhaIdadeView: View {
     
     @State var isShowing: Bool = false
     
+    @State var isShowingPopup: Bool = false
+    
     @Binding var selectedLevel: String
     
-    @State var selectedGoal: String = ""
+    @Binding var selectedGoal: String
     
-    @State var filenameGoal: String = ""
+    @State var value: Int = 0
     
     var body: some View {
         ZStack {
@@ -35,16 +37,27 @@ struct EscolhaObjetivoView: View {
                     }
                 }.frame(width: 320)
                 Spacer()
-                Text("Selecione seu objetivo:")
+                Text("Selecione sua idade:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
+                Button(action: {
+                    isShowingPopup = true
+                }, label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width: 321, height: 53)
+                            .foregroundStyle(Color.oceanBlue)
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width: 316, height: 48)
+                            .foregroundStyle(Color.blackBlue)
+                        Text("\(value)")
+                            .foregroundStyle(Color.turquoiseGreen)
+                    }
+                })
+                
                 Spacer()
-                BotaoEscolha(texto: "5KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
-                BotaoEscolha(texto: "10KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
-                BotaoEscolha(texto: "15KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
-                Spacer()
-                if selectedLevel != "" {
-                    NavigationLink(destination: EscolhaIdadeView(selectedLevel: $selectedLevel, selectedGoal: $filenameGoal)) {
+                if value != 0 {
+                    NavigationLink(destination: SemanaView()) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color.turquoiseGreen)
@@ -69,14 +82,41 @@ struct EscolhaObjetivoView: View {
             }
         }
         .onAppear {
-            withAnimation(.easeInOut(duration: 2)) {
-                isShowing = true
-            }
+            isShowing = true
         }
+        .sheet(isPresented: $isShowingPopup, content: {
+            VStack {
+                Picker("Selecione sua idadde", selection: $value) {
+                    ForEach(0..<100) { number in
+                        Text("\(number)")
+                            .tag("\(number)")
+                            .foregroundStyle(.black)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                Button(action: {
+                    isShowingPopup.toggle()
+                }, label: {
+                    Text("Confirmar")
+                })
+            }
+        })
         .navigationBarBackButtonHidden()
+        .onDisappear {
+            criaEscolhas()
+        }
+    }
+    
+    func criaEscolhas() {
+        escolhas = MeuPlano(nivel: selectedLevel, objetivo: selectedGoal, idade: value)
+        let nomeArquivo = selectedLevel + selectedGoal
+        print(nomeArquivo)
+        dao.loadJsonFileFromObjective()
     }
 }
 
 #Preview {
-    EscolhaObjetivoView(selectedLevel: .constant(""))
+    EscolhaIdadeView(selectedLevel: .constant(""), selectedGoal: .constant(""))
 }

@@ -8,8 +8,7 @@ enum Objetivo {
     case menor, medio, maior
 }
 
-var nivelSelecionado: Nivel? = nil
-var objetivoSelecionado: Objetivo? = nil
+var escolhas: MeuPlano? = nil
 
 struct ContentView: View {
     var body: some View {

@@ -7,6 +7,12 @@ struct ExercicioDetalhado: Codable {
     let distancia: Int?
 }
 
+struct MeuPlano {
+    let nivel: String
+    let objetivo: String
+    let idade: Int
+}
+
 struct Exercicio: Codable {
     let exercíciosDetalhados: [ExercicioDetalhado]
     let repeticoes: Int
@@ -24,4 +30,8 @@ struct Semana: Codable {
 
 struct PlanoDeTreinamento: Codable {
     let semanas: [Semana]
+}
+
+struct PaginaDeTreinamento: Codable {
+    let planoDeTreinamento: PlanoDeTreinamento
 }

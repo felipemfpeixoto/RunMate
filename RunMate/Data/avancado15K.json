@@ -114,7 +114,6 @@
                     ],
                     "repeticoes": 1
                   }
-              
               ]
             },
             {
@@ -155,13 +154,14 @@
                     "repeticoes": 4
                   },
                   {
-                      "exercíciosDetalhados": [
-                          {
-                            "nome": "Corrida Moderada",
-                            "descricao": "75% a 85% da FCM",
-                            "tempo": 5
-                          }
-                      ]
+                    "exercíciosDetalhados": [
+                        {
+                          "nome": "Corrida Moderada",
+                          "descricao": "75% a 85% da FCM",
+                          "tempo": 5
+                        }
+                    ],
+                    "repeticoes": 1
                   }
               ]
             },

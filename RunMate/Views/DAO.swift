@@ -1,36 +1,101 @@
-//
-//  DAO.swift
-//  RunMate
-//
-//  Created by infra on 02/05/24.
-//
-
 import Foundation
 import CodableExtensions
 
-
 let dao = DAO.instance
+
 class DAO: Codable {
     static var instance = (try? DAO.load()) ?? DAO()
     
     var planejamento: [Semana] = []
     
+    var paginaDeTreinamento: PaginaDeTreinamento = PaginaDeTreinamento(planoDeTreinamento: PlanoDeTreinamento(semanas: []))
+    
     private init() {
-        loadJsonFiles()
+        loadTreino()
     }
     
-    func loadJsonFiles() {
-        let docsPath = Bundle.main.resourcePath! + "/Data"
-        let fileManager = FileManager.default
+    func loadJsonFileFromObjective() -> [Semana] {
+//        let docsPath = Bundle.main.resourcePath! + "/Data"
+//        let fileManager = FileManager.default
+        let filename = (escolhas?.nivel ?? "") + (escolhas?.objetivo ?? "") + ".json"
+        let data: PaginaDeTreinamento = Bundle.main.decode(file: filename)
+        
+        self.paginaDeTreinamento = data
+        savePaginaDeTerinamento()
+        loadTreino()
+        
+        let plano: PlanoDeTreinamento = data.planoDeTreinamento
+        let semanas = plano.semanas
+        return semanas
 
-        do {
-            let docsArray = try fileManager.contentsOfDirectory(atPath: docsPath)
-            for item in docsArray {
-                guard let semana =  try? Semana.load(from: item) else {continue}
-                planejamento.append(semana)
+//        do {
+            
+//            let docsArray = try fileManager.contentsOfDirectory(atPath: docsPath)
+//            for item in docsArray {
+//                if item == filename {
+//                    print(item)
+//                }
+//                guard let semana =  try? Semana.load(from: item) else {continue}
+//                planejamento.append(semana)
+//            }
+//        } catch {
+//            print(error)
+//        }
+    }
+    
+    func loadTreino() {
+        let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentDirectory.appendingPathComponent("treino.json")
+        
+        if fileManager.fileExists(atPath: fileURL.path) {
+            do {
+                let data = try Data(contentsOf: fileURL)
+                let treinamento = try JSONDecoder().decode(PaginaDeTreinamento.self, from: data)
+                self.paginaDeTreinamento = treinamento
+            } catch {
+                print("Error loading treinamento: \(error.localizedDescription)")
             }
-        } catch {
-            print(error)
+        } else {
+            do {
+                let data = try JSONEncoder().encode(self.paginaDeTreinamento)
+                try data.write(to: fileURL)
+            } catch {
+                print("Error creating new treino: \(error.localizedDescription)")
+            }
         }
+    }
+    
+    func savePaginaDeTerinamento() {
+        let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        let fileURL = documentDirectory.appendingPathComponent("treino.json")
+        print(fileURL)
+        do {
+            let data = try JSONEncoder().encode(self.paginaDeTreinamento)
+            try data.write(to: fileURL)
+        } catch {
+            print("Error saving treinamento: \(error.localizedDescription)")
+        }
+    }
+}
+
+extension Bundle {
+    func decode<T: Decodable>(file: String) -> T {
+        guard let url = self.url(forResource: file, withExtension: nil) else {
+            fatalError("Could not find \(file) in bundle.")
+        }
+        
+        guard let data = try? Data(contentsOf: url) else {
+            fatalError("Could not load \(file) from bundle.")
+        }
+        
+        let decoder = JSONDecoder()
+        
+        guard let loadedData = try? decoder.decode(T.self, from: data) else {
+            fatalError("Could not decode \(file) from bundle.")
+        }
+        
+        return loadedData
     }
 }

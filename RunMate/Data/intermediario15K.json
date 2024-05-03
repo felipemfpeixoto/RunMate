@@ -146,7 +146,8 @@
                             "descricao": "75% a 85% da FCM",
                             "tempo": 5
                           }
-                      ]
+                      ],
+                      "repeticoes": 1
                   }
               ]
             },

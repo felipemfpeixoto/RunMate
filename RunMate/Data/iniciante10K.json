@@ -57,7 +57,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 6
-                        },
+                        }
                     ],
                     "repeticoes": 3
                 },
@@ -67,7 +67,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                 }
@@ -95,7 +95,7 @@
                           "nome": "Corrida Leve",
                           "descricao": "65% a 75% da FCM",
                           "tempo": 20
-                      },
+                      }
                   ],
                   "repeticoes": 1
                 }
@@ -176,7 +176,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "distancia": 6
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -210,7 +210,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 15
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -259,7 +259,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -282,7 +282,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 50
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -306,7 +306,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 45
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -325,7 +325,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 45
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -348,7 +348,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "distancia": 6
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -406,7 +406,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   },
@@ -436,7 +436,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -493,7 +493,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 50
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -512,7 +512,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   },
@@ -537,7 +537,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -560,7 +560,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 50
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -589,7 +589,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 30
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -613,10 +613,10 @@
                             "nome": "Corrida Forte",
                             "descricao": "85% a 90% da FCM",
                             "tempo": 15
-                        },
+                        }
                     ],
                     "repeticoes": 1
-                  },
+                  }
               ]
             },
             {
@@ -636,7 +636,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "distancia": 7
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -660,7 +660,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 60
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -679,7 +679,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 5
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   },
@@ -699,7 +699,7 @@
                             "nome": "Caminhada",
                             "descricao": "50% a 65% da FCM",
                             "tempo": 3
-                        },
+                        }
                     ],
                     "repeticoes": 4
                   },
@@ -709,7 +709,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -832,7 +832,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 60
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -881,7 +881,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -933,7 +933,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 50
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -972,7 +972,7 @@
                             "nome": "Caminhada",
                             "descricao": "50% a 65% da FCM",
                             "tempo": 5
-                        },
+                        }
                     ],
                     "repeticoes": 6
                   },
@@ -982,7 +982,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 15
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -1029,7 +1029,7 @@
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 40
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -1062,10 +1062,15 @@
               "dia": "Sexta-feira",
               "exercicios": [
                   {
-                      "nome": "Corrida Leve",
-                      "descricao": "65% a 75% da FCM",
-                      "tempo": 3
-                  },
+                    "exercíciosDetalhados": [
+                      {
+                        "nome": "Corrida Leve",
+                        "descricao": "65% a 75% da FCM",
+                        "tempo": 30
+                      }
+                    ],
+                    "repeticoes": 1
+                  }
               ]
             },
             {

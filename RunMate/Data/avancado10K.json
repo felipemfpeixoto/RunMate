@@ -130,7 +130,7 @@
                           "nome": "Corrida Moderada",
                           "descricao": "75% a 85% da FCM",
                           "tempo": 30
-                      },
+                      }
                     ],
                     "repeticoes": 1
                   }
@@ -159,12 +159,12 @@
                             "nome": "Tempo Run",
                             "descricao": "Pace que pretende fazer a prova",
                             "tempo": 10
-                        }
+                        },
                         {
                             "nome": "Corrida Leve",
                             "descricao": "65% a 75% da FCM",
                             "tempo": 10
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -179,7 +179,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "tempo": 45
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
@@ -198,7 +198,7 @@
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
                             "distancia": 8
-                        },
+                        }
                     ],
                     "repeticoes": 1
                   }
