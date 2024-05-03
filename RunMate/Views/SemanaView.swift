@@ -26,7 +26,7 @@ struct SemanaView: View {
                                 .foregroundStyle(Color.white)
                             
                             Text("5 km - Avançado") // Mudar quando já tiver as planilhas
-                                .font(Font.custom("Roboto-Bold", size: 24))
+                                .font(Font.custom("Roboto-Regular", size: 24))
                                 .foregroundStyle(Color.turquoiseGreen)
                                 .padding(.bottom, 30)
                         }
