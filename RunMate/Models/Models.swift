@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ExercicioDetalhado: Codable {
+struct ExercicioDetalhado: Codable, Hashable {
     let nome: String
     let descricao: String
     let tempo: Int?
@@ -13,17 +13,17 @@ struct MeuPlano {
     let idade: Int
 }
 
-struct Exercicio: Codable {
+struct Exercicio: Codable, Hashable {
     let exercíciosDetalhados: [ExercicioDetalhado]
     let repeticoes: Int
 }
 
-struct Dia: Codable {
+struct Dia: Codable, Hashable {
     let dia: String
     let exercicios: [Exercicio]
 }
 
-struct Semana: Codable {
+struct Semana: Codable, Hashable {
     let semana: Int
     let dias: [Dia]
 }

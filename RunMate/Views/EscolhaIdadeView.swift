@@ -19,20 +19,34 @@ struct EscolhaIdadeView: View {
                 Text("Selecione sua idade:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
-                Button(action: {
-                    isShowingPopup = true
-                }, label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 321, height: 53)
-                            .foregroundStyle(Color.oceanBlue)
-                        RoundedRectangle(cornerRadius: 20)
-                            .frame(width: 316, height: 48)
-                            .foregroundStyle(Color.blackBlue)
-                        Text("\(value)")
-                            .foregroundStyle(Color.turquoiseGreen)
+//                Button(action: {
+//                    isShowingPopup = true
+//                }, label: {
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 20)
+//                            .frame(width: 321, height: 53)
+//                            .foregroundStyle(Color.oceanBlue)
+//                        RoundedRectangle(cornerRadius: 20)
+//                            .frame(width: 316, height: 48)
+//                            .foregroundStyle(Color.blackBlue)
+//                        Text("\(value)")
+//                            .foregroundStyle(Color.turquoiseGreen)
+//                            .font(.title3.bold())
+//                    }
+//                })
+                
+                VStack {
+                    Picker("Selecione sua idadde", selection: $value) {
+                        ForEach(0..<100) { number in
+                            Text("\(number)")
+                                .tag("\(number)")
+                                .foregroundStyle(.white)
+                        }
                     }
-                })
+                    .pickerStyle(.wheel)
+                    .background(Color.oceanBlue)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
                 Spacer()
                 if value != 0 {
                     NavigationLink(destination: SemanaView()) {
@@ -65,23 +79,7 @@ struct EscolhaIdadeView: View {
             }
         }
         .sheet(isPresented: $isShowingPopup, content: {
-            VStack {
-                Picker("Selecione sua idadde", selection: $value) {
-                    ForEach(0..<100) { number in
-                        Text("\(number)")
-                            .tag("\(number)")
-                            .foregroundStyle(.black)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                Button(action: {
-                    isShowingPopup.toggle()
-                }, label: {
-                    Text("Confirmar")
-                })
-            }
+            EscolheIdadeSheet(isShowingPopup: $isShowingPopup, value: $value)
         })
         .onDisappear {
             criaEscolhas()
@@ -93,6 +91,37 @@ struct EscolhaIdadeView: View {
         let nomeArquivo = selectedLevel + selectedGoal
         print(nomeArquivo)
         dao.loadJsonFileFromObjective()
+    }
+}
+
+struct EscolheIdadeSheet: View {
+    
+    @Binding var isShowingPopup: Bool
+    
+    @Binding var value: Int
+    
+    var body: some View {
+        ZStack {
+            Color.blackBlue
+                .ignoresSafeArea()
+            VStack {
+                Picker("Selecione sua idadde", selection: $value) {
+                    ForEach(0..<100) { number in
+                        Text("\(number)")
+                            .tag("\(number)")
+                            .foregroundStyle(.white)
+                    }
+                }
+                .pickerStyle(.wheel)
+                .background(Color.oceanBlue)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                Button(action: {
+                    isShowingPopup.toggle()
+                }, label: {
+                    Text("Confirmar")
+                })
+            }
+        }
     }
 }
 
