@@ -10,9 +10,9 @@ let dao = DAO.instance
     
     var idade: Int? = nil
     
-    var semanaAtual: Int = 0
+    var semanaAtual: Int = -1
     
-    var diaAtual: Int = 0
+    var diaAtual: Int = -1
     
     private init() {
 //        loadTreino()
@@ -25,8 +25,8 @@ let dao = DAO.instance
         let data: PaginaDeTreinamento = Bundle.main.decode(file: filename)
         
         self.paginaDeTreinamento = data
-        self.semanaAtual = 1
-        self.diaAtual = 1
+        self.semanaAtual = 0
+        self.diaAtual = 0
 //        savePaginaDeTerinamento()
 //        loadTreino()
         

@@ -37,7 +37,7 @@ struct ExerciciosDetalhadosView: View {
     
     var body: some View {
         ZStack {
-            if dao.semanaAtual == 0 {
+            if dao.diaAtual == -1 {
                 ProgressView()
             } else {
                 ForEach(exercicios ?? [], id: \.self){ ex in
@@ -77,10 +77,11 @@ struct ExerciciosDetalhadosView: View {
                         }
                     }
                 }
-                .onAppear {
-                    exercicios = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios
-                }
             }
+        }
+        .onAppear {
+            exercicios = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios
+            print(exercicios ?? "tem nada nao")
         }
     }
 }

@@ -15,7 +15,7 @@ struct SemanaView: View {
     var body: some View {
         ZStack{
             Color(.blackBlue).ignoresSafeArea()
-            if dao.semanaAtual == 0 {
+            if dao.semanaAtual == -1 {
                 ProgressView()
             } else {
                 VStack{
