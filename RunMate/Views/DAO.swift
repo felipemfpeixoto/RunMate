@@ -8,6 +8,10 @@ class DAO: Codable {
     
     var paginaDeTreinamento: PaginaDeTreinamento = PaginaDeTreinamento(planoDeTreinamento: PlanoDeTreinamento(semanas: []))
     
+    var semanaAtual: Int = 1
+    
+    var diaAtual: Int = 1
+    
     private init() {
 //        loadTreino()
     }
