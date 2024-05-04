@@ -1,13 +1,5 @@
 import SwiftUI
 
-enum Nivel {
-    case iniciante, intermediario, avancado
-}
-
-enum Objetivo {
-    case menor, medio, maior
-}
-
 var escolhas: MeuPlano? = nil
 
 struct ContentView: View {
@@ -55,7 +47,7 @@ struct ContentView: View {
                     }
                 }
             } else {
-                SemanaView(semana: semanas[semanaAtual].dias)
+                SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
             }
         }
     }

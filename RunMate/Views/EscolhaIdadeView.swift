@@ -19,21 +19,6 @@ struct EscolhaIdadeView: View {
                 Text("Selecione sua idade:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
-//                Button(action: {
-//                    isShowingPopup = true
-//                }, label: {
-//                    ZStack {
-//                        RoundedRectangle(cornerRadius: 20)
-//                            .frame(width: 321, height: 53)
-//                            .foregroundStyle(Color.oceanBlue)
-//                        RoundedRectangle(cornerRadius: 20)
-//                            .frame(width: 316, height: 48)
-//                            .foregroundStyle(Color.blackBlue)
-//                        Text("\(value)")
-//                            .foregroundStyle(Color.turquoiseGreen)
-//                            .font(.title3.bold())
-//                    }
-//                })
                 
                 VStack {
                     Picker("Selecione sua idadde", selection: $value) {
@@ -49,7 +34,7 @@ struct EscolhaIdadeView: View {
                 }
                 Spacer()
                 if value != 0 {
-                    NavigationLink(destination: SemanaView(semana: semanas[semanaAtual].dias)) {
+                    NavigationLink(destination: SemanaView()) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color.turquoiseGreen)
@@ -78,10 +63,8 @@ struct EscolhaIdadeView: View {
                 isShowing = true
             }
         }
-        .sheet(isPresented: $isShowingPopup, content: {
-            EscolheIdadeSheet(isShowingPopup: $isShowingPopup, value: $value)
-        })
         .onDisappear {
+            dao.idade = value
             criaEscolhas()
         }
     }

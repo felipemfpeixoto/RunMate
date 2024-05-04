@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExerciciosDetalhadosView: View {
     
-    var exercicios: [Exercicio]
+    @State var exercicios: [Exercicio]?
     
 //    var exD1: ExercicioDetalhado
 //    var exD2: ExercicioDetalhado
@@ -36,41 +36,49 @@ struct ExerciciosDetalhadosView: View {
     
     
     var body: some View {
-        
-        ForEach(exercicios, id: \.self){ ex in
-            
-            ForEach(ex.exercíciosDetalhados, id: \.self.nome) { e in
-                
-                
-                ZStack(alignment: .leading){
+        ZStack {
+            if dao.semanaAtual == 0 {
+                ProgressView()
+            } else {
+                ForEach(exercicios ?? [], id: \.self){ ex in
                     
-                    
-                    HStack(spacing: 40){
-                        Text("\(e.tempo ?? 30) MIN")
-                            .font(.custom("Poppins-SemiBold", size: 18))
-                            .padding(.leading, 40)
+                    ForEach(ex.exercíciosDetalhados, id: \.self.nome) { e in
                         
-                        VStack(alignment: .leading){
-                            Text(e.nome)
-                                .font(.custom("Poppins-SemiBold", size: 18))
-                            Text(e.descricao)
-                                .font(.custom("Poppins-Medium", size: 14))
+                        
+                        ZStack(alignment: .leading){
+                            
+                            
+                            HStack(spacing: 40){
+                                Text("\(e.tempo ?? 30) MIN")
+                                    .font(.custom("Poppins-SemiBold", size: 18))
+                                    .padding(.leading, 40)
+                                
+                                VStack(alignment: .leading){
+                                    Text(e.nome)
+                                        .font(.custom("Poppins-SemiBold", size: 18))
+                                    Text(e.descricao)
+                                        .font(.custom("Poppins-Medium", size: 14))
+                                }
+                            }
+                            .padding(.horizontal, 40)
+                            .foregroundColor(.white)
+                            .frame(width: 359, height: 65)
+                            .background(Color.oceanBlue)
+                            .cornerRadius(18)
+                            
+                            Text("\(ex.repeticoes)X")
+                                .font(.custom("Poppins-Medium", size: 18))
+                                .foregroundColor(.oceanBlue)
+                                .frame(width: 63, height: 65)
+                                .background(Color.turquoiseGreen)
+                                .cornerRadius(18)
+                            
+                            
                         }
                     }
-                    .padding(.horizontal, 40)
-                    .foregroundColor(.white)
-                    .frame(width: 359, height: 65)
-                    .background(Color.oceanBlue)
-                    .cornerRadius(18)
-                    
-                    Text("\(ex.repeticoes)X")
-                        .font(.custom("Poppins-Medium", size: 18))
-                        .foregroundColor(.oceanBlue)
-                        .frame(width: 63, height: 65)
-                        .background(Color.turquoiseGreen)
-                        .cornerRadius(18)
-                    
-                    
+                }
+                .onAppear {
+                    exercicios = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios
                 }
             }
         }
