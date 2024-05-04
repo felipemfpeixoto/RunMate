@@ -9,28 +9,30 @@ import SwiftUI
 
 struct ExerciciosDetalhadosView: View {
     
-    var exD1: ExercicioDetalhado
-    var exD2: ExercicioDetalhado
-    var exD3: [ExercicioDetalhado]
-        
-    var ex1: Exercicio
-    var ex2: Exercicio
-    var ex3: Exercicio
-    
     var exercicios: [Exercicio]
-        
-        init() {
-            exD1 = ExercicioDetalhado(nome: "Corrida Leve", descricao: "FCM 65% a 75%", tempo: 30, distancia: 4)
-            exD2 = ExercicioDetalhado(nome: "Corrida Forte", descricao: "FCM 65% a 75%", tempo: 5, distancia: 4)
-            exD3 = [ExercicioDetalhado(nome: "Caminhada", descricao: "FCM 65% a 75%", tempo: 15, distancia: 4), ExercicioDetalhado(nome: "Corrida Leve", descricao: "FCM 65% a 75%", tempo: 30, distancia: 4)]
-            
-            ex1 = Exercicio(exercíciosDetalhados: [exD1], repeticoes: 1)
-            ex2 = Exercicio(exercíciosDetalhados: [exD2], repeticoes: 3)
-            ex3 = Exercicio(exercíciosDetalhados: exD3, repeticoes: 1)
-            
-            exercicios = [ex1, ex2, ex3]
-        }
     
+//    var exD1: ExercicioDetalhado
+//    var exD2: ExercicioDetalhado
+//    var exD3: [ExercicioDetalhado]
+//        
+//    var ex1: Exercicio
+//    var ex2: Exercicio
+//    var ex3: Exercicio
+//    
+//
+//        
+//        init() {
+//            exD1 = ExercicioDetalhado(nome: "Corrida Leve", descricao: "FCM 65% a 75%", tempo: 30, distancia: 4)
+//            exD2 = ExercicioDetalhado(nome: "Corrida Forte", descricao: "FCM 65% a 75%", tempo: 5, distancia: 4)
+//            exD3 = [ExercicioDetalhado(nome: "Caminhada", descricao: "FCM 65% a 75%", tempo: 15, distancia: 4), ExercicioDetalhado(nome: "Corrida Leve", descricao: "FCM 65% a 75%", tempo: 30, distancia: 4)]
+//            
+//            ex1 = Exercicio(exercíciosDetalhados: [exD1], repeticoes: 1)
+//            ex2 = Exercicio(exercíciosDetalhados: [exD2], repeticoes: 3)
+//            ex3 = Exercicio(exercíciosDetalhados: exD3, repeticoes: 1)
+//            
+//            exercicios = [ex1, ex2, ex3]
+//        }
+//    
     
     
     var body: some View {
@@ -75,6 +77,6 @@ struct ExerciciosDetalhadosView: View {
     }
 }
 
-#Preview {
-    ExerciciosDetalhadosView()
-}
+//#Preview {
+//    ExerciciosDetalhadosView()
+//}

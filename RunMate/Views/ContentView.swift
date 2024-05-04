@@ -55,7 +55,7 @@ struct ContentView: View {
                     }
                 }
             } else {
-//                SemanaView()
+                SemanaView(semana: semanas[semanaAtual].dias)
             }
         }
     }

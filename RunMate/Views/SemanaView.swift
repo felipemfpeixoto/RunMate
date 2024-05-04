@@ -10,9 +10,9 @@ import SwiftUI
 struct SemanaView: View {
     
    
-    @State var diaAtual: Int = 1
+//    @State var diaAtual: Int = 1
     let semana: [Dia]
-    
+    @State var diaConcluido: Bool = false
    
     var body: some View {
         ZStack{
@@ -42,7 +42,6 @@ struct SemanaView: View {
                             
                             
                     }
-//                    Spacer()
                     
                     Text("Primeira semana")
                         .font(Font.custom("Roboto-Bold", size: 24))
@@ -53,44 +52,58 @@ struct SemanaView: View {
                         HStack{
                             ForEach(semana, id: \.dia){ dia in
                                 Group{
-                                    if dia.dia == diaAtual {
+                                    if diaConcluido{
                                         Button(action: {
                                             diaAtual = dia.dia
                                         }, label: {
                                             VStack{
-                                                Text("\(dia)º")
+                                                Text("\(dia.dia)º")
                                                     .font(Font.custom("Roboto-Bold", size: 30))
                                                 Text("Dia")
                                                     .font(Font.custom("Roboto-Bold", size: 18))
                                             }
                                             .foregroundStyle(Color.oceanBlue)
                                         })
-                                        .buttonStyle(BotaoDiaTurquesa())
+                                        .buttonStyle(BotaoDiaLilas())
                                     }
-                                    else {
-                                        Button(action: {
-                                            diaAtual = dia.dia
-                                        }, label: {
-                                            VStack{
-                                                Text("\(dia)º")
-                                                    .font(Font.custom("Roboto-Bold", size: 30))
-                                                Text("Dia")
-                                                    .font(Font.custom("Roboto-Bold", size: 18))
-                                            }
-                                            .foregroundStyle(Color.white)
-                                        })
-                                        .buttonStyle(BotaoDia())
+                                    else{
+                                        if dia.dia == diaAtual {
+                                            Button(action: {
+                                                diaAtual = dia.dia
+                                            }, label: {
+                                                VStack{
+                                                    Text("\(dia.dia)º")
+                                                        .font(Font.custom("Roboto-Bold", size: 30))
+                                                    Text("Dia")
+                                                        .font(Font.custom("Roboto-Bold", size: 18))
+                                                }
+                                                .foregroundStyle(Color.oceanBlue)
+                                            })
+                                            .buttonStyle(BotaoDiaTurquesa())
+                                        }
+                                        else {
+                                            Button(action: {
+                                                diaAtual = dia.dia
+                                            }, label: {
+                                                VStack{
+                                                    Text("\(dia.dia)º")
+                                                        .font(Font.custom("Roboto-Bold", size: 30))
+                                                    Text("Dia")
+                                                        .font(Font.custom("Roboto-Bold", size: 18))
+                                                }
+                                                .foregroundStyle(Color.white)
+                                            })
+                                            .buttonStyle(BotaoDia())
+                                        }
                                     }
-                                    
                                 }
                             }
                             
                         }
                     }
                     
-//                    Spacer()
                     VStack{
-                        ExerciciosDetalhadosView()
+                        ExerciciosDetalhadosView(exercicios: semanas[semanaAtual].dias[diaAtual].exercicios)
                     
                     }
                     .padding(.vertical, 40)
@@ -102,6 +115,14 @@ struct SemanaView: View {
                 
                 VStack{
                     Button(action: {
+                        
+                        if  diaAtual == 7   {
+                            semanaAtual += 1
+                        }
+                        else{
+                            diaAtual += 1
+                            diaConcluido = true
+                        }
                         
                     }, label: {
                         Text("CONCLUIR CORRIDA")
@@ -121,6 +142,7 @@ struct SemanaView: View {
                 Spacer()
             }
         }
+        .navigationBarBackButtonHidden()
         
     }
 }
