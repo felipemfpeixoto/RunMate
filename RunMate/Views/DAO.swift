@@ -14,6 +14,8 @@ let dao = DAO.instance
     
     var diaAtual: Int = -1
     
+    var diasConcluidos: [Int] = []
+    
     private init() {
 //        loadTreino()
     }
@@ -27,6 +29,7 @@ let dao = DAO.instance
         self.paginaDeTreinamento = data
         self.semanaAtual = 0
         self.diaAtual = 0
+        self.diasConcluidos = []
 //        savePaginaDeTerinamento()
 //        loadTreino()
         

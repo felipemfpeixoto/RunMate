@@ -10,7 +10,7 @@ import SwiftUI
 struct SemanaView: View {
     
     @State var semana: [Dia]?
-    @State var diasConcluidos: [Int] = []
+//    @State var diasConcluidos: [Int] = []
    
     var body: some View {
         ZStack{
@@ -53,7 +53,7 @@ struct SemanaView: View {
                             HStack{
                                 ForEach(semana ?? [], id: \.dia){ dia in
                                     Group{
-                                        if diasConcluidos.contains(dia.dia) {
+                                        if dao.diasConcluidos.contains(dia.dia) {
                                             Button(action: {
                                                 dao.diaAtual = (dia.dia - 1)
                                             }, label: {
@@ -116,19 +116,19 @@ struct SemanaView: View {
                     VStack{
                         Button(action: {
                             
-                            if  diasConcluidos.count == 6   {
+                            if  dao.diasConcluidos.count == 6   {
                                 dao.diaAtual = 0
-                                diasConcluidos = []
+                                dao.diasConcluidos = []
                                 dao.semanaAtual += 1
                                 
                                 
                                 
                             }
                             else{
-                                diasConcluidos.append(dao.diaAtual+1)
+                                dao.diasConcluidos.append(dao.diaAtual+1)
                                 dao.diaAtual += 1
                                 print(dao.semanaAtual)
-                                print(diasConcluidos)
+                                print(dao.diasConcluidos)
                             }
                             
                         }, label: {
