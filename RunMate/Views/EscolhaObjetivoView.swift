@@ -56,6 +56,9 @@ struct EscolhaObjetivoView: View {
         .onAppear {
             imPrograssing = false
         }
+        .onDisappear {
+            dao.metaSelecionlada = selectedGoal
+        }
     }
 }
 

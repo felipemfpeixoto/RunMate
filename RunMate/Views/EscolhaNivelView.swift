@@ -52,6 +52,9 @@ struct EscolhaNivelView: View {
         .onAppear {
             imProgressing = true
         }
+        .onDisappear {
+            dao.nivelSelecionado = selectedLevel
+        }
     }
 }
 

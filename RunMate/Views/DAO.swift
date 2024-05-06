@@ -16,6 +16,10 @@ let dao = DAO.instance
     
     var diasConcluidos: [Int] = []
     
+    var nivelSelecionado: String = ""
+    
+    var metaSelecionlada: String = ""
+    
     private init() {
     }
     

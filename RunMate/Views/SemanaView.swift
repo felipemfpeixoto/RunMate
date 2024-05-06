@@ -28,7 +28,7 @@ struct SemanaView: View {
                                     .font(Font.custom("Roboto-Bold", size: 28))
                                     .foregroundStyle(Color.white)
                                 
-                                Text("\(escolhas?.objetivo ?? "") Km - \(escolhas?.nivel ?? "")")
+                                Text("\(dao.metaSelecionlada == "5KM" ? String(dao.metaSelecionlada.prefix(1)) : String(dao.metaSelecionlada.prefix(2))) Km - \(dao.nivelSelecionado)")
                                     .font(Font.custom("Roboto-Regular", size: 24))
                                     .foregroundStyle(Color.turquoiseGreen)
                                     .padding(.bottom, 30)
