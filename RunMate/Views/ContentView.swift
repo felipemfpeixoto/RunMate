@@ -10,10 +10,16 @@ struct ContentView: View {
     
     @State var filenameGoal: String = ""
     
-    var backslide: AnyTransition {
-            AnyTransition.asymmetric(
-                insertion: .move(edge: .trailing),
-                removal: .move(edge: .leading))}
+    @State var value: Int = 0
+    
+    @State var backslide: AnyTransition = AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
+    
+    @State var voltando: AnyTransition = AnyTransition.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
+    
+    let tamanhoTela = UIScreen.main.bounds.width
+    
+    @State var telaAtual: Int = 0
+    @State var imProgressing: Bool = true
     
     var body: some View {
         NavigationStack {
@@ -22,34 +28,66 @@ struct ContentView: View {
                     Color.blackBlue
                         .ignoresSafeArea()
                     VStack {
+                        HStack {
+                            Button {
+                                if faseBonequinho > 1 {
+                                    self.imProgressing = false
+                                    faseBonequinho -= 1
+                                }
+                            } label: {
+                                Image(systemName: "arrow.left")
+                                    .fontWeight(.bold)
+                                    .font(.title)
+                            }
+                            .foregroundStyle(faseBonequinho > 1 ? .white : Color.blackBlue)
+                            .padding()
+                            
+                            Spacer()
+                        }
+                        Spacer()
                         BonequinhoView(faseBonequinho: $faseBonequinho)
+                        Spacer()
                         Group {
                             if faseBonequinho == 0 || faseBonequinho == 1 {
-                                EscolhaNivelView(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel)
-                                    .transition(self.backslide)
+                                EscolhaNivelView(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel, imProgressing: $imProgressing)
                                     .padding(.horizontal)
+                                
                             } else if faseBonequinho == 2 {
-                                EscolhaObjetivoView(faseBonequinho: $faseBonequinho, selectedLevel: $filenameLevel, filenameGoal: $filenameGoal)
-                                    .transition(self.backslide)
+                                EscolhaObjetivoView(faseBonequinho: $faseBonequinho, selectedLevel: $filenameLevel, filenameGoal: $filenameGoal, imPrograssing: $imProgressing)
                                     .padding(.horizontal)
+                                   
                             } else if faseBonequinho == 3 {
-                                EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal)
-                                    .transition(self.backslide)
+                                EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing)
                                     .padding(.horizontal)
+                                    
                             }
                         }
                         .frame(height: 450)
+                        .transition(AnyTransition.asymmetric(insertion:.move(edge: imProgressing ? .trailing : .leading), removal: .move(edge: imProgressing ? .leading : .trailing)))
+                        Spacer()
                     }
                 }
+                .animation(.easeInOut(duration: 0.75), value: self.faseBonequinho)
                 .onAppear {
                     withAnimation(Animation.easeInOut(duration: 0.75)) {
                         faseBonequinho = 1
                     }
                 }
+                .onDisappear {
+                    dao.idade = value
+                    criaEscolhas()
+                }
             } else {
                 SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
             }
-        }
+        }.navigationBarBackButtonHidden()
+    }
+    
+    func criaEscolhas() {
+        escolhas = MeuPlano(nivel: filenameLevel, objetivo: filenameGoal, idade: value)
+        let nomeArquivo = filenameLevel + filenameGoal
+        print(nomeArquivo)
+        dao.loadJsonFileFromObjective()
     }
 }
 

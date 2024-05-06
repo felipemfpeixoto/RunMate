@@ -20,9 +20,7 @@ let dao = DAO.instance
 //        loadTreino()
     }
     
-    func loadJsonFileFromObjective() -> [Semana] {
-//        let docsPath = Bundle.main.resourcePath! + "/Data"
-//        let fileManager = FileManager.default
+    func loadJsonFileFromObjective() {
         let filename = (escolhas?.nivel ?? "") + (escolhas?.objetivo ?? "") + ".json"
         let data: PaginaDeTreinamento = Bundle.main.decode(file: filename)
         
