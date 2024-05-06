@@ -16,14 +16,15 @@ struct ExerciciosDetalhadosView: View {
             if dao.diaAtual == -1 {
                 ProgressView()
             } else {
+                
                 ForEach(exercicios, id: \.self){ ex in
+                    
                     
                     ForEach(ex.exercíciosDetalhados, id: \.self) { e in
                         
                         let text = e.tempo == nil ? "Km" : "MIN"
                         
                         ZStack(alignment: .leading){
-                            
                             
                             HStack(spacing: 40){
                                 Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
@@ -47,7 +48,7 @@ struct ExerciciosDetalhadosView: View {
                                 .font(.custom("Poppins-Medium", size: 18))
                                 .foregroundColor(.oceanBlue)
                                 .frame(width: 63, height: 65)
-                                .background(Color.turquoiseGreen)
+                                .background(dao.diasConcluidos.contains(dao.diaAtual + 1) ?  Color.lilacPurple : Color.turquoiseGreen)
                                 .cornerRadius(18)
                             
                             
@@ -56,16 +57,5 @@ struct ExerciciosDetalhadosView: View {
                 }
             }
         }
-        .onAppear {
-            print(dao.diaAtual)
-//            exercicios = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios
-//            print(exercicios ?? "tem nada nao")
-//            print("---------------------------")
-//            print(exercicios![0].exercíciosDetalhados[0] ?? "se fudeu")
-        }
     }
 }
-
-//#Preview {
-//    ExerciciosDetalhadosView() 
-//}

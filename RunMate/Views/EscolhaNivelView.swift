@@ -8,6 +8,8 @@ struct EscolhaNivelView: View {
     
     @Binding var filenameLevel: String
     
+    @Binding var imProgressing: Bool
+    
     var body: some View {
         ZStack {
             VStack {
@@ -21,9 +23,8 @@ struct EscolhaNivelView: View {
                 Spacer()
                 if selectedLevel != ""{
                     Button(action: {
-                        withAnimation(Animation.easeInOut(duration: 0.75)) {
-                            faseBonequinho = 2
-                        }
+                        self.imProgressing = true
+                        faseBonequinho += 1
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -47,6 +48,12 @@ struct EscolhaNivelView: View {
                 }
                 Spacer()
             }
+        }
+        .onAppear {
+            imProgressing = true
+        }
+        .onDisappear {
+            dao.nivelSelecionado = selectedLevel
         }
     }
 }

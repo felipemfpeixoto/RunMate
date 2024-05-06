@@ -10,6 +10,8 @@ struct EscolhaObjetivoView: View {
     
     @Binding var filenameGoal: String
     
+    @Binding var imPrograssing: Bool
+    
     var body: some View {
         ZStack {
             VStack {
@@ -23,8 +25,9 @@ struct EscolhaObjetivoView: View {
                 Spacer()
                 if selectedGoal != "" {
                     Button(action: {
-                        withAnimation(Animation.easeInOut(duration: 0.75)) {
-                            faseBonequinho = 3
+                        imPrograssing = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                            faseBonequinho += 1
                         }
                     }, label: {
                         ZStack {
@@ -49,6 +52,12 @@ struct EscolhaObjetivoView: View {
                 }
                 Spacer()
             }
+        }
+        .onAppear {
+            imPrograssing = false
+        }
+        .onDisappear {
+            dao.metaSelecionlada = selectedGoal
         }
     }
 }
