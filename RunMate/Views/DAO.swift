@@ -17,7 +17,6 @@ let dao = DAO.instance
     var diasConcluidos: [Int] = []
     
     private init() {
-//        loadTreino()
     }
     
     func loadJsonFileFromObjective() {
@@ -28,62 +27,6 @@ let dao = DAO.instance
         self.semanaAtual = 0
         self.diaAtual = 0
         self.diasConcluidos = []
-//        savePaginaDeTerinamento()
-//        loadTreino()
-        
-        let plano: PlanoDeTreinamento = data.planoDeTreinamento
-        let semanas = plano.semanas
-        return semanas
-
-//        do {
-            
-//            let docsArray = try fileManager.contentsOfDirectory(atPath: docsPath)
-//            for item in docsArray {
-//                if item == filename {
-//                    print(item)
-//                }
-//                guard let semana =  try? Semana.load(from: item) else {continue}
-//                planejamento.append(semana)
-//            }
-//        } catch {
-//            print(error)
-//        }
-    }
-    
-    func loadTreino() {
-        let fileManager = FileManager.default
-        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileURL = documentDirectory.appendingPathComponent("treino.json")
-        
-        if fileManager.fileExists(atPath: fileURL.path) {
-            do {
-                let data = try Data(contentsOf: fileURL)
-                let treinamento = try JSONDecoder().decode(PaginaDeTreinamento.self, from: data)
-                self.paginaDeTreinamento = treinamento
-            } catch {
-                print("Error loading treinamento: \(error.localizedDescription)")
-            }
-        } else {
-            do {
-                let data = try JSONEncoder().encode(self.paginaDeTreinamento)
-                try data.write(to: fileURL)
-            } catch {
-                print("Error creating new treino: \(error.localizedDescription)")
-            }
-        }
-    }
-    
-    func savePaginaDeTerinamento() {
-        let fileManager = FileManager.default
-        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let fileURL = documentDirectory.appendingPathComponent("treino.json")
-        print(fileURL)
-        do {
-            let data = try JSONEncoder().encode(self.paginaDeTreinamento)
-            try data.write(to: fileURL)
-        } catch {
-            print("Error saving treinamento: \(error.localizedDescription)")
-        }
     }
 }
 
