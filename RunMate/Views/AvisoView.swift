@@ -22,10 +22,12 @@ struct AvisoView: View {
             
             VStack(spacing: 30) {
                 Image("Alerta")
-                
+                    .shadow(color: .lilacPurple, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                 
                 Text("ATENÇÃO!")
                     .font(Font.custom("Poppins-SemiBold", size: 22))
                     .foregroundStyle(Color.turquoiseGreen)
+                  
                    
                 
                 Text("Antes de se exercitar ou participar de atividades físicas intensas, como corrida, consulte seu médico ou profissional de saúde.")
@@ -43,7 +45,11 @@ struct AvisoView: View {
                     .padding(.bottom, 5)
                 
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    
+                    
+                    
+                }, label: {
                     Text("ESTOU PRONTO!")
                     
                         .foregroundColor(.darkPurple)

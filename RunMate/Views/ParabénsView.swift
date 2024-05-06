@@ -23,7 +23,7 @@ struct ParabénsView: View {
             
             VStack(spacing: 20) {
                 Image("Medalha")
-                   // Adjust the padding as needed
+                    .shadow(color: .turquoiseGreen, radius: 15)
                 
                 Text("PARABÉNS!")
                     .font(Font.custom("Poppins-SemiBold", size: 22))
