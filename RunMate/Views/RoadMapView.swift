@@ -89,6 +89,7 @@ struct RoadMapView: View {
                     
             }
             .background(.blackBlue)
+            .navigationBarBackButtonHidden()
      
         }
     }
