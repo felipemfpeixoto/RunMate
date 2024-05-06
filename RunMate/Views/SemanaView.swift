@@ -10,7 +10,6 @@ import SwiftUI
 struct SemanaView: View {
     
     @State var semana: [Dia]?
-    @State var diaConcluido: Bool = false
    
     var body: some View {
         ZStack{
@@ -29,22 +28,25 @@ struct SemanaView: View {
                                     .font(Font.custom("Roboto-Bold", size: 28))
                                     .foregroundStyle(Color.white)
                                 
-                                Text("5 km - Avançado") // Mudar quando já tiver as planilhas
+                                Text("\(escolhas?.objetivo ?? "") Km - \(escolhas?.nivel ?? "")")
                                     .font(Font.custom("Roboto-Regular", size: 24))
                                     .foregroundStyle(Color.turquoiseGreen)
                                     .padding(.bottom, 30)
                             }
                             
                             Spacer()
-                            Text(Image(systemName: "figure.run.circle.fill"))
-                                .foregroundStyle(Color.turquoiseGreen)
-                                .font(.system(size: 43))
-                                .padding(.trailing, 10)
+                            NavigationLink(destination: RoadMapView(), label: {
+                                Text(Image(systemName: "figure.run.circle.fill"))
+                                    .foregroundStyle(Color.turquoiseGreen)
+                                    .font(.system(size: 43))
+                                    .padding(.trailing, 10)
+                            })
+                            
                             
                             
                         }
                         
-                        Text("Primeira semana")
+                        Text("\(dao.semanaAtual+1)ª semana")
                             .font(Font.custom("Roboto-Bold", size: 24))
                             .foregroundStyle(Color.white)
                         
@@ -53,9 +55,9 @@ struct SemanaView: View {
                             HStack{
                                 ForEach(semana ?? [], id: \.dia){ dia in
                                     Group{
-                                        if diaConcluido{
+                                        if dao.diasConcluidos.contains(dia.dia) {
                                             Button(action: {
-                                                dao.diaAtual = dia.dia
+                                                dao.diaAtual = (dia.dia - 1)
                                             }, label: {
                                                 VStack{
                                                     Text("\(dia.dia)º")
@@ -68,7 +70,7 @@ struct SemanaView: View {
                                             .buttonStyle(BotaoDiaLilas())
                                         }
                                         else{
-                                            if dia.dia == dao.diaAtual {
+                                            if dia.dia == (dao.diaAtual + 1) {
                                                 Button(action: {
                                                     dao.diaAtual = dia.dia
                                                 }, label: {
@@ -84,7 +86,7 @@ struct SemanaView: View {
                                             }
                                             else {
                                                 Button(action: {
-                                                    dao.diaAtual = dia.dia
+                                                    dao.diaAtual = dia.dia - 1
                                                 }, label: {
                                                     VStack{
                                                         Text("\(dia.dia)º")
@@ -103,43 +105,72 @@ struct SemanaView: View {
                             }
                         }
                         
-                        VStack{
-                            ExerciciosDetalhadosView()
-                        }
-                        .padding(.vertical, 40)
-                        
-                        Spacer()
                     }
                     .padding(.leading)
                     .padding(.top, 40)
                     
-                    VStack{
-                        Button(action: {
-                            
-                            if  dao.diaAtual == 7   {
-                                dao.semanaAtual += 1
-                            }
-                            else{
-                                dao.diaAtual += 1
-                                diaConcluido = true
-                            }
-                            
-                        }, label: {
-                            Text("CONCLUIR CORRIDA")
-                                .font(Font.custom("Poppins-SemiBold", size: 18))
-                                .foregroundStyle(Color.white)
-                            Text(Image(systemName: "checkmark.seal.fill"))
-                                .foregroundStyle(Color.turquoiseGreen)
-                                .font(.system(size: 20))
-                            
-                        })
-                        .padding(10)
-                        .frame(width: 243, height: 43, alignment: .center)
-                        .background(Color.oceanBlue)
-                        .cornerRadius(11)
+                    if dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty{
+                        VStack{
+                            Text("DIA LIVRE")
+                                .font(.custom("Poppins-SemiBold", size: 30))
+                                .foregroundColor(.lakeBlue)
+                                .padding(.top, 30)
+                            Image("Cadeira")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 136, height: 133)
+                            Text("Tire uma folga do seu \ncronograma de corrida e \naproveite um dia de descanso!")
+                                .font(.custom("Poppins-SemiBold", size: 18))
+                                .foregroundColor(.lakeBlue)
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                        }
                     }
-                    .padding(.bottom, 40)
+                    else{
+                        
+                        VStack{
+                            ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
+                            Spacer()
+                        }
+                        .padding(.vertical, 40)
+                    }
+                    
                     Spacer()
+                    
+                    if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
+                        
+                        VStack{
+                            Button(action: {
+                                
+                                if  dao.diasConcluidos.count == 6   {
+                                    dao.diaAtual = 0
+                                    dao.diasConcluidos = []
+                                    dao.semanaAtual += 1
+                                }
+                                else{
+                                    dao.diasConcluidos.append(dao.diaAtual+1)
+                                    dao.diaAtual += 1
+                                    print(dao.semanaAtual)
+                                    print(dao.diasConcluidos)
+                                }
+                                
+                            }, label: {
+                                Text("CONCLUIR CORRIDA")
+                                    .font(Font.custom("Poppins-SemiBold", size: 18))
+                                    .foregroundStyle(Color.white)
+                                Text(Image(systemName: "checkmark.seal.fill"))
+                                    .foregroundStyle(Color.turquoiseGreen)
+                                    .font(.system(size: 20))
+                                
+                            })
+                            .padding(10)
+                            .frame(width: 243, height: 43, alignment: .center)
+                            .background(Color.oceanBlue)
+                            .cornerRadius(11)
+                        }
+                        .padding(.bottom, 40)
+                        Spacer()
+                    }
                 }
                 .onAppear {
                     semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias

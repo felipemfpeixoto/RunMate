@@ -9,47 +9,25 @@ import SwiftUI
 
 struct ExerciciosDetalhadosView: View {
     
-    @State var exercicios: [Exercicio]?
-    
-//    var exD1: ExercicioDetalhado
-//    var exD2: ExercicioDetalhado
-//    var exD3: [ExercicioDetalhado]
-//        
-//    var ex1: Exercicio
-//    var ex2: Exercicio
-//    var ex3: Exercicio
-//    
-//
-//        
-//        init() {
-//            exD1 = ExercicioDetalhado(nome: "Corrida Leve", descricao: "FCM 65% a 75%", tempo: 30, distancia: 4)
-//            exD2 = ExercicioDetalhado(nome: "Corrida Forte", descricao: "FCM 65% a 75%", tempo: 5, distancia: 4)
-//            exD3 = [ExercicioDetalhado(nome: "Caminhada", descricao: "FCM 65% a 75%", tempo: 15, distancia: 4), ExercicioDetalhado(nome: "Corrida Leve", descricao: "FCM 65% a 75%", tempo: 30, distancia: 4)]
-//            
-//            ex1 = Exercicio(exercíciosDetalhados: [exD1], repeticoes: 1)
-//            ex2 = Exercicio(exercíciosDetalhados: [exD2], repeticoes: 3)
-//            ex3 = Exercicio(exercíciosDetalhados: exD3, repeticoes: 1)
-//            
-//            exercicios = [ex1, ex2, ex3]
-//        }
-//    
-    
+    var exercicios: [Exercicio]
     
     var body: some View {
-        ZStack {
+        VStack {
             if dao.diaAtual == -1 {
                 ProgressView()
             } else {
-                ForEach(exercicios ?? [], id: \.self){ ex in
+                
+                ForEach(exercicios, id: \.self){ ex in
                     
-                    ForEach(ex.exercíciosDetalhados, id: \.self.nome) { e in
+                    
+                    ForEach(ex.exercíciosDetalhados, id: \.self) { e in
                         
+                        let text = e.tempo == nil ? "Km" : "MIN"
                         
                         ZStack(alignment: .leading){
                             
-                            
                             HStack(spacing: 40){
-                                Text("\(e.tempo ?? 30) MIN")
+                                Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
                                     .font(.custom("Poppins-SemiBold", size: 18))
                                     .padding(.leading, 40)
                                 
@@ -79,13 +57,12 @@ struct ExerciciosDetalhadosView: View {
                 }
             }
         }
-        .onAppear {
-            exercicios = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios
-            print(exercicios ?? "tem nada nao")
-        }
+//        .onAppear {
+//            print(dao.diaAtual)
+//        }
     }
 }
 
 //#Preview {
-//    ExerciciosDetalhadosView()
+//    ExerciciosDetalhadosView() 
 //}

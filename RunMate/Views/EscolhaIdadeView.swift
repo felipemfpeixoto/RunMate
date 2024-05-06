@@ -96,6 +96,7 @@ struct EscolheIdadeSheet: View {
                     Text("Confirmar")
                 })
             }
+            .padding()
         }
     }
 }

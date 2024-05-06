@@ -34,11 +34,12 @@
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
 		5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */; };
+		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
+		F95280152BE9557500DE6C93 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F95280142BE9557500DE6C93 /* CodableExtensions */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
 		F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */; };
-		F9B5BAD92BE586990007E115 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9B5BAD82BE586990007E115 /* CodableExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMap.swift; sourceTree = "<group>"; };
 		0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhaIdadeView.swift; sourceTree = "<group>"; };
 		5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMapTrancada.swift; sourceTree = "<group>"; };
+		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
 		F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9B5BAD92BE586990007E115 /* CodableExtensions in Frameworks */,
+				F95280152BE9557500DE6C93 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,9 +158,10 @@
 				0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */,
 				0FA57B342BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift */,
 				0FA57B362BE40E9400EA9D99 /* SemanaView.swift */,
-				0FA57B382BE40EA900EA9D99 /* AvisoView.swift */,
 				0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */,
 				0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */,
+				0FA57B382BE40EA900EA9D99 /* AvisoView.swift */,
+				5DF051F32BE58B120009757A /* ParabénsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,7 +220,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				F9B5BAD82BE586990007E115 /* CodableExtensions */,
+				F95280142BE9557500DE6C93 /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -248,7 +251,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				F9B5BAD72BE586990007E115 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F95280132BE9557500DE6C93 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -301,6 +304,7 @@
 				0FA57B392BE40EA900EA9D99 /* AvisoView.swift in Sources */,
 				0FA57B352BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift in Sources */,
 				0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */,
+				5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */,
 				0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */,
 				5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */,
 				0FA57B332BE40CA900EA9D99 /* EscolhaObjetivoView.swift in Sources */,
@@ -438,7 +442,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 3Z5N4XP49R;
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -468,7 +472,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 3Z5N4XP49R;
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -514,7 +518,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F9B5BAD72BE586990007E115 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		F95280132BE9557500DE6C93 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -525,9 +529,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F9B5BAD82BE586990007E115 /* CodableExtensions */ = {
+		F95280142BE9557500DE6C93 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F9B5BAD72BE586990007E115 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = F95280132BE9557500DE6C93 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
