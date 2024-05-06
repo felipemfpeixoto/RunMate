@@ -3,10 +3,16 @@ import CodableExtensions
 
 let dao = DAO.instance
 
-class DAO: Codable {
+@Observable class DAO: Codable {
     static var instance = (try? DAO.load()) ?? DAO()
     
     var paginaDeTreinamento: PaginaDeTreinamento = PaginaDeTreinamento(planoDeTreinamento: PlanoDeTreinamento(semanas: []))
+    
+    var idade: Int? = nil
+    
+    var semanaAtual: Int = -1
+    
+    var diaAtual: Int = -1
     
     private init() {
 //        loadTreino()
@@ -19,6 +25,8 @@ class DAO: Codable {
         let data: PaginaDeTreinamento = Bundle.main.decode(file: filename)
         
         self.paginaDeTreinamento = data
+        self.semanaAtual = 0
+        self.diaAtual = 0
 //        savePaginaDeTerinamento()
 //        loadTreino()
         
