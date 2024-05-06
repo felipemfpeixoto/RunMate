@@ -10,7 +10,7 @@ import SwiftUI
 struct SemanaView: View {
     
     @State var semana: [Dia]?
-    @State var diaConcluido: Bool = false
+//    @State var diasConcluidos: [Int] = []
    
     var body: some View {
         ZStack{
@@ -53,9 +53,9 @@ struct SemanaView: View {
                             HStack{
                                 ForEach(semana ?? [], id: \.dia){ dia in
                                     Group{
-                                        if diaConcluido{
+                                        if dao.diasConcluidos.contains(dia.dia) {
                                             Button(action: {
-                                                dao.diaAtual = dia.dia
+                                                dao.diaAtual = (dia.dia - 1)
                                             }, label: {
                                                 VStack{
                                                     Text("\(dia.dia)º")
@@ -68,7 +68,7 @@ struct SemanaView: View {
                                             .buttonStyle(BotaoDiaLilas())
                                         }
                                         else{
-                                            if dia.dia == dao.diaAtual {
+                                            if dia.dia == (dao.diaAtual + 1) {
                                                 Button(action: {
                                                     dao.diaAtual = dia.dia
                                                 }, label: {
@@ -84,7 +84,7 @@ struct SemanaView: View {
                                             }
                                             else {
                                                 Button(action: {
-                                                    dao.diaAtual = dia.dia
+                                                    dao.diaAtual = dia.dia - 1
                                                 }, label: {
                                                     VStack{
                                                         Text("\(dia.dia)º")
@@ -104,7 +104,7 @@ struct SemanaView: View {
                         }
                         
                         VStack{
-                            ExerciciosDetalhadosView()
+                            ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
                         }
                         .padding(.vertical, 40)
                         
@@ -116,12 +116,19 @@ struct SemanaView: View {
                     VStack{
                         Button(action: {
                             
-                            if  dao.diaAtual == 7   {
+                            if  dao.diasConcluidos.count == 6   {
+                                dao.diaAtual = 0
+                                dao.diasConcluidos = []
                                 dao.semanaAtual += 1
+                                
+                                
+                                
                             }
                             else{
+                                dao.diasConcluidos.append(dao.diaAtual+1)
                                 dao.diaAtual += 1
-                                diaConcluido = true
+                                print(dao.semanaAtual)
+                                print(dao.diasConcluidos)
                             }
                             
                         }, label: {
