@@ -138,39 +138,58 @@ struct SemanaView: View {
                     Spacer()
                     
                     if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
-                        
-                        VStack{
-                            Button(action: {
-                                
-                                if  dao.diasConcluidos.count == 6   {
-                                    dao.diaAtual = 0
-                                    dao.diasConcluidos = []
-                                    dao.semanaAtual += 1
-                                }
-                                else{
-                                    dao.diasConcluidos.append(dao.diaAtual+1)
-                                    dao.diaAtual += 1
-                                    print(dao.semanaAtual)
-                                    print(dao.diasConcluidos)
-                                }
-                                
-                            }, label: {
-                                Text("CONCLUIR CORRIDA")
+                        if dao.diasConcluidos.contains(dao.diaAtual + 1){
+                            HStack{
+                                Text("CORRIDA CONLUÍDA")
                                     .font(Font.custom("Poppins-SemiBold", size: 18))
                                     .foregroundStyle(Color.white)
                                 Text(Image(systemName: "checkmark.seal.fill"))
-                                    .foregroundStyle(Color.turquoiseGreen)
+                                    .foregroundStyle(Color.darkPurple)
                                     .font(.system(size: 20))
-                                
-                            })
+                            }
                             .padding(10)
                             .frame(width: 243, height: 43, alignment: .center)
-                            .background(Color.oceanBlue)
+                            .background(Color.lilacPurple)
                             .cornerRadius(11)
+                            .padding(.bottom, 40)
+                            Spacer()
                         }
-                        .padding(.bottom, 40)
-                        Spacer()
+                        else{
+                            
+                            VStack{
+                                Button(action: {
+                                    
+                                    if  dao.diasConcluidos.count == 6   {
+                                        dao.diaAtual = 0
+                                        dao.diasConcluidos = []
+                                        dao.semanaAtual += 1
+                                    }
+                                    else{
+                                        dao.diasConcluidos.append(dao.diaAtual+1)
+                                        dao.diaAtual += 1
+                                        print(dao.semanaAtual)
+                                        print(dao.diasConcluidos)
+                                    }
+                                    
+                                }, label: {
+                                    Text("CONCLUIR CORRIDA")
+                                        .font(Font.custom("Poppins-SemiBold", size: 18))
+                                        .foregroundStyle(Color.white)
+                                    Text(Image(systemName: "checkmark.seal.fill"))
+                                        .foregroundStyle(Color.turquoiseGreen)
+                                        .font(.system(size: 20))
+                                    
+                                })
+                                .padding(10)
+                                .frame(width: 243, height: 43, alignment: .center)
+                                .background(Color.oceanBlue)
+                                .cornerRadius(11)
+                            }
+                            .padding(.bottom, 40)
+                            Spacer()
+                        }
                     }
+                    
                 }
                 .onAppear {
                     semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias

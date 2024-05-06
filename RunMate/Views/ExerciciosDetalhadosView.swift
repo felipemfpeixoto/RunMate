@@ -48,7 +48,7 @@ struct ExerciciosDetalhadosView: View {
                                 .font(.custom("Poppins-Medium", size: 18))
                                 .foregroundColor(.oceanBlue)
                                 .frame(width: 63, height: 65)
-                                .background(Color.turquoiseGreen)
+                                .background(dao.diasConcluidos.contains(dao.diaAtual + 1) ?  Color.lilacPurple : Color.turquoiseGreen)
                                 .cornerRadius(18)
                             
                             
@@ -57,12 +57,5 @@ struct ExerciciosDetalhadosView: View {
                 }
             }
         }
-//        .onAppear {
-//            print(dao.diaAtual)
-//        }
     }
 }
-
-//#Preview {
-//    ExerciciosDetalhadosView() 
-//}
