@@ -10,7 +10,9 @@ struct EscolhaIdadeView: View {
     
     @Binding var selectedGoal: String
     
-    @State var value: Int = 0
+    @Binding var value: Int
+    
+    @Binding var imPrograssing: Bool
     
     var body: some View {
         ZStack {
@@ -62,18 +64,8 @@ struct EscolhaIdadeView: View {
             withAnimation(Animation.easeInOut(duration: 2)) {
                 isShowing = true
             }
+            imPrograssing = false
         }
-        .onDisappear {
-            dao.idade = value
-            criaEscolhas()
-        }
-    }
-    
-    func criaEscolhas() {
-        escolhas = MeuPlano(nivel: selectedLevel, objetivo: selectedGoal, idade: value)
-        let nomeArquivo = selectedLevel + selectedGoal
-        print(nomeArquivo)
-        dao.loadJsonFileFromObjective()
     }
 }
 
@@ -108,6 +100,6 @@ struct EscolheIdadeSheet: View {
     }
 }
 
-#Preview {
-    EscolhaIdadeView(selectedLevel: .constant(""), selectedGoal: .constant(""))
-}
+//#Preview {
+//    EscolhaIdadeView(selectedLevel: .constant(""), selectedGoal: .constant(""))
+//}
