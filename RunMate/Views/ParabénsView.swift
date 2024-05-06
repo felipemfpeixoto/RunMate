@@ -1,55 +1,55 @@
 //
-//  AvisoView.swift
+//  CongratulationsView.swift
 //  RunMate
 //
-//  Created by infra on 02/05/24.
+//  Created by Roberta Cordeiro on 03/05/24.
 //
 
 import SwiftUI
 
-struct AvisoView: View {
+struct ParabénsView: View {
+    //    @Binding var show : Bool
+    
     var body: some View {
         
         ZStack {
             RoundedRectangle(cornerRadius: 40)
-                .fill(Color.darkPurple)
-                .stroke(Color.lilacPurple, lineWidth: 4)
+                .fill(Color.oceanBlue)
+                .stroke(Color.turquoiseGreen, lineWidth: 4)
                 .frame(maxWidth: .infinity)
-                .frame(height: 400)
-                .padding(.horizontal, 20)// Add stroke around the rectangle
+                .frame(height: 280)
+                .padding(25)// Add stroke around the rectangle
             
             
-            
-            VStack(spacing: 30) {
-                Image("Alerta")
+            VStack(spacing: 20) {
+                Image("Medalha")
+                   // Adjust the padding as needed
                 
-                Text("ATENÇÃO!")
+                Text("PARABÉNS!")
                     .font(Font.custom("Poppins-SemiBold", size: 22))
                     .foregroundStyle(Color.turquoiseGreen)
                    
                 
-                Text("Antes de se exercitar ou participar de atividades físicas intensas, como corrida, consulte seu médico ou profissional de saúde.")
+                Text("Você concluiu sua primeira semana e recebeu um emblema!")
                     .font(Font.custom("Roboto-Medium", size: 18))
-                    .padding(.horizontal, 15)
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
                 
                 
-                Text("Certifique-se de sua saúde cardiovascular e de condições médicas pré-existentes.")
+                Text("Bora pra próxima semana?")
                     .font(Font.custom("Roboto-Medium", size: 18))
                     .foregroundStyle(Color.white)
-                    .padding(.horizontal, 15)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 5)
                 
                 
                 Button(action: {}, label: {
-                    Text("ESTOU PRONTO!")
+                    Text("VER PRÓXIMA SEMANA")
                     
-                        .foregroundColor(.darkPurple)
+                        .foregroundColor(.oceanBlue)
                         .fontWeight(.bold)
                         .padding(.vertical, 20)
-                        .padding(.horizontal, 50)
+                        .padding(.horizontal, 25)
                         .background(Color.turquoiseGreen)
                         .clipShape(Capsule())
                     
@@ -85,5 +85,5 @@ struct AvisoView: View {
 }
 
 #Preview {
-    AvisoView()
+    ParabénsView()
 }
