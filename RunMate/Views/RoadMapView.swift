@@ -43,6 +43,9 @@ struct RoadMapView: View {
                     
                         
                     ScrollView {
+                        Spacer()
+                        Spacer()
+                        Spacer()
                         
                     
                         SemanaRoadMap(level: .semana1, isLocked: false)
@@ -83,6 +86,7 @@ struct RoadMapView: View {
                             .padding(.horizontal, 40)
                         
                 }
+                    
             }
             .background(.blackBlue)
      
