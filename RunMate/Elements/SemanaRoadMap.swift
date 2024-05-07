@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-enum Level {
-    case semana1
-    case semana2
-    case semana3
-    case semana4
+enum Level: Int {
+    case semana1 = 0
+    case semana2 = 1
+    case semana3 = 2
+    case semana4 = 3
 }
 
 extension Level: CustomStringConvertible {
@@ -25,7 +25,7 @@ extension Level: CustomStringConvertible {
 }
 
 struct SemanaRoadMap: View {
-    let level: Level
+    let semana: Semana
     let isLocked: Bool
     
     var body: some View {
@@ -33,7 +33,7 @@ struct SemanaRoadMap: View {
             if isLocked {
                 HStack(spacing: 0) {
                     ZStack(alignment: .leading) {
-                        Text(level.description)
+                        Text("Semana " + String(semana.semana))
                             .foregroundColor(.turquoiseGreen)
                             .font(.title3)
                             .fontWeight(.semibold)
@@ -64,7 +64,7 @@ struct SemanaRoadMap: View {
                
                 
             } else {
-                Text(level.description)
+                Text("Semana " + String(semana.semana))
                     .foregroundColor(.blackBlue)
                     .font(.title3)
                     .fontWeight(.semibold)
