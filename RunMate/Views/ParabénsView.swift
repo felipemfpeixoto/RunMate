@@ -2,7 +2,8 @@ import SwiftUI
 
 struct ParabénsView: View {
     @State private var animateMedal = false // Estado para controlar a animação da medalha
-
+    @Binding var apareceParabens: Bool
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 40)
@@ -26,7 +27,7 @@ struct ParabénsView: View {
                     .font(Font.custom("Poppins-SemiBold", size: 22))
                     .foregroundStyle(Color.turquoiseGreen)
                 
-                Text("Você concluiu sua primeira semana e recebeu um emblema!")
+                Text("Você concluiu sua \(dao.semanaAtual)ª semana e recebeu um emblema!")
                     .font(Font.custom("Roboto-Medium", size: 18))
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
@@ -37,7 +38,7 @@ struct ParabénsView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 5)
                 
-                Button(action: {}, label: {
+                Button(action: {apareceParabens = false}, label: {
                     Text("VER PRÓXIMA SEMANA")
                         .foregroundColor(.oceanBlue)
                         .fontWeight(.bold)
@@ -50,15 +51,7 @@ struct ParabénsView: View {
             .padding(.vertical, 25)
             .padding(.horizontal, 30)
             .cornerRadius(25)
-            
-            Button(action: {}, label: {
-                Image(systemName: "xmark.circle")
-                    .font(.system(size: 40, weight: .medium))
-                    .foregroundColor(.lilacPurple)
-                    .padding(.leading, 300)
-                    .padding(.bottom, 650)
-            })
-            .padding()
+        
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.blackBlue.opacity(0.4))
@@ -68,6 +61,3 @@ struct ParabénsView: View {
     }
 }
 
-#Preview {
-    ParabénsView()
-}

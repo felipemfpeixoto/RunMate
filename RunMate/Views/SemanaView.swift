@@ -10,6 +10,7 @@ import SwiftUI
 struct SemanaView: View {
     
     @State var semana: [Dia]?
+    @State var apareceParabens: Bool = false
    
     var body: some View {
         ZStack{
@@ -163,6 +164,7 @@ struct SemanaView: View {
                                         dao.diaAtual = 0
                                         dao.diasConcluidos = []
                                         dao.semanaAtual += 1
+                                        apareceParabens = true
                                     }
                                     else{
                                         dao.diasConcluidos.append(dao.diaAtual+1)
@@ -197,6 +199,14 @@ struct SemanaView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .overlay{
+            if apareceParabens{
+                ZStack{
+                    Color.black.opacity(0.3).ignoresSafeArea()
+                    ParabénsView(apareceParabens: $apareceParabens)
+                }
+            }
+        }
         
     }
 }
