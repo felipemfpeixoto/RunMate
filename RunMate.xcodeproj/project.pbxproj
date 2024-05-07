@@ -97,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				0FA57B052BE400F900EA9D99 /* RunMate */,
+				5DA28E442BEAB82D00AD845D /* Testes */,
 				0FA57B042BE400F900EA9D99 /* Products */,
 				F9B5BA9D2BE553B90007E115 /* Frameworks */,
 			);
@@ -162,7 +163,6 @@
 				0FA57B362BE40E9400EA9D99 /* SemanaView.swift */,
 				0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */,
 				0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */,
-				5DA28E422BEA477A00AD845D /* TesteDesign.swift */,
 				0FA57B382BE40EA900EA9D99 /* AvisoView.swift */,
 				5DF051F32BE58B120009757A /* ParabénsView.swift */,
 			);
@@ -186,6 +186,14 @@
 				5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		5DA28E442BEAB82D00AD845D /* Testes */ = {
+			isa = PBXGroup;
+			children = (
+				5DA28E422BEA477A00AD845D /* TesteDesign.swift */,
+			);
+			path = Testes;
 			sourceTree = "<group>";
 		};
 		F9B5BA8A2BE413070007E115 /* Resources */ = {
