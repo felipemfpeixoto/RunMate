@@ -14,7 +14,6 @@ struct ContentView: View {
     
     @State var isShowingPopUp = false
     
-    @State var shouldNavigate = false
     
     @State var backslide: AnyTransition = AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
     
@@ -61,7 +60,7 @@ struct ContentView: View {
                                     .padding(.horizontal)
                                    
                             } else if faseBonequinho == 3 {
-                                EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing, isShowingPopUp: $isShowingPopUp)
+                                EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing)
                                     .padding(.horizontal)
                                     
                             }
@@ -81,13 +80,7 @@ struct ContentView: View {
                     dao.idade = value
                     criaEscolhas()
                 }
-                .fullScreenCover(isPresented: $isShowingPopUp, content: {
-                    AvisoView(isShowingPopUp: $isShowingPopUp, shouldNavigate: $shouldNavigate)
-                        
-                })
-                .navigationDestination(isPresented: $shouldNavigate){
-                    SemanaView()
-                }
+
             } else {
                 SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
             }

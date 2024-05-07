@@ -20,6 +20,7 @@ let dao = DAO.instance
     
     var metaSelecionlada: String = ""
     
+    
     private init() {
     }
     

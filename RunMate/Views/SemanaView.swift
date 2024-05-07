@@ -11,12 +11,17 @@ struct SemanaView: View {
     
     @State var semana: [Dia]?
     @State var apareceParabens: Bool = false
+    
+    @State var isShowingAviso = false
    
     var body: some View {
         ZStack{
             Color(.blackBlue).ignoresSafeArea()
             if dao.semanaAtual == -1 {
                 ProgressView()
+                    .onAppear {
+                        isShowingAviso.toggle()
+                    }
             } else {
                 VStack{
                     Spacer()
@@ -174,7 +179,7 @@ struct SemanaView: View {
                                     }
                                     
                                 }, label: {
-                                    Text("ETAPA CONCLUÍDA")
+                                    Text("CONCLUIR ETAPA")
                                         .font(Font.custom("Poppins-SemiBold", size: 18))
                                         .foregroundStyle(Color.white)
                                     Text(Image(systemName: "checkmark.seal.fill"))
@@ -208,6 +213,9 @@ struct SemanaView: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $isShowingAviso, content: {
+            AvisoView(isShowingPopUp: $isShowingAviso)
+        })
         
     }
 }

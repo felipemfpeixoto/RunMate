@@ -4,8 +4,6 @@ struct EscolhaIdadeView: View {
     
     @State var isShowing: Bool = false
     
-//    @State var isShowingPopup: Bool = false
-    
     @Binding var selectedLevel: String
     
     @Binding var selectedGoal: String
@@ -14,7 +12,6 @@ struct EscolhaIdadeView: View {
     
     @Binding var imPrograssing: Bool
     
-    @Binding var isShowingPopUp: Bool
     
     var body: some View {
         ZStack {
@@ -39,9 +36,7 @@ struct EscolhaIdadeView: View {
                 }
                 Spacer()
                 if value != 0 {
-                    Button(action: {
-                        isShowingPopUp = true
-                    }, label: {
+                    NavigationLink(destination: SemanaView()) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color.turquoiseGreen)
@@ -50,17 +45,7 @@ struct EscolhaIdadeView: View {
                                 .foregroundStyle(.black)
                                 .font(.title3.bold())
                         }
-                    })
-//                    NavigationLink(destination: SemanaView()) {
-//                        ZStack {
-//                            RoundedRectangle(cornerRadius: 20)
-//                                .foregroundStyle(Color.turquoiseGreen)
-//                                .frame(width: 243, height: 56)
-//                            Text("Próximo")
-//                                .foregroundStyle(.black)
-//                                .font(.title3.bold())
-//                        }
-//                    }
+                    }
                 } else {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)

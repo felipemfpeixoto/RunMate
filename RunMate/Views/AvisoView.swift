@@ -11,13 +11,8 @@ struct AvisoView: View {
     
     @State private var animateMedal = false
     @Binding var isShowingPopUp: Bool
-    @Binding var shouldNavigate: Bool
     
     var body: some View {
-        //        ZStack {
-        //            Rectangle()
-        //                .ignoresSafeArea()
-        //                .blur(radius: 8.0)
         ZStack {
             RoundedRectangle(cornerRadius: 40)
                 .fill(Color.darkPurple)
@@ -61,7 +56,6 @@ struct AvisoView: View {
                 
                 Button(action: {
                     isShowingPopUp = false
-                    shouldNavigate = true
                 }, label: {
                     Text("ESTOU PRONTO!")
                     
@@ -72,23 +66,10 @@ struct AvisoView: View {
                         .background(Color.turquoiseGreen)
                         .clipShape(Capsule())
                 })
-                
-                
-//                NavigationLink(destination: SemanaView(), label: {
-//                    Text("ESTOU PRONTO!")
-//                    
-//                        .foregroundColor(.darkPurple)
-//                        .fontWeight(.bold)
-//                        .padding(.vertical, 20)
-//                        .padding(.horizontal, 50)
-//                        .background(Color.turquoiseGreen)
-//                        .clipShape(Capsule())
-//                    
-//                })
+
             }
             .padding(.vertical, 25)
             .padding(.horizontal, 30)
-            /*.blur(radius: 3.0)*/ // Testar tipos de Blur
             .cornerRadius(25)
             
         }
@@ -98,9 +79,6 @@ struct AvisoView: View {
             self.animateMedal.toggle() // Inicia a animação quando a view aparece
         }
         .navigationBarBackButtonHidden()
-
-        
-        //        }
     }
 }
 
