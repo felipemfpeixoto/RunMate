@@ -31,7 +31,8 @@ struct EscolhaIdadeView: View {
                     }
                     .pickerStyle(.wheel)
                     .background(Color.oceanBlue)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .padding(.horizontal, 20)
                 }
                 Spacer()
                 if value != 0 {
