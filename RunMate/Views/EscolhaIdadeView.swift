@@ -24,7 +24,7 @@ struct EscolhaIdadeView: View {
                 
                 VStack {
                     Picker("Selecione sua idadde", selection: $value) {
-                        ForEach(0..<100) { number in
+                        ForEach(16..<100) { number in
                             Text("\(number)")
                                 .tag("\(number)")
                                 .foregroundStyle(.white)
@@ -81,7 +81,7 @@ struct EscolheIdadeSheet: View {
                 .ignoresSafeArea()
             VStack {
                 Picker("Selecione sua idadde", selection: $value) {
-                    ForEach(0..<100) { number in
+                    ForEach(16..<100) { number in
                         Text("\(number)")
                             .tag("\(number)")
                             .foregroundStyle(.white)
