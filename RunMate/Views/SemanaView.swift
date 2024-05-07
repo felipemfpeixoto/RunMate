@@ -146,7 +146,7 @@ struct SemanaView: View {
                     if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
                         if dao.diasConcluidos.contains(dao.diaAtual + 1){
                             HStack{
-                                Text("CORRIDA CONLUÍDA")
+                                Text("ETAPA CONLUÍDA")
                                     .font(Font.custom("Poppins-SemiBold", size: 18))
                                     .foregroundStyle(Color.white)
                                 Text(Image(systemName: "checkmark.seal.fill"))
@@ -179,7 +179,7 @@ struct SemanaView: View {
                                     }
                                     
                                 }, label: {
-                                    Text("CONCLUIR CORRIDA")
+                                    Text("ETAPA CONCLUÍDA")
                                         .font(Font.custom("Poppins-SemiBold", size: 18))
                                         .foregroundStyle(Color.white)
                                     Text(Image(systemName: "checkmark.seal.fill"))
