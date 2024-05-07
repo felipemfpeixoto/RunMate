@@ -19,9 +19,9 @@ struct EscolhaObjetivoView: View {
                 Text("Selecione seu objetivo:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
-                BotaoEscolha(texto: "5KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
-                BotaoEscolha(texto: "10KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
-                BotaoEscolha(texto: "15KM", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
+                BotaoEscolha(texto: "5 km", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
+                BotaoEscolha(texto: "10 km", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
+                BotaoEscolha(texto: "15 km", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
                 Spacer()
                 if selectedGoal != "" {
                     Button(action: {
@@ -34,7 +34,7 @@ struct EscolhaObjetivoView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color.turquoiseGreen)
                                 .frame(width: 243, height: 56)
-                            Text("Proximo")
+                            Text("Próximo")
                                 .foregroundStyle(.black)
                                 .font(.title3.bold())
                         }
@@ -44,7 +44,7 @@ struct EscolhaObjetivoView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(Color.turquoiseGreen)
                             .frame(width: 243, height: 56)
-                        Text("Proximo")
+                        Text("Próximo")
                             .foregroundStyle(.black)
                             .font(.title3.bold())
                     }

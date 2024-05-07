@@ -30,7 +30,7 @@ struct EscolhaNivelView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color.turquoiseGreen)
                                 .frame(width: 243, height: 56)
-                            Text("Proximo")
+                            Text("Próximo")
                                 .foregroundStyle(.black)
                                 .font(.title3.bold())
                         }
@@ -40,7 +40,7 @@ struct EscolhaNivelView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(Color.turquoiseGreen)
                             .frame(width: 243, height: 56)
-                        Text("Proximo")
+                        Text("Próximo")
                             .foregroundStyle(.black)
                             .font(.title3.bold())
                     }
