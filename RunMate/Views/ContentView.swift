@@ -69,7 +69,7 @@ struct ContentView: View {
                 }
                 .animation(.easeInOut(duration: 0.75), value: self.faseBonequinho)
                 .onAppear {
-                    withAnimation(Animation.easeInOut(duration: 0.75)) {
+                    withAnimation(Animation.spring(duration: 0.5)) {
                         faseBonequinho = 1
                     }
                 }
@@ -108,10 +108,19 @@ struct BonequinhoView: View {
                     RoundedRectangle(cornerRadius: 100)
                         .frame(width: CGFloat(faseBonequinho) * 103.33, height: 8)
                         .foregroundStyle(Color.turquoiseGreen)
-                    Text("🏃🏻‍♂️")
-                        .font(.system(size: 40))
-                        .scaleEffect(x: -1, y: 1)
-                        .padding(.horizontal, -20)
+//                    Text("🏃🏻‍♂️")
+//                        .font(.system(size: 40))
+//                        .scaleEffect(x: -1, y: 1)
+//                        .padding(.horizontal, -20)
+                    ZStack {
+                        Circle()
+                            .foregroundStyle(Color.turquoiseGreen)
+                            .frame(width: 40, height: 40)
+                        Image(systemName: "figure.run")
+                            .font(.system(size: 25))
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.horizontal, -15)
                     Spacer()
                 }
             }.frame(width: 320)

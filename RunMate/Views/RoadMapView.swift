@@ -9,15 +9,20 @@ import SwiftUI
 
 struct RoadMapView: View {
     @State var textoSemanas: [String] = ["Primeira", "Segunda", "Terceira"]
+    @Environment(\.dismiss) var dismiss
     
         var body: some View {
                 VStack {
+                    
                     HStack {
-                        
-                        Image(systemName: "arrow.backward")
-                            .foregroundColor(.white)
-                            .font(.title2)
-                            .fontWeight(.medium)
+                        Button(action: {
+                            dismiss()
+                        }, label: {
+                            Image(systemName: "arrow.backward")
+                                .foregroundColor(.white)
+                                .font(.title2)
+                                .fontWeight(.medium)
+                        })
                         Spacer()
                     }
                     .padding(.leading, 30)
