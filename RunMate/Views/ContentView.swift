@@ -12,6 +12,10 @@ struct ContentView: View {
     
     @State var value: Int = 0
     
+    @State var isShowingPopUp = false
+    
+    @State var shouldNavigate = false
+    
     @State var backslide: AnyTransition = AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading))
     
     @State var voltando: AnyTransition = AnyTransition.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing))
@@ -57,7 +61,7 @@ struct ContentView: View {
                                     .padding(.horizontal)
                                    
                             } else if faseBonequinho == 3 {
-                                EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing)
+                                EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing, isShowingPopUp: $isShowingPopUp)
                                     .padding(.horizontal)
                                     
                             }
@@ -76,6 +80,13 @@ struct ContentView: View {
                 .onDisappear {
                     dao.idade = value
                     criaEscolhas()
+                }
+                .fullScreenCover(isPresented: $isShowingPopUp, content: {
+                    AvisoView(isShowingPopUp: $isShowingPopUp, shouldNavigate: $shouldNavigate)
+                        
+                })
+                .navigationDestination(isPresented: $shouldNavigate){
+                    SemanaView()
                 }
             } else {
                 SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
@@ -108,17 +119,13 @@ struct BonequinhoView: View {
                     RoundedRectangle(cornerRadius: 100)
                         .frame(width: CGFloat(faseBonequinho) * 103.33, height: 8)
                         .foregroundStyle(Color.turquoiseGreen)
-//                    Text("🏃🏻‍♂️")
-//                        .font(.system(size: 40))
-//                        .scaleEffect(x: -1, y: 1)
-//                        .padding(.horizontal, -20)
                     ZStack {
                         Circle()
                             .foregroundStyle(Color.turquoiseGreen)
                             .frame(width: 40, height: 40)
                         Image(systemName: "figure.run")
                             .font(.system(size: 25))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.blackBlue)
                     }
                     .padding(.horizontal, -15)
                     Spacer()

@@ -51,7 +51,7 @@ struct SemanaView: View {
                             .font(Font.custom("Roboto-Bold", size: 24))
                             .foregroundStyle(Color.white)
                         
-                        ScrollView(.horizontal, showsIndicators: true){
+                        ScrollView(.horizontal, showsIndicators: false){
                             
                             HStack{
                                 ForEach(semana ?? [], id: \.dia){ dia in

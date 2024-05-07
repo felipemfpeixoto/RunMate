@@ -26,19 +26,19 @@ struct BotaoEscolha: View {
                     selectedLevel = "Avançado"
                     reallySelectedLevel = "avancado"
                 }
-            case "5KM":
+            case "5 km":
                 withAnimation {
-                    selectedLevel = "5KM"
+                    selectedLevel = "5 km"
                     reallySelectedLevel = "5K"
                 }
-            case "10KM":
+            case "10 km":
                 withAnimation {
-                    selectedLevel = "10KM"
+                    selectedLevel = "10 km"
                     reallySelectedLevel = "10K"
                 }
-            case "15KM":
+            case "15 km":
                 withAnimation {
-                    selectedLevel = "15KM"
+                    selectedLevel = "15 km"
                     reallySelectedLevel = "15K"
                 }
             default:

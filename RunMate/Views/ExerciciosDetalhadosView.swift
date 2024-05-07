@@ -20,7 +20,7 @@ struct ExerciciosDetalhadosView: View {
                 ForEach(exercicios, id: \.self){ ex in
                     let size = ex.exercíciosDetalhados.count
                     ZStack(alignment: .leading) {
-                        VStack(alignment: .leading) {
+                        VStack{
                             ForEach(ex.exercíciosDetalhados, id: \.self) { e in
                                 let text = e.tempo == nil ? "Km" : "MIN"
                                 HStack(spacing: 30){
