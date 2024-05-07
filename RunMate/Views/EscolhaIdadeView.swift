@@ -4,8 +4,6 @@ struct EscolhaIdadeView: View {
     
     @State var isShowing: Bool = false
     
-//    @State var isShowingPopup: Bool = false
-    
     @Binding var selectedLevel: String
     
     @Binding var selectedGoal: String
@@ -14,7 +12,6 @@ struct EscolhaIdadeView: View {
     
     @Binding var imPrograssing: Bool
     
-    @Binding var isShowingPopUp: Bool
     
     var body: some View {
         ZStack {

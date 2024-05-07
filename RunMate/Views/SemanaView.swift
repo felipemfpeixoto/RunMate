@@ -179,7 +179,7 @@ struct SemanaView: View {
                                     }
                                     
                                 }, label: {
-                                    Text("ETAPA CONCLUÍDA")
+                                    Text("CONCLUIR ETAPA")
                                         .font(Font.custom("Poppins-SemiBold", size: 18))
                                         .foregroundStyle(Color.white)
                                     Text(Image(systemName: "checkmark.seal.fill"))
