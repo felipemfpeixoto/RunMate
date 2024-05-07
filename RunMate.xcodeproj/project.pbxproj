@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F7A8A8C2BE96E0300768DAA /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0F7A8A8B2BE96E0300768DAA /* CodableExtensions */; };
 		0FA57B072BE400F900EA9D99 /* RunMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B062BE400F900EA9D99 /* RunMateApp.swift */; };
 		0FA57B092BE400F900EA9D99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B082BE400F900EA9D99 /* ContentView.swift */; };
 		0FA57B0B2BE400FD00EA9D99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA57B0A2BE400FD00EA9D99 /* Assets.xcassets */; };
@@ -35,7 +34,9 @@
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
 		5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */; };
+		5DA28E432BEA477A00AD845D /* TesteDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA28E422BEA477A00AD845D /* TesteDesign.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
+		5DF051FA2BE975FF0009757A /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 5DF051F92BE975FF0009757A /* CodableExtensions */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
@@ -71,6 +72,7 @@
 		0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMap.swift; sourceTree = "<group>"; };
 		0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhaIdadeView.swift; sourceTree = "<group>"; };
 		5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMapTrancada.swift; sourceTree = "<group>"; };
+		5DA28E422BEA477A00AD845D /* TesteDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteDesign.swift; sourceTree = "<group>"; };
 		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
 		F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -84,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F7A8A8C2BE96E0300768DAA /* CodableExtensions in Frameworks */,
+				5DF051FA2BE975FF0009757A /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +162,7 @@
 				0FA57B362BE40E9400EA9D99 /* SemanaView.swift */,
 				0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */,
 				0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */,
+				5DA28E422BEA477A00AD845D /* TesteDesign.swift */,
 				0FA57B382BE40EA900EA9D99 /* AvisoView.swift */,
 				5DF051F32BE58B120009757A /* ParabénsView.swift */,
 			);
@@ -220,7 +223,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				0F7A8A8B2BE96E0300768DAA /* CodableExtensions */,
+				5DF051F92BE975FF0009757A /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -251,7 +254,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				0F7A8A8A2BE96E0300768DAA /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				5DF051F82BE975FF0009757A /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -299,6 +302,7 @@
 				0FA57B242BE4024100EA9D99 /* Models.swift in Sources */,
 				0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */,
 				0FA57B372BE40E9400EA9D99 /* SemanaView.swift in Sources */,
+				5DA28E432BEA477A00AD845D /* TesteDesign.swift in Sources */,
 				0FA57B3B2BE40EDA00EA9D99 /* SemanaConcluidaView.swift in Sources */,
 				0FA57B092BE400F900EA9D99 /* ContentView.swift in Sources */,
 				0FA57B392BE40EA900EA9D99 /* AvisoView.swift in Sources */,
@@ -442,7 +446,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = 3Z5N4XP49R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -456,7 +460,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.RunMatee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.RunMateee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -472,7 +476,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
-				DEVELOPMENT_TEAM = 67AYPRFZH8;
+				DEVELOPMENT_TEAM = 3Z5N4XP49R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
@@ -486,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.RunMatee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.felipePeixoto.RunMateee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -518,7 +522,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0F7A8A8A2BE96E0300768DAA /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		5DF051F82BE975FF0009757A /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -529,9 +533,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0F7A8A8B2BE96E0300768DAA /* CodableExtensions */ = {
+		5DF051F92BE975FF0009757A /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0F7A8A8A2BE96E0300768DAA /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = 5DF051F82BE975FF0009757A /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
