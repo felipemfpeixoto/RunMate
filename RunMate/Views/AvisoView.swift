@@ -11,7 +11,7 @@ struct AvisoView: View {
     
     @State private var animateMedal = false
     @Binding var isShowingPopUp: Bool
-    @Binding var shouldNavigate: Bool
+//    @Binding var shouldNavigate: Bool
     
     var body: some View {
         //        ZStack {
@@ -61,7 +61,6 @@ struct AvisoView: View {
                 
                 Button(action: {
                     isShowingPopUp = false
-                    shouldNavigate = true
                 }, label: {
                     Text("ESTOU PRONTO!")
                     

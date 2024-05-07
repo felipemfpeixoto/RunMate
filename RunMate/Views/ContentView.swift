@@ -81,13 +81,13 @@ struct ContentView: View {
                     dao.idade = value
                     criaEscolhas()
                 }
-                .fullScreenCover(isPresented: $isShowingPopUp, content: {
-                    AvisoView(isShowingPopUp: $isShowingPopUp, shouldNavigate: $shouldNavigate)
-                        
-                })
-                .navigationDestination(isPresented: $shouldNavigate){
-                    SemanaView()
-                }
+//                .fullScreenCover(isPresented: $isShowingPopUp, content: {
+//                    AvisoView(isShowingPopUp: $isShowingPopUp, shouldNavigate: $shouldNavigate)
+//                        
+//                })
+//                .navigationDestination(isPresented: $shouldNavigate){
+//                    SemanaView()
+//                }
             } else {
                 SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
             }

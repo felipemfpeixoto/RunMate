@@ -20,6 +20,8 @@ let dao = DAO.instance
     
     var metaSelecionlada: String = ""
     
+    var isShowingAviso: Bool = true
+    
     private init() {
     }
     
@@ -31,6 +33,7 @@ let dao = DAO.instance
         self.semanaAtual = 0
         self.diaAtual = 0
         self.diasConcluidos = []
+        self.isShowingAviso = true
     }
 }
 
