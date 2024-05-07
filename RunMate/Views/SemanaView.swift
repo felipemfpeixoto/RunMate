@@ -191,10 +191,11 @@ struct SemanaView: View {
                             Spacer()
                         }
                     }
-                    
                 }
                 .onAppear {
                     semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias
+                    print(dao.semanaAtual)
+                    print(dao.diasConcluidos)
                 }
             }
         }
