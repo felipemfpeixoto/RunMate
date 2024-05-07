@@ -35,3 +35,11 @@ struct PlanoDeTreinamento: Codable {
 struct PaginaDeTreinamento: Codable {
     let planoDeTreinamento: PlanoDeTreinamento
 }
+
+struct FCM: Codable {
+    var caminhada: String
+    var leve: String
+    var moderada: String
+    var forte: String
+    var muitoForte: String 
+}

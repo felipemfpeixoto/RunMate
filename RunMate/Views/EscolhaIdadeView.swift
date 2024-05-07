@@ -66,6 +66,7 @@ struct EscolhaIdadeView: View {
             imPrograssing = false
         }
     }
+    
 }
 
 struct EscolheIdadeSheet: View {
