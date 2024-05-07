@@ -30,9 +30,9 @@ struct ExerciciosDetalhadosView: View {
                                     
                                     VStack(alignment: .leading){
                                         Text(e.nome)
-                                            .font(.custom("Poppins-SemiBold", size: 18))
+                                            .font(.custom("Poppins-SemiBold", size: 15).bold())
                                         Text(e.descricao)
-                                            .font(.custom("Poppins-Medium", size: 14))
+                                            .font(.custom("Poppins-Medium", size: 13))
                                     }
                                 }
                                 .padding(.horizontal, 40)
@@ -50,12 +50,6 @@ struct ExerciciosDetalhadosView: View {
                     .background(Color.oceanBlue)
                     .cornerRadius(18)
                 }
-            }
-        }
-        .onAppear {
-            for exercicio in exercicios {
-                print(exercicio)
-                print("-----------------")
             }
         }
     }
