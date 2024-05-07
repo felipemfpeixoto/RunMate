@@ -18,43 +18,44 @@ struct ExerciciosDetalhadosView: View {
             } else {
                 
                 ForEach(exercicios, id: \.self){ ex in
-                    
-                    
-                    ForEach(ex.exercíciosDetalhados, id: \.self) { e in
-                        
-                        let text = e.tempo == nil ? "Km" : "MIN"
-                        
-                        ZStack(alignment: .leading){
-                            
-                            HStack(spacing: 40){
-                                Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
-                                    .font(.custom("Poppins-SemiBold", size: 18))
-                                    .padding(.leading, 40)
-                                
-                                VStack(alignment: .leading){
-                                    Text(e.nome)
+                    let size = ex.exercíciosDetalhados.count
+                    ZStack(alignment: .leading) {
+                        VStack {
+                            ForEach(ex.exercíciosDetalhados, id: \.self) { e in
+                                let text = e.tempo == nil ? "Km" : "MIN"
+                                HStack(spacing: 30){
+                                    Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
                                         .font(.custom("Poppins-SemiBold", size: 18))
-                                    Text(e.descricao)
-                                        .font(.custom("Poppins-Medium", size: 14))
+                                        .padding(.leading, 40)
+                                    
+                                    VStack(alignment: .leading){
+                                        Text(e.nome)
+                                            .font(.custom("Poppins-SemiBold", size: 18))
+                                        Text(e.descricao)
+                                            .font(.custom("Poppins-Medium", size: 14))
+                                    }
                                 }
+                                .padding(.horizontal, 40)
+                                .foregroundColor(.white)
+                                .frame(width: 359, height: 65)
                             }
-                            .padding(.horizontal, 40)
-                            .foregroundColor(.white)
-                            .frame(width: 359, height: 65)
-                            .background(Color.oceanBlue)
-                            .cornerRadius(18)
-                            
-                            Text("\(ex.repeticoes)X")
-                                .font(.custom("Poppins-Medium", size: 18))
-                                .foregroundColor(.oceanBlue)
-                                .frame(width: 63, height: 65)
-                                .background(dao.diasConcluidos.contains(dao.diaAtual + 1) ?  Color.lilacPurple : Color.turquoiseGreen)
-                                .cornerRadius(18)
-                            
-                            
                         }
+                        Text("\(ex.repeticoes)X")
+                            .font(.custom("Poppins-Medium", size: 18))
+                            .foregroundColor(.oceanBlue)
+                            .frame(width: 63, height: size > 1 ? CGFloat((size * 70)) : 65) // Ajeitar o height de acordo com a quantidade de exercícios
+                            .background(dao.diasConcluidos.contains(dao.diaAtual + 1) ?  Color.lilacPurple : Color.turquoiseGreen)
+                            .cornerRadius(18)
                     }
+                    .background(Color.oceanBlue)
+                    .cornerRadius(18)
                 }
+            }
+        }
+        .onAppear {
+            for exercicio in exercicios {
+                print(exercicio)
+                print("-----------------")
             }
         }
     }
