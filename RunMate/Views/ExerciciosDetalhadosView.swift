@@ -11,7 +11,7 @@ struct ExerciciosDetalhadosView: View {
     
     var exercicios: [Exercicio]
     
-    let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(150))]
+    let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
     
     var body: some View {
         VStack {
@@ -50,13 +50,13 @@ struct ExerciciosDetalhadosView: View {
                                 LazyVGrid(columns: gridItems, alignment: .leading) {
                                         Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
                                             .font(.custom("Poppins-SemiBold", size: 18))
-                                            .padding(.leading, 60)
+                                            .padding(.leading, 80)
                                         
                                         VStack(alignment: .leading){
                                             Text(e.nome)
                                                 .font(.custom("Poppins-SemiBold", size: 15).bold())
                                             Text(descricao)
-                                                .font(.custom("Poppins-Medium", size: 12))
+                                                .font(.custom("Poppins-Medium", size: 13))
                                         }
                                 }
                                 .padding(.horizontal, 40)
