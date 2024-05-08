@@ -32,9 +32,8 @@ struct RoadMapView: View {
                 .padding(.bottom, 2)
                 HStack {
                     Text("Minha meta")
-                        .foregroundStyle(.white)
-                        .font(.title)
-                        .fontWeight(.bold)
+                        .font(Font.custom("Roboto-Bold", size: 28))
+                        .foregroundStyle(Color.white)
                     Spacer()
                 }
                 .padding(.leading, 30)
@@ -42,8 +41,7 @@ struct RoadMapView: View {
                 HStack {
                     Text("\(dao.metaSelecionlada == "5KM" ? String(dao.metaSelecionlada.prefix(1)) : String(dao.metaSelecionlada.prefix(2))) Km - \(dao.nivelSelecionado)")
                         .foregroundStyle(.turquoiseGreen)
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                        .font(Font.custom("Roboto-Regular", size: 24))
                     Spacer()
                 }
                 .padding(.leading, 30)

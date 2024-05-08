@@ -59,10 +59,32 @@ struct SemanaRoadMap: View {
                                 dimension[HorizontalAlignment.center]
                             })
                     }
-                    
                 }
-               
-                
+            } else if dao.semanaAtual == (semana.semana - 1) {
+                Text("Semana " + String(semana.semana))
+                    .foregroundColor(.white)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .padding(.leading, 12)
+                    .padding(.vertical, 20)
+                    .background {
+                        RoundedRectangle(cornerRadius: 18)
+                            .fill(.oceanBlue)
+                            .frame(height: 100)
+                        RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color.turquoiseGreen, lineWidth: 4)
+                            .frame(height: 100)
+                    }
+                    .overlay(alignment: .trailing) {
+                        Image("cadeadoAberto")
+                            .resizable()
+                            .scaledToFit()
+                            .alignmentGuide(.trailing, computeValue: { dimension in
+                                dimension[HorizontalAlignment.center]
+                            })
+                        
+                    }
             } else {
                 Text("Semana " + String(semana.semana))
                     .foregroundColor(.blackBlue)
