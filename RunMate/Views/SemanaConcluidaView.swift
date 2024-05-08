@@ -145,7 +145,7 @@ struct SemanaConcluidaView: View {
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundStyle(.white)
                     
-                    Text("RunMate utiliza sua idade para calcular a \nFMC de cada tipo de corrida do seu treino.")
+                    Text("RunMate utiliza sua idade para calcular a \nFCM de cada tipo de corrida do seu treino.")
                         .font(.custom("Poppins-Regular", size: 13))
                         .foregroundStyle(.ourLightBlue)
                 }
