@@ -57,7 +57,6 @@ struct SemanaView: View {
                             .foregroundStyle(Color.white)
                         
                         ScrollView(.horizontal, showsIndicators: false){
-                            
                             HStack{
                                 ForEach(semana ?? [], id: \.dia){ dia in
                                     Group{
@@ -108,8 +107,8 @@ struct SemanaView: View {
                                     }
                                 }
                                 
-                            }
-                        }
+                            }.padding(.leading, 10)
+                        }.padding(.leading, -10)
                         
                     }
                     .padding(.leading)
