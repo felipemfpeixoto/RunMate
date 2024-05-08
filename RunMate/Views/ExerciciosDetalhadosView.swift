@@ -11,6 +11,8 @@ struct ExerciciosDetalhadosView: View {
     
     var exercicios: [Exercicio]
     
+    let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(150))]
+    
     var body: some View {
         VStack {
             if dao.diaAtual == -1 {
@@ -20,33 +22,49 @@ struct ExerciciosDetalhadosView: View {
                 ForEach(exercicios, id: \.self){ ex in
                     let size = ex.exercíciosDetalhados.count
                     ZStack(alignment: .leading) {
-                        VStack{
+                        VStack {
                             ForEach(ex.exercíciosDetalhados, id: \.self) { e in
                                 let text = e.tempo == nil ? "Km" : "MIN"
-                                Button {
-                                    if e.nome == "Caminhada"{
-                                        print(dao.fcmDescricao.caminhada)
-                                    }
-                                    if e.nome == "Corrida Leve"{
-                                        print(dao.fcmDescricao.leve)
-                                    }
-                                    if e.nome == "Corrida Moderada"{
-                                        print(dao.fcmDescricao.moderada)
-                                    }
-                                    if e.nome == "Corrida Forte"{
-                                        print(dao.fcmDescricao.forte)
-                                    }
-                                    if e.nome == "Corrida Muito Forte"{
-                                        print(dao.fcmDescricao.muitoForte)
-                                    }
-                                    else{
-                                        
-                                    }
-                                } label: {
-                                    HStack(spacing: 30){
+//                                Button {
+//                                    if e.nome == "Caminhada"{
+//                                        print(dao.fcmDescricao.caminhada)
+//                                    }
+//                                    if e.nome == "Corrida Leve"{
+//                                        print(dao.fcmDescricao.leve)
+//                                    }
+//                                    if e.nome == "Corrida Moderada"{
+//                                        print(dao.fcmDescricao.moderada)
+//                                    }
+//                                    if e.nome == "Corrida Forte"{
+//                                        print(dao.fcmDescricao.forte)
+//                                    }
+//                                    if e.nome == "Corrida Muito Forte"{
+//                                        print(dao.fcmDescricao.muitoForte)
+//                                    }
+//                                    else{
+//                                        
+//                                    }
+//                                } label: {
+//                                    HStack(spacing: 30){
+//                                        Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
+//                                            .font(.custom("Poppins-SemiBold", size: 18))
+//                                            .padding(.leading, 40)
+//                                        
+//                                        VStack(alignment: .leading){
+//                                            Text(e.nome)
+//                                                .font(.custom("Poppins-SemiBold", size: 15).bold())
+//                                            Text(e.descricao)
+//                                                .font(.custom("Poppins-Medium", size: 13))
+//                                        }
+//                                    }
+//                                    .padding(.horizontal, 40)
+//                                    .foregroundColor(.white)
+//                                    .frame(width: 359, height: 65)
+//                                }
+                                LazyVGrid(columns: gridItems, alignment: .leading) {
                                         Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
                                             .font(.custom("Poppins-SemiBold", size: 18))
-                                            .padding(.leading, 40)
+                                            .padding(.leading, 60)
                                         
                                         VStack(alignment: .leading){
                                             Text(e.nome)
@@ -54,13 +72,10 @@ struct ExerciciosDetalhadosView: View {
                                             Text(e.descricao)
                                                 .font(.custom("Poppins-Medium", size: 13))
                                         }
-                                    }
-                                    .padding(.horizontal, 40)
-                                    .foregroundColor(.white)
-                                    .frame(width: 359, height: 65)
                                 }
-
-                               
+                                .padding(.horizontal, 40)
+                                .foregroundColor(.white)
+                                .frame(width: 359, height: 65)
                             }
                         }
                         Text("\(ex.repeticoes)X")
