@@ -39,7 +39,7 @@ struct RoadMapView: View {
                 .padding(.leading, 30)
                 
                 HStack {
-                    Text("\(dao.metaSelecionlada == "5KM" ? String(dao.metaSelecionlada.prefix(1)) : String(dao.metaSelecionlada.prefix(2))) Km - \(dao.nivelSelecionado)")
+                    Text("\(dao.metaSelecionlada == "5KM" ? String(dao.metaSelecionlada.prefix(1)) : String(dao.metaSelecionlada.prefix(2))) km - \(dao.nivelSelecionado)")
                         .foregroundStyle(.turquoiseGreen)
                         .font(Font.custom("Roboto-Regular", size: 24))
                     Spacer()
