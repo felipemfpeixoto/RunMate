@@ -61,18 +61,35 @@ struct SemanaView: View {
                                 ForEach(semana ?? [], id: \.dia){ dia in
                                     Group{
                                         if dao.diasConcluidos.contains(dia.dia) {
-                                            Button(action: {
-                                                dao.diaAtual = (dia.dia - 1)
-                                            }, label: {
-                                                VStack{
-                                                    Text("\(dia.dia)º")
-                                                        .font(Font.custom("Roboto-Bold", size: 30))
-                                                    Text("Dia")
-                                                        .font(Font.custom("Roboto-Bold", size: 18))
-                                                }
-                                                .foregroundStyle(Color.oceanBlue)
-                                            })
-                                            .buttonStyle(BotaoDiaLilas())
+                                            
+                                            if dia.dia == (dao.diaAtual + 1) {
+                                                Button(action: {
+                                                    dao.diaAtual = dia.dia
+                                                }, label: {
+                                                    VStack{
+                                                        Text("\(dia.dia)º")
+                                                            .font(Font.custom("Roboto-Bold", size: 30))
+                                                        Text("Dia")
+                                                            .font(Font.custom("Roboto-Bold", size: 18))
+                                                    }
+                                                    .foregroundStyle(Color.white)
+                                                })
+                                                .buttonStyle(BotaoDiaDarkPurple())
+                                            }
+                                            else{
+                                                Button(action: {
+                                                    dao.diaAtual = (dia.dia - 1)
+                                                }, label: {
+                                                    VStack{
+                                                        Text("\(dia.dia)º")
+                                                            .font(Font.custom("Roboto-Bold", size: 30))
+                                                        Text("Dia")
+                                                            .font(Font.custom("Roboto-Bold", size: 18))
+                                                    }
+                                                    .foregroundStyle(Color.oceanBlue)
+                                                })
+                                                .buttonStyle(BotaoDiaLilas())
+                                            }
                                         }
                                         else{
                                             if dia.dia == (dao.diaAtual + 1) {

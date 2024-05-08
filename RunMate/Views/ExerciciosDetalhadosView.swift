@@ -56,7 +56,7 @@ struct ExerciciosDetalhadosView: View {
                                             Text(e.nome)
                                                 .font(.custom("Poppins-SemiBold", size: 15).bold())
                                             Text(descricao)
-                                                .font(.custom("Poppins-Medium", size: 13))
+                                                .font(.custom("Poppins-Medium", size: 12))
                                         }
                                 }
                                 .padding(.horizontal, 40)
