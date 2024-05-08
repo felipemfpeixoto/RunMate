@@ -4,8 +4,6 @@ struct EscolhaIdadeView: View {
     
     @State var isShowing: Bool = false
     
-    @State var isShowingPopup: Bool = false
-    
     @Binding var selectedLevel: String
     
     @Binding var selectedGoal: String
@@ -13,6 +11,7 @@ struct EscolhaIdadeView: View {
     @Binding var value: Int
     
     @Binding var imPrograssing: Bool
+    
     
     var body: some View {
         ZStack {
@@ -24,7 +23,7 @@ struct EscolhaIdadeView: View {
                 
                 VStack {
                     Picker("Selecione sua idadde", selection: $value) {
-                        ForEach(0..<100) { number in
+                        ForEach(16..<100) { number in
                             Text("\(number)")
                                 .tag("\(number)")
                                 .foregroundStyle(.white)
@@ -32,7 +31,8 @@ struct EscolhaIdadeView: View {
                     }
                     .pickerStyle(.wheel)
                     .background(Color.oceanBlue)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .padding(.horizontal, 20)
                 }
                 Spacer()
                 if value != 0 {
@@ -41,7 +41,7 @@ struct EscolhaIdadeView: View {
                             RoundedRectangle(cornerRadius: 20)
                                 .foregroundStyle(Color.turquoiseGreen)
                                 .frame(width: 243, height: 56)
-                            Text("Proximo")
+                            Text("Próximo")
                                 .foregroundStyle(.black)
                                 .font(.title3.bold())
                         }
@@ -51,7 +51,7 @@ struct EscolhaIdadeView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(Color.turquoiseGreen)
                             .frame(width: 243, height: 56)
-                        Text("Proximo")
+                        Text("Próximo")
                             .foregroundStyle(.black)
                             .font(.title3.bold())
                     }
@@ -67,6 +67,7 @@ struct EscolhaIdadeView: View {
             imPrograssing = false
         }
     }
+    
 }
 
 struct EscolheIdadeSheet: View {
@@ -81,7 +82,7 @@ struct EscolheIdadeSheet: View {
                 .ignoresSafeArea()
             VStack {
                 Picker("Selecione sua idadde", selection: $value) {
-                    ForEach(0..<100) { number in
+                    ForEach(16..<100) { number in
                         Text("\(number)")
                             .tag("\(number)")
                             .foregroundStyle(.white)

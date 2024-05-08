@@ -37,6 +37,7 @@
 		5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */; };
 		5DA28E432BEA477A00AD845D /* TesteDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA28E422BEA477A00AD845D /* TesteDesign.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
+		F952801E2BEAC1EB00DE6C93 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F952801D2BEAC1EB00DE6C93 /* CodableExtensions */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
@@ -86,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F952801E2BEAC1EB00DE6C93 /* CodableExtensions in Frameworks */,
 				0FCDF8DE2BEAA1AD00DF9C70 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				0FA57B052BE400F900EA9D99 /* RunMate */,
+				5DA28E442BEAB82D00AD845D /* Testes */,
 				0FA57B042BE400F900EA9D99 /* Products */,
 				F9B5BA9D2BE553B90007E115 /* Frameworks */,
 			);
@@ -162,7 +165,6 @@
 				0FA57B362BE40E9400EA9D99 /* SemanaView.swift */,
 				0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */,
 				0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */,
-				5DA28E422BEA477A00AD845D /* TesteDesign.swift */,
 				0FA57B382BE40EA900EA9D99 /* AvisoView.swift */,
 				5DF051F32BE58B120009757A /* ParabénsView.swift */,
 			);
@@ -186,6 +188,14 @@
 				5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		5DA28E442BEAB82D00AD845D /* Testes */ = {
+			isa = PBXGroup;
+			children = (
+				5DA28E422BEA477A00AD845D /* TesteDesign.swift */,
+			);
+			path = Testes;
 			sourceTree = "<group>";
 		};
 		F9B5BA8A2BE413070007E115 /* Resources */ = {
@@ -223,6 +233,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
+				F952801D2BEAC1EB00DE6C93 /* CodableExtensions */,
 				0FCDF8DD2BEAA1AD00DF9C70 /* CodableExtensions */,
 			);
 			productName = RunMate;
@@ -254,6 +265,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
+				F952801C2BEAC1EB00DE6C93 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 				0FCDF8DC2BEAA1AD00DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
@@ -443,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
@@ -461,8 +474,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = grupoCorrida.RunMate;
+				PRODUCT_BUNDLE_IDENTIFIER = puc.ecoa.academy.grupoCorrida.RunMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -474,6 +488,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RunMate/Preview Content\"";
@@ -492,8 +507,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = grupoCorrida.RunMate;
+				PRODUCT_BUNDLE_IDENTIFIER = puc.ecoa.academy.grupoCorrida.RunMate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -524,6 +540,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F952801C2BEAC1EB00DE6C93 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 		0FCDF8DC2BEAA1AD00DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
@@ -535,8 +552,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F952801D2BEAC1EB00DE6C93 /* CodableExtensions */ = {
 		0FCDF8DD2BEAA1AD00DF9C70 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = F952801C2BEAC1EB00DE6C93 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			package = 0FCDF8DC2BEAA1AD00DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};

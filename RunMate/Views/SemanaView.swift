@@ -11,12 +11,17 @@ struct SemanaView: View {
     
     @State var semana: [Dia]?
     @State var apareceParabens: Bool = false
+    
+    @State var isShowingAviso = false
    
     var body: some View {
         ZStack{
             Color(.blackBlue).ignoresSafeArea()
             if dao.semanaAtual == -1 {
                 ProgressView()
+                    .onAppear {
+                        isShowingAviso.toggle()
+                    }
             } else {
                 VStack{
                     Spacer()
@@ -51,7 +56,7 @@ struct SemanaView: View {
                             .font(Font.custom("Roboto-Bold", size: 24))
                             .foregroundStyle(Color.white)
                         
-                        ScrollView(.horizontal, showsIndicators: true){
+                        ScrollView(.horizontal, showsIndicators: false){
                             
                             HStack{
                                 ForEach(semana ?? [], id: \.dia){ dia in
@@ -141,7 +146,7 @@ struct SemanaView: View {
                     if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
                         if dao.diasConcluidos.contains(dao.diaAtual + 1){
                             HStack{
-                                Text("CORRIDA CONLUÍDA")
+                                Text("ETAPA CONLUÍDA")
                                     .font(Font.custom("Poppins-SemiBold", size: 18))
                                     .foregroundStyle(Color.white)
                                 Text(Image(systemName: "checkmark.seal.fill"))
@@ -174,7 +179,7 @@ struct SemanaView: View {
                                     }
                                     
                                 }, label: {
-                                    Text("CONCLUIR CORRIDA")
+                                    Text("CONCLUIR ETAPA")
                                         .font(Font.custom("Poppins-SemiBold", size: 18))
                                         .foregroundStyle(Color.white)
                                     Text(Image(systemName: "checkmark.seal.fill"))
@@ -208,6 +213,9 @@ struct SemanaView: View {
                 }
             }
         }
+        .fullScreenCover(isPresented: $isShowingAviso, content: {
+            AvisoView(isShowingPopUp: $isShowingAviso)
+        })
         
     }
 }

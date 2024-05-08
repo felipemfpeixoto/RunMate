@@ -8,7 +8,7 @@ let dao = DAO.instance
     
     var paginaDeTreinamento: PaginaDeTreinamento = PaginaDeTreinamento(planoDeTreinamento: PlanoDeTreinamento(semanas: []))
     
-    var idade: Int? = nil
+    var idade: Double? = nil
     
     var semanaAtual: Int = -1
     
@@ -19,6 +19,11 @@ let dao = DAO.instance
     var nivelSelecionado: String = ""
     
     var metaSelecionlada: String = ""
+    
+    var fcm: Double = -1
+    
+    var fcmDescricao: FCM = FCM(caminhada: "", leve: "", moderada: "", forte: "", muitoForte: "")
+    
     
     private init() {
     }
@@ -31,6 +36,8 @@ let dao = DAO.instance
         self.semanaAtual = 0
         self.diaAtual = 0
         self.diasConcluidos = []
+        self.fcm = 220.0 - (dao.idade ?? 0)
+        self.fcmDescricao = FCM(caminhada: "\(dao.fcm*0.5) bpm a \(dao.fcm*0.65) bpm", leve: "\(dao.fcm*0.65) bpm a \(dao.fcm*0.75) bpm", moderada: "\(dao.fcm*0.75) bpm a \(dao.fcm*0.85) bpm", forte: "\(dao.fcm*0.85) bpm a \(dao.fcm*0.9) bpm", muitoForte: "\(dao.fcm*0.9) bpm a \(dao.fcm) bpm")
     }
 }
 
