@@ -24,43 +24,29 @@ struct ExerciciosDetalhadosView: View {
                     ZStack(alignment: .leading) {
                         VStack {
                             ForEach(ex.exercíciosDetalhados, id: \.self) { e in
-                                let text = e.tempo == nil ? "Km" : "MIN"
-//                                Button {
-//                                    if e.nome == "Caminhada"{
-//                                        print(dao.fcmDescricao.caminhada)
-//                                    }
-//                                    if e.nome == "Corrida Leve"{
-//                                        print(dao.fcmDescricao.leve)
-//                                    }
-//                                    if e.nome == "Corrida Moderada"{
-//                                        print(dao.fcmDescricao.moderada)
-//                                    }
-//                                    if e.nome == "Corrida Forte"{
-//                                        print(dao.fcmDescricao.forte)
-//                                    }
-//                                    if e.nome == "Corrida Muito Forte"{
-//                                        print(dao.fcmDescricao.muitoForte)
-//                                    }
-//                                    else{
-//                                        
-//                                    }
-//                                } label: {
-//                                    HStack(spacing: 30){
-//                                        Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
-//                                            .font(.custom("Poppins-SemiBold", size: 18))
-//                                            .padding(.leading, 40)
-//                                        
-//                                        VStack(alignment: .leading){
-//                                            Text(e.nome)
-//                                                .font(.custom("Poppins-SemiBold", size: 15).bold())
-//                                            Text(e.descricao)
-//                                                .font(.custom("Poppins-Medium", size: 13))
-//                                        }
-//                                    }
-//                                    .padding(.horizontal, 40)
-//                                    .foregroundColor(.white)
-//                                    .frame(width: 359, height: 65)
-//                                }
+                                let text = e.tempo == nil ? "km" : "min"
+                                
+                                var descricao: String {
+                                    if e.nome == "Caminhada"{
+                                      return dao.fcmDescricao.caminhada
+                                   }
+                                   if e.nome == "Corrida Leve"{
+                                       return dao.fcmDescricao.leve
+                                   }
+                                   if e.nome == "Corrida Moderada"{
+                                       return dao.fcmDescricao.moderada
+                                   }
+                                   if e.nome == "Corrida Forte"{
+                                       return dao.fcmDescricao.forte
+                                   }
+                                   if e.nome == "Corrida Muito Forte"{
+                                       return dao.fcmDescricao.muitoForte
+                                   }
+                                   else{
+                                       return e.descricao
+                                   }
+                                }
+
                                 LazyVGrid(columns: gridItems, alignment: .leading) {
                                         Text("\(e.tempo == nil ? e.distancia ?? 0 : e.tempo ?? 0) \(text)")
                                             .font(.custom("Poppins-SemiBold", size: 18))
@@ -69,8 +55,8 @@ struct ExerciciosDetalhadosView: View {
                                         VStack(alignment: .leading){
                                             Text(e.nome)
                                                 .font(.custom("Poppins-SemiBold", size: 15).bold())
-                                            Text(e.descricao)
-                                                .font(.custom("Poppins-Medium", size: 13))
+                                            Text(descricao)
+                                                .font(.custom("Poppins-Medium", size: 12))
                                         }
                                 }
                                 .padding(.horizontal, 40)
