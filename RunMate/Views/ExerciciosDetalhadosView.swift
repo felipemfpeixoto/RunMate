@@ -25,18 +25,28 @@ struct ExerciciosDetalhadosView: View {
                                 let text = e.tempo == nil ? "Km" : "MIN"
                                 Button {
                                     if e.nome == "Caminhada"{
+                                        print("idade: \(dao.idade)")
+                                        print("FCM: \(dao.fcm)")
                                         print(dao.fcmDescricao.caminhada)
                                     }
                                     if e.nome == "Corrida Leve"{
+                                        print("idade: \(dao.idade)")
+                                        print("FCM: \(dao.fcm)")
                                         print(dao.fcmDescricao.leve)
                                     }
                                     if e.nome == "Corrida Moderada"{
+                                        print("idade: \(dao.idade)")
+                                        print("FCM: \(dao.fcm)")
                                         print(dao.fcmDescricao.moderada)
                                     }
                                     if e.nome == "Corrida Forte"{
+                                        print("idade: \(dao.idade)")
+                                        print("FCM: \(dao.fcm)")
                                         print(dao.fcmDescricao.forte)
                                     }
                                     if e.nome == "Corrida Muito Forte"{
+                                        print("idade: \(dao.idade)")
+                                        print("FCM: \(dao.fcm)")
                                         print(dao.fcmDescricao.muitoForte)
                                     }
                                     else{

@@ -30,7 +30,7 @@
                   "exercíciosDetalhados": [
                     {
                         "nome": "Progressivo",
-                        "descricao": "Começar com Corrida Leve e terminar em Corrida Forte, subindo o ritmo gradualmente",
+                        "descricao": "Começar em Leve e terminar em Forte, gradualmente",
                         "tempo": 60
 
                     }
@@ -123,7 +123,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Progressivo",
-                          "descricao": "Começar com Corrida Leve e terminar em Corrida Forte, subindo o ritmo gradualmente",
+                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
                           "tempo": 4
                         },
                         {
@@ -317,7 +317,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Progressivo",
-                          "descricao": "Começar com Corrida Leve e terminar em Corrida Forte, subindo o ritmo gradualmente",
+                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
                           "tempo": 6
                         },
                         {
@@ -434,7 +434,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Progressivo",
-                          "descricao": "Começar com Corrida Leve e terminar em Corrida Forte, subindo o ritmo gradualmente",
+                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
                           "tempo": 6
                         },
                         {
@@ -613,7 +613,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Progressivo",
-                          "descricao": "Começar com Corrida Leve e terminar em Corrida Forte, subindo o ritmo gradualmente",
+                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
                           "tempo": 30
                         }
                     ],
@@ -623,7 +623,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Regressivo",
-                          "descricao": "Sair em Corrida Forte e terminar em Corrida Leve, reduzindo o ritmo gradualmente",
+                          "descricao": "Começar em Forte e terminar em Leve, gradualmente",
                           "tempo": 30
                         }
                     ],
@@ -652,12 +652,12 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Progressivo",
-                          "descricao": "Começar com Corrida Leve e terminar em Corrida Forte, subindo o ritmo gradualmente",
+                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
                           "tempo": 6
                         },
                         {
                           "nome": "Regressivo",
-                          "descricao": "Sair em Corrida Forte e terminar em Corrida Leve, reduzindo o ritmo gradualmente",
+                          "descricao": "Começar em Forte e terminar em Leve, gradualmente",
                           "tempo": 4
                         },
                         {

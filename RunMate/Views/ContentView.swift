@@ -77,7 +77,7 @@ struct ContentView: View {
                     }
                 }
                 .onDisappear {
-                    dao.idade = Double(value)
+                    dao.idade = Double(value) + 16
                     criaEscolhas()
                 }
 

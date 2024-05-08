@@ -22,7 +22,7 @@ struct EscolhaIdadeView: View {
                     .font(.title3.bold())
                 
                 VStack {
-                    Picker("Selecione sua idadde", selection: $value) {
+                    Picker("Selecione sua idade", selection: $value) {
                         ForEach(16..<100) { number in
                             Text("\(number)")
                                 .tag("\(number)")
@@ -35,18 +35,7 @@ struct EscolhaIdadeView: View {
                     .padding(.horizontal, 20)
                 }
                 Spacer()
-                if value != 0 {
-                    NavigationLink(destination: SemanaView()) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .foregroundStyle(Color.turquoiseGreen)
-                                .frame(width: 243, height: 56)
-                            Text("Próximo")
-                                .foregroundStyle(.black)
-                                .font(.title3.bold())
-                        }
-                    }
-                } else {
+                NavigationLink(destination: SemanaView()) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 20)
                             .foregroundStyle(Color.turquoiseGreen)
@@ -55,10 +44,12 @@ struct EscolhaIdadeView: View {
                             .foregroundStyle(.black)
                             .font(.title3.bold())
                     }
-                    .opacity(0.3)
                 }
                 Spacer()
             }
+        }
+        .onDisappear {
+            print(value)
         }
         .onAppear {
             withAnimation(Animation.easeInOut(duration: 2)) {
@@ -68,38 +59,6 @@ struct EscolhaIdadeView: View {
         }
     }
     
-}
-
-struct EscolheIdadeSheet: View {
-    
-    @Binding var isShowingPopup: Bool
-    
-    @Binding var value: Int
-    
-    var body: some View {
-        ZStack {
-            Color.blackBlue
-                .ignoresSafeArea()
-            VStack {
-                Picker("Selecione sua idadde", selection: $value) {
-                    ForEach(16..<100) { number in
-                        Text("\(number)")
-                            .tag("\(number)")
-                            .foregroundStyle(.white)
-                    }
-                }
-                .pickerStyle(.wheel)
-                .background(Color.oceanBlue)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                Button(action: {
-                    isShowingPopup.toggle()
-                }, label: {
-                    Text("Confirmar")
-                })
-            }
-            .padding()
-        }
-    }
 }
 
 //#Preview {

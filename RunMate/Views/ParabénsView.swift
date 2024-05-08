@@ -28,12 +28,12 @@ struct ParabénsView: View {
                     .foregroundStyle(Color.turquoiseGreen)
                 
                 Text("Você concluiu sua \(dao.semanaAtual)ª semana e recebeu um emblema!")
-                    .font(Font.custom("Roboto-Medium", size: 18))
+                    .font(Font.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
                 
                 Text("Bora pra próxima semana?")
-                    .font(Font.custom("Roboto-Medium", size: 18))
+                    .font(Font.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 5)
@@ -41,12 +41,13 @@ struct ParabénsView: View {
                 Button(action: {apareceParabens = false}, label: {
                     Text("VER PRÓXIMA SEMANA")
                         .foregroundColor(.oceanBlue)
-                        .fontWeight(.bold)
-                        .padding(.vertical, 20)
+                        .font(Font.custom("Poppins-SemiBold", size: 18))
+                        .padding(.vertical, 16)
                         .padding(.horizontal, 25)
                         .background(Color.turquoiseGreen)
-                        .clipShape(Capsule())
+//                        .clipShape(Capsule())
                 })
+                .cornerRadius(18)
             }
             .padding(.vertical, 25)
             .padding(.horizontal, 30)
@@ -60,4 +61,5 @@ struct ParabénsView: View {
         }
     }
 }
+
 
