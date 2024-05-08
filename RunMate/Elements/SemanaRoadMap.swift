@@ -43,8 +43,10 @@ struct SemanaRoadMap: View {
                             .background {
                                 RoundedRectangle(cornerRadius: 18)
                                     .fill(.blackBlue)
+                                    .frame(height: 100)
                                 RoundedRectangle(cornerRadius: 18)
                                     .stroke(Color.turquoiseGreen, lineWidth: 4)
+                                    .frame(height: 100)
                                 
                             }
                         
@@ -59,8 +61,6 @@ struct SemanaRoadMap: View {
                     }
                     
                 }
-               .padding(.bottom, 20)
-               .padding(.top, 15)
                
                 
             } else {
@@ -74,8 +74,10 @@ struct SemanaRoadMap: View {
                     .background {
                         RoundedRectangle(cornerRadius: 18)
                             .fill(.turquoiseGreen)
+                            .frame(height: 100)
                         RoundedRectangle(cornerRadius: 18)
                             .stroke(Color.lilacPurple, lineWidth: 4)
+                            .frame(height: 100)
                     }
                     .overlay(alignment: .trailing) {
                         Image("Medalha")
@@ -86,11 +88,9 @@ struct SemanaRoadMap: View {
                             })
                         
                     }
-                    .padding(.bottom, 20)
-                    .padding(.top, 15)
             }
                
         }
-        .padding(.vertical, 12)
+        .frame(width: 250)
     }
 }
