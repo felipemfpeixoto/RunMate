@@ -54,8 +54,8 @@
                 {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Progressivo",
-                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
+                          "nome": "Progressiva",
+                          "descricao": "Gradualmente, Leve para Forte",
                           "distancia": 7
                         }
                     ],
@@ -136,13 +136,13 @@
                   {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Progressivo",
-                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
+                          "nome": "Progressiva",
+                          "descricao": "Gradualmente, Leve para Forte",
                           "tempo": 6
                         },
                         {
-                          "nome": "Regressivo",
-                          "descricao": "Começar em Forte e terminar em Leve, gradualmente",
+                          "nome": "Regressiva",
+                          "descricao": "Gradualmente, Forte para Leve",
                           "tempo": 4
                         },
                         {
@@ -258,8 +258,8 @@
                   {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Progressivo",
-                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
+                          "nome": "Progressiva",
+                          "descricao": "Gradualmente, Leve para Forte",
                           "tempo": 6
                         },
                         {
@@ -293,8 +293,8 @@
                   {
                       "exercíciosDetalhados": [
                           {
-                            "nome": "Regressivo",
-                            "descricao": "Começar em Forte e terminar em Leve, gradualmente",
+                            "nome": "Regressiva",
+                            "descricao": "Gradualmente, Forte para Leve",
                             "tempo": 40
                           }
                       ],
@@ -453,8 +453,8 @@
                   {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Progressivo",
-                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
+                          "nome": "Progressiva",
+                          "descricao": "Gradualmente, Leve para Forte",
                           "tempo": 30
                         }
                     ],
@@ -463,8 +463,8 @@
                   {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Regressivo",
-                          "descricao": "Começar em Forte e terminar em Leve, gradualmente",
+                          "nome": "Regressiva",
+                          "descricao": "Gradualmente, Forte para Leve",
                           "tempo": 30
                         }
                     ],
@@ -492,13 +492,13 @@
                   {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Progressivo",
-                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
+                          "nome": "Progressiva",
+                          "descricao": "Gradualmente, Leve para Forte",
                           "tempo": 6
                         },
                         {
-                          "nome": "Regressivo",
-                          "descricao": "Começar em Forte e terminar em Leve, gradualmente",
+                          "nome": "Regressiva",
+                          "descricao": "Gradualmente, Forte para Leve",
                           "tempo": 4
                         },
                       {
@@ -636,8 +636,8 @@
                   {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Progressivo",
-                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
+                          "nome": "Progressiva",
+                          "descricao": "Gradualmente, Leve para Forte",
                           "tempo": 30
                         }
                     ],
@@ -646,8 +646,8 @@
                   {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Regressivo",
-                          "descricao": "Começar em Forte e terminar em Leve, gradualmente",
+                          "nome": "Regressiva",
+                          "descricao": "Gradualmente, Forte para Leve",
                           "tempo": 30
                         }
                     ],
@@ -675,13 +675,13 @@
                   {
                     "exercíciosDetalhados": [
                         {
-                          "nome": "Progressivo",
-                          "descricao": "Começar em Leve e terminar em Forte, gradualmente",
+                          "nome": "Progressiva",
+                          "descricao": "Gradualmente, Leve para Forte",
                           "tempo": 6
                         },
                         {
-                          "nome": "Regressivo",
-                          "descricao": "Começar em Forte e terminar em Leve, gradualmente",
+                          "nome": "Regressiva",
+                          "descricao": "Gradualmente, Forte para Leve",
                           "tempo": 4
                         },
                         {
