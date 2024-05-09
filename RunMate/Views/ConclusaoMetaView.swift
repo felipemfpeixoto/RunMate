@@ -33,7 +33,13 @@ struct ConclusaoMetaView: View {
                     .multilineTextAlignment(.center)
                     .padding(.top, 10)
                     
-                NavigationLink(destination: ContentView()) {
+                Button{
+                    
+//                    dao.paginaDeTreinamento = PaginaDeTreinamento(planoDeTreinamento: PlanoDeTreinamento(semanas: []))
+                    
+                    dao.paginaDeTreinamento.planoDeTreinamento.semanas = []
+                    
+                } label: {
                     Text("CRIE UMA NOVA META")
                         .foregroundColor(.oceanBlue)
                         .font(Font.custom("Poppins-SemiBold", size: 18))
@@ -46,9 +52,6 @@ struct ConclusaoMetaView: View {
                 }
             }
             .padding(.horizontal, 30)
-        }
-        .onAppear{
-            dao.paginaDeTreinamento.planoDeTreinamento.semanas = []
         }
     }
 }

@@ -82,6 +82,7 @@ struct ContentView: View {
                 }
 
             } else {
+                
                 SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
             }
         }.navigationBarBackButtonHidden()

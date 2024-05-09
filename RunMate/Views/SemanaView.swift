@@ -14,6 +14,8 @@ struct SemanaView: View {
     @State var apareceInfo: Bool = false
     
     @State var isShowingAviso = false
+    
+    @State var apareceParabensMeta = false
    
     var body: some View {
         ZStack{
@@ -148,31 +150,34 @@ struct SemanaView: View {
                     .padding(.leading)
                     .padding(.top, 40)
                     
-                    if dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty{
-                        VStack{
-                            Text("DIA LIVRE")
-                                .font(.custom("Poppins-SemiBold", size: 30))
-                                .foregroundColor(.lakeBlue)
-                                .padding(.top, 30)
-                            Image("Cadeira")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 136, height: 133)
-                            Text("Tire uma folga do seu \ncronograma de corrida e \naproveite um dia de descanso!")
-                                .font(.custom("Poppins-SemiBold", size: 18))
-                                .foregroundColor(.lakeBlue)
-                                .multilineTextAlignment(.center)
-                            Spacer()
+                    if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count > 0 {
+                        if dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty{
+                            VStack{
+                                Text("DIA LIVRE")
+                                    .font(.custom("Poppins-SemiBold", size: 30))
+                                    .foregroundColor(.lakeBlue)
+                                    .padding(.top, 30)
+                                Image("Cadeira")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 136, height: 133)
+                                Text("Tire uma folga do seu \ncronograma de corrida e \naproveite um dia de descanso!")
+                                    .font(.custom("Poppins-SemiBold", size: 18))
+                                    .foregroundColor(.lakeBlue)
+                                    .multilineTextAlignment(.center)
+                                Spacer()
+                            }
+                        }
+                        else{
+                            
+                            VStack{
+                                ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
+                                Spacer()
+                            }
+                            .padding(.vertical, 20)
                         }
                     }
-                    else{
-                        
-                        VStack{
-                            ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
-                            Spacer()
-                        }
-                        .padding(.vertical, 20)
-                    }
+                    
                     
                     Spacer()
                     
@@ -197,22 +202,24 @@ struct SemanaView: View {
                             
                             VStack{
                                 Button(action: {
-                                    
-                                    if  dao.diasConcluidos.count == 6   {
-                                        
-                                        if dao.semanaAtual == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
-                                            
+                              
+                                    if dao.diasConcluidos.count == 6   {
+                                        if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
+                                            dao.semanaAtual = 0
+                                           
+                                            apareceParabensMeta = true
+                                            print("semana atual depois: \(dao.semanaAtual)")
                                         }
-                                        dao.diaAtual = 0
-                                        dao.diasConcluidos = []
-                                        dao.semanaAtual += 1
-                                        apareceParabens = true
+                                        else{
+                                            dao.diaAtual = 0
+                                            dao.diasConcluidos = []
+                                            dao.semanaAtual += 1
+                                            apareceParabens = true
+                                        }
                                     }
                                     else{
                                         dao.diasConcluidos.append(dao.diaAtual+1)
                                         dao.diaAtual += 1
-                                        print(dao.semanaAtual)
-                                        print(dao.diasConcluidos)
                                     }
                                     
                                 }, label: {
@@ -235,9 +242,15 @@ struct SemanaView: View {
                     }
                 }
                 .onAppear {
-                    semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias
                     print(dao.semanaAtual)
-                    print(dao.diasConcluidos)
+                    print(dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
+                    semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias
+                }
+                .onChange(of: dao.semanaAtual) { oldValue, newValue in
+                    print("semana = " + String(newValue))
+                }
+                .onChange(of: dao.diaAtual) { oldValue, newValue in
+                    print("dia = " + String(newValue))
                 }
             }
         }
@@ -255,8 +268,10 @@ struct SemanaView: View {
         })
         .sheet(isPresented: $apareceInfo){
             SemanaConcluidaView(apareceInfo: $apareceInfo)
-                
         }
+        .fullScreenCover(isPresented: $apareceParabensMeta, content: {
+            ConclusaoMetaView()
+        })
         
     }
 }
