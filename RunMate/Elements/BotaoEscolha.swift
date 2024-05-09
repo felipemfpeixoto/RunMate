@@ -4,6 +4,7 @@ struct BotaoEscolha: View {
     
     let texto: String
     
+    
     @Binding var selectedLevel: String
     
     @Binding var reallySelectedLevel: String
@@ -16,16 +17,19 @@ struct BotaoEscolha: View {
                     selectedLevel = "Iniciante"
                     reallySelectedLevel = "iniciante"
                 }
+                dao.nivelDescricao = "Corre casualmente e/ou tem pouca experiência prévia."
             case "Intermediário":
                 withAnimation {
                     selectedLevel = "Intermediário"
                     reallySelectedLevel = "intermediario"
                 }
+                dao.nivelDescricao = "Possui conhecimento em corrida \ne condicionamento físico básico, com \npossíveis participações em corridas."
             case "Avançado":
                 withAnimation {
                     selectedLevel = "Avançado"
                     reallySelectedLevel = "avancado"
                 }
+                dao.nivelDescricao = "Boa experiência em corrida e treinamento. Frequentemente, participa de corridas e \nprocura metas maiores."
             case "5 km":
                 withAnimation {
                     selectedLevel = "5 km"

@@ -10,6 +10,7 @@ struct EscolhaNivelView: View {
     
     @Binding var imProgressing: Bool
     
+    
     var body: some View {
         ZStack {
             VStack {
@@ -17,9 +18,20 @@ struct EscolhaNivelView: View {
                 Text("Selecione seu nível de corredor:")
                     .foregroundStyle(.white)
                     .font(.title3.bold())
+                    .font(Font.custom("Roboto-Regular", size: 22))
                 BotaoEscolha(texto: "Iniciante", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
                 BotaoEscolha(texto: "Intermediário", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
                 BotaoEscolha(texto: "Avançado", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
+                
+                Spacer()
+                
+                VStack{
+                    Text(dao.nivelDescricao)
+                        .foregroundStyle(.white)
+                        .font(Font.custom("Roboto-Regular", size: 14))
+                        .multilineTextAlignment(.center)
+                }.frame(width: 300 ,height: 100)
+                
                 Spacer()
                 if selectedLevel != ""{
                     Button(action: {

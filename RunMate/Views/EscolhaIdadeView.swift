@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct EscolhaIdadeView: View {
+
     
     @State var isShowing: Bool = false
     
