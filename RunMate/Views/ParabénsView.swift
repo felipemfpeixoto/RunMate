@@ -45,7 +45,6 @@ struct ParabénsView: View {
                         .padding(.vertical, 16)
                         .padding(.horizontal, 25)
                         .background(Color.turquoiseGreen)
-//                        .clipShape(Capsule())
                 })
                 .cornerRadius(18)
             }

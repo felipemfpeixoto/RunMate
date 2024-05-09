@@ -15,7 +15,9 @@ struct RunMateApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            ConclusaoMetaView()
+            NavigationStack{
+                ConclusaoMetaView()
+            }
                 .onChange(of: scenePhase) {
                     switch scenePhase {
                         

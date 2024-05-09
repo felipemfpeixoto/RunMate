@@ -37,7 +37,7 @@
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
 		5DA28E432BEA477A00AD845D /* TesteDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA28E422BEA477A00AD845D /* TesteDesign.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
-		F9616E442BEC19B300A27B6D /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9616E432BEC19B300A27B6D /* CodableExtensions */; };
+		F9616E472BED5F5B00A27B6D /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9616E462BED5F5B00A27B6D /* CodableExtensions */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
@@ -88,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9616E442BEC19B300A27B6D /* CodableExtensions in Frameworks */,
+				F9616E472BED5F5B00A27B6D /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +234,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				F9616E432BEC19B300A27B6D /* CodableExtensions */,
+				F9616E462BED5F5B00A27B6D /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -265,7 +265,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				F9616E422BEC19B300A27B6D /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F9616E452BED5F5A00A27B6D /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -540,7 +540,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F9616E422BEC19B300A27B6D /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		F9616E452BED5F5A00A27B6D /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -551,9 +551,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F9616E432BEC19B300A27B6D /* CodableExtensions */ = {
+		F9616E462BED5F5B00A27B6D /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F9616E422BEC19B300A27B6D /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = F9616E452BED5F5A00A27B6D /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */

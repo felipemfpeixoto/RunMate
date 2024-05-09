@@ -199,6 +199,10 @@ struct SemanaView: View {
                                 Button(action: {
                                     
                                     if  dao.diasConcluidos.count == 6   {
+                                        
+                                        if dao.semanaAtual == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
+                                            
+                                        }
                                         dao.diaAtual = 0
                                         dao.diasConcluidos = []
                                         dao.semanaAtual += 1
@@ -253,7 +257,6 @@ struct SemanaView: View {
             SemanaConcluidaView(apareceInfo: $apareceInfo)
                 
         }
-        
         
     }
 }
