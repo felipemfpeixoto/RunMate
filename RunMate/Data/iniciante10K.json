@@ -760,11 +760,11 @@
                         {
                             "nome": "Corrida Moderada",
                             "descricao": "75% a 85% da FCM",
-                            "tempo": 15
+                            /Users/giovananogueira/Documents/RunMate/RunMate/Elements/BotaoDia.swift                            "tempo": 15
                         },
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 10
                         }
                     ],
@@ -907,7 +907,7 @@
                         },
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "distancia": 2
                         }
                     ],
@@ -1003,7 +1003,7 @@
                     "exercíciosDetalhados": [
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 60
                         }
                     ],

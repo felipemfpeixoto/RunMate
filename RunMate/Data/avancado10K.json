@@ -16,7 +16,7 @@
                     },
                     {
                         "nome": "Tempo Run",
-                        "descricao": "Pace que pretende fazer a prova",
+                        "descricao": "Simulação do ritmo de prova",
                         "tempo": 10
                     }
                 ],
@@ -99,7 +99,7 @@
                       },
                       {
                           "nome": "Tempo Run",
-                          "descricao": "Pace que pretende fazer a prova",
+                          "descricao": "Simulação do ritmo de prova",
                           "tempo": 15
                       }
                   ],
@@ -157,7 +157,7 @@
                         },
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 10
                         },
                         {
@@ -308,7 +308,7 @@
                         },
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "distancia": 2
                         }
                     ],
@@ -337,7 +337,7 @@
                         },
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 10
                         }
                     ],
@@ -517,7 +517,7 @@
                         },
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "distancia": 2
                         }
                     ],
@@ -541,7 +541,7 @@
                     "exercíciosDetalhados": [
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 60
                         }
                     ],
@@ -605,7 +605,7 @@
                     "exercíciosDetalhados": [
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 30
                         }
                     ],
@@ -629,7 +629,7 @@
                         },
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "distancia": 2
                         }
                     ],
@@ -658,7 +658,7 @@
                         },
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 25
                         },
                         {
@@ -751,7 +751,7 @@
                     "exercíciosDetalhados": [
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 50
                         }
                     ],
@@ -794,7 +794,7 @@
                     "exercíciosDetalhados": [
                         {
                             "nome": "Tempo Run",
-                            "descricao": "Pace que pretende fazer a prova",
+                            "descricao": "Simulação do ritmo de prova",
                             "tempo": 40
                         }
                     ],

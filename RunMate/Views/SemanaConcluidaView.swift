@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SemanaConcluidaView: View {
+    
+    @Binding var apareceInfo: Bool
+    
     var body: some View {
         
         ZStack{
@@ -15,12 +18,30 @@ struct SemanaConcluidaView: View {
             
             VStack{
                 
+                HStack{
+                    Spacer()
+                    
+                    Button {
+                        apareceInfo = false
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .padding(.trailing, 30)
+                            .padding(.bottom, 20)
+                    }
+
+                    
+                }
+                
                 Text("Índice de Corridas")
                     .foregroundStyle(.white)
                     .font(.custom("Roboto-Bold", size: 24))
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 30)
                 
-                
+//                Rectangle()
+//                    .frame(height: 1)
+//                    .foregroundColor(.blackBlue)
+//                    .padding(.bottom, 20)
                 
                 VStack{
                     HStack{
@@ -134,10 +155,10 @@ struct SemanaConcluidaView: View {
                 .background(Color.oceanBlue)
                 .cornerRadius(9)
                 
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundColor(.blackBlue)
-                    .padding(.top, 20)
+//                Rectangle()
+//                    .frame(height: 1)
+//                    .foregroundColor(.blackBlue)
+//                    .padding(.top, 20)
                 
                 VStack(alignment: .leading, spacing: 10){
                     
@@ -149,7 +170,7 @@ struct SemanaConcluidaView: View {
                         .font(.custom("Poppins-Regular", size: 13))
                         .foregroundStyle(.ourLightBlue)
                 }
-                .padding(.top, 20)
+                .padding(.top, 30)
                 
             }
             .font(.custom("Poppins-Medium", size: 13))
@@ -160,5 +181,5 @@ struct SemanaConcluidaView: View {
 }
 
 #Preview {
-    SemanaConcluidaView()
+    SemanaConcluidaView(apareceInfo: .constant(true))
 }
