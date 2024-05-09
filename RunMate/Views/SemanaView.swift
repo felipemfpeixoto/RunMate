@@ -11,6 +11,7 @@ struct SemanaView: View {
     
     @State var semana: [Dia]?
     @State var apareceParabens: Bool = false
+    @State var apareceInfo: Bool = false
     
     @State var isShowingAviso = false
    
@@ -30,9 +31,11 @@ struct SemanaView: View {
                         HStack (alignment: .top){
                             
                             VStack(alignment: .leading){
+                                
+    
                                 Text("Minha meta")
-                                    .font(Font.custom("Roboto-Bold", size: 28))
-                                    .foregroundStyle(Color.white)
+                                        .font(Font.custom("Roboto-Bold", size: 28))
+                                        .foregroundStyle(Color.white)
                                 
                                 Text("\(dao.metaSelecionlada == "5KM" ? String(dao.metaSelecionlada.prefix(1)) : String(dao.metaSelecionlada.prefix(2))) km - \(dao.nivelSelecionado)")
                                     .font(Font.custom("Roboto-Regular", size: 24))
@@ -40,16 +43,30 @@ struct SemanaView: View {
                                     .padding(.bottom, 30)
                             }
                             
+                            
                             Spacer()
-                            NavigationLink(destination: RoadMapView(), label: {
-                                Text(Image(systemName: "figure.run.circle.fill"))
-                                    .foregroundStyle(Color.turquoiseGreen)
-                                    .font(.system(size: 43))
-                                    .padding(.trailing, 10)
-                            })
                             
-                            
-                            
+                            HStack{
+                                
+                                NavigationLink(destination: RoadMapView(), label: {
+                                    Text(Image(systemName: "figure.run.circle.fill"))
+                                        .foregroundStyle(Color.turquoiseGreen)
+                                        .font(.system(size: 30))
+                                                                        })
+                                
+                                Button {
+                                    apareceInfo = true
+                                } label: {
+                                    Text(Image(systemName: "info.circle"))
+                                        .foregroundStyle(Color.turquoiseGreen)
+                                        .font(.system(size: 30))
+                                        .fontWeight(.light)
+                                        .padding(.trailing, 10)
+
+                                }
+                              
+                            }
+                         
                         }
                         
                         Text("\(dao.semanaAtual+1)ª semana")
@@ -72,9 +89,9 @@ struct SemanaView: View {
                                                         Text("Dia")
                                                             .font(Font.custom("Roboto-Bold", size: 18))
                                                     }
-                                                    .foregroundStyle(Color.white)
+                                                    .foregroundStyle(Color.oceanBlue)
                                                 })
-                                                .buttonStyle(BotaoDiaDarkPurple())
+                                                .buttonStyle(BotaoDiaLilas())
                                             }
                                             else{
                                                 Button(action: {
@@ -86,9 +103,9 @@ struct SemanaView: View {
                                                         Text("Dia")
                                                             .font(Font.custom("Roboto-Bold", size: 18))
                                                     }
-                                                    .foregroundStyle(Color.oceanBlue)
+                                                    .foregroundStyle(Color.white)
                                                 })
-                                                .buttonStyle(BotaoDiaLilas())
+                                                .buttonStyle(BotaoDiaDarkPurple())
                                             }
                                         }
                                         else{
@@ -154,7 +171,7 @@ struct SemanaView: View {
                             ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
                             Spacer()
                         }
-                        .padding(.vertical, 40)
+                        .padding(.vertical, 20)
                     }
                     
                     Spacer()
@@ -232,6 +249,11 @@ struct SemanaView: View {
         .fullScreenCover(isPresented: $isShowingAviso, content: {
             AvisoView(isShowingPopUp: $isShowingAviso)
         })
+        .sheet(isPresented: $apareceInfo){
+            SemanaConcluidaView(apareceInfo: $apareceInfo)
+                
+        }
+        
         
     }
 }
