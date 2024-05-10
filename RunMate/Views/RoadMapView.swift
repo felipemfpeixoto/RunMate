@@ -107,5 +107,5 @@ struct RoadMapView: View {
 
 
 #Preview {
-    RoadMapView()
+    RoadMapView(semanas: [Semana(semana: 1, dias: []), Semana(semana: 2, dias: []), Semana(semana: 3, dias: [])])
 }
