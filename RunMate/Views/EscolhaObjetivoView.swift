@@ -18,11 +18,15 @@ struct EscolhaObjetivoView: View {
                 Spacer()
                 Text("Selecione seu objetivo:")
                     .foregroundStyle(.white)
-                    .font(.title3.bold())
+//                    .font(.title3.bold())
+                    .font(Font.custom("Roboto-Regular", size: 22))
                 BotaoEscolha(texto: "5 km", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
                 BotaoEscolha(texto: "10 km", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
                 BotaoEscolha(texto: "15 km", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
                 Spacer()
+                
+                VStack{}.frame(height: 100)
+                
                 if selectedGoal != "" {
                     Button(action: {
                         imPrograssing = true

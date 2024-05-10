@@ -29,11 +29,11 @@ struct Semana: Codable, Hashable {
 }
 
 struct PlanoDeTreinamento: Codable {
-    let semanas: [Semana]
+    var semanas: [Semana]
 }
 
 struct PaginaDeTreinamento: Codable {
-    let planoDeTreinamento: PlanoDeTreinamento
+    var planoDeTreinamento: PlanoDeTreinamento
 }
 
 struct FCM: Codable {

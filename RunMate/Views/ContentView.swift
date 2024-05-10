@@ -25,7 +25,7 @@ struct ContentView: View {
     @State var imProgressing: Bool = true
     
     var body: some View {
-        NavigationStack {
+            NavigationStack {
             if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count == 0 {
                 ZStack {
                     Color.blackBlue
@@ -82,6 +82,7 @@ struct ContentView: View {
                 }
 
             } else {
+                
                 SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
             }
         }.navigationBarBackButtonHidden()
@@ -128,6 +129,6 @@ struct BonequinhoView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}

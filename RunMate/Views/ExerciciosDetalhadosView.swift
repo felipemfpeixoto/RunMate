@@ -30,16 +30,16 @@ struct ExerciciosDetalhadosView: View {
                                     if e.nome == "Caminhada"{
                                       return dao.fcmDescricao.caminhada
                                    }
-                                   if e.nome == "Corrida Leve"{
+                                   else if e.nome == "Corrida Leve"{
                                        return dao.fcmDescricao.leve
                                    }
-                                   if e.nome == "Corrida Moderada"{
+                                   else if e.nome == "Corrida Moderada"{
                                        return dao.fcmDescricao.moderada
                                    }
-                                   if e.nome == "Corrida Forte"{
+                                   else if e.nome == "Corrida Forte"{
                                        return dao.fcmDescricao.forte
                                    }
-                                   if e.nome == "Corrida Muito Forte"{
+                                   else if e.nome == "Corrida Muito Forte"{
                                        return dao.fcmDescricao.muitoForte
                                    }
                                    else{
@@ -56,7 +56,7 @@ struct ExerciciosDetalhadosView: View {
                                             Text(e.nome)
                                                 .font(.custom("Poppins-SemiBold", size: 15).bold())
                                             Text(descricao)
-                                                .font(.custom("Poppins-Medium", size: 13))
+                                                .font(.custom("Poppins-Medium", size: 12))
                                         }
                                 }
                                 .padding(.horizontal, 40)
