@@ -10,8 +10,6 @@ import SwiftUI
 struct ConclusaoMetaView: View {
     var body: some View {
         ZStack {
-            Color.blackBlue
-                .ignoresSafeArea()
             VStack {
                 Image("Trofeu")
                     .shadow(color: .turquoiseGreen, radius: 13.0)

@@ -11,8 +11,16 @@ struct AvisoConfirmacaoEtapa: View {
     
     @Binding var apareceAtencao: Bool
     
+    @Binding var apareceParabensMeta: Bool
+    
+    @Binding var apareceParabens: Bool
+    
     var body: some View {
         ZStack {
+            Color.blackBlue
+                .opacity(0.2)
+                .ignoresSafeArea()
+            
             RoundedRectangle(cornerRadius: 40)
                 .fill(Color.oceanBlue)
                 .stroke(Color.turquoiseGreen, lineWidth: 4)
@@ -59,7 +67,29 @@ struct AvisoConfirmacaoEtapa: View {
                     .cornerRadius(18)
                     
                     
-                    Button(action: {apareceAtencao = false}, label: {
+                    Button(action: {
+                        withAnimation(Animation.spring(duration: 0.75)) {
+                            apareceAtencao = false
+                        }
+                        
+                        if dao.diasConcluidos.count == 6   {
+                            if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
+                                dao.semanaAtual = 0
+                                apareceParabensMeta = true
+                                print("semana atual depois: \(dao.semanaAtual)")
+                            } else {
+                                dao.diaAtual = 0
+                                dao.diasConcluidos = []
+                                dao.semanaAtual += 1
+                                withAnimation(Animation.bouncy(duration: 0.75)) {
+                                    apareceParabens = true
+                                }
+                            }
+                        } else {
+                            dao.diasConcluidos.append(dao.diaAtual+1)
+                            dao.diaAtual += 1
+                        }
+                    }, label: {
                         Text("CONCLUIR")
                             .foregroundColor(.oceanBlue)
                             .font(Font.custom("Poppins-SemiBold", size: 18))
@@ -73,10 +103,9 @@ struct AvisoConfirmacaoEtapa: View {
         
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(Color.blackBlue.opacity(0.4))
     }
 }
 
-#Preview {
-    AvisoConfirmacaoEtapa(apareceAtencao: .constant(true))
-}
+//#Preview {
+//    AvisoConfirmacaoEtapa(apareceAtencao: .constant(true), apareceParabensMeta: .constant(false))
+//}

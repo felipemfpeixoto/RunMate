@@ -15,6 +15,8 @@ struct SemanaView: View {
     
     @State var isShowingAviso = false
     
+    @State var isShowingAvisoConclusao = false
+    
     @State var apareceParabensMeta = false
    
     var body: some View {
@@ -71,6 +73,10 @@ struct SemanaView: View {
                     Color.black.opacity(0.3).ignoresSafeArea()
                     ParabénsView(apareceParabens: $apareceParabens)
                 }
+            } else if isShowingAvisoConclusao {
+                Color.black.opacity(0.3).ignoresSafeArea()
+                AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAvisoConclusao, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
+                
             }
         }
         .fullScreenCover(isPresented: $isShowingAviso, content: {
@@ -151,22 +157,8 @@ struct SemanaView: View {
     var botaoEtapaNaoConcluida: some View {
         VStack{
             Button(action: {
-                if dao.diasConcluidos.count == 6   {
-                    if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
-                        dao.semanaAtual = 0
-                        apareceParabensMeta = true
-                        print("semana atual depois: \(dao.semanaAtual)")
-                    } else {
-                        dao.diaAtual = 0
-                        dao.diasConcluidos = []
-                        dao.semanaAtual += 1
-                        withAnimation(Animation.bouncy(duration: 0.75)) {
-                            apareceParabens = true
-                        }
-                    }
-                } else {
-                    dao.diasConcluidos.append(dao.diaAtual+1)
-                    dao.diaAtual += 1
+                withAnimation(Animation.spring(duration: 0.75)) {
+                    isShowingAvisoConclusao.toggle()
                 }
             }, label: {
                 Text("CONCLUIR ETAPA")
