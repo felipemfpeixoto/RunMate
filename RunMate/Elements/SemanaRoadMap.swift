@@ -46,7 +46,7 @@ struct SemanaRoadMap: View {
                                     .frame(height: 100)
                                 RoundedRectangle(cornerRadius: 18)
                                     .stroke(Color.turquoiseGreen, lineWidth: 4)
-                                    .frame(height: 100)
+                                    .frame(height: 80)
                                 
                             }
                         
@@ -74,7 +74,7 @@ struct SemanaRoadMap: View {
                             .frame(height: 100)
                         RoundedRectangle(cornerRadius: 18)
                             .stroke(Color.turquoiseGreen, lineWidth: 4)
-                            .frame(height: 100)
+                            .frame(height: 80)
                     }
                     .overlay(alignment: .trailing) {
                         Image("cadeadoAberto")
@@ -99,7 +99,7 @@ struct SemanaRoadMap: View {
                             .frame(height: 100)
                         RoundedRectangle(cornerRadius: 18)
                             .stroke(Color.lilacPurple, lineWidth: 4)
-                            .frame(height: 100)
+                            .frame(height: 80)
                     }
                     .overlay(alignment: .trailing) {
                         Image("Medalha")
