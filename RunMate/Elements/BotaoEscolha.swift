@@ -29,7 +29,7 @@ struct BotaoEscolha: View {
                     selectedLevel = "Avançado"
                     reallySelectedLevel = "avancado"
                 }
-                dao.nivelDescricao = "Boa experiência em corrida e treinamento. Frequentemente, participa de corridas e \nprocura metas maiores."
+                dao.nivelDescricao = "Boa experiência em corrida e treinamento. Frequentemente participa de corridas e \nprocura metas maiores."
             case "5 km":
                 withAnimation {
                     selectedLevel = "5 km"
