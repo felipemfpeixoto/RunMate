@@ -20,6 +20,7 @@ struct SemanaView: View {
     var body: some View {
         ZStack{
             Color(.blackBlue).ignoresSafeArea()
+            
             if dao.semanaAtual == -1 {
                 ProgressView()
                     .onAppear {
@@ -65,7 +66,7 @@ struct SemanaView: View {
         }
         .navigationBarBackButtonHidden()
         .overlay{
-            if apareceParabens{
+            if apareceParabens {
                 ZStack{
                     Color.black.opacity(0.3).ignoresSafeArea()
                     ParabénsView(apareceParabens: $apareceParabens)
@@ -159,7 +160,9 @@ struct SemanaView: View {
                         dao.diaAtual = 0
                         dao.diasConcluidos = []
                         dao.semanaAtual += 1
-                        apareceParabens = true
+                        withAnimation(Animation.bouncy(duration: 0.75)) {
+                            apareceParabens = true
+                        }
                     }
                 } else {
                     dao.diasConcluidos.append(dao.diaAtual+1)

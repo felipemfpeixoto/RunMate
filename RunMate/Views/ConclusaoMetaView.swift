@@ -34,11 +34,9 @@ struct ConclusaoMetaView: View {
                     .padding(.top, 10)
                     
                 Button{
-                    
-//                    dao.paginaDeTreinamento = PaginaDeTreinamento(planoDeTreinamento: PlanoDeTreinamento(semanas: []))
-                    
                     dao.paginaDeTreinamento.planoDeTreinamento.semanas = []
-                    
+//                    try? DAO.delete()
+//                    dao = DAO.instance
                 } label: {
                     Text("CRIE UMA NOVA META")
                         .foregroundColor(.oceanBlue)

@@ -57,35 +57,34 @@ struct RoadMapView: View {
                                         VStack {
                                             Image("impar")
                                                 .resizable()
-                                                .padding(.bottom, -50)
+                                                .padding(.bottom, -25)
                                             SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
                                                 .padding(.trailing, 30)
-                                                .padding(.bottom, -40)
+                                                .padding(.top, -15)
                                                 .onAppear {
                                                     print("week: " + String((semana.semana-1)))
                                                     print(dao.semanaAtual)
                                                 }
-                                        }
+                                        }.padding(.bottom, -46)
                                     } else {
                                         VStack {
                                             Image("par")
                                                 .resizable()
-                                                .padding(.bottom, -40)
+                                                .padding(.bottom, -20)
                                             SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
                                                 .padding(.leading, 10)
-                                                .padding(.bottom, -40)
+                                                .padding(.top, -16)
                                                 .onAppear {
                                                     print("week: " + String((semana.semana-1)))
                                                     print(dao.semanaAtual)
                                                 }
-                                        }
+                                        }.padding(.bottom, -44)
                                     }
                                 }
                             }
                             if (semanas?.last?.semana ?? 1) % 2 == 1 {
                                 Image("imparFinal")
                                     .resizable()
-                                    .padding(.top, 40)
                             } else {
                                 Image("parFinal")
                                     .resizable()
