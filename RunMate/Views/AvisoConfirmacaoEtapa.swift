@@ -72,7 +72,8 @@ struct AvisoConfirmacaoEtapa: View {
                             apareceAtencao = false
                         }
                         
-                        if dao.diasConcluidos.count == 6   {
+                        
+                      if dao.diasConcluidos.count == 6   {
                             if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
                                 dao.semanaAtual = 0
                                 apareceParabensMeta = true
