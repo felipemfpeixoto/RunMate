@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ConclusaoMetaView: View {
+    @State private var animateMedal = false
     var body: some View {
         ZStack {
+            Color(Color.blackBlue)
+                .ignoresSafeArea()
             VStack {
                 Image("Trofeu")
                     .shadow(color: .turquoiseGreen, radius: 13.0)
+                    .scaleEffect(animateMedal ? 1.1 : 0.9) // Escala inicial é 1.1 quando animada, 0.9 quando não animada
+                    .animation(
+                        Animation.easeInOut(duration: 0.5) // Animando a escala da medalha
+                            .repeatCount(3, autoreverses: true) // Repete uma vez e reverte
+                            .delay(0.2) // Delay de 1 segundo antes de começar a animação
+                    )
                 
                 Text("META CONCLUÍDA!")
                     .font(Font.custom("Poppins-SemiBold", size: 28))
@@ -48,6 +57,9 @@ struct ConclusaoMetaView: View {
                 }
             }
             .padding(.horizontal, 30)
+            .onAppear {
+                self.animateMedal.toggle() // Inicia a animação quando a view aparece
+            }
         }
     }
 }

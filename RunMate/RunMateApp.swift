@@ -14,7 +14,8 @@ struct RunMateApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+         
+         ContentView()
 //            NavigationStack{
 //                ConclusaoMetaView()
 //            }

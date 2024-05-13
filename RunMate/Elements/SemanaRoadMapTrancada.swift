@@ -5,28 +5,28 @@
 //  Created by Roberta Cordeiro on 03/05/24.
 //
 
-import SwiftUI
-
-
-struct SemanaRoadMapTrancada: View {
-    let level: Level
-    
-    var body: some View {
-        EmptyView()
-    }
-}
-
-struct RoadShape: Shape {
-    var right: Bool
-    func path(in rect: CGRect) -> Path {
-        
-        Path { path in
-            path.move(to: CGPoint(x: 0, y: 100))
-            
-            }
-        }
-        
-    }
+//import SwiftUI
+//
+//
+//struct SemanaRoadMapTrancada: View {
+//    let level: Level
+//    
+//    var body: some View {
+//        EmptyView()
+//    }
+//}
+//
+//struct RoadShape: Shape {
+//    var right: Bool
+//    func path(in rect: CGRect) -> Path {
+//        
+//        Path { path in
+//            path.move(to: CGPoint(x: 0, y: 100))
+//            
+//            }
+//        }
+//        
+//    }
 
 
 //struct RoadShape: Shape {
