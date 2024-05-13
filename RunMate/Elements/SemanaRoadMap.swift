@@ -6,23 +6,6 @@
 //
 
 import SwiftUI
-enum Level: Int {
-    case semana1 = 0
-    case semana2 = 1
-    case semana3 = 2
-    case semana4 = 3
-}
-
-extension Level: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .semana1: "Semana 1"
-        case .semana2: "Semana 2"
-        case .semana3: "Semana 3"
-        case .semana4: "Semana 4"
-        }
-    }
-}
 
 struct SemanaRoadMap: View {
     let semana: Semana
@@ -39,22 +22,20 @@ struct SemanaRoadMap: View {
                             .fontWeight(.semibold)
                             .padding(.trailing, 12)
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 20)
                             .background {
                                 RoundedRectangle(cornerRadius: 18)
                                     .fill(.blackBlue)
-                                    .frame(height: 100)
+                                    .frame(height: 80)
                                 RoundedRectangle(cornerRadius: 18)
                                     .stroke(Color.turquoiseGreen, lineWidth: 4)
                                     .frame(height: 80)
-                                
                             }
-                        
                     }
                     .overlay(alignment: .trailing) {
                         Image("Cadeado")
                             .resizable()
                             .scaledToFit()
+                            .scaleEffect(CGSize(width: 2.0, height: 2.0))
                             .alignmentGuide(.trailing, computeValue: { dimension in
                                 dimension[HorizontalAlignment.center]
                             })
@@ -67,11 +48,10 @@ struct SemanaRoadMap: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                     .padding(.leading, 12)
-                    .padding(.vertical, 20)
                     .background {
                         RoundedRectangle(cornerRadius: 18)
                             .fill(.oceanBlue)
-                            .frame(height: 100)
+                            .frame(height: 80)
                         RoundedRectangle(cornerRadius: 18)
                             .stroke(Color.turquoiseGreen, lineWidth: 4)
                             .frame(height: 80)
@@ -80,6 +60,7 @@ struct SemanaRoadMap: View {
                         Image("cadeadoAberto")
                             .resizable()
                             .scaledToFit()
+                            .scaleEffect(CGSize(width: 2.0, height: 2.0))
                             .alignmentGuide(.trailing, computeValue: { dimension in
                                 dimension[HorizontalAlignment.center]
                             })
@@ -92,11 +73,10 @@ struct SemanaRoadMap: View {
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
                     .padding(.leading, 12)
-                    .padding(.vertical, 20)
                     .background {
                         RoundedRectangle(cornerRadius: 18)
                             .fill(.turquoiseGreen)
-                            .frame(height: 100)
+                            .frame(height: 80)
                         RoundedRectangle(cornerRadius: 18)
                             .stroke(Color.lilacPurple, lineWidth: 4)
                             .frame(height: 80)
@@ -105,6 +85,7 @@ struct SemanaRoadMap: View {
                         Image("Medalha")
                             .resizable()
                             .scaledToFit()
+                            .scaleEffect(CGSize(width: 2.0, height: 2.0))
                             .alignmentGuide(.trailing, computeValue: { dimension in
                                 dimension[HorizontalAlignment.center]
                             })
