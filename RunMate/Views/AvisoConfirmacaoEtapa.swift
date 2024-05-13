@@ -25,7 +25,7 @@ struct AvisoConfirmacaoEtapa: View {
                 .fill(Color.oceanBlue)
                 .stroke(Color.turquoiseGreen, lineWidth: 4)
                 .frame(maxWidth: .infinity)
-                .frame(height: 260)
+                .frame(height: 230)
                 .padding(25)
             
             VStack(spacing: 20) {
@@ -43,7 +43,7 @@ struct AvisoConfirmacaoEtapa: View {
                     .font(Font.custom("Poppins-SemiBold", size: 16))
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 30)
             }
             .padding(.vertical, 25)
             .padding(.horizontal, 30)
@@ -52,7 +52,7 @@ struct AvisoConfirmacaoEtapa: View {
                 
                 VStack{
                     
-                }.frame(height: 255)
+                }.frame(height: 220)
                 
                 HStack{
                     
@@ -72,7 +72,8 @@ struct AvisoConfirmacaoEtapa: View {
                             apareceAtencao = false
                         }
                         
-                        if dao.diasConcluidos.count == 6   {
+                        
+                      if dao.diasConcluidos.count == 6   {
                             if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
                                 dao.semanaAtual = 0
                                 apareceParabensMeta = true

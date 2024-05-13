@@ -18,6 +18,8 @@ struct SemanaView: View {
     @State var isShowingAvisoConclusao = false
     
     @State var apareceParabensMeta = false
+    
+    let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
    
     var body: some View {
         ZStack{
@@ -35,7 +37,11 @@ struct SemanaView: View {
                     if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count > 0 {
                         if dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty{
                             diaLivre
-                        } else {
+                        } 
+                        else if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count && dao.diaAtual == 6{
+                            diaProva
+                        }
+                        else {
                             VStack{
                                 ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
                                 Spacer()
@@ -212,6 +218,42 @@ struct SemanaView: View {
                 .multilineTextAlignment(.center)
             Spacer()
         }
+    }
+    
+    var diaProva: some View {
+        VStack{
+            ZStack(alignment: .leading){
+                VStack{
+                    LazyVGrid(columns: gridItems, alignment: .leading) {
+                        Text(dao.metaSelecionlada)
+                            .font(.custom("Poppins-SemiBold", size: 18))
+                            .padding(.leading, 80)
+                        
+                        VStack(alignment: .leading){
+                            Text("Corrida Definitiva")
+                                .font(.custom("Poppins-SemiBold", size: 15).bold())
+                            Text("Distância final da meta")
+                                .font(.custom("Poppins-Medium", size: 12))
+                        }
+                    }
+                    .padding(.horizontal, 40)
+                    .foregroundColor(.white)
+                    .frame(width: 359, height: 65)
+                }
+                
+                Text("1X")
+                    .font(.custom("Poppins-Medium", size: 18))
+                    .foregroundColor(.oceanBlue)
+                    .frame(width: 63, height: 65)
+                    .background(dao.diasConcluidos.contains(dao.diaAtual + 1) ?  Color.lilacPurple : Color.turquoiseGreen)
+                    .cornerRadius(18)
+            }
+            .background(Color.oceanBlue)
+            .cornerRadius(18)
+            Spacer()
+        }
+        .padding(.vertical, 20)
+        
     }
     
     func updateDiaAtual(dia: Dia) {

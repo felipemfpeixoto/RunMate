@@ -40,21 +40,21 @@ struct ConclusaoMetaView: View {
                     .multilineTextAlignment(.center)
                     .padding(.top, 10)
                     
-                Button{
-                    dao.paginaDeTreinamento.planoDeTreinamento.semanas = []
-//                    try? DAO.delete()
-//                    dao = DAO.instance
-                } label: {
-                    Text("CRIE UMA NOVA META")
-                        .foregroundColor(.oceanBlue)
-                        .font(Font.custom("Poppins-SemiBold", size: 18))
-                        .padding(.vertical, 16)
-                        .padding(.horizontal, 25)
-                        .background(Color.turquoiseGreen)
-                        .clipShape(Capsule())
-                        .padding(.top, 40)
-                        .padding(.bottom, 20)
-                }
+//                Button{
+//                    dao.paginaDeTreinamento.planoDeTreinamento.semanas = []
+////                    try? DAO.delete()
+////                    dao = DAO.instance
+//                } label: {
+//                    Text("CRIE UMA NOVA META")
+//                        .foregroundColor(.oceanBlue)
+//                        .font(Font.custom("Poppins-SemiBold", size: 18))
+//                        .padding(.vertical, 16)
+//                        .padding(.horizontal, 25)
+//                        .background(Color.turquoiseGreen)
+//                        .clipShape(Capsule())
+//                        .padding(.top, 40)
+//                        .padding(.bottom, 20)
+//                }
             }
             .padding(.horizontal, 30)
             .onAppear {
