@@ -66,6 +66,4 @@ struct BotaoEscolha: View {
     }
 }
 
-//#Preview {
-//    BotaoEscolha(texto: "Iniciante")
-//}
+

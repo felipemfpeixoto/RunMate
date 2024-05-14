@@ -38,11 +38,6 @@ struct SemanaConcluidaView: View {
                     .font(.custom("Roboto-Bold", size: 24))
                     .padding(.bottom, 30)
                 
-//                Rectangle()
-//                    .frame(height: 1)
-//                    .foregroundColor(.blackBlue)
-//                    .padding(.bottom, 20)
-                
                 VStack{
                     HStack{
                         Text("Caminhada | FCM de 50% a 65%")
@@ -154,11 +149,6 @@ struct SemanaConcluidaView: View {
                 .frame(width: 343, height: 47)
                 .background(Color.oceanBlue)
                 .cornerRadius(9)
-                
-//                Rectangle()
-//                    .frame(height: 1)
-//                    .foregroundColor(.blackBlue)
-//                    .padding(.top, 20)
                 
                 VStack(alignment: .leading, spacing: 10){
                     

@@ -18,7 +18,6 @@ struct EscolhaObjetivoView: View {
                 Spacer()
                 Text("Selecione seu objetivo:")
                     .foregroundStyle(.white)
-//                    .font(.title3.bold())
                     .font(Font.custom("Roboto-Regular", size: 22))
                 BotaoEscolha(texto: "5 km", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
                 BotaoEscolha(texto: "10 km", selectedLevel: $selectedGoal, reallySelectedLevel: $filenameGoal)
@@ -66,6 +65,4 @@ struct EscolhaObjetivoView: View {
     }
 }
 
-//#Preview {
-//    EscolhaObjetivoView(selectedLevel: .constant(""))
-//}
+

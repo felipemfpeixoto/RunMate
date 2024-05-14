@@ -16,87 +16,87 @@ struct RoadMapView: View {
     @State var semanas: [Semana]?
     
     var body: some View {
-            VStack {
-                HStack {
-                    Button(action: {
-                        dismiss()
-                    }, label: {
-                        Image(systemName: "arrow.backward")
-                            .foregroundColor(.white)
-                            .font(.title2)
-                            .fontWeight(.medium)
-                    })
-                    Spacer()
-                }
-                .padding(.leading, 30)
-                .padding(.bottom, 2)
-                HStack {
-                    Text("Minha meta")
-                        .font(Font.custom("Roboto-Bold", size: 28))
-                        .foregroundStyle(Color.white)
-                    Spacer()
-                }
-                .padding(.leading, 30)
-                
-                HStack {
-                    Text("\(dao.metaSelecionlada == "5KM" ? String(dao.metaSelecionlada.prefix(1)) : String(dao.metaSelecionlada.prefix(2))) km - \(dao.nivelSelecionado)")
-                        .foregroundStyle(.turquoiseGreen)
-                        .font(Font.custom("Roboto-Regular", size: 24))
-                    Spacer()
-                }
-                .padding(.leading, 30)
-                
-                
-                
-                GeometryReader { geometry in
-                    ScrollView {
-                        VStack {
-                            ForEach(semanas ?? [], id: \.self) { semana in
-                                ZStack {
-                                    if semana.semana % 2 == 1 {
-                                        VStack {
-                                            Image("impar")
-                                                .resizable()
-                                            SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                                                .padding(.trailing, 30)
-                                                .padding(.top, -30)
-                                                .onAppear {
-                                                    print("week: " + String((semana.semana-1)))
-                                                    print(dao.semanaAtual)
-                                                }
-                                        }
-                                        .padding(.bottom, -16)
-                                    } else {
-                                        VStack {
-                                            Image("par")
-                                                .resizable()
-                                            SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                                                .padding(.leading, 10)
-                                                .padding(.top, -30)
-                                                .onAppear {
-                                                    print("week: " + String((semana.semana-1)))
-                                                    print(dao.semanaAtual)
-                                                }
-                                        }
-                                        .padding(.bottom, -16)
+        VStack {
+            HStack {
+                Button(action: {
+                    dismiss()
+                }, label: {
+                    Image(systemName: "arrow.backward")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .fontWeight(.medium)
+                })
+                Spacer()
+            }
+            .padding(.leading, 30)
+            .padding(.bottom, 2)
+            HStack {
+                Text("Minha meta")
+                    .font(Font.custom("Roboto-Bold", size: 28))
+                    .foregroundStyle(Color.white)
+                Spacer()
+            }
+            .padding(.leading, 30)
+            
+            HStack {
+                Text("\(dao.metaSelecionlada == "5KM" ? String(dao.metaSelecionlada.prefix(1)) : String(dao.metaSelecionlada.prefix(2))) km - \(dao.nivelSelecionado)")
+                    .foregroundStyle(.turquoiseGreen)
+                    .font(Font.custom("Roboto-Regular", size: 24))
+                Spacer()
+            }
+            .padding(.leading, 30)
+            
+            
+            
+            GeometryReader { geometry in
+                ScrollView {
+                    VStack {
+                        ForEach(semanas ?? [], id: \.self) { semana in
+                            ZStack {
+                                if semana.semana % 2 == 1 {
+                                    VStack {
+                                        Image("impar")
+                                            .resizable()
+                                        SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
+                                            .padding(.trailing, 30)
+                                            .padding(.top, -30)
+                                            .onAppear {
+                                                print("week: " + String((semana.semana-1)))
+                                                print(dao.semanaAtual)
+                                            }
                                     }
+                                    .padding(.bottom, -16)
+                                } else {
+                                    VStack {
+                                        Image("par")
+                                            .resizable()
+                                        SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
+                                            .padding(.leading, 10)
+                                            .padding(.top, -30)
+                                            .onAppear {
+                                                print("week: " + String((semana.semana-1)))
+                                                print(dao.semanaAtual)
+                                            }
+                                    }
+                                    .padding(.bottom, -16)
                                 }
                             }
-                            Image("impar")
-                                .offset(x: -10)
                         }
+                        Image("impar")
+                            .offset(x: -10)
                     }
+                }
             }
-                
+            
         }
         .background(.blackBlue)
         .navigationBarBackButtonHidden()
         .onAppear {
             semanas = dao.paginaDeTreinamento.planoDeTreinamento.semanas
         }
- 
+        
     }
-    }
+}
 
 
 #Preview {

@@ -70,6 +70,4 @@ struct EscolhaNivelView: View {
     }
 }
 
-//#Preview {
-//    EscolhaNivelView()
-//}
+

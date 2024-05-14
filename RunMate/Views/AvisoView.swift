@@ -19,21 +19,21 @@ struct AvisoView: View {
                 .stroke(Color.lilacPurple, lineWidth: 4)
                 .frame(maxWidth: .infinity)
                 .frame(height: 400)
-                .padding(.horizontal, 20)// Add stroke around the rectangle
+                .padding(.horizontal, 20)
             
             
             
             VStack(spacing: 15) {
                 Image("Alerta")
                     .shadow(color: .lilacPurple, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                    .scaleEffect(animateMedal ? 0.8 : 0.7) // Escala inicial é 1.1 quando animada, 0.9 quando não animada
+                    .scaleEffect(animateMedal ? 0.8 : 0.7)
                     .animation(
-                        Animation.easeInOut(duration: 1) // Animando a escala da medalha
-                            .repeatCount(3, autoreverses: true) // Repete uma vez e reverte
-                            .delay(0.2) // Delay de 1 segundo antes de começar a animação
+                        Animation.easeInOut(duration: 1)
+                            .repeatCount(3, autoreverses: true)
+                            .delay(0.2)
                         
                     )
-//                    .padding(.bottom, 30)
+                
                 Text("ATENÇÃO!")
                     .font(Font.custom("Poppins-SemiBold", size: 22))
                     .foregroundStyle(Color.turquoiseGreen)
@@ -66,7 +66,7 @@ struct AvisoView: View {
                         .padding(.vertical, 16)
                         .padding(.horizontal, 50)
                         .background(Color.turquoiseGreen)
-//                        .clipShape(Circle())
+
                         
                     
                 })
@@ -83,7 +83,7 @@ struct AvisoView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.darkPurple.opacity(0.9).ignoresSafeArea())
         .onAppear {
-            self.animateMedal.toggle() // Inicia a animação quando a view aparece
+            self.animateMedal.toggle() 
         }
         .navigationBarBackButtonHidden()
     }
