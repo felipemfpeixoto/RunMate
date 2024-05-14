@@ -162,7 +162,7 @@ struct SemanaConcluidaView: View {
                 
                 VStack(alignment: .leading, spacing: 10){
                     
-                    Text("FCM = Frequência Cardíaca Média")
+                    Text("FCM = Frequência Cardíaca Máxima")
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundStyle(.white)
                     
