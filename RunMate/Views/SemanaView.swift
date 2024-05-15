@@ -56,6 +56,7 @@ struct SemanaView: View {
                         } else {
                             botaoEtapaNaoConcluida
                         }
+                            
                         Spacer()
                     }
                 }
@@ -164,7 +165,7 @@ struct SemanaView: View {
         .frame(width: 243, height: 43, alignment: .center)
         .background(Color.lilacPurple)
         .cornerRadius(11)
-        .padding(.bottom, 40)
+        .padding(.bottom, 10)
     }
     
     var botaoEtapaNaoConcluida: some View {
@@ -186,7 +187,7 @@ struct SemanaView: View {
             .background(Color.oceanBlue)
             .cornerRadius(11)
         }
-        .padding(.bottom, 40)
+        .padding(.bottom, 10)
     }
     
     var scrollViewHorizontal: some View {
