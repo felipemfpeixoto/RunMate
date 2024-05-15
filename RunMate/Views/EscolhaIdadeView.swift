@@ -62,6 +62,3 @@ struct EscolhaIdadeView: View {
     
 }
 
-//#Preview {
-//    EscolhaIdadeView(selectedLevel: .constant(""), selectedGoal: .constant(""))
-//}

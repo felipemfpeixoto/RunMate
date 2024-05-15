@@ -38,11 +38,6 @@ struct SemanaConcluidaView: View {
                     .font(.custom("Roboto-Bold", size: 24))
                     .padding(.bottom, 30)
                 
-//                Rectangle()
-//                    .frame(height: 1)
-//                    .foregroundColor(.blackBlue)
-//                    .padding(.bottom, 20)
-                
                 VStack{
                     HStack{
                         Text("Caminhada | FCM de 50% a 65%")
@@ -155,14 +150,9 @@ struct SemanaConcluidaView: View {
                 .background(Color.oceanBlue)
                 .cornerRadius(9)
                 
-//                Rectangle()
-//                    .frame(height: 1)
-//                    .foregroundColor(.blackBlue)
-//                    .padding(.top, 20)
-                
                 VStack(alignment: .leading, spacing: 10){
                     
-                    Text("FCM = Frequência Cardíaca Média")
+                    Text("FCM = Frequência Cardíaca Máxima")
                         .font(.custom("Roboto-Regular", size: 16))
                         .foregroundStyle(.white)
                     

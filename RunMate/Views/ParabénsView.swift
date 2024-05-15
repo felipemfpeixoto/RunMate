@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ParabénsView: View {
-    @State private var animateMedal = false // Estado para controlar a animação da medalha
+    @State private var animateMedal = false
     @Binding var apareceParabens: Bool
     
     var body: some View {
@@ -16,11 +16,11 @@ struct ParabénsView: View {
             VStack(spacing: 20) {
                 Image("Medalha")
                     .shadow(color: .turquoiseGreen, radius: 15)
-                    .scaleEffect(animateMedal ? 1.1 : 0.9) // Escala inicial é 1.1 quando animada, 0.9 quando não animada
+                    .scaleEffect(animateMedal ? 1.1 : 0.9)
                     .animation(
-                        Animation.easeInOut(duration: 0.5) // Animando a escala da medalha
-                            .repeatCount(3, autoreverses: true) // Repete uma vez e reverte
-                            .delay(0.2) // Delay de 1 segundo antes de começar a animação
+                        Animation.easeInOut(duration: 0.5)
+                            .repeatCount(3, autoreverses: true)
+                            .delay(0.2)
                     )
                 
                 Text("PARABÉNS!")
@@ -30,12 +30,14 @@ struct ParabénsView: View {
                 Text("Você concluiu sua \(dao.semanaAtual)ª semana e recebeu um emblema!")
                     .font(Font.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.white)
+                    .padding(.horizontal, 25)
                     .multilineTextAlignment(.center)
                 
-                Text("Bora pra próxima semana?")
+                Text("Bora para a próxima semana?")
                     .font(Font.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
+                    .padding(.horizontal, 25)
                     .padding(.bottom, 5)
                 
                 Button(action: {apareceParabens = false}, label: {
@@ -56,7 +58,7 @@ struct ParabénsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.blackBlue.opacity(0.4))
         .onAppear {
-            self.animateMedal.toggle() // Inicia a animação quando a view aparece
+            self.animateMedal.toggle() 
         }
     }
 }

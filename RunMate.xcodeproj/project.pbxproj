@@ -36,7 +36,6 @@
 		0FCDF97B2BF3DD9600DF9C70 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCDF97A2BF3DD9600DF9C70 /* CodableExtensions */; };
 		5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
-		5DA28E432BEA477A00AD845D /* TesteDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA28E422BEA477A00AD845D /* TesteDesign.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
 		F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
@@ -73,9 +72,7 @@
 		0FA57B412BE4117000EA9D99 /* BotaoDia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoDia.swift; sourceTree = "<group>"; };
 		0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMap.swift; sourceTree = "<group>"; };
 		0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhaIdadeView.swift; sourceTree = "<group>"; };
-		5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMapTrancada.swift; sourceTree = "<group>"; };
 		5D8091212BED42F800986596 /* ConclusaoMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusaoMetaView.swift; sourceTree = "<group>"; };
-		5DA28E422BEA477A00AD845D /* TesteDesign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesteDesign.swift; sourceTree = "<group>"; };
 		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
 		F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoConfirmacaoEtapa.swift; sourceTree = "<group>"; };
 		F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
@@ -189,7 +186,6 @@
 				0FA57B3F2BE4116700EA9D99 /* BotaoEscolha.swift */,
 				0FA57B412BE4117000EA9D99 /* BotaoDia.swift */,
 				0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */,
-				5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -197,7 +193,6 @@
 		5DA28E442BEAB82D00AD845D /* Testes */ = {
 			isa = PBXGroup;
 			children = (
-				5DA28E422BEA477A00AD845D /* TesteDesign.swift */,
 			);
 			path = Testes;
 			sourceTree = "<group>";
@@ -316,7 +311,6 @@
 				0FA57B242BE4024100EA9D99 /* Models.swift in Sources */,
 				0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */,
 				0FA57B372BE40E9400EA9D99 /* SemanaView.swift in Sources */,
-				5DA28E432BEA477A00AD845D /* TesteDesign.swift in Sources */,
 				0FA57B3B2BE40EDA00EA9D99 /* SemanaConcluidaView.swift in Sources */,
 				0FA57B092BE400F900EA9D99 /* ContentView.swift in Sources */,
 				0FA57B392BE40EA900EA9D99 /* AvisoView.swift in Sources */,
@@ -326,7 +320,6 @@
 				0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */,
 				5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */,
 				0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */,
-				5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */,
 				0FA57B332BE40CA900EA9D99 /* EscolhaObjetivoView.swift in Sources */,
 				0FA57B072BE400F900EA9D99 /* RunMateApp.swift in Sources */,
 			);

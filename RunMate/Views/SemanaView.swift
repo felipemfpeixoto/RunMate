@@ -111,10 +111,10 @@ struct SemanaView: View {
     
     var botoesFuncionais: some View {
         HStack{
-            NavigationLink(destination: RoadMapView(), label: {
-                Text(Image(systemName: "figure.run.circle.fill"))
-                    .foregroundStyle(Color.turquoiseGreen)
-                    .font(.system(size: 30))})
+//            NavigationLink(destination: RoadMapView(), label: {
+//                Text(Image(systemName: "figure.run.circle.fill"))
+//                    .foregroundStyle(Color.turquoiseGreen)
+//                    .font(.system(size: 30))})
             Button {
                 apareceInfo = true
             } label: {
@@ -122,10 +122,17 @@ struct SemanaView: View {
                     .foregroundStyle(Color.turquoiseGreen)
                     .font(.system(size: 30))
                     .fontWeight(.light)
-                    .padding(.trailing, 10)
-
+                    .padding(.leading, 50)
+                  
             }
+            
+            
+            NavigationLink(destination: RoadMapView(), label: {
+                Text(Image(systemName: "figure.run.circle.fill"))
+                    .foregroundStyle(Color.turquoiseGreen)
+                    .font(.system(size: 30))})
         }
+        .padding(.trailing, 15)
     }
     
     var headerPrincipal: some View {

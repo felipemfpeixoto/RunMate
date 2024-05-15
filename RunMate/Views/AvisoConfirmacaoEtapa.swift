@@ -39,8 +39,8 @@ struct AvisoConfirmacaoEtapa: View {
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
                 
-                Text("Essa ação não poderá ser desfeita")
-                    .font(Font.custom("Poppins-SemiBold", size: 16))
+                Text("Essa ação não poderá ser desfeita.")
+                    .font(Font.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 30)
@@ -107,6 +107,3 @@ struct AvisoConfirmacaoEtapa: View {
     }
 }
 
-//#Preview {
-//    AvisoConfirmacaoEtapa(apareceAtencao: .constant(true), apareceParabensMeta: .constant(false))
-//}
