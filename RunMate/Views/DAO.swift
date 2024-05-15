@@ -32,7 +32,7 @@ let dao = DAO.instance
     
     func loadJsonFileFromObjective() {
         let filename = (escolhas?.nivel ?? "") + (escolhas?.objetivo ?? "") + ".json"
-        let data: PaginaDeTreinamento = Bundle.main.decode(file: filename)
+        let data: PaginaDeTreinamento = try! Bundle.main.decode(file: filename) as PaginaDeTreinamento
         
         self.paginaDeTreinamento = data
         self.semanaAtual = 0
@@ -44,22 +44,28 @@ let dao = DAO.instance
     }
 }
 
+enum BundleDecodingError: Error {
+    case fileNotFound(String)
+    case couldNotLoadData(String)
+    case decodingFailure(String)
+}
+
+
 extension Bundle {
-    func decode<T: Decodable>(file: String) -> T {
+    func decode<T: Decodable>(file: String) throws -> T {
         guard let url = self.url(forResource: file, withExtension: nil) else {
-            fatalError("Could not find \(file) in bundle.")
+            throw BundleDecodingError.fileNotFound("Could not find \(file) in bundle.")
         }
         
         guard let data = try? Data(contentsOf: url) else {
-            fatalError("Could not load \(file) from bundle.")
+            throw BundleDecodingError.couldNotLoadData("Could not load \(file) from bundle.")
         }
         
-        let decoder = JSONDecoder()
-        
-        guard let loadedData = try? decoder.decode(T.self, from: data) else {
-            fatalError("Could not decode \(file) from bundle.")
+        guard let loadedData = try? JSONDecoder().decode(T.self, from: data) else {
+            throw BundleDecodingError.decodingFailure("Could not decode \(file) from bundle.")
         }
         
         return loadedData
     }
 }
+

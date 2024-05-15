@@ -83,7 +83,7 @@ struct RoadMapView: View {
                                 }
                             }
                             Image("impar")
-                                .offset(x: -10)
+                                .resizable()
                         }
                     }
             }
