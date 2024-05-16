@@ -35,6 +35,7 @@
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
 		0FCDF97B2BF3DD9600DF9C70 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCDF97A2BF3DD9600DF9C70 /* CodableExtensions */; };
 		0FCDFA032BF6814200DF9C70 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA022BF6814200DF9C70 /* HealthManager.swift */; };
+		0FCDFA062BF68C9000DF9C70 /* EscolhasCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA052BF68C9000DF9C70 /* EscolhasCentral.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
 		F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */; };
@@ -74,6 +75,7 @@
 		0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhaIdadeView.swift; sourceTree = "<group>"; };
 		0FCDFA022BF6814200DF9C70 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		0FCDFA042BF683D900DF9C70 /* RunMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunMate.entitlements; sourceTree = "<group>"; };
+		0FCDFA052BF68C9000DF9C70 /* EscolhasCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhasCentral.swift; sourceTree = "<group>"; };
 		5D8091212BED42F800986596 /* ConclusaoMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusaoMetaView.swift; sourceTree = "<group>"; };
 		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
 		F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoConfirmacaoEtapa.swift; sourceTree = "<group>"; };
@@ -159,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				0FA57B082BE400F900EA9D99 /* ContentView.swift */,
-				0FA57B2E2BE4072F00EA9D99 /* DAO.swift */,
+				0FCDFA052BF68C9000DF9C70 /* EscolhasCentral.swift */,
 				0FA57B302BE40C9C00EA9D99 /* EscolhaNivelView.swift */,
 				0FA57B322BE40CA900EA9D99 /* EscolhaObjetivoView.swift */,
 				0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */,
@@ -196,6 +198,7 @@
 		0FCDFA012BF6813500DF9C70 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0FA57B2E2BE4072F00EA9D99 /* DAO.swift */,
 				0FCDFA022BF6814200DF9C70 /* HealthManager.swift */,
 			);
 			path = Managers;
@@ -323,6 +326,7 @@
 				0FA57B352BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift in Sources */,
 				F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */,
 				0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */,
+				0FCDFA062BF68C9000DF9C70 /* EscolhasCentral.swift in Sources */,
 				5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */,
 				0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */,
 				0FA57B332BE40CA900EA9D99 /* EscolhaObjetivoView.swift in Sources */,

@@ -141,6 +141,10 @@ struct SemanaView: View {
             HStack (alignment: .top) {
                 minhaMeta
                 Spacer()
+                NavigationLink(destination: ContentView(isEditing: true)) {
+                    Text("Resetar escolhas")
+                }
+                Spacer()
                 botoesFuncionais
             }
             Text("\(dao.semanaAtual+1)ª semana")
