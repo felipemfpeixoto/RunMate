@@ -34,7 +34,6 @@
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
 		0FCDF97B2BF3DD9600DF9C70 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCDF97A2BF3DD9600DF9C70 /* CodableExtensions */; };
-		5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
 		F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */; };

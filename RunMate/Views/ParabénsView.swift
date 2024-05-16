@@ -10,22 +10,23 @@ struct ParabénsView: View {
                 .fill(Color.oceanBlue)
                 .stroke(Color.turquoiseGreen, lineWidth: 4)
                 .frame(maxWidth: .infinity)
-                .frame(height: 280)
+                .frame(height: 220)
                 .padding(25)
             
-            VStack(spacing: 20) {
-                Image("Medalha")
-                    .shadow(color: .turquoiseGreen, radius: 15)
-                    .scaleEffect(animateMedal ? 1.1 : 0.9)
-                    .animation(
-                        Animation.easeInOut(duration: 0.5)
-                            .repeatCount(3, autoreverses: true)
-                            .delay(0.2)
-                    )
+            VStack(spacing: 15) {
+//                Image("Medalha")
+//                    .shadow(color: .turquoiseGreen, radius: 15)
+//                    .scaleEffect(animateMedal ? 1.1 : 0.9)
+//                    .animation(
+//                        Animation.easeInOut(duration: 0.5)
+//                            .repeatCount(3, autoreverses: true)
+//                            .delay(0.2)
+//                    )
                 
                 Text("PARABÉNS!")
                     .font(Font.custom("Poppins-SemiBold", size: 22))
                     .foregroundStyle(Color.turquoiseGreen)
+                    .padding(.top, 60)
                 
                 Text("Você concluiu sua \(dao.semanaAtual)ª semana e recebeu um emblema!")
                     .font(Font.custom("Poppins-SemiBold", size: 18))
@@ -62,5 +63,6 @@ struct ParabénsView: View {
         }
     }
 }
+
 
 
