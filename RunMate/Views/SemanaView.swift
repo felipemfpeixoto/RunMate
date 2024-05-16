@@ -13,8 +13,6 @@ struct SemanaView: View {
     @State var apareceParabens: Bool = false
     @State var apareceInfo: Bool = false
     
-    @State var isShowingAviso = false
-    
     @State var isShowingAvisoConclusao = false
     
     @State var apareceParabensMeta = false
@@ -27,9 +25,6 @@ struct SemanaView: View {
             
             if dao.semanaAtual == -1 {
                 ProgressView()
-                    .onAppear {
-                        isShowingAviso.toggle()
-                    }
             } else {
                 VStack{
                     Spacer()
@@ -86,9 +81,6 @@ struct SemanaView: View {
                 
             }
         }
-        .fullScreenCover(isPresented: $isShowingAviso, content: {
-            AvisoView(isShowingPopUp: $isShowingAviso)
-        })
         .sheet(isPresented: $apareceInfo){
             SemanaConcluidaView(apareceInfo: $apareceInfo)
         }
@@ -141,7 +133,7 @@ struct SemanaView: View {
             HStack (alignment: .top) {
                 minhaMeta
                 Spacer()
-                NavigationLink(destination: ContentView(isEditing: true)) {
+                NavigationLink(destination: ContentView(isEditing: true, isShowingAviso: .constant(true))) {
                     Text("Resetar escolhas")
                 }
                 Spacer()

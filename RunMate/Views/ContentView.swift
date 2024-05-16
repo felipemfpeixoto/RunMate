@@ -26,13 +26,19 @@ struct ContentView: View {
     
     @State var isEditing: Bool
     
+    @Binding var isShowingAviso: Bool
+    
     var body: some View {
             NavigationStack {
-            if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count == 0 || isEditing {
+//            if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count == 0 || isEditing {
                 EscolhasCentral(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel, filenameGoal: $filenameGoal, value: $value, imProgressing: $imProgressing)
-            } else {
-                SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
-            }
+                    .onAppear {
+                        isShowingAviso.toggle()
+                    }
+//            } else {
+//                TelaTabView()
+//                SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
+//            }
         }.navigationBarBackButtonHidden()
     }
 }
