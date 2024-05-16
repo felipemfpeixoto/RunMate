@@ -34,7 +34,7 @@
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
 		0FCDF97B2BF3DD9600DF9C70 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCDF97A2BF3DD9600DF9C70 /* CodableExtensions */; };
-		5D22C2F72BE55A940045E3F8 /* SemanaRoadMapTrancada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D22C2F62BE55A940045E3F8 /* SemanaRoadMapTrancada.swift */; };
+		0FCDFA032BF6814200DF9C70 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA022BF6814200DF9C70 /* HealthManager.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
 		F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */; };
@@ -72,6 +72,8 @@
 		0FA57B412BE4117000EA9D99 /* BotaoDia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotaoDia.swift; sourceTree = "<group>"; };
 		0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanaRoadMap.swift; sourceTree = "<group>"; };
 		0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhaIdadeView.swift; sourceTree = "<group>"; };
+		0FCDFA022BF6814200DF9C70 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		0FCDFA042BF683D900DF9C70 /* RunMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunMate.entitlements; sourceTree = "<group>"; };
 		5D8091212BED42F800986596 /* ConclusaoMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusaoMetaView.swift; sourceTree = "<group>"; };
 		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
 		F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoConfirmacaoEtapa.swift; sourceTree = "<group>"; };
@@ -98,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				0FA57B052BE400F900EA9D99 /* RunMate */,
-				5DA28E442BEAB82D00AD845D /* Testes */,
 				0FA57B042BE400F900EA9D99 /* Products */,
 				F9B5BA9D2BE553B90007E115 /* Frameworks */,
 			);
@@ -115,6 +116,8 @@
 		0FA57B052BE400F900EA9D99 /* RunMate */ = {
 			isa = PBXGroup;
 			children = (
+				0FCDFA042BF683D900DF9C70 /* RunMate.entitlements */,
+				0FCDFA012BF6813500DF9C70 /* Managers */,
 				F9B5BA972BE416DC0007E115 /* Info.plist */,
 				0FA57B3E2BE4112300EA9D99 /* Elements */,
 				0FA57B222BE4023700EA9D99 /* Models */,
@@ -190,11 +193,12 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
-		5DA28E442BEAB82D00AD845D /* Testes */ = {
+		0FCDFA012BF6813500DF9C70 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0FCDFA022BF6814200DF9C70 /* HealthManager.swift */,
 			);
-			path = Testes;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		F9B5BA8A2BE413070007E115 /* Resources */ = {
@@ -314,6 +318,7 @@
 				0FA57B3B2BE40EDA00EA9D99 /* SemanaConcluidaView.swift in Sources */,
 				0FA57B092BE400F900EA9D99 /* ContentView.swift in Sources */,
 				0FA57B392BE40EA900EA9D99 /* AvisoView.swift in Sources */,
+				0FCDFA032BF6814200DF9C70 /* HealthManager.swift in Sources */,
 				5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */,
 				0FA57B352BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift in Sources */,
 				F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */,
@@ -452,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RunMate/RunMate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -460,6 +466,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Deixa ai doidao";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -488,6 +495,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RunMate/RunMate.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -496,6 +504,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Deixa ai doidao";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

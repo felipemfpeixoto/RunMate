@@ -85,8 +85,6 @@ struct RoadMapView: View {
                         Image("impar")
                             .resizable()
                     }
-                    Image("impar")
-                        .offset(x: -10)
                 }
             }
         }
