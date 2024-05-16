@@ -18,26 +18,28 @@ struct AvisoView: View {
                 .fill(Color.darkPurple)
                 .stroke(Color.lilacPurple, lineWidth: 4)
                 .frame(maxWidth: .infinity)
-                .frame(height: 400)
+                .frame(height: 300)
                 .padding(.horizontal, 20)
             
             
             
-            VStack(spacing: 15) {
-                Image("Alerta")
-                    .shadow(color: .lilacPurple, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                    .scaleEffect(animateMedal ? 0.8 : 0.7)
-                    .animation(
-                        Animation.easeInOut(duration: 1)
-                            .repeatCount(3, autoreverses: true)
-                            .delay(0.2)
-                        
-                    )
+            VStack(spacing: 10) {
+                
+//                Image("Alerta")
+//                    .shadow(color: .lilacPurple, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+//                    .scaleEffect(animateMedal ? 0.8 : 0.7)
+//                    .animation(
+//                        Animation.easeInOut(duration: 1)
+//                            .repeatCount(3, autoreverses: true)
+//                            .delay(0.2)
+//                        
+//                    )
                 
                 Text("ATENÇÃO!")
                     .font(Font.custom("Poppins-SemiBold", size: 22))
                     .foregroundStyle(Color.turquoiseGreen)
                     .padding(.bottom, 5)
+                    .padding(.top, 50)
                 
                 
                 Text("Antes de se exercitar ou participar de atividades físicas intensas, como corrida, consulte seu médico ou profissional de saúde.")

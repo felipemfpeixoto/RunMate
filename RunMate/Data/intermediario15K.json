@@ -94,7 +94,7 @@
                     },
                     {
                       "nome": "Tempo Run",
-                      "descricao": "Tempo que pretende fazer a prova",
+                      "descricao": "Simulação do ritmo de prova",
                       "tempo": 20
                     }
                   ],
@@ -177,7 +177,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Tempo Run",
-                          "descricao": "Tempo que pretende fazer a prova",
+                          "descricao": "Simulação do ritmo de prova",
                           "tempo": 10
                         },
                         {
@@ -405,7 +405,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Tempo Run",
-                          "descricao": "Tempo que pretende fazer a prova",
+                          "descricao": "Simulação do ritmo de prova",
                           "tempo": 20
                         }
                     ],
@@ -488,7 +488,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Tempo Run",
-                          "descricao": "Tempo que pretende fazer a prova",
+                          "descricao": "Simulação do ritmo de prova",
                           "distancia": 8
                         },
                       {
@@ -589,7 +589,7 @@
                     "exercíciosDetalhados": [
                         {
                           "nome": "Tempo Run",
-                          "descricao": "Tempo que pretende fazer a prova",
+                          "descricao": "Simulação do ritmo de prova",
                           "distancia": 14
                         }
                     ],
