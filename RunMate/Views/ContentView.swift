@@ -30,15 +30,10 @@ struct ContentView: View {
     
     var body: some View {
             NavigationStack {
-//            if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count == 0 || isEditing {
                 EscolhasCentral(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel, filenameGoal: $filenameGoal, value: $value, imProgressing: $imProgressing)
                     .onAppear {
                         isShowingAviso.toggle()
                     }
-//            } else {
-//                TelaTabView()
-//                SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
-//            }
         }.navigationBarBackButtonHidden()
     }
 }

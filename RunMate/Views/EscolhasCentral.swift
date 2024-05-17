@@ -53,25 +53,26 @@ struct EscolhasCentral: View {
                             .padding(.horizontal)
                            
                     } else if faseBonequinho == 3 {
-                        EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing)
-                            .padding(.horizontal)
-                        Button {
-                            
+                        VStack{
+                            EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing)
+                                .padding(.horizontal)
+                            Button {
                                 dao.idade = Double(value) + 16
                                 criaEscolhas()
-
-                        } label: {
-                            ZStack {
-                                                    RoundedRectangle(cornerRadius: 20)
-                                                        .foregroundStyle(Color.turquoiseGreen)
-                                                        .frame(width: 243, height: 56)
-                                                    Text("Próximo")
-                                                        .foregroundStyle(.black)
-                                                        .font(.title3.bold())
-                                                }
+                                
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .foregroundStyle(Color.turquoiseGreen)
+                                        .frame(width: 243, height: 56)
+                                    Text("Próximo")
+                                        .foregroundStyle(.black)
+                                        .font(.title3.bold())
+                                }
+                            }
+                            Spacer()
                         }
-
-                            
+                    
                     }
                 }
                 .frame(height: 450)
