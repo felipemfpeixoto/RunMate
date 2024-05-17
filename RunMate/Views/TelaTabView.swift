@@ -11,10 +11,12 @@ struct TelaTabView: View {
     
     @Binding var isShowingAviso: Bool
     
+    @Binding var isEditing: Bool
+    
     var body: some View {
         TabView {
             
-            SemanaView()
+            SemanaView(isEditing: $isEditing)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
@@ -43,6 +45,6 @@ struct TelaTabView: View {
     }
 }
 
-#Preview {
-    TelaTabView(isShowingAviso: .constant(false))
-}
+//#Preview {
+//    TelaTabView(isShowingAviso: .constant(false))
+//}

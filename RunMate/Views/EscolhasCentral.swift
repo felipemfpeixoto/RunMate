@@ -19,6 +19,8 @@ struct EscolhasCentral: View {
     
     @Binding var imProgressing: Bool
     
+    @Binding var isEditing: Bool
+    
     var body: some View {
         ZStack {
             Color.blackBlue
@@ -59,7 +61,7 @@ struct EscolhasCentral: View {
                             Button {
                                 dao.idade = Double(value) + 16
                                 criaEscolhas()
-                                
+                                isEditing = false
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
