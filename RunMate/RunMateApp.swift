@@ -16,15 +16,11 @@ struct RunMateApp: App {
     
     var body: some Scene {
         WindowGroup {
-         
-//            ContentView(isEditing: false)
-//            TelaTabView()
             ZStack{
                 if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count == 0 {
                     ContentView(isEditing: false, isShowingAviso: $isShowingAviso)
                 } else {
                     TelaTabView(isShowingAviso: $isShowingAviso)
-                    //                SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
                 }
             }
                 .onChange(of: scenePhase) {

@@ -14,9 +14,7 @@ struct SemanaView: View {
     @State var apareceInfo: Bool = false
     
     @State var isShowingAvisoConclusao = false
-    
     @State var apareceParabensMeta = false
-    
     let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
    
     var body: some View {

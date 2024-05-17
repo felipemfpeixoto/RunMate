@@ -19,16 +19,27 @@ struct TelaTabView: View {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
+                
             
             RoadMapView()
                 .tabItem {
-                    Image(systemName: "house.fill")
-                    Text("Home")
+                    Image(systemName: "road.lanes")
+                    Text("Road Map")
+                }
+            
+            PerfilView()
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Perfil")
                 }
         }
+        .accentColor(Color.turquoiseGreen)
         .fullScreenCover(isPresented: $isShowingAviso, content: {
             AvisoView(isShowingPopUp: $isShowingAviso)
         })
+        .onAppear{
+            UITabBar.appearance().barTintColor = .blackBlue
+        }
     }
 }
 

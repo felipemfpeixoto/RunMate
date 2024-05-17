@@ -44,6 +44,7 @@
 		F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */; };
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
 		F9CBBA822BF690B3001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA812BF690B3001ACE10 /* CodableExtensions */; };
+		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		F9B5BA972BE416DC0007E115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaTabView.swift; sourceTree = "<group>"; };
+		F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				5D8091212BED42F800986596 /* ConclusaoMetaView.swift */,
 				F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */,
 				F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */,
+				F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				0FA57B422BE4117000EA9D99 /* BotaoDia.swift in Sources */,
 				0FA57B2F2BE4072F00EA9D99 /* DAO.swift in Sources */,
 				0FA57B312BE40C9C00EA9D99 /* EscolhaNivelView.swift in Sources */,
+				F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */,
 				0FA57B242BE4024100EA9D99 /* Models.swift in Sources */,
 				0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */,
 				0FA57B372BE40E9400EA9D99 /* SemanaView.swift in Sources */,

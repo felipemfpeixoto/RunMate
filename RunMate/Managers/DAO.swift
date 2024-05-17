@@ -26,7 +26,11 @@ let dao = DAO.instance
     
     var nivelDescricao: String = ""
     
-//    var showAviso: Bool = true
+    var caloriasTotais: Int = 0
+    
+    var velocidadeMedia: Float = 0.0
+    
+    var distanciaMedia: Float = 0.0
     
     
     private init() {
@@ -43,7 +47,6 @@ let dao = DAO.instance
         self.fcm = 220.0 - (dao.idade ?? 0)
         self.fcmDescricao = FCM(caminhada: "\(Int(dao.fcm*0.5)) BPM a \(Int(dao.fcm*0.65)) BPM", leve: "\(Int(dao.fcm*0.65)) BPM a \(Int(dao.fcm*0.75)) BPM", moderada: "\(Int(dao.fcm*0.75)) BPM a \(Int(dao.fcm*0.85)) BPM", forte: "\(Int(dao.fcm*0.85)) BPM a \(Int(dao.fcm*0.9)) BPM", muitoForte: "\(Int(dao.fcm*0.9)) BPM a \(Int(dao.fcm)) BPM")
         self.nivelDescricao = ""
-//        self.showAviso = true
     }
 }
 
