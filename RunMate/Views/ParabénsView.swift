@@ -14,14 +14,6 @@ struct ParabénsView: View {
                 .padding(25)
             
             VStack(spacing: 15) {
-//                Image("Medalha")
-//                    .shadow(color: .turquoiseGreen, radius: 15)
-//                    .scaleEffect(animateMedal ? 1.1 : 0.9)
-//                    .animation(
-//                        Animation.easeInOut(duration: 0.5)
-//                            .repeatCount(3, autoreverses: true)
-//                            .delay(0.2)
-//                    )
                 
                 Text("PARABÉNS!")
                     .font(Font.custom("Poppins-SemiBold", size: 22))

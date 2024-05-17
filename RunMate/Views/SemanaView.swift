@@ -13,7 +13,7 @@ struct SemanaView: View {
     @State var apareceParabens: Bool = false
     @State var apareceInfo: Bool = false
     
-    @State var isShowingAvisoConclusao = false
+    @State var isShowingExercicio = false
     @State var apareceParabensMeta = false
     let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
     
@@ -75,17 +75,20 @@ struct SemanaView: View {
                         Color.black.opacity(0.3).ignoresSafeArea()
                         ParabénsView(apareceParabens: $apareceParabens)
                     }
-                } else if isShowingAvisoConclusao {
-                    Color.black.opacity(0.3).ignoresSafeArea()
-                    AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAvisoConclusao, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
-                    
-                }
+                } /*else if isShowingAvisoConclusao {*/
+//                    Color.black.opacity(0.3).ignoresSafeArea()
+//                    AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAvisoConclusao, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
+//                    
+//                }
             }
             .sheet(isPresented: $apareceInfo){
                 IndiceView(apareceInfo: $apareceInfo)
             }
             .fullScreenCover(isPresented: $apareceParabensMeta, content: {
                 ConclusaoMetaView()
+            })
+            .fullScreenCover(isPresented: $isShowingExercicio, content: {
+                ExercicioEmAndamentoView()
             })
     }
     
@@ -163,10 +166,10 @@ struct SemanaView: View {
         VStack{
             Button(action: {
                 withAnimation(Animation.spring(duration: 0.75)) {
-                    isShowingAvisoConclusao.toggle()
+                    isShowingExercicio.toggle()
                 }
             }, label: {
-                Text("CONCLUIR ETAPA")
+                Text("COMEÇAR ETAPA")
                     .font(Font.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.white)
                 Text(Image(systemName: "checkmark.seal.fill"))

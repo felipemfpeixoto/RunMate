@@ -45,7 +45,8 @@
 		F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */; };
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
 		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
-		F9CBBA872BF7DA86001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA862BF7DA86001ACE10 /* CodableExtensions */; };
+		F9CBBA8A2BF7DE3E001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA892BF7DE3E001ACE10 /* CodableExtensions */; };
+		F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		F9B5BA972BE416DC0007E115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaTabView.swift; sourceTree = "<group>"; };
 		F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
+		F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercicioEmAndamentoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9CBBA872BF7DA86001ACE10 /* CodableExtensions in Frameworks */,
+				F9CBBA8A2BF7DE3E001ACE10 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +174,7 @@
 				0FA57B322BE40CA900EA9D99 /* EscolhaObjetivoView.swift */,
 				0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */,
 				0FA57B342BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift */,
+				F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */,
 				0FA57B362BE40E9400EA9D99 /* SemanaView.swift */,
 				0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */,
 				0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */,
@@ -248,7 +251,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				F9CBBA862BF7DA86001ACE10 /* CodableExtensions */,
+				F9CBBA892BF7DE3E001ACE10 /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -279,7 +282,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				F9CBBA852BF7DA86001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F9CBBA882BF7DE3E001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -338,6 +341,7 @@
 				0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */,
 				F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */,
 				0FCDFA082BF7CF8700DF9C70 /* IndiceView.swift in Sources */,
+				F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */,
 				0FCDFA062BF68C9000DF9C70 /* EscolhasCentral.swift in Sources */,
 				5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */,
 				0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */,
@@ -568,7 +572,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F9CBBA852BF7DA86001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		F9CBBA882BF7DE3E001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -579,9 +583,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F9CBBA862BF7DA86001ACE10 /* CodableExtensions */ = {
+		F9CBBA892BF7DE3E001ACE10 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F9CBBA852BF7DA86001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = F9CBBA882BF7DE3E001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */

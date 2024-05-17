@@ -49,25 +49,112 @@ import HealthKit
     
 //}
 
-#Preview {
-    HealthViewTeste()
-}
+//#Preview {
+//    HealthViewTeste()
+//}
 
-struct HealthViewTeste: View {
+//struct HealthViewTeste: View {
+//    private var healthStore = HKHealthStore()
+//    
+//    @State private var averageSpeed: Double = 0.0
+//    @State private var calories: Double = 0.0
+//    @State private var distance: Double = 0.0
+//    
+//    var body: some View {
+//        VStack {
+//            Text("Velocidade Média: \(averageSpeed, specifier: "%.2f") km/h")
+//            Text("Calorias: \(calories, specifier: "%.2f") kcal")
+//            Text("Distância: \(distance, specifier: "%.2f") km")
+//                .onAppear(perform: requestAuthorization)
+//        }
+//        .padding()
+//    }
+//    
+//    private func requestAuthorization() {
+//        let typesToRead: Set<HKObjectType> = [
+//            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+//            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
+//            HKObjectType.quantityType(forIdentifier: .walkingSpeed)!
+//        ]
+//        
+//        healthStore.requestAuthorization(toShare: nil, read: typesToRead) { (success, error) in
+//            if success {
+//                fetchHealthData()
+//            } else {
+//                print("Authorization failed.")
+//            }
+//        }
+//    }
+//    
+//    private func fetchHealthData() {
+//        let speedType = HKSampleType.quantityType(forIdentifier: .walkingSpeed)!
+//        let caloriesType = HKSampleType.quantityType(forIdentifier: .activeEnergyBurned)!
+//        let distanceType = HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning)!
+//        
+//        fetchAverageSpeed(for: speedType)
+//        fetchCalories(for: caloriesType)
+//        fetchDistance(for: distanceType)
+//    }
+//    
+//    private func fetchAverageSpeed(for sampleType: HKSampleType) {
+//        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date(), options: .strictEndDate)
+//        
+//        let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .discreteAverage) { (query, statistics, error) in
+//            guard let statistics = statistics, let quantity = statistics.averageQuantity() else { return }
+//            DispatchQueue.main.async {
+//                self.averageSpeed = quantity.doubleValue(for: HKUnit.meter().unitDivided(by: HKUnit.second()))
+//            }
+//        }
+//        
+//        healthStore.execute(query)
+//    }
+//    
+//    private func fetchCalories(for sampleType: HKSampleType) {
+//        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date(), options: .strictEndDate)
+//        
+//        let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, statistics, error) in
+//            guard let statistics = statistics, let quantity = statistics.sumQuantity() else { return }
+//            DispatchQueue.main.async {
+//                self.calories = quantity.doubleValue(for: HKUnit.kilocalorie())
+//            }
+//        }
+//        
+//        healthStore.execute(query)
+//    }
+//    
+//    private func fetchDistance(for sampleType: HKSampleType) {
+//        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date(), options: .strictEndDate)
+//        
+//        let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, statistics, error) in
+//            guard let statistics = statistics, let quantity = statistics.sumQuantity() else { return }
+//            DispatchQueue.main.async {
+//                self.distance = quantity.doubleValue(for: HKUnit.meter()) / 1000 // Convert meters to kilometers
+//            }
+//        }
+//        
+//        healthStore.execute(query)
+//    }
+//}
+
+
+class HealthManager: ObservableObject {
     private var healthStore = HKHealthStore()
     
-    @State private var averageSpeed: Double = 0.0
-    @State private var calories: Double = 0.0
-    @State private var distance: Double = 0.0
+    @Published var averageSpeed: Double = 0.0
+    @Published var calories: Double = 0.0
+    @Published var distance: Double = 0.0
     
-    var body: some View {
-        VStack {
-            Text("Velocidade Média: \(averageSpeed, specifier: "%.2f") km/h")
-            Text("Calorias: \(calories, specifier: "%.2f") kcal")
-            Text("Distância: \(distance, specifier: "%.2f") km")
-                .onAppear(perform: requestAuthorization)
-        }
-        .padding()
+    private var startTime: Date?
+    private var endTime: Date?
+    
+    func startCollectingData() {
+        startTime = Date()
+        requestAuthorization()
+    }
+    
+    func stopCollectingData() {
+        endTime = Date()
+        fetchHealthData()
     }
     
     private func requestAuthorization() {
@@ -79,7 +166,7 @@ struct HealthViewTeste: View {
         
         healthStore.requestAuthorization(toShare: nil, read: typesToRead) { (success, error) in
             if success {
-                fetchHealthData()
+                print("Authorization succeeded.")
             } else {
                 print("Authorization failed.")
             }
@@ -87,17 +174,19 @@ struct HealthViewTeste: View {
     }
     
     private func fetchHealthData() {
+        guard let startTime = startTime, let endTime = endTime else { return }
+        
         let speedType = HKSampleType.quantityType(forIdentifier: .walkingSpeed)!
         let caloriesType = HKSampleType.quantityType(forIdentifier: .activeEnergyBurned)!
         let distanceType = HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning)!
         
-        fetchAverageSpeed(for: speedType)
-        fetchCalories(for: caloriesType)
-        fetchDistance(for: distanceType)
+        fetchAverageSpeed(for: speedType, startTime: startTime, endTime: endTime)
+        fetchCalories(for: caloriesType, startTime: startTime, endTime: endTime)
+        fetchDistance(for: distanceType, startTime: startTime, endTime: endTime)
     }
     
-    private func fetchAverageSpeed(for sampleType: HKSampleType) {
-        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date(), options: .strictEndDate)
+    private func fetchAverageSpeed(for sampleType: HKSampleType, startTime: Date, endTime: Date) {
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictEndDate)
         
         let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .discreteAverage) { (query, statistics, error) in
             guard let statistics = statistics, let quantity = statistics.averageQuantity() else { return }
@@ -109,8 +198,8 @@ struct HealthViewTeste: View {
         healthStore.execute(query)
     }
     
-    private func fetchCalories(for sampleType: HKSampleType) {
-        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date(), options: .strictEndDate)
+    private func fetchCalories(for sampleType: HKSampleType, startTime: Date, endTime: Date) {
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictEndDate)
         
         let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, statistics, error) in
             guard let statistics = statistics, let quantity = statistics.sumQuantity() else { return }
@@ -122,8 +211,8 @@ struct HealthViewTeste: View {
         healthStore.execute(query)
     }
     
-    private func fetchDistance(for sampleType: HKSampleType) {
-        let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date(), options: .strictEndDate)
+    private func fetchDistance(for sampleType: HKSampleType, startTime: Date, endTime: Date) {
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictEndDate)
         
         let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, statistics, error) in
             guard let statistics = statistics, let quantity = statistics.sumQuantity() else { return }
@@ -135,3 +224,18 @@ struct HealthViewTeste: View {
         healthStore.execute(query)
     }
 }
+
+
+struct HealthViewTeste: View {
+    @StateObject private var viewModel = HealthManager()
+    
+    var body: some View {
+        VStack {
+            Text("Velocidade Média: \(viewModel.averageSpeed, specifier: "%.2f") km/h")
+            Text("Calorias: \(viewModel.calories, specifier: "%.2f") kcal")
+            Text("Distância: \(viewModel.distance, specifier: "%.2f") km")
+        }
+        .padding()
+    }
+}
+

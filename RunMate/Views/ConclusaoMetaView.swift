@@ -44,7 +44,7 @@ struct ConclusaoMetaView: View {
             
             .padding(.horizontal, 30)
             .onAppear {
-                self.animateMedal.toggle() // Inicia a animação quando a view aparece
+                self.animateMedal.toggle() 
             }
         }
     }
