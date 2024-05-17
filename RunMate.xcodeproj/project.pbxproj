@@ -44,8 +44,8 @@
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
 		F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */; };
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
-		F9CBBA822BF690B3001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA812BF690B3001ACE10 /* CodableExtensions */; };
 		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
+		F9CBBA872BF7DA86001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA862BF7DA86001ACE10 /* CodableExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9CBBA822BF690B3001ACE10 /* CodableExtensions in Frameworks */,
+				F9CBBA872BF7DA86001ACE10 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +248,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				F9CBBA812BF690B3001ACE10 /* CodableExtensions */,
+				F9CBBA862BF7DA86001ACE10 /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -279,7 +279,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				F9CBBA802BF690B3001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F9CBBA852BF7DA86001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -568,7 +568,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F9CBBA802BF690B3001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		F9CBBA852BF7DA86001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -579,9 +579,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F9CBBA812BF690B3001ACE10 /* CodableExtensions */ = {
+		F9CBBA862BF7DA86001ACE10 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F9CBBA802BF690B3001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = F9CBBA852BF7DA86001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */

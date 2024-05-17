@@ -14,15 +14,18 @@ struct RunMateApp: App {
     
     @State var isShowingAviso = false
     
+    @State var isEditing: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ZStack{
-                if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count == 0 {
-                    ContentView(isEditing: false, isShowingAviso: $isShowingAviso)
-                } else {
-                    TelaTabView(isShowingAviso: $isShowingAviso)
+            NavigationStack {
+                ZStack{
+                    if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count == 0 || isEditing {
+                        ContentView(isEditing: $isEditing, isShowingAviso: $isShowingAviso)
+                    } else {
+                        TelaTabView(isShowingAviso: $isShowingAviso, isEditing: $isEditing)
+                    }
                 }
-            }
                 .onChange(of: scenePhase) {
                     switch scenePhase {
                         
@@ -40,6 +43,7 @@ struct RunMateApp: App {
                         break
                     }
                 }
+            }
         }
     }
 }

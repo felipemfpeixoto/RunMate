@@ -24,13 +24,13 @@ struct ContentView: View {
     
     @State var imProgressing: Bool = true
     
-    @State var isEditing: Bool
+    @Binding var isEditing: Bool
     
     @Binding var isShowingAviso: Bool
     
     var body: some View {
             NavigationStack {
-                EscolhasCentral(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel, filenameGoal: $filenameGoal, value: $value, imProgressing: $imProgressing)
+                EscolhasCentral(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel, filenameGoal: $filenameGoal, value: $value, imProgressing: $imProgressing, isEditing: $isEditing)
                     .onAppear {
                         isShowingAviso.toggle()
                     }

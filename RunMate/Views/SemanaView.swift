@@ -16,9 +16,10 @@ struct SemanaView: View {
     @State var isShowingAvisoConclusao = false
     @State var apareceParabensMeta = false
     let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
+    
+    @Binding var isEditing: Bool
    
     var body: some View {
-        NavigationStack {
             ZStack{
                 Color(.blackBlue).ignoresSafeArea()
                 
@@ -86,7 +87,6 @@ struct SemanaView: View {
             .fullScreenCover(isPresented: $apareceParabensMeta, content: {
                 ConclusaoMetaView()
             })
-        }
     }
     
     var minhaMeta: some View {
@@ -123,9 +123,14 @@ struct SemanaView: View {
             HStack (alignment: .top) {
                 minhaMeta
                 Spacer()
-                NavigationLink(destination: ContentView(isEditing: true, isShowingAviso: .constant(true))) {
-                    Text("Resetar escolhas")
-                }
+//                NavigationLink(destination: ContentView(isEditing: true, isShowingAviso: .constant(true))) {
+//                    Text("Resetar escolhas")
+//                }
+                Button(action: {
+                    isEditing = true
+                }, label: {
+                    Text("Resetar Escolhas")
+                })
                 Spacer()
                 botoesFuncionais
             }
@@ -286,6 +291,6 @@ struct SemanaView: View {
 
 }
 
-#Preview {
-    SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas.first!.dias)
-}
+//#Preview {
+//    SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas.first!.dias)
+//}
