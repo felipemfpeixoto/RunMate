@@ -23,7 +23,8 @@ struct Dia: Codable, Hashable {
     let exercicios: [Exercicio]
 }
 
-struct Semana: Codable, Hashable {
+struct Semana: Codable, Hashable, Identifiable {
+    var id:Int {semana}
     let semana: Int
     let dias: [Dia]
 }

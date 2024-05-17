@@ -13,7 +13,10 @@ struct RoadMapView: View {
     
     @State var textoSemanas: [String] = ["Primeira", "Segunda", "Terceira"]
     
-    @State var semanas: [Semana]?
+    @State var semanas: [Semana] = []
+    @State var semanaIndex: Int = 0
+
+    @State var isShowingSheet: Bool = false
     
     var body: some View {
         VStack {
@@ -51,36 +54,9 @@ struct RoadMapView: View {
             GeometryReader { geometry in
                 ScrollView {
                     VStack {
-                        ForEach(semanas ?? [], id: \.self) { semana in
-                            ZStack {
-                                if semana.semana % 2 == 1 {
-                                    VStack {
-                                        Image("impar")
-                                            .resizable()
-                                        SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                                            .padding(.trailing, 30)
-                                            .padding(.top, -30)
-                                            .onAppear {
-                                                print("week: " + String((semana.semana-1)))
-                                                print(dao.semanaAtual)
-                                            }
-                                    }
-                                    .padding(.bottom, -16)
-                                } else {
-                                    VStack {
-                                        Image("par")
-                                            .resizable()
-                                        SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                                            .padding(.leading, 10)
-                                            .padding(.top, -30)
-                                            .onAppear {
-                                                print("week: " + String((semana.semana-1)))
-                                                print(dao.semanaAtual)
-                                            }
-                                    }
-                                    .padding(.bottom, -16)
-                                }
-                            }
+                        ForEach(Array(semanas.enumerated()) , id: \.offset) {index, semana in
+                            semanaDaVez(for: index)
+                                .onAppear{print("index: \(index)")}
                         }
                         Image("impar")
                             .resizable()
@@ -94,9 +70,56 @@ struct RoadMapView: View {
             semanas = dao.paginaDeTreinamento.planoDeTreinamento.semanas
         }
     }
+    
+    func semanaDaVez(for index: Int) -> some View {
+        let semana = semanas[index]
+        
+        return
+        ZStack {
+            VStack {
+                Image( semana.semana % 2 == 1 ? "impar" : "par")
+                    .resizable()
+                Button {
+                    self.semanaIndex = index
+                    isShowingSheet.toggle()
+                    print("****Button******", semanas[index].semana, index, self.semanaIndex)
+                } label: {
+                    if semana.semana % 2 == 1 {
+                            SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
+                                .onAppear {
+                                    print("week: " + String((semana.semana-1)))
+                                    print(dao.semanaAtual)
+                                }
+                    } else {
+                            SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
+                                .onAppear {
+                                    print("week: " + String((semana.semana-1)))
+                                    print(dao.semanaAtual)
+                                }
+                    }
+                }
+                .padding(.leading, semana.semana == 1  ? -30 : 10)
+                .padding(.top, -30)
+                .sheet(isPresented: $isShowingSheet) {
+                    // Mostrar o treino da semana clicada já concluído
+                    Textin(index: $semanaIndex)
+                }
+            }
+            .padding(.bottom, -16)
+        }
+    }
 }
 
 
 #Preview {
     RoadMapView(semanas: [Semana(semana: 1, dias: []), Semana(semana: 2, dias: []), Semana(semana: 3, dias: [])])
+}
+
+
+struct Textin: View {
+    
+    @Binding var index: Int
+    var body: some View {
+        Text("Semana \(index)")
+    }
 }
