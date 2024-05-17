@@ -33,7 +33,6 @@
 		0FA57B422BE4117000EA9D99 /* BotaoDia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B412BE4117000EA9D99 /* BotaoDia.swift */; };
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
-		0FCDF97B2BF3DD9600DF9C70 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCDF97A2BF3DD9600DF9C70 /* CodableExtensions */; };
 		0FCDFA032BF6814200DF9C70 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA022BF6814200DF9C70 /* HealthManager.swift */; };
 		0FCDFA062BF68C9000DF9C70 /* EscolhasCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA052BF68C9000DF9C70 /* EscolhasCentral.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
@@ -43,6 +42,8 @@
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
 		F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */; };
+		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
+		F9CBBA822BF690B3001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA812BF690B3001ACE10 /* CodableExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		F9B5BA972BE416DC0007E115 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FCDF97B2BF3DD9600DF9C70 /* CodableExtensions in Frameworks */,
+				F9CBBA822BF690B3001ACE10 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +175,7 @@
 				5DF051F32BE58B120009757A /* ParabénsView.swift */,
 				5D8091212BED42F800986596 /* ConclusaoMetaView.swift */,
 				F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */,
+				F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,7 +242,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				0FCDF97A2BF3DD9600DF9C70 /* CodableExtensions */,
+				F9CBBA812BF690B3001ACE10 /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -270,7 +273,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				0FCDF9792BF3DD9600DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F9CBBA802BF690B3001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -326,6 +329,7 @@
 				0FA57B352BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift in Sources */,
 				F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */,
 				0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */,
+				F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */,
 				0FCDFA062BF68C9000DF9C70 /* EscolhasCentral.swift in Sources */,
 				5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */,
 				0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */,
@@ -556,7 +560,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0FCDF9792BF3DD9600DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		F9CBBA802BF690B3001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -567,9 +571,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0FCDF97A2BF3DD9600DF9C70 /* CodableExtensions */ = {
+		F9CBBA812BF690B3001ACE10 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0FCDF9792BF3DD9600DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = F9CBBA802BF690B3001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */

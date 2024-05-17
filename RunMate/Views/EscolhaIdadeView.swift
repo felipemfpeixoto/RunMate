@@ -36,16 +36,16 @@ struct EscolhaIdadeView: View {
                     .padding(.horizontal, 20)
                 }
                 Spacer()
-                NavigationLink(destination: SemanaView()) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundStyle(Color.turquoiseGreen)
-                            .frame(width: 243, height: 56)
-                        Text("Próximo")
-                            .foregroundStyle(.black)
-                            .font(.title3.bold())
-                    }
-                }
+//                NavigationLink(destination: TelaTabView(isShowingAviso: .constant(true))) {
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 20)
+//                            .foregroundStyle(Color.turquoiseGreen)
+//                            .frame(width: 243, height: 56)
+//                        Text("Próximo")
+//                            .foregroundStyle(.black)
+//                            .font(.title3.bold())
+//                    }
+//                }
                 Spacer()
             }
         }
