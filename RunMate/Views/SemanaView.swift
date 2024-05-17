@@ -20,73 +20,75 @@ struct SemanaView: View {
     let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
    
     var body: some View {
-        ZStack{
-            Color(.blackBlue).ignoresSafeArea()
-            
-            if dao.semanaAtual == -1 {
-                ProgressView()
-            } else {
-                VStack{
-                    Spacer()
-                    headerPrincipal
-                    if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count > 0 {
-                        if dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty{
-                            diaLivre
-                        } 
-                        else if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count && dao.diaAtual == 6{
-                            diaProva
-                        }
-                        else {
-                            VStack{
-                                ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
-                                Spacer()
-                            }
-                            .padding(.vertical, 20)
-                        }
-                    }
-                    Spacer()
-                    if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
-                        if dao.diasConcluidos.contains(dao.diaAtual + 1){
-                            etapaConcluida
-                        } else {
-                            botaoEtapaNaoConcluida
-                        }
-                            
-                        Spacer()
-                    }
-                }
-                .onAppear {
-                    print(dao.semanaAtual)
-                    print(dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
-                    semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias
-                }
-                .onChange(of: dao.semanaAtual) { oldValue, newValue in
-                    print("semana = " + String(newValue))
-                }
-                .onChange(of: dao.diaAtual) { oldValue, newValue in
-                    print("dia = " + String(newValue))
-                }
-            }
-        }
-        .navigationBarBackButtonHidden()
-        .overlay{
-            if apareceParabens {
-                ZStack{
-                    Color.black.opacity(0.3).ignoresSafeArea()
-                    ParabénsView(apareceParabens: $apareceParabens)
-                }
-            } else if isShowingAvisoConclusao {
-                Color.black.opacity(0.3).ignoresSafeArea()
-                AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAvisoConclusao, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
+        NavigationStack {
+            ZStack{
+                Color(.blackBlue).ignoresSafeArea()
                 
+                if dao.semanaAtual == -1 {
+                    ProgressView()
+                } else {
+                    VStack{
+                        Spacer()
+                        headerPrincipal
+                        if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count > 0 {
+                            if dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty{
+                                diaLivre
+                            }
+                            else if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count && dao.diaAtual == 6{
+                                diaProva
+                            }
+                            else {
+                                VStack{
+                                    ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
+                                    Spacer()
+                                }
+                                .padding(.vertical, 20)
+                            }
+                        }
+                        Spacer()
+                        if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
+                            if dao.diasConcluidos.contains(dao.diaAtual + 1){
+                                etapaConcluida
+                            } else {
+                                botaoEtapaNaoConcluida
+                            }
+                            
+                            Spacer()
+                        }
+                    }
+                    .onAppear {
+                        print(dao.semanaAtual)
+                        print(dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
+                        semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias
+                    }
+                    .onChange(of: dao.semanaAtual) { oldValue, newValue in
+                        print("semana = " + String(newValue))
+                    }
+                    .onChange(of: dao.diaAtual) { oldValue, newValue in
+                        print("dia = " + String(newValue))
+                    }
+                }
             }
+            .navigationBarBackButtonHidden()
+            .overlay{
+                if apareceParabens {
+                    ZStack{
+                        Color.black.opacity(0.3).ignoresSafeArea()
+                        ParabénsView(apareceParabens: $apareceParabens)
+                    }
+                } else if isShowingAvisoConclusao {
+                    Color.black.opacity(0.3).ignoresSafeArea()
+                    AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAvisoConclusao, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
+                    
+                }
+            }
+            .sheet(isPresented: $apareceInfo){
+                IndiceView(apareceInfo: $apareceInfo)
+            }
+            .fullScreenCover(isPresented: $apareceParabensMeta, content: {
+                ConclusaoMetaView()
+            })
         }
-        .sheet(isPresented: $apareceInfo){
-            SemanaConcluidaView(apareceInfo: $apareceInfo)
-        }
-        .fullScreenCover(isPresented: $apareceParabensMeta, content: {
-            ConclusaoMetaView()
-        })
     }
     
     var minhaMeta: some View {
@@ -104,10 +106,6 @@ struct SemanaView: View {
     
     var botoesFuncionais: some View {
         HStack{
-//            NavigationLink(destination: RoadMapView(), label: {
-//                Text(Image(systemName: "figure.run.circle.fill"))
-//                    .foregroundStyle(Color.turquoiseGreen)
-//                    .font(.system(size: 30))})
             Button {
                 apareceInfo = true
             } label: {
@@ -118,12 +116,6 @@ struct SemanaView: View {
                     .padding(.leading, 50)
                   
             }
-            
-            
-            NavigationLink(destination: RoadMapView(), label: {
-                Text(Image(systemName: "figure.run.circle.fill"))
-                    .foregroundStyle(Color.turquoiseGreen)
-                    .font(.system(size: 30))})
         }
         .padding(.trailing, 15)
     }
