@@ -32,9 +32,9 @@ let dao = DAO.instance
     
     var distanciaMedia: Float = 0.0
     
+    var dadosSemanas: [DadosSemana] = []
     
-    private init() {
-    }
+    private init() {}
     
     func loadJsonFileFromObjective() {
         let filename = (escolhas?.nivel ?? "") + (escolhas?.objetivo ?? "") + ".json"
@@ -44,6 +44,7 @@ let dao = DAO.instance
         self.semanaAtual = 0
         self.diaAtual = 0
         self.diasConcluidos = []
+        self.dadosSemanas = [DadosSemana(velocidadeMédia: 0, calorias: 0, distância: 0)]
         self.fcm = 220.0 - (dao.idade ?? 0)
         self.fcmDescricao = FCM(caminhada: "\(Int(dao.fcm*0.5)) BPM a \(Int(dao.fcm*0.65)) BPM", leve: "\(Int(dao.fcm*0.65)) BPM a \(Int(dao.fcm*0.75)) BPM", moderada: "\(Int(dao.fcm*0.75)) BPM a \(Int(dao.fcm*0.85)) BPM", forte: "\(Int(dao.fcm*0.85)) BPM a \(Int(dao.fcm*0.9)) BPM", muitoForte: "\(Int(dao.fcm*0.9)) BPM a \(Int(dao.fcm)) BPM")
         self.nivelDescricao = ""

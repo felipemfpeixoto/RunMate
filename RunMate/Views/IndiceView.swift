@@ -29,8 +29,6 @@ struct IndiceView: View {
                             .padding(.trailing, 30)
                             .padding(.bottom, 20)
                     }
-
-                    
                 }
                 
                 Text("Índice de Corridas")

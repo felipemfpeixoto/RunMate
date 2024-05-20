@@ -36,6 +36,8 @@
 		0FCDFA032BF6814200DF9C70 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA022BF6814200DF9C70 /* HealthManager.swift */; };
 		0FCDFA062BF68C9000DF9C70 /* EscolhasCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA052BF68C9000DF9C70 /* EscolhasCentral.swift */; };
 		0FCDFA082BF7CF8700DF9C70 /* IndiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA072BF7CF8700DF9C70 /* IndiceView.swift */; };
+		0FCDFA0F2BFB693C00DF9C70 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCDFA0E2BFB693C00DF9C70 /* CodableExtensions */; };
+		0FCDFA112BFBDC4400DF9C70 /* PreviewSemanaSeguinte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA102BFBDC4400DF9C70 /* PreviewSemanaSeguinte.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
 		F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */; };
@@ -45,7 +47,6 @@
 		F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */; };
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
 		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
-		F9CBBA8A2BF7DE3E001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA892BF7DE3E001ACE10 /* CodableExtensions */; };
 		F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		0FCDFA042BF683D900DF9C70 /* RunMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunMate.entitlements; sourceTree = "<group>"; };
 		0FCDFA052BF68C9000DF9C70 /* EscolhasCentral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EscolhasCentral.swift; sourceTree = "<group>"; };
 		0FCDFA072BF7CF8700DF9C70 /* IndiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndiceView.swift; sourceTree = "<group>"; };
+		0FCDFA102BFBDC4400DF9C70 /* PreviewSemanaSeguinte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSemanaSeguinte.swift; sourceTree = "<group>"; };
 		5D8091212BED42F800986596 /* ConclusaoMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusaoMetaView.swift; sourceTree = "<group>"; };
 		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
 		F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoConfirmacaoEtapa.swift; sourceTree = "<group>"; };
@@ -99,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9CBBA8A2BF7DE3E001ACE10 /* CodableExtensions in Frameworks */,
+				0FCDFA0F2BFB693C00DF9C70 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +187,7 @@
 				F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */,
 				F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */,
 				0FCDFA072BF7CF8700DF9C70 /* IndiceView.swift */,
+				0FCDFA102BFBDC4400DF9C70 /* PreviewSemanaSeguinte.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,7 +254,7 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				F9CBBA892BF7DE3E001ACE10 /* CodableExtensions */,
+				0FCDFA0E2BFB693C00DF9C70 /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -282,7 +285,7 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				F9CBBA882BF7DE3E001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				0FCDFA0D2BFB693C00DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -339,6 +342,7 @@
 				0FA57B352BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift in Sources */,
 				F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */,
 				0FA57B402BE4116700EA9D99 /* BotaoEscolha.swift in Sources */,
+				0FCDFA112BFBDC4400DF9C70 /* PreviewSemanaSeguinte.swift in Sources */,
 				F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */,
 				0FCDFA082BF7CF8700DF9C70 /* IndiceView.swift in Sources */,
 				F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */,
@@ -572,7 +576,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F9CBBA882BF7DE3E001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		0FCDFA0D2BFB693C00DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -583,9 +587,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F9CBBA892BF7DE3E001ACE10 /* CodableExtensions */ = {
+		0FCDFA0E2BFB693C00DF9C70 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F9CBBA882BF7DE3E001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = 0FCDFA0D2BFB693C00DF9C70 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */

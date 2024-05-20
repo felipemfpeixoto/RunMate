@@ -21,7 +21,6 @@ struct TelaTabView: View {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
-                
             
             RoadMapView()
                 .tabItem {

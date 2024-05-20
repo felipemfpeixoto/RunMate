@@ -44,3 +44,9 @@ struct FCM: Codable {
     var forte: String
     var muitoForte: String 
 }
+
+struct DadosSemana: Codable {
+    var velocidadeMédia: Double
+    var calorias: Double
+    var distância: Double
+}

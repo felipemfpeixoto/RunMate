@@ -102,7 +102,7 @@ struct RoadMapView: View {
                 .padding(.top, -30)
                 .sheet(isPresented: $isShowingSheet) {
                     // Mostrar o treino da semana clicada já concluído
-                    Textin(index: $semanaIndex)
+                    PreviewSemanaSeguinte(index: semanaIndex)
                 }
             }
             .padding(.bottom, -16)
@@ -113,13 +113,4 @@ struct RoadMapView: View {
 
 #Preview {
     RoadMapView(semanas: [Semana(semana: 1, dias: []), Semana(semana: 2, dias: []), Semana(semana: 3, dias: [])])
-}
-
-
-struct Textin: View {
-    
-    @Binding var index: Int
-    var body: some View {
-        Text("Semana \(index)")
-    }
 }
