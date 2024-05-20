@@ -13,7 +13,6 @@ struct ExercicioEmAndamentoView: View {
     
     @EnvironmentObject var healthManager: HealthManager
     
-    @EnvironmentObject var workoutManager: WorkoutManager
     
     var stopWatchmanager =  StopWatchManager()
     
@@ -25,59 +24,58 @@ struct ExercicioEmAndamentoView: View {
             VStack{
                 
                 VStack{
-//                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
-//                    Text("Calorias: \(healthManager.calories, specifier: "%d") kcal")
-                    Text("Distância: \(workoutManager.distance, specifier: "%.2f") km")
+                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
+                    Text("Calorias: \(healthManager.calories, specifier: "%d") kcal")
+                    Text("Distância: \(healthManager.distance, specifier: "%.2f") km")
                     Text(stopWatchmanager.formattedTime)
                 }
                 .foregroundColor(.white)
                 .font(Font.custom("Roboto-Regular", size: 20))
                 
-                if isRunning{
+                HStack (spacing: 30){
                     Button(action: {
-                        isRunning = false
-                        stopWatchmanager.pause()
-                    }, label: {
-                        Image(systemName: "pause.circle.fill")
+                        if healthManager.isRunning {
+                            if healthManager.isPaused {
+                                healthManager.resumeWorkout()
+                                stopWatchmanager.start()
+                            } else {
+                                healthManager.pauseWorkout()
+                                stopWatchmanager.pause()
+                            }
+                        } else {
+                            healthManager.startWorkout()
+                            stopWatchmanager.start()
+                        }
+                    }) {
+                        var img = healthManager.isRunning ? (healthManager.isPaused ? "play.circle" : "pause.circle") : "play.circle"
+                        Image(systemName: img)
                             .resizable()
+                            .frame(width: 40, height: 40)
                             .foregroundColor(.white)
-                            .frame(width: 70, height: 70)
-             
-                    })
-                }
-                else{
+                    }
+                    
                     Button(action: {
-                        isRunning = true
-//                        healthManager.startCollectingData()
-                        workoutManager.startWorkout()
-                        stopWatchmanager.start()
-                    }, label: {
-                        Image(systemName: "play.circle.fill")
+                        healthManager.endWorkout()
+                        stopWatchmanager.stop()
+                    }) {
+                        Image(systemName: "stop.circle")
                             .resizable()
+                            .frame(width: 40, height: 40)
                             .foregroundColor(.white)
-                            .frame(width: 70, height: 70)
-                        
-                    })
+                    }
+                    .disabled(!healthManager.isRunning)
                 }
-                
-                Button {
-                    stopWatchmanager.stop()
-                    workoutManager.stopWorkout()
-                } label: {
-                    Text("Finalizar corrida")
-                        .foregroundStyle(.white)
-                        .font(Font.custom("Roboto-Regular", size: 20))
-                }
+            }
+            .padding()
 
-            }
         }
-        .onAppear{
-            if isRunning{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    workoutManager.stopWorkout()
-                }
-            }
-        }
+//        .onAppear{
+//            if isRunning{
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//                    workoutManager.stopWorkout()
+//                }
+//            }
+//        }
     }
 }
 

@@ -16,7 +16,9 @@ struct RunMateApp: App {
     
     @State var isEditing: Bool = false
 
-//    @StateObject var manager = HealthManager()
+    @StateObject var manager = HealthManager()
+    
+
     
     var body: some Scene {
         WindowGroup {
@@ -26,7 +28,7 @@ struct RunMateApp: App {
                         ContentView(isEditing: $isEditing, isShowingAviso: $isShowingAviso)
                     } else {
                         TelaTabView(isShowingAviso: $isShowingAviso, isEditing: $isEditing)
-//                            .environmentObject(manager)
+                            .environmentObject(manager)
                     }
                 }
                 .onChange(of: scenePhase) {
