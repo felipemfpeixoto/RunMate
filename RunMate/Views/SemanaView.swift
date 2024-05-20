@@ -18,6 +18,22 @@ struct SemanaView: View {
     let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
     
     @Binding var isEditing: Bool
+    
+    var isEmpty: Bool {
+        return dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty
+    }
+    
+    var exerciciosDetalhados: [Exercicio] {
+        return dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios
+    }
+    
+    var qtdElementos: Int {
+        return dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
+    }
+    
+    var qtdSemanas: Int {
+        return dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
+    }
    
     var body: some View {
             ZStack{
@@ -29,16 +45,16 @@ struct SemanaView: View {
                     VStack{
                         Spacer()
                         headerPrincipal
-                        if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count > 0 {
-                            if dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty{
+                        if qtdSemanas > 0 {
+                            if isEmpty {
                                 diaLivre
                             }
-                            else if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count && dao.diaAtual == 6{
+                            else if (dao.semanaAtual + 1) == qtdElementos && dao.diaAtual == 6{
                                 diaProva
                             }
                             else {
                                 VStack{
-                                    ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
+                                    ExerciciosDetalhadosView(exercicios: exerciciosDetalhados)
                                     Spacer()
                                 }
                                 .padding(.vertical, 20)
@@ -56,8 +72,6 @@ struct SemanaView: View {
                         }
                     }
                     .onAppear {
-                        print(dao.semanaAtual)
-                        print(dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias)
                         semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias
                     }
                     .onChange(of: dao.semanaAtual) { oldValue, newValue in
@@ -75,11 +89,7 @@ struct SemanaView: View {
                         Color.black.opacity(0.3).ignoresSafeArea()
                         ParabénsView(apareceParabens: $apareceParabens)
                     }
-                } /*else if isShowingAvisoConclusao {*/
-//                    Color.black.opacity(0.3).ignoresSafeArea()
-//                    AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAvisoConclusao, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
-//                    
-//                }
+                }
             }
             .sheet(isPresented: $apareceInfo){
                 IndiceView(apareceInfo: $apareceInfo)

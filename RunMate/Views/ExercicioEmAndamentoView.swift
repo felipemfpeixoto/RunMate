@@ -13,7 +13,9 @@ struct ExercicioEmAndamentoView: View {
     
     @EnvironmentObject var healthManager: HealthManager
     
-    @ObservedObject var stopWatchmanager =  StopWatchManager()
+    @EnvironmentObject var workoutManager: WorkoutManager
+    
+    var stopWatchmanager =  StopWatchManager()
     
     @State private var isSummaryViewActive = false
     
@@ -23,9 +25,9 @@ struct ExercicioEmAndamentoView: View {
             VStack{
                 
                 VStack{
-                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
-                    Text("Calorias: \(healthManager.calories, specifier: "%d") kcal")
-                    Text("Distância: \(healthManager.distance, specifier: "%.2f") km")
+//                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
+//                    Text("Calorias: \(healthManager.calories, specifier: "%d") kcal")
+                    Text("Distância: \(workoutManager.distance, specifier: "%.2f") km")
                     Text(stopWatchmanager.formattedTime)
                 }
                 .foregroundColor(.white)
@@ -34,7 +36,6 @@ struct ExercicioEmAndamentoView: View {
                 if isRunning{
                     Button(action: {
                         isRunning = false
-                        healthManager.stopCollectingData()
                         stopWatchmanager.pause()
                     }, label: {
                         Image(systemName: "pause.circle.fill")
@@ -47,7 +48,8 @@ struct ExercicioEmAndamentoView: View {
                 else{
                     Button(action: {
                         isRunning = true
-                        healthManager.startCollectingData()
+//                        healthManager.startCollectingData()
+                        workoutManager.startWorkout()
                         stopWatchmanager.start()
                     }, label: {
                         Image(systemName: "play.circle.fill")
@@ -60,6 +62,7 @@ struct ExercicioEmAndamentoView: View {
                 
                 Button {
                     stopWatchmanager.stop()
+                    workoutManager.stopWorkout()
                 } label: {
                     Text("Finalizar corrida")
                         .foregroundStyle(.white)
@@ -68,11 +71,18 @@ struct ExercicioEmAndamentoView: View {
 
             }
         }
+        .onAppear{
+            if isRunning{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    workoutManager.stopWorkout()
+                }
+            }
+        }
     }
 }
 
-class StopWatchManager: ObservableObject {
-    @Published var secondElapsed = 0.0
+@Observable class StopWatchManager {
+    var secondElapsed = 0.0
     var timer = Timer()
     
     func start() {
@@ -96,5 +106,4 @@ class StopWatchManager: ObservableObject {
         let seconds = Int(secondElapsed) % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
-    
 }
