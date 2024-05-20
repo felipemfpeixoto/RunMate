@@ -13,7 +13,7 @@ struct ExercicioEmAndamentoView: View {
     
     @EnvironmentObject var healthManager: HealthManager
     
-    @ObservedObject var stopWatchmanager =  StopWatchManager()
+    var stopWatchmanager =  StopWatchManager()
     
     @State private var isSummaryViewActive = false
     
@@ -34,7 +34,6 @@ struct ExercicioEmAndamentoView: View {
                 if isRunning{
                     Button(action: {
                         isRunning = false
-                        healthManager.stopCollectingData()
                         stopWatchmanager.pause()
                     }, label: {
                         Image(systemName: "pause.circle.fill")
@@ -60,6 +59,7 @@ struct ExercicioEmAndamentoView: View {
                 
                 Button {
                     stopWatchmanager.stop()
+                    healthManager.stopCollectingData()
                 } label: {
                     Text("Finalizar corrida")
                         .foregroundStyle(.white)
@@ -71,8 +71,8 @@ struct ExercicioEmAndamentoView: View {
     }
 }
 
-class StopWatchManager: ObservableObject {
-    @Published var secondElapsed = 0.0
+@Observable class StopWatchManager {
+    var secondElapsed = 0.0
     var timer = Timer()
     
     func start() {
@@ -96,5 +96,4 @@ class StopWatchManager: ObservableObject {
         let seconds = Int(secondElapsed) % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
-    
 }
