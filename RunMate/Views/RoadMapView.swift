@@ -16,23 +16,14 @@ struct RoadMapView: View {
     @State var semanas: [Semana] = []
     @State var semanaIndex: Int = 0
 
-    @State var isShowingSheet: Bool = false
+    @State var isShowingNextSheet: Bool = false
+    
+    @State var isShowingPrevious: Bool = false
+    
+    @Binding var telaSelecionada: TelaSelecionada
     
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {
-                    dismiss()
-                }, label: {
-                    Image(systemName: "arrow.backward")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                        .fontWeight(.medium)
-                })
-                Spacer()
-            }
-            .padding(.leading, 30)
-            .padding(.bottom, 2)
             HStack {
                 Text("Minha meta")
                     .font(Font.custom("Roboto-Bold", size: 28))
@@ -48,8 +39,6 @@ struct RoadMapView: View {
                 Spacer()
             }
             .padding(.leading, 30)
-            
-            
             
             GeometryReader { geometry in
                 ScrollView {
@@ -74,52 +63,45 @@ struct RoadMapView: View {
     func semanaDaVez(for index: Int) -> some View {
         let semana = semanas[index]
         
-        return
-        ZStack {
-            VStack {
-                Image( semana.semana % 2 == 1 ? "impar" : "par")
-                    .resizable()
-                Button {
-                    self.semanaIndex = index
-                    isShowingSheet.toggle()
-                    print("****Button******", semanas[index].semana, index, self.semanaIndex)
-                } label: {
-                    if semana.semana % 2 == 1 {
-                            SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                                .onAppear {
-                                    print("week: " + String((semana.semana-1)))
-                                    print(dao.semanaAtual)
-                                }
-                    } else {
-                            SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                                .onAppear {
-                                    print("week: " + String((semana.semana-1)))
-                                    print(dao.semanaAtual)
-                                }
+        return ZStack {
+                    VStack {
+                        Image( semana.semana % 2 == 1 ? "impar" : "par")
+                            .resizable()
+                        Button {
+                            self.semanaIndex = index
+                            if semanaIndex > dao.semanaAtual {
+                                isShowingNextSheet.toggle()
+                            } else if semanaIndex == dao.semanaAtual {
+//                                telaSelecionada = .home
+                                isShowingPrevious.toggle()
+                            } else {
+                                isShowingPrevious.toggle()
+                            }
+                        } label: {
+                            if semana.semana % 2 == 1 {
+                                    SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
+                                        .onAppear {
+                                            print("week: " + String((semana.semana-1)))
+                                            print(dao.semanaAtual)
+                                        }
+                            } else {
+                                    SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
+                                        .onAppear {
+                                            print("week: " + String((semana.semana-1)))
+                                            print(dao.semanaAtual)
+                                        }
+                            }
+                        }
+                        .padding(.leading, semana.semana == 1  ? -30 : 10)
+                        .padding(.top, -30)
+                        .sheet(isPresented: $isShowingNextSheet) {
+                            PreviewSemanaSeguinte(index: semanaIndex)
+                        }
+                        .sheet(isPresented: $isShowingPrevious) {
+                            ParabénsView(semana: semana, index: index)
+                        }
                     }
+                    .padding(.bottom, -16)
                 }
-                .padding(.leading, semana.semana == 1  ? -30 : 10)
-                .padding(.top, -30)
-                .sheet(isPresented: $isShowingSheet) {
-                    // Mostrar o treino da semana clicada já concluído
-                    Textin(index: $semanaIndex)
-                }
-            }
-            .padding(.bottom, -16)
-        }
-    }
-}
-
-
-#Preview {
-    RoadMapView(semanas: [Semana(semana: 1, dias: []), Semana(semana: 2, dias: []), Semana(semana: 3, dias: [])])
-}
-
-
-struct Textin: View {
-    
-    @Binding var index: Int
-    var body: some View {
-        Text("Semana \(index)")
     }
 }

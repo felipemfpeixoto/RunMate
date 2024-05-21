@@ -23,6 +23,10 @@ struct SemanaView: View {
         return dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty
     }
     
+    var semanaAtual: Int {
+        dao.semanaAtual
+    }
+    
     var exerciciosDetalhados: [Exercicio] {
         return dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios
     }
@@ -36,63 +40,73 @@ struct SemanaView: View {
     }
    
     var body: some View {
-            ZStack{
-                Color(.blackBlue).ignoresSafeArea()
-                
-                if dao.semanaAtual == -1 {
-                    ProgressView()
-                } else {
+        ZStack{
+            Color(.blackBlue).ignoresSafeArea()
+            
+            if dao.semanaAtual == -1 {
+                ProgressView()
+            } else {
+                VStack{
+                    Spacer()
+                    headerPrincipal
+                    contentView
+                    Spacer()
+                    footerView
+                }
+                .onAppear {
+                    semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[semanaAtual].dias
+                }
+                .onChange(of: dao.semanaAtual) { oldValue, newValue in
+                    print("semana = " + String(newValue))
+                }
+                .onChange(of: dao.diaAtual) { oldValue, newValue in
+                    print("dia = " + String(newValue))
+                }
+            }
+        }
+        .navigationBarBackButtonHidden()
+        .overlay(parabensOverlay)
+        .sheet(isPresented: $apareceInfo){
+            IndiceView(apareceInfo: $apareceInfo)
+        }
+        .fullScreenCover(isPresented: $apareceParabensMeta) {
+            ConclusaoMetaView()
+        }
+        .fullScreenCover(isPresented: $isShowingExercicio) {
+            ExercicioEmAndamentoView()
+        }
+    }
+    
+    var contentView: some View {
+        VStack{
+            if qtdSemanas > 0 {
+                if isEmpty {
+                    diaLivre
+                }
+                else if (semanaAtual + 1) == qtdElementos && dao.diaAtual == 6 {
+                    diaProva
+                }
+                else {
                     VStack{
+                        ExerciciosDetalhadosView(exercicios: exerciciosDetalhados, isLocked: false, isOverview: false)
                         Spacer()
-                        headerPrincipal
-                        if qtdSemanas > 0 {
-                            if isEmpty {
-                                diaLivre
-                            }
-                            else if (dao.semanaAtual + 1) == qtdElementos && dao.diaAtual == 6{
-                                diaProva
-                            }
-                            else {
-                                VStack{
-                                    ExerciciosDetalhadosView(exercicios: exerciciosDetalhados)
-                                    Spacer()
-                                }
-                                .padding(.vertical, 20)
-                            }
-                        }
-                        Spacer()
-                        if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
-                            if dao.diasConcluidos.contains(dao.diaAtual + 1){
-                                etapaConcluida
-                            } else {
-                                botaoEtapaNaoConcluida
-                            }
-                            
-                            Spacer()
-                        }
                     }
-                    .onAppear {
-                        semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias
-                    }
-                    .onChange(of: dao.semanaAtual) { oldValue, newValue in
-                        print("semana = " + String(newValue))
-                    }
-                    .onChange(of: dao.diaAtual) { oldValue, newValue in
-                        print("dia = " + String(newValue))
-                    }
+                    .padding(.vertical, 20)
                 }
             }
-            .navigationBarBackButtonHidden()
-            .overlay{
-                if apareceParabens {
-                    ZStack{
-                        Color.black.opacity(0.3).ignoresSafeArea()
-                        ParabénsView(apareceParabens: $apareceParabens)
-                    }
+        }
+    }
+    
+    var footerView: some View {
+        VStack {
+            if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
+                if dao.diasConcluidos.contains(dao.diaAtual + 1){
+                    etapaConcluida
+                } else {
+                    botaoEtapaNaoConcluida
                 }
-            }
-            .sheet(isPresented: $apareceInfo){
-                IndiceView(apareceInfo: $apareceInfo)
+                
+                Spacer()
             }
             .fullScreenCover(isPresented: $apareceParabensMeta, content: {
                 ConclusaoMetaView()
@@ -102,6 +116,17 @@ struct SemanaView: View {
             })
     }
     
+    var parabensOverlay: some View {
+        Group {
+            if apareceParabens {
+                ZStack{
+                    Color.black.opacity(0.3).ignoresSafeArea()
+//                    ParabénsView(apareceParabens: $apareceParabens)
+                }
+            }
+        }
+    }
+
     var minhaMeta: some View {
         VStack(alignment: .leading){
             Text("Minha meta")
@@ -135,6 +160,12 @@ struct SemanaView: View {
         VStack(alignment: .leading) {
             HStack (alignment: .top) {
                 minhaMeta
+                Spacer()
+                Button(action: {
+                    isEditing = true
+                }, label: {
+                    Text("Resetar Escolhas")
+                })
                 Spacer()
                 botoesFuncionais
             }
@@ -225,8 +256,8 @@ struct SemanaView: View {
     
     var diaProva: some View {
         VStack{
-            ZStack(alignment: .leading){
-                VStack{
+            ZStack(alignment: .leading) {
+                VStack {
                     LazyVGrid(columns: gridItems, alignment: .leading) {
                         Text(dao.metaSelecionlada)
                             .font(.custom("Poppins-SemiBold", size: 18))
@@ -294,6 +325,7 @@ struct SemanaView: View {
     }
 
 }
+
 
 //#Preview {
 //    SemanaView(semana: dao.paginaDeTreinamento.planoDeTreinamento.semanas.first!.dias)
