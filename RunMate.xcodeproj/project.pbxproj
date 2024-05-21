@@ -48,6 +48,7 @@
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
 		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
 		F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */; };
+		F9CBBA8E2BFD1586001ACE10 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9CBBA8D2BFD1586001ACE10 /* Poppins-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelaTabView.swift; sourceTree = "<group>"; };
 		F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
 		F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercicioEmAndamentoView.swift; sourceTree = "<group>"; };
+		F9CBBA8D2BFD1586001ACE10 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../../../Downloads/Poppins,Roboto/Poppins/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */,
 				F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */,
 				F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */,
+				F9CBBA8D2BFD1586001ACE10 /* Poppins-Bold.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */,
 				F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */,
 				F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */,
+				F9CBBA8E2BFD1586001ACE10 /* Poppins-Bold.ttf in Resources */,
 				F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */,
 				0FA57B1A2BE4016F00EA9D99 /* avancado5K.json in Resources */,
 				0FA57B202BE401C900EA9D99 /* avancado10K.json in Resources */,

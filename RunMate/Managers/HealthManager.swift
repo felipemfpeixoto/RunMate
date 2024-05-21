@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import HealthKit
+import Combine
 
 //@Observable class HealthManager {
 //    
@@ -46,12 +47,8 @@ import HealthKit
 //        
 //        healthStore.execute(query)
 //    }
-    
 //}
 
-//#Preview {
-//    HealthViewTeste()
-//}
 
 //struct HealthViewTeste: View {
 //    private var healthStore = HKHealthStore()
@@ -229,100 +226,153 @@ import HealthKit
 //    }
 //}
 
+
 class HealthManager: ObservableObject {
-    
-    var healthStore: HKHealthStore?
 
-    init() {
-        if HKHealthStore.isHealthDataAvailable() {
-            healthStore = HKHealthStore()
-        }
-    }
+    private var healthStore = HKHealthStore()
 
-    func requestAuthorization(completion: @escaping (Bool) -> Void) {
-        guard let healthStore = self.healthStore else {
-            completion(false)
-            return
-        }
-
-        let distanceType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
-
-        healthStore.requestAuthorization(toShare: [], read: [distanceType]) { (success, error) in
-            completion(success)
-        }
-    }
-}
-
-
-class WorkoutManager: NSObject, ObservableObject {
-    
-    private var healthStore: HKHealthStore?
-    private var query: HKAnchoredObjectQuery?
-
+    @Published var averageSpeed: Double = 0.0
+    @Published var calories: Double = 0.0
     @Published var distance: Double = 0.0
+    @Published var isRunning: Bool = false
+    @Published var isPaused: Bool = false
 
-    override init() {
-        super.init()
-        if HKHealthStore.isHealthDataAvailable() {
-            healthStore = HKHealthStore()
-        }
+    private var startTime: Date?
+    private var endTime: Date?
+    private var distanceAnchor: HKQueryAnchor?
+
+    func startCollectingData() {
+        startTime = Date()
+        requestAuthorization()
     }
 
-    func requestAuthorization() {
-        guard let healthStore = healthStore else { return }
-
-        let distanceType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
-
-        healthStore.requestAuthorization(toShare: nil, read: [distanceType]) { success, error in
-            if success {
-                print("Permissão concedida para acessar dados de distância")
-            } else {
-                print("Permissão negada para acessar dados de distância")
-            }
-        }
+    func stopCollectingData() {
+        endTime = Date()
+        fetchHealthData()
     }
 
     func startWorkout() {
-        guard let healthStore = healthStore else { return }
-
-        let distanceType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
-        let predicate = HKQuery.predicateForSamples(withStart: Date(), end: nil, options: .strictStartDate)
-
-        query = HKAnchoredObjectQuery(
-            type: distanceType,
-            predicate: predicate,
-            anchor: nil,
-            limit: HKObjectQueryNoLimit
-        ) { [weak self] query, samples, deletedObjects, newAnchor, error in
-            self?.process(samples: samples)
-        }
-
-        query?.updateHandler = { [weak self] query, samples, deletedObjects, newAnchor, error in
-            self?.process(samples: samples)
-        }
-
-        healthStore.execute(query!)
+        guard !isRunning else { return }
+        isRunning = true
+        isPaused = false
+        startCollectingData()
     }
-    
-    func stopWorkout() {
-          guard let healthStore = healthStore, let query = query else { return }
-          healthStore.stop(query)
-          self.query = nil
-          print("Exercício encerrado")
-      }
-    
 
-    private func process(samples: [HKSample]?) {
+    func pauseWorkout() {
+        guard isRunning && !isPaused else { return }
+        isPaused = true
+        // Add any logic needed to pause the workout
+    }
+
+    func resumeWorkout() {
+        guard isRunning && isPaused else { return }
+        isPaused = false
+        // Add any logic needed to resume the workout
+    }
+
+    func endWorkout() {
+        guard isRunning else { return }
+        isRunning = false
+        isPaused = false
+        stopCollectingData()
+    }
+
+    private func requestAuthorization() {
+        let typesToRead: Set<HKObjectType> = [
+            HKObjectType.workoutType(),
+            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            HKObjectType.quantityType(forIdentifier: .walkingSpeed)!
+        ]
+
+        healthStore.requestAuthorization(toShare: [], read: typesToRead) { (success, error) in
+            if success {
+                print("Authorization succeeded.")
+            } else {
+                print("Authorization failed.")
+            }
+        }
+    }
+
+    private func fetchHealthData() {
+        guard let startTime = startTime, let endTime = endTime else { return }
+
+        let speedType = HKSampleType.quantityType(forIdentifier: .walkingSpeed)!
+        let caloriesType = HKSampleType.quantityType(forIdentifier: .activeEnergyBurned)!
+        let distanceType = HKSampleType.quantityType(forIdentifier: .distanceWalkingRunning)!
+
+        fetchAverageSpeed(for: speedType, startTime: startTime, endTime: endTime)
+        fetchCalories(for: caloriesType, startTime: startTime, endTime: endTime)
+        fetchDistance(for: distanceType, startTime: startTime, endTime: endTime)
+    }
+
+    private func fetchAverageSpeed(for sampleType: HKSampleType, startTime: Date, endTime: Date) {
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictEndDate)
+
+        let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .discreteAverage) { (query, statistics, error) in
+            guard let statistics = statistics, let quantity = statistics.averageQuantity() else { return }
+            DispatchQueue.main.async {
+                self.averageSpeed = quantity.doubleValue(for: HKUnit.meter().unitDivided(by: HKUnit.second()))
+            }
+        }
+
+        healthStore.execute(query)
+    }
+
+    private func fetchCalories(for sampleType: HKSampleType, startTime: Date, endTime: Date) {
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictEndDate)
+
+        let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, statistics, error) in
+            guard let statistics = statistics, let quantity = statistics.sumQuantity() else { return }
+            DispatchQueue.main.async {
+                self.calories = quantity.doubleValue(for: HKUnit.kilocalorie())
+            }
+        }
+
+        healthStore.execute(query)
+    }
+
+    private func fetchDistance(for sampleType: HKSampleType, startTime: Date, endTime: Date) {
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: endTime, options: .strictEndDate)
+
+        let query = HKStatisticsQuery(quantityType: sampleType as! HKQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { (query, statistics, error) in
+            guard let statistics = statistics, let quantity = statistics.sumQuantity() else { return }
+            DispatchQueue.main.async {
+                self.distance = quantity.doubleValue(for: HKUnit.meter()) / 1000 // Convert meters to kilometers
+            }
+        }
+
+        healthStore.execute(query)
+    }
+
+    private func startDistanceQuery() {
+        let distanceType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
+        let predicate = HKQuery.predicateForSamples(withStart: startTime, end: nil, options: .strictStartDate)
+
+        let query = HKAnchoredObjectQuery(type: distanceType, predicate: predicate, anchor: distanceAnchor, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, newAnchor, error) in
+            self.distanceAnchor = newAnchor
+            self.updateDistance(samples: samples)
+        }
+
+        query.updateHandler = { (query, samples, deletedObjects, newAnchor, error) in
+            self.distanceAnchor = newAnchor
+            self.updateDistance(samples: samples)
+        }
+
+        healthStore.execute(query)
+    }
+
+    private func updateDistance(samples: [HKSample]?) {
         guard let samples = samples as? [HKQuantitySample] else { return }
 
-        for sample in samples {
-            let distanceUnit = HKUnit.meter()
-            let distance = sample.quantity.doubleValue(for: distanceUnit)
-            let distanceInKilometers = distance / 1000
+        var totalDistance: Double = 0.0
 
-            DispatchQueue.main.async {
-                self.distance += distanceInKilometers
-            }
+        for sample in samples {
+            totalDistance += sample.quantity.doubleValue(for: HKUnit.meter())
+        }
+
+        DispatchQueue.main.async {
+            self.distance += totalDistance / 1000 // Convert meters to kilometers
         }
     }
 }

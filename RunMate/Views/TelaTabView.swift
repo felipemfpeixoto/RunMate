@@ -32,7 +32,7 @@ struct TelaTabView: View {
                 }
                 .tag(TelaSelecionada.roadmap)
             
-            PerfilView()
+            PerfilView(isEditing: $isEditing)
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Perfil")

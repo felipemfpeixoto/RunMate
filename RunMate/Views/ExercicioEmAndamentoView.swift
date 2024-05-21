@@ -13,11 +13,15 @@ struct ExercicioEmAndamentoView: View {
     
     @EnvironmentObject var healthManager: HealthManager
     
-    @EnvironmentObject var workoutManager: WorkoutManager
+    @State var isShowingAviso: Bool = false
     
     var stopWatchmanager =  StopWatchManager()
     
     @State private var isSummaryViewActive = false
+    
+    @Binding var apareceParabensMeta: Bool
+    
+    @Binding var apareceParabens: Bool
     
     var body: some View {
         ZStack{
@@ -27,54 +31,82 @@ struct ExercicioEmAndamentoView: View {
                 VStack{
 //                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
 //                    Text("Calorias: \(healthManager.calories, specifier: "%d") kcal")
-                    Text("Distância: \(workoutManager.distance, specifier: "%.2f") km")
-                    Text(stopWatchmanager.formattedTime)
+                    VStack{
+                        Text("\(healthManager.distance, specifier: "%.2f")")
+                            .font(.custom("Poppins-Bold", size: 115))
+                            .foregroundStyle(.white)
+                        Text("Quilômetros")
+                            .font(.custom("Poppins-Bold", size: 28))
+                            .foregroundStyle(.white)
+                            .opacity(0.7)
+                        Text("DISTÂNCIA")
+                            .font(.custom("Poppins-Bold", size: 16))
+                            .foregroundStyle(.turquoiseGreen)
+                    }
+                    .frame(width: 360, height: 303)
+                    .background(Color.oceanBlue)
+                    .cornerRadius(20)
+                    
+                    VStack(spacing: -9){
+                        Text(stopWatchmanager.formattedTime)
+                            .font(.custom("Poppins-Bold", size: 40))
+                            .foregroundStyle(.white)
+                        Text("DURAÇÃO")
+                            .font(.custom("Poppins-Bold", size: 15))
+                            .foregroundStyle(.turquoiseGreen)
+                    }
+                    .frame(width: 306, height: 95)
+                    .background(Color.oceanBlue)
+                    .cornerRadius(20)
+                    .padding(.top, 29)
+                    .padding(.bottom, 69)
+                    
                 }
-                .foregroundColor(.white)
                 .font(Font.custom("Roboto-Regular", size: 20))
                 
-                if isRunning{
+                HStack (spacing: 30){
                     Button(action: {
-                        isRunning = false
-                        stopWatchmanager.pause()
-                    }, label: {
-                        Image(systemName: "pause.circle.fill")
+                        if healthManager.isRunning {
+                            if healthManager.isPaused {
+                                healthManager.resumeWorkout()
+                                stopWatchmanager.start()
+                            } else {
+                                healthManager.pauseWorkout()
+                                stopWatchmanager.pause()
+                            }
+                        } else {
+                            healthManager.startWorkout()
+                            stopWatchmanager.start()
+                        }
+                    }) {
+                        let img = healthManager.isRunning ? (healthManager.isPaused ? "play.circle.fill" : "pause.circle.fill") : "play.circle.fill"
+                        Image(systemName: img)
                             .resizable()
+                            .frame(width: 75, height: 75)
                             .foregroundColor(.white)
-                            .frame(width: 70, height: 70)
-             
-                    })
-                }
-                else{
+                    }
+                    
                     Button(action: {
-                        isRunning = true
-//                        healthManager.startCollectingData()
-                        workoutManager.startWorkout()
-                        stopWatchmanager.start()
-                    }, label: {
-                        Image(systemName: "play.circle.fill")
+                        healthManager.endWorkout()
+                        stopWatchmanager.stop()
+                        isShowingAviso = true
+                    }) {
+                        Image(systemName: "stop.circle.fill")
                             .resizable()
+                            .frame(width: 75, height: 75)
                             .foregroundColor(.white)
-                            .frame(width: 70, height: 70)
-                        
-                    })
+                    }
+                    .disabled(!healthManager.isRunning)
                 }
-                
-                Button {
-                    stopWatchmanager.stop()
-                    workoutManager.stopWorkout()
-                } label: {
-                    Text("Finalizar corrida")
-                        .foregroundStyle(.white)
-                        .font(Font.custom("Roboto-Regular", size: 20))
-                }
-
             }
+            .padding()
+
         }
-        .onAppear{
-            if isRunning{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    workoutManager.stopWorkout()
+        .overlay{
+            if isShowingAviso{
+                ZStack{
+                    Color.black.opacity(0.3).ignoresSafeArea()
+                    AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
                 }
             }
         }
@@ -107,3 +139,4 @@ struct ExercicioEmAndamentoView: View {
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
 }
+

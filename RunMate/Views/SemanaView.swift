@@ -108,7 +108,12 @@ struct SemanaView: View {
                 
                 Spacer()
             }
-        }
+            .fullScreenCover(isPresented: $apareceParabensMeta, content: {
+                ConclusaoMetaView()
+            })
+            .fullScreenCover(isPresented: $isShowingExercicio, content: {
+                ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
+            })
     }
     
     var parabensOverlay: some View {
