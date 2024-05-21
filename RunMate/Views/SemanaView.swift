@@ -98,7 +98,7 @@ struct SemanaView: View {
                 ConclusaoMetaView()
             })
             .fullScreenCover(isPresented: $isShowingExercicio, content: {
-                ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
+                ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio)
             })
     }
     
