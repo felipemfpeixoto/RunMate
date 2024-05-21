@@ -34,16 +34,16 @@ struct AvisoConfirmacaoEtapa: View {
                     .font(Font.custom("Poppins-SemiBold", size: 22))
                     .foregroundStyle(Color.turquoiseGreen)
                 
-                Text("Tem certeza que deseja concluir essa etapa?")
+                Text("Tem certeza que deseja finalizar esta corrida?")
                     .font(Font.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
                 
-                Text("Essa ação não poderá ser desfeita.")
-                    .font(Font.custom("Poppins-SemiBold", size: 18))
-                    .foregroundStyle(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 30)
+//                Text("Essa ação não poderá ser desfeita.")
+//                    .font(Font.custom("Poppins-SemiBold", size: 18))
+//                    .foregroundStyle(Color.white)
+//                    .multilineTextAlignment(.center)
+//                    .padding(.bottom, 30)
             }
             .padding(.vertical, 25)
             .padding(.horizontal, 30)

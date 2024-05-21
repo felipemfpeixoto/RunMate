@@ -29,7 +29,7 @@ struct TelaTabView: View {
                     Text("Road Map")
                 }
             
-            PerfilView()
+            PerfilView(isEditing: $isEditing)
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Perfil")

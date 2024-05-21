@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AvisoView: View {
     
-    @State private var animateMedal = false
     @Binding var isShowingPopUp: Bool
     
     var body: some View {
@@ -21,19 +20,7 @@ struct AvisoView: View {
                 .frame(height: 300)
                 .padding(.horizontal, 20)
             
-            
-            
             VStack(spacing: 10) {
-                
-//                Image("Alerta")
-//                    .shadow(color: .lilacPurple, radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-//                    .scaleEffect(animateMedal ? 0.8 : 0.7)
-//                    .animation(
-//                        Animation.easeInOut(duration: 1)
-//                            .repeatCount(3, autoreverses: true)
-//                            .delay(0.2)
-//                        
-//                    )
                 
                 Text("ATENÇÃO!")
                     .font(Font.custom("Poppins-SemiBold", size: 22))
@@ -84,9 +71,6 @@ struct AvisoView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.darkPurple.opacity(0.9).ignoresSafeArea())
-        .onAppear {
-            self.animateMedal.toggle() 
-        }
         .navigationBarBackButtonHidden()
     }
 }

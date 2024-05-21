@@ -98,7 +98,7 @@ struct SemanaView: View {
                 ConclusaoMetaView()
             })
             .fullScreenCover(isPresented: $isShowingExercicio, content: {
-                ExercicioEmAndamentoView()
+                ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens)
             })
     }
     
@@ -135,15 +135,6 @@ struct SemanaView: View {
         VStack(alignment: .leading) {
             HStack (alignment: .top) {
                 minhaMeta
-                Spacer()
-//                NavigationLink(destination: ContentView(isEditing: true, isShowingAviso: .constant(true))) {
-//                    Text("Resetar escolhas")
-//                }
-                Button(action: {
-                    isEditing = true
-                }, label: {
-                    Text("Resetar Escolhas")
-                })
                 Spacer()
                 botoesFuncionais
             }

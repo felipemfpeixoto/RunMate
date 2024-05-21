@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PerfilView: View {
+    
+    @Binding var isEditing: Bool
     var body: some View {
         ZStack{
             Color.blackBlue.ignoresSafeArea()
@@ -16,6 +18,11 @@ struct PerfilView: View {
                 header()
                 Spacer()
                 
+                Button(action: {
+                    isEditing = true
+                }, label: {
+                    Text("Resetar Escolhas")
+                })
             }
         }
             
@@ -39,6 +46,6 @@ struct header: View{
     }
 }
 
-#Preview {
-    PerfilView()
-}
+//#Preview {
+//    PerfilView()
+//}
