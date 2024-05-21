@@ -32,6 +32,18 @@ struct ExercicioEmAndamentoView: View {
             ZStack{
                 Color.blackBlue.ignoresSafeArea()
                 VStack{
+                    HStack{
+                        Spacer()
+                        
+                        Button {
+                            isShowingSelf = false
+                        } label: {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.white)
+                                .padding(.trailing, 30)
+                                .padding(.bottom, 20)
+                        }
+                    }
                     
                     VStack{
                         //                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
