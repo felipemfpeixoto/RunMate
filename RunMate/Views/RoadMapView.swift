@@ -45,7 +45,6 @@ struct RoadMapView: View {
                     VStack {
                         ForEach(Array(semanas.enumerated()) , id: \.offset) {index, semana in
                             semanaDaVez(for: index)
-                                .onAppear{print("index: \(index)")}
                         }
                         Image("impar")
                             .resizable()
@@ -80,20 +79,12 @@ struct RoadMapView: View {
                         } label: {
                             if semana.semana % 2 == 1 {
                                     SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                                        .onAppear {
-                                            print("week: " + String((semana.semana-1)))
-                                            print(dao.semanaAtual)
-                                        }
                             } else {
                                     SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                                        .onAppear {
-                                            print("week: " + String((semana.semana-1)))
-                                            print(dao.semanaAtual)
-                                        }
                             }
                         }
                         .padding(.leading, semana.semana == 1  ? -30 : 10)
-                        .padding(.top, -30)
+                        .padding(.top, -47)
                         .sheet(isPresented: $isShowingNextSheet) {
                             PreviewSemanaSeguinte(index: semanaIndex)
                         }
@@ -101,7 +92,7 @@ struct RoadMapView: View {
                             ParabénsView(semana: semana, index: index)
                         }
                     }
-                    .padding(.bottom, -16)
+                    .padding(.bottom, -25)
                 }
     }
 }
