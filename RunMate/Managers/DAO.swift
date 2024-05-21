@@ -44,7 +44,10 @@ let dao = DAO.instance
         self.semanaAtual = 0
         self.diaAtual = 0
         self.diasConcluidos = []
-        self.dadosSemanas = [DadosSemana(velocidadeMédia: 0, calorias: 0, distância: 0)]
+        for i in 0..<self.paginaDeTreinamento.planoDeTreinamento.semanas.count {
+            self.dadosSemanas.append(DadosSemana(velocidadeMédia: 0, calorias: 0, distância: 0))
+        }
+        print(self.dadosSemanas.count)
         self.fcm = 220.0 - (dao.idade ?? 0)
         self.fcmDescricao = FCM(caminhada: "\(Int(dao.fcm*0.5)) BPM a \(Int(dao.fcm*0.65)) BPM", leve: "\(Int(dao.fcm*0.65)) BPM a \(Int(dao.fcm*0.75)) BPM", moderada: "\(Int(dao.fcm*0.75)) BPM a \(Int(dao.fcm*0.85)) BPM", forte: "\(Int(dao.fcm*0.85)) BPM a \(Int(dao.fcm*0.9)) BPM", muitoForte: "\(Int(dao.fcm*0.9)) BPM a \(Int(dao.fcm)) BPM")
         self.nivelDescricao = ""

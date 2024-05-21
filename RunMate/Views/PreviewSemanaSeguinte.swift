@@ -6,60 +6,56 @@
 //
 
 import SwiftUI
-
 struct PreviewSemanaSeguinte: View {
     
     let index: Int
-    
     @State var semana: Semana?
-    
     let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
     
     var body: some View {
-            ZStack{
-                Color(.oceanBlue).ignoresSafeArea()
-                
-                if dao.semanaAtual == -1 {
-                    ProgressView()
+        ZStack {
+            Color(.oceanBlue).ignoresSafeArea()
+            VStack {
+                Spacer()
+                headerPrincipal
+                contentView
+                Spacer()
+            }
+            .onAppear {
+                semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[index]
+            }
+            .onChange(of: dao.semanaAtual) { oldValue, newValue in
+                print("semana = " + String(newValue))
+            }
+            .onChange(of: dao.diaAtual) { oldValue, newValue in
+                print("dia = " + String(newValue))
+            }
+        }
+    }
+    
+    var contentView: some View {
+        VStack {
+            if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count > 0 {
+                if dao.paginaDeTreinamento.planoDeTreinamento.semanas[index].dias[dao.diaAtual].exercicios.isEmpty {
+                    diaLivre
+                } else if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count && dao.diaAtual == 6 {
+                    diaProva
                 } else {
-                    VStack{
-                        Spacer()
-                        headerPrincipal
-                        if dao.paginaDeTreinamento.planoDeTreinamento.semanas.count > 0 {
-                            if dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty{
-                                diaLivre
-                            }
-                            else if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count && dao.diaAtual == 6{
-                                diaProva
-                            }
-                            else {
-                                VStack{
-                                    ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios)
-                                    Spacer()
-                                }
-                                .padding(.vertical, 20)
-                            }
-                        }
+                    VStack {
+                        ExerciciosDetalhadosView(exercicios: dao.paginaDeTreinamento.planoDeTreinamento.semanas[index].dias[dao.diaAtual].exercicios, isLocked: true, isOverview: false)
                         Spacer()
                     }
-                    .onAppear {
-                        semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[index]
-                    }
-                    .onChange(of: dao.semanaAtual) { oldValue, newValue in
-                        print("semana = " + String(newValue))
-                    }
-                    .onChange(of: dao.diaAtual) { oldValue, newValue in
-                        print("dia = " + String(newValue))
-                    }
+                    .padding(.vertical, 20)
                 }
             }
+        }
     }
     
     var minhaMeta: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             Text("\(semana?.semana ?? 1)ª Semana")
-                    .font(Font.custom("Roboto-Bold", size: 28))
-                    .foregroundStyle(Color.white)
+                .font(Font.custom("Roboto-Bold", size: 28))
+                .foregroundStyle(Color.white)
             
             Text("Bloqueada")
                 .font(Font.custom("Roboto-Regular", size: 24))
@@ -70,13 +66,17 @@ struct PreviewSemanaSeguinte: View {
     
     var headerPrincipal: some View {
         VStack(alignment: .leading) {
-            HStack (alignment: .top) {
+            HStack(alignment: .top) {
                 minhaMeta
                 Spacer()
+                Image("cadeadoTransparente")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40)
             }
             scrollViewHorizontal
         }
-        .padding(.leading)
+        .padding(.horizontal)
         .padding(.top, 40)
     }
     
@@ -85,7 +85,7 @@ struct PreviewSemanaSeguinte: View {
             HStack {
                 ForEach(semana?.dias ?? [], id: \.dia) { dia in
                     let isEqual = dia.dia == (dao.diaAtual + 1)
-                    let myButtonStyle = diaEstiloButton(isEqual: isEqual, diaConcluido: dao.diasConcluidos.contains(dia.dia))
+                    let myButtonStyle = diaEstiloButton(isEqual: isEqual)
 
                     Button(action: {
                         if dia.dia != (dao.diaAtual + 1) {
@@ -96,12 +96,14 @@ struct PreviewSemanaSeguinte: View {
                     })
                     .buttonStyle(myButtonStyle)
                 }
-            }.padding(.leading, 10)
-        }.padding(.leading, -10)
+            }
+            .padding(.leading, 10)
+        }
+        .padding(.leading, -10)
     }
-
+    
     var diaLivre: some View {
-        VStack{
+        VStack {
             Text("DIA LIVRE")
                 .font(.custom("Poppins-SemiBold", size: 30))
                 .foregroundColor(.lakeBlue)
@@ -119,15 +121,15 @@ struct PreviewSemanaSeguinte: View {
     }
     
     var diaProva: some View {
-        VStack{
-            ZStack(alignment: .leading){
-                VStack{
+        VStack {
+            ZStack(alignment: .leading) {
+                VStack {
                     LazyVGrid(columns: gridItems, alignment: .leading) {
                         Text(dao.metaSelecionlada)
                             .font(.custom("Poppins-SemiBold", size: 18))
                             .padding(.leading, 80)
                         
-                        VStack(alignment: .leading){
+                        VStack(alignment: .leading) {
                             Text("Corrida Definitiva")
                                 .font(.custom("Poppins-SemiBold", size: 15).bold())
                             Text("Distância final da meta")
@@ -151,7 +153,6 @@ struct PreviewSemanaSeguinte: View {
             Spacer()
         }
         .padding(.vertical, 20)
-        
     }
     
     func updateDiaAtual(dia: Dia) {
@@ -172,19 +173,11 @@ struct PreviewSemanaSeguinte: View {
         .foregroundStyle(isEqual ? Color.oceanBlue : Color.white)
     }
 
-    func diaEstiloButton(isEqual: Bool, diaConcluido: Bool) -> some ButtonStyle {
-        if diaConcluido {
-            if isEqual {
-                return AnyButtonStyle(BotaoDiaLilas())
-            } else {
-                return AnyButtonStyle(BotaoDiaDarkPurple())
-            }
+    func diaEstiloButton(isEqual: Bool) -> some ButtonStyle {
+        if isEqual {
+            return AnyButtonStyle(BotaoDiaLightBlue())
         } else {
-            if isEqual {
-                return AnyButtonStyle(BotaoDiaTurquesa())
-            } else {
-                return AnyButtonStyle(BotaoDia())
-            }
+            return AnyButtonStyle(BotaoDiaLakeBlue())
         }
     }
 }

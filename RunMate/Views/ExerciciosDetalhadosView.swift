@@ -15,6 +15,8 @@ struct ExerciciosDetalhadosView: View {
     
     let isLocked: Bool
     
+    let isOverview: Bool
+    
     var body: some View {
         VStack {
             if dao.diaAtual == -1 {
@@ -69,10 +71,10 @@ struct ExerciciosDetalhadosView: View {
                             .font(.custom("Poppins-Medium", size: 18))
                             .foregroundColor(.oceanBlue)
                             .frame(width: 63, height: size > 1 ? CGFloat((size * 70)) : 65) // Ajeitar o height de acordo com a quantidade de exercícios
-                            .background(dao.diasConcluidos.contains(dao.diaAtual + 1) ?  Color.lilacPurple : (isLocked ? Color.ourLightBlue : Color.turquoiseGreen))
+                            .background(dao.diasConcluidos.contains(dao.diaAtual + 1) || isOverview ?  Color.lilacPurple : (isLocked ? Color.ourLightBlue : Color.turquoiseGreen))
                             .cornerRadius(18)
                     }
-                    .background(Color.oceanBlue)
+                    .background(isLocked ? Color.lakeBlue : Color.oceanBlue)
                     .cornerRadius(18)
                 }
             }

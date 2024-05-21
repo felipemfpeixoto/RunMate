@@ -13,26 +13,31 @@ struct TelaTabView: View {
     
     @Binding var isEditing: Bool
     
+    @State var telaSelecionada: TelaSelecionada = .home
+    
     var body: some View {
-        TabView {
+        TabView(selection: $telaSelecionada) {
             
             SemanaView(isEditing: $isEditing)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
+                .tag(TelaSelecionada.home)
             
-            RoadMapView()
+            RoadMapView(telaSelecionada: $telaSelecionada)
                 .tabItem {
                     Image(systemName: "road.lanes")
                     Text("Road Map")
                 }
+                .tag(TelaSelecionada.roadmap)
             
             PerfilView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Perfil")
                 }
+                .tag(TelaSelecionada.profile)
         }
         .accentColor(Color.turquoiseGreen)
         .fullScreenCover(isPresented: $isShowingAviso, content: {
@@ -44,6 +49,6 @@ struct TelaTabView: View {
     }
 }
 
-//#Preview {
-//    TelaTabView(isShowingAviso: .constant(false))
-//}
+enum TelaSelecionada {
+    case home, roadmap, profile
+}
