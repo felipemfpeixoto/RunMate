@@ -14,83 +14,62 @@ struct SemanaRoadMap: View {
     var body: some View {
         ZStack {
             if isLocked {
-                HStack(spacing: 0) {
-                    ZStack(alignment: .leading) {
-                        Text("Semana " + String(semana.semana))
-                            .foregroundColor(.turquoiseGreen)
-                            .font(.title3)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("\(semana.semana)ª Semana")
+                            .foregroundColor(.white)
+                            .font(.custom("Poppins-SemiBold", size: 20))
                             .fontWeight(.semibold)
-                            .padding(.trailing, 12)
-                            .frame(maxWidth: .infinity)
-                            .background {
-                                RoundedRectangle(cornerRadius: 18)
-                                    .fill(.blackBlue)
-                                    .frame(height: 80)
-                                RoundedRectangle(cornerRadius: 18)
-                                    .stroke(Color.turquoiseGreen, lineWidth: 4)
-                                    .frame(height: 80)
-                            }
+                        Text("BLOQUEADA")
+                            .font(.custom("Poppins-SemiBold", size: 14))
+                            .foregroundColor(.white)
                     }
-                    .overlay(alignment: .trailing) {
-                        Image("Cadeado")
-                            .resizable()
-                            .scaledToFit()
-                            .scaleEffect(CGSize(width: 2.0, height: 2.0))
-                            .alignmentGuide(.trailing, computeValue: { dimension in
-                                dimension[HorizontalAlignment.center]
-                            })
-                    }
+                    Spacer()
+                    Image("cadeadoTransparente")
+                }
+                .background {
+                    RoundedRectangle(cornerRadius: 18)
+                        .fill(.oceanBlue)
+                        .frame(width: 300,height: 80)
                 }
             } else if dao.semanaAtual == (semana.semana - 1) {
-                Text("Semana " + String(semana.semana))
-                    .foregroundColor(.white)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-                    .padding(.leading, 12)
-                    .background {
-                        RoundedRectangle(cornerRadius: 18)
-                            .fill(.oceanBlue)
-                            .frame(height: 80)
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.turquoiseGreen, lineWidth: 4)
-                            .frame(height: 80)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("\(semana.semana)ª Semana")
+                            .foregroundColor(.oceanBlue)
+                            .font(.custom("Poppins-SemiBold", size: 20))
+                            .fontWeight(.semibold)
+                        Text("EM PROGRESSO")
+                            .font(.custom("Poppins-SemiBold", size: 14))
+                            .foregroundColor(.oceanBlue)
                     }
-                    .overlay(alignment: .trailing) {
-                        Image("cadeadoAberto")
-                            .resizable()
-                            .scaledToFit()
-                            .scaleEffect(CGSize(width: 2.0, height: 2.0))
-                            .alignmentGuide(.trailing, computeValue: { dimension in
-                                dimension[HorizontalAlignment.center]
-                            })
-                        
-                    }
+                    Spacer()
+                    Image("cadeadoAbertoTransparente")
+                }
+                .background {
+                    RoundedRectangle(cornerRadius: 18)
+                        .fill(.turquoiseGreen)
+                        .frame(width: 300,height: 80)
+                }
             } else {
-                Text("Semana " + String(semana.semana))
-                    .foregroundColor(.blackBlue)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .frame(maxWidth: .infinity)
-                    .padding(.leading, 12)
-                    .background {
-                        RoundedRectangle(cornerRadius: 18)
-                            .fill(.turquoiseGreen)
-                            .frame(height: 80)
-                        RoundedRectangle(cornerRadius: 18)
-                            .stroke(Color.lilacPurple, lineWidth: 4)
-                            .frame(height: 80)
+                HStack {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("\(semana.semana)ª Semana")
+                            .foregroundColor(.white)
+                            .font(.custom("Poppins-SemiBold", size: 20))
+                            .fontWeight(.semibold)
+                        Text("CONCLUÍDA")
+                            .font(.custom("Poppins-SemiBold", size: 14))
+                            .foregroundColor(.white)
                     }
-                    .overlay(alignment: .trailing) {
-                        Image("Medalha")
-                            .resizable()
-                            .scaledToFit()
-                            .scaleEffect(CGSize(width: 2.0, height: 2.0))
-                            .alignmentGuide(.trailing, computeValue: { dimension in
-                                dimension[HorizontalAlignment.center]
-                            })
-                        
-                    }
+                    Spacer()
+                    Image("Medalha")
+                }
+                .background {
+                    RoundedRectangle(cornerRadius: 18)
+                        .fill(.lilacPurple)
+                        .frame(width: 300,height: 80)
+                }
             }
                
         }
