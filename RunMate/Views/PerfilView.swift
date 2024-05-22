@@ -8,15 +8,20 @@
 import SwiftUI
 import Charts
 
+
 struct PerfilView: View {
     
     @Binding var isEditing: Bool
+    
     var body: some View {
         ZStack{
             Color.blackBlue.ignoresSafeArea()
             VStack{
                 Spacer()
                 header()
+                Spacer()
+                distanceChart()
+                    
                 Spacer()
                 
                 Button(action: {
@@ -30,7 +35,7 @@ struct PerfilView: View {
     }
 }
 
-struct header: View{
+struct header: View {
     var body: some View {
         HStack(){
             VStack(alignment: .leading){
@@ -44,6 +49,47 @@ struct header: View{
             Spacer()
         }
         .padding(.leading)
+    }
+}
+struct distanceChart: View {
+    
+    var data: [DadosSemana] = [
+        DadosSemana(velocidadeMédia: 5.5, calorias: 150, distância: 5),
+        DadosSemana(velocidadeMédia: 9.5, calorias: 200, distância: 3.5),
+        DadosSemana(velocidadeMédia: 8.0, calorias: 250, distância: 8)
+    ]
+    var body: some View {
+        Chart {
+            ForEach(data.indices, id: \.self) {index in
+                BarMark (
+                    x: .value("semana", "sem \(index + 1)"  ),
+                    y: .value("distancia", data[index].distância)
+                )
+            }
+        }
+        .frame(width: 300, height: 300)
+        .foregroundColor(.lilacPurple)
+        .chartXAxis {
+            AxisMarks(preset: .aligned, values: .automatic) { _ in
+                // Não adicionar AxisGridLine para remover as linhas de grade do eixo Y
+                AxisTick()
+                    .foregroundStyle(Color.clear) // Tornar as marcações do eixo X transparentes
+                AxisValueLabel()
+                    .foregroundStyle(Color.clear) // Tornar os rótulos do eixo X transparentes
+            }
+        }
+        .chartYAxis {
+            AxisMarks(preset: .aligned, values: .automatic) { _ in
+                
+                AxisGridLine()
+                    .foregroundStyle(Color.ourLightBlue) // Cor das linhas de grade do eixo Y
+                AxisTick()
+                    .foregroundStyle(Color.ourLightBlue) // Cor das marcações do eixo Y
+                AxisValueLabel()
+                    .foregroundStyle(Color.white) // Cor dos rótulos do eixo Y
+                
+            }
+        }
     }
 }
 
