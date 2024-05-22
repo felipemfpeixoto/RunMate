@@ -34,17 +34,15 @@ struct ExercicioEmAndamentoView: View {
                 VStack{
                     HStack{
                         Spacer()
-                        
                         Button {
                             isShowingSelf = false
                         } label: {
                             Image(systemName: "xmark")
                                 .foregroundColor(.white)
-                                .padding(.trailing, 30)
-                                .padding(.bottom, 20)
                         }
+                        .padding(.trailing, 30)
                     }
-                    
+                    Spacer()
                     VStack{
                         //                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
                         //                    Text("Calorias: \(healthManager.calories, specifier: "%d") kcal")
@@ -115,6 +113,7 @@ struct ExercicioEmAndamentoView: View {
                         }
                         .disabled(!healthManager.isRunning)
                     }
+                    Spacer()
                 }
                 .padding()
                 

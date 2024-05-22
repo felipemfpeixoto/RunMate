@@ -104,8 +104,6 @@ struct SemanaView: View {
                 } else {
                     botaoEtapaNaoConcluida
                 }
-                
-                Spacer()
             }
         }
                 .fullScreenCover(isPresented: $apareceParabensMeta, content: {
