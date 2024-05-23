@@ -1,4 +1,5 @@
 import SwiftUI
+import PostHog
 
 struct EscolhaNivelView: View {
     
@@ -33,10 +34,11 @@ struct EscolhaNivelView: View {
                 }.frame(width: 300 ,height: 100)
                 
                 Spacer()
-                if selectedLevel != ""{
+                if selectedLevel != "" {
                     Button(action: {
                         self.imProgressing = true
                         faseBonequinho += 1
+                        PostHogSDK.shared.capture("NivelSelecionado", properties: ["nivel": filenameLevel])
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)

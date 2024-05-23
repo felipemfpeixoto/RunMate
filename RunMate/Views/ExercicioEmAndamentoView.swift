@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExercicioEmAndamentoView: View {
     
-    @EnvironmentObject var healthManager: HealthManager
+    var healthManager: HealthManager = HealthManager()
     
     var stopWatchmanager =  StopWatchManager()
     
@@ -26,6 +26,8 @@ struct ExercicioEmAndamentoView: View {
     @Binding var isEditing: Bool
     
     @Binding var isShowingSelf: Bool
+    
+    @ObservedObject var locationManager = LocationManager()
     
     var body: some View {
         NavigationStack{
@@ -45,11 +47,9 @@ struct ExercicioEmAndamentoView: View {
                         }
                     }
                     
-                    VStack{
-                        //                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
-                        //                    Text("Calorias: \(healthManager.calories, specifier: "%d") kcal")
-                        VStack{
-                            Text("\(healthManager.distance, specifier: "%.2f")")
+                    VStack {
+                        VStack {
+                            Text("\(locationManager.distance, specifier: "%.2f")")
                                 .font(.custom("Poppins-Bold", size: 115))
                                 .foregroundStyle(.white)
                             Text("Quilômetros")
@@ -87,13 +87,16 @@ struct ExercicioEmAndamentoView: View {
                                 if healthManager.isPaused {
                                     healthManager.resumeWorkout()
                                     stopWatchmanager.start()
+                                    locationManager.isRunning = true
                                 } else {
                                     healthManager.pauseWorkout()
                                     stopWatchmanager.pause()
+                                    locationManager.isRunning = false
                                 }
                             } else {
                                 healthManager.startWorkout()
                                 stopWatchmanager.start()
+                                locationManager.isRunning = true
                             }
                         }) {
                             let img = healthManager.isRunning ? (healthManager.isPaused ? "play.circle.fill" : "pause.circle.fill") : "play.circle.fill"
@@ -120,8 +123,8 @@ struct ExercicioEmAndamentoView: View {
                 
             }
             .overlay{
-                if isShowingAviso{
-                    ZStack{
+                if isShowingAviso {
+                    ZStack {
                         Color.blackBlue.opacity(0.8)
                         withAnimation(Animation.spring(duration: 0.75)) {
                             AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf)
@@ -161,3 +164,54 @@ struct ExercicioEmAndamentoView: View {
     }
 }
 
+import CoreLocation
+
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    var locationManager = CLLocationManager()
+    @Published var distance: Double = 0.0
+    private var lastLocation: CLLocation?
+    var isRunning: Bool = false
+    private var todasLocations: [CLLocation] = []
+    private let minDistanceChange: CLLocationDistance = 10 // Filtrar mudanças menores que 10 metros
+    private let minHorizontalAccuracy: CLLocationAccuracy = 70 // Aceitar apenas localizações com precisão horizontal melhor que 20 metros
+    
+    override init() {
+        super.init()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        if self.locationManager.authorizationStatus == .notDetermined {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        self.lastLocation = locationManager.location
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if isRunning {
+            guard let newLocation = locations.last else { return }
+            print("Entrou")
+            // Filtrar localizações com baixa precisão
+            if newLocation.horizontalAccuracy < minHorizontalAccuracy {
+                print(newLocation.horizontalAccuracy)
+                return
+            }
+            print(newLocation.horizontalAccuracy)
+            
+            // Verificar distância mínima
+            if let lastLocation = lastLocation {
+                print("Feia")
+                let distanceDelta = newLocation.distance(from: lastLocation)
+                if distanceDelta < minDistanceChange {
+                    print("PKRL")
+                    return
+                }
+                distance += (distanceDelta/1000)
+                print("Distancia: ", distance)
+                self.lastLocation = newLocation
+            } else {
+                print("PKRL")
+                self.lastLocation = newLocation
+            }
+        }
+    }
+}
