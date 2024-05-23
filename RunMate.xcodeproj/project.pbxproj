@@ -231,11 +231,11 @@
 		F9B5BA8A2BE413070007E115 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0FCDFA122BFD1D2F00DF9C70 /* Poppins-Bold.ttf */,
 				F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */,
 				F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */,
 				F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */,
 				F9B5BA962BE414560007E115 /* Roboto-Regular.ttf */,
+				0FCDFA122BFD1D2F00DF9C70 /* Poppins-Bold.ttf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
