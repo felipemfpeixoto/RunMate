@@ -22,6 +22,8 @@ struct RoadMapView: View {
     
     @Binding var telaSelecionada: TelaSelecionada
     
+    @State var presentSemanaIndex: Semana?
+    
     var body: some View {
         VStack {
             HStack {
@@ -59,35 +61,35 @@ struct RoadMapView: View {
         }
     }
     
+    @ViewBuilder
     func semanaDaVez(for index: Int) -> some View {
         let semana = semanas[index]
         
-        return ZStack {
+        ZStack {
                     VStack {
                         Image( semana.semana % 2 == 1 ? "impar" : "par")
                             .resizable()
                         Button {
-                            self.semanaIndex = index
+//                            self.semanaIndex = index
+                            self.presentSemanaIndex = semana
                             if semanaIndex > dao.semanaAtual {
-                                isShowingNextSheet.toggle()
+//                                isShowingNextSheet.toggle()
                             } else if semanaIndex == dao.semanaAtual {
-//                                telaSelecionada = .home
-                                isShowingPrevious.toggle()
+                                telaSelecionada = .home
                             } else {
                                 isShowingPrevious.toggle()
                             }
                         } label: {
-                            if semana.semana % 2 == 1 {
-                                    SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                            } else {
-                                    SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
-                            }
+                            SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
                         }
-                        .padding(.leading, semana.semana == 1  ? -30 : 10)
+                        .padding(.leading, semana.semana % 2 == 1  ? -30 : 15)
                         .padding(.top, -47)
-                        .sheet(isPresented: $isShowingNextSheet) {
-                            PreviewSemanaSeguinte(index: semanaIndex)
-                        }
+//                        .sheet(isPresented: $isShowingNextSheet) {
+//                            PreviewSemanaSeguinte(index: semanaIndex)
+//                        }
+                        .sheet(item: $presentSemanaIndex, content: { semana in
+                            PreviewSemanaSeguinte(index: semana.semana)
+                        })
                         .sheet(isPresented: $isShowingPrevious) {
                             ParabénsView(semana: semana, index: index)
                         }

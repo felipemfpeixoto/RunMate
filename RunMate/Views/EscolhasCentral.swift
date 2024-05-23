@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PostHog
 
 struct EscolhasCentral: View {
     
@@ -49,15 +50,27 @@ struct EscolhasCentral: View {
                     if faseBonequinho == 0 || faseBonequinho == 1 {
                         EscolhaNivelView(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel, imProgressing: $imProgressing)
                             .padding(.horizontal)
+                            .onDisappear {
+                                PostHogSDK.shared.capture("Escolha Nível")
+                            }
+                            .onAppear {
+                                PostHogSDK.shared.capture("Abriu o app pela primeira vez")
+                            }
                         
                     } else if faseBonequinho == 2 {
                         EscolhaObjetivoView(faseBonequinho: $faseBonequinho, selectedLevel: $filenameLevel, filenameGoal: $filenameGoal, imPrograssing: $imProgressing)
                             .padding(.horizontal)
+                            .onDisappear {
+                                PostHogSDK.shared.capture("Escolha Meta")
+                            }
                            
                     } else if faseBonequinho == 3 {
                         VStack{
                             EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing)
                                 .padding(.horizontal)
+                                .onDisappear {
+                                    PostHogSDK.shared.capture("Escolha Idade")
+                                }
                             Button {
                                 dao.idade = Double(value) + 16
                                 criaEscolhas()
