@@ -61,7 +61,7 @@ struct BotaoEscolha: View {
             }
             .frame(width: 317, height: 69)
             .clipShape(RoundedRectangle(cornerRadius: 20))
-            .overlay(selectedLevel == texto ? RoundedRectangle(cornerRadius: 20).stroke(Color.turquoiseGreen, lineWidth: 5) : nil)
+            .overlay(selectedLevel == texto ? RoundedRectangle(cornerRadius: 20).stroke(Color.turquoiseGreen, lineWidth: 0) : nil)
         })
     }
 }
