@@ -29,6 +29,8 @@ struct ContentView: View {
     @Binding var isShowingAviso: Bool
     
     var body: some View {
+        
+        
             NavigationStack {
                 EscolhasCentral(faseBonequinho: $faseBonequinho, filenameLevel: $filenameLevel, filenameGoal: $filenameGoal, value: $value, imProgressing: $imProgressing, isEditing: $isEditing)
                     .onAppear {

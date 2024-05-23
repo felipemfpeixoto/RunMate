@@ -93,6 +93,4 @@ struct distanceChart: View {
     }
 }
 
-//#Preview {
-//    PerfilView()
-//}
+
