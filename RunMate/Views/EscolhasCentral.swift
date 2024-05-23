@@ -67,9 +67,18 @@ struct EscolhasCentral: View {
                                     RoundedRectangle(cornerRadius: 20)
                                         .foregroundStyle(Color.turquoiseGreen)
                                         .frame(width: 243, height: 56)
-                                    Text("Próximo")
-                                        .foregroundStyle(.black)
-                                        .font(.title3.bold())
+                                    HStack {
+                                        Text("PRÓXIMO")
+                                            .font(Font.custom("Poppins-SemiBold", size: 18))
+                                            .foregroundStyle(Color.blackBlue)
+                                          
+                                        
+                                        Image(systemName: "arrow.right")
+                                            .font(.title2)
+                                            .bold()
+                                            .foregroundColor(.blackBlue)
+                                           
+                                    }
                                 }
                             }
                             Spacer()
