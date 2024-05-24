@@ -49,7 +49,7 @@ struct AvisoResetarView: View {
                         .background(Color.lakeBlue)
                 })
                 .cornerRadius(18)
-                .padding(.bottom, 2)
+                .padding(.bottom, 4)
                 .padding(.horizontal, 60)
                 
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
@@ -61,7 +61,7 @@ struct AvisoResetarView: View {
                         .background(Color.turquoiseGreen)
                 })
                 .cornerRadius(18)
-                .padding(.bottom, 2)
+                .padding(.bottom, 3)
                 .padding(.horizontal, 60)
             }
         }

@@ -4,13 +4,9 @@ import PostHog
 struct EscolhaNivelView: View {
     
     @Binding var faseBonequinho: Int
-    
     @State var selectedLevel: String = ""
-    
     @Binding var filenameLevel: String
-    
     @Binding var imProgressing: Bool
-    
     
     var body: some View {
         ZStack {
@@ -26,19 +22,21 @@ struct EscolhaNivelView: View {
                 
                 Spacer()
                 
-                VStack{
+                VStack {
                     Text(dao.nivelDescricao)
                         .foregroundStyle(.white)
                         .font(Font.custom("Roboto-Regular", size: 14))
                         .multilineTextAlignment(.center)
-                }.frame(width: 300 ,height: 100)
+                }.frame(width: 300, height: 100)
                 
                 Spacer()
                 if selectedLevel != "" {
                     Button(action: {
-                        self.imProgressing = true
-                        faseBonequinho += 1
-                        PostHogSDK.shared.capture("NivelSelecionado", properties: ["nivel": filenameLevel])
+                        withAnimation(.easeInOut(duration: 0.75)) {
+                            self.imProgressing = true
+                            faseBonequinho += 1
+                            PostHogSDK.shared.capture("NivelSelecionado", properties: ["nivel": filenameLevel])
+                        }
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -89,5 +87,3 @@ struct EscolhaNivelView: View {
         }
     }
 }
-
-

@@ -1,25 +1,13 @@
-//
-//  EscolhasCentral.swift
-//  RunMate
-//
-//  Created by infra on 16/05/24.
-//
-
 import SwiftUI
 import PostHog
 
 struct EscolhasCentral: View {
     
     @Binding var faseBonequinho: Int
-    
     @Binding var filenameLevel: String
-    
     @Binding var filenameGoal: String
-    
     @Binding var value: Int
-    
     @Binding var imProgressing: Bool
-    
     @Binding var isEditing: Bool
     
     var body: some View {
@@ -30,8 +18,10 @@ struct EscolhasCentral: View {
                 HStack {
                     Button {
                         if faseBonequinho > 1 {
-                            self.imProgressing = false
-                            faseBonequinho -= 1
+                            withAnimation(.easeInOut(duration: 0.75)) {
+                                self.imProgressing = false
+                                faseBonequinho -= 1
+                            }
                         }
                     } label: {
                         Image(systemName: "arrow.left")
@@ -65,16 +55,18 @@ struct EscolhasCentral: View {
                             }
                            
                     } else if faseBonequinho == 3 {
-                        VStack{
+                        VStack {
                             EscolhaIdadeView(selectedLevel: $filenameLevel, selectedGoal: $filenameGoal, value: $value, imPrograssing: $imProgressing)
                                 .padding(.horizontal)
                                 .onDisappear {
                                     PostHogSDK.shared.capture("Escolha Idade")
                                 }
                             Button {
-                                dao.idade = Double(value) + 16
-                                criaEscolhas()
-                                isEditing = false
+                                withAnimation(.easeInOut(duration: 0.75)) {
+                                    dao.idade = Double(value) + 16
+                                    criaEscolhas()
+                                    isEditing = false
+                                }
                             } label: {
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 20)
@@ -96,11 +88,10 @@ struct EscolhasCentral: View {
                             }
                             Spacer()
                         }
-                    
                     }
                 }
                 .frame(height: 450)
-                .transition(AnyTransition.asymmetric(insertion:.move(edge: imProgressing ? .trailing : .leading), removal: .move(edge: imProgressing ? .leading : .trailing)))
+                .transition(AnyTransition.asymmetric(insertion: .move(edge: imProgressing ? .trailing : .leading), removal: .move(edge: imProgressing ? .leading : .trailing)))
                 Spacer()
             }
         }
@@ -119,7 +110,3 @@ struct EscolhasCentral: View {
         dao.loadJsonFileFromObjective()
     }
 }
-
-//#Preview {
-//    EscolhasCentral()
-//}

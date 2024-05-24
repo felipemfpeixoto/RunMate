@@ -49,6 +49,7 @@ struct EscolhaObjetivoView: View {
                                     .foregroundColor(.blackBlue)
                                    
                             }
+                            
                         }
                     })
                 } else {
@@ -80,6 +81,7 @@ struct EscolhaObjetivoView: View {
         .onDisappear {
             dao.metaSelecionlada = selectedGoal
         }
+        
     }
 }
 
