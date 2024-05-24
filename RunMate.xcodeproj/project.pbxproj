@@ -42,6 +42,7 @@
 		0FCDFA172BFD3B4500DF9C70 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 0FCDFA162BFD3B4500DF9C70 /* PostHog */; };
 		0FCDFA192BFFB38F00DF9C70 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
+		5DC066A92C01050E00E80444 /* AvisoResetarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC066A82C01050E00E80444 /* AvisoResetarView.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
 		F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
@@ -90,6 +91,7 @@
 		0FCDFA132BFD3B1B00DF9C70 /* PosthogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosthogManager.swift; sourceTree = "<group>"; };
 		0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5D8091212BED42F800986596 /* ConclusaoMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusaoMetaView.swift; sourceTree = "<group>"; };
+		5DC066A82C01050E00E80444 /* AvisoResetarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoResetarView.swift; sourceTree = "<group>"; };
 		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
 		F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoConfirmacaoEtapa.swift; sourceTree = "<group>"; };
 		F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				5DF051F32BE58B120009757A /* ParabénsView.swift */,
 				5D8091212BED42F800986596 /* ConclusaoMetaView.swift */,
 				F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */,
+				5DC066A82C01050E00E80444 /* AvisoResetarView.swift */,
 				F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */,
 				F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */,
 				0FCDFA072BF7CF8700DF9C70 /* IndiceView.swift */,
@@ -358,6 +361,7 @@
 				0FCDFA112BFBDC4400DF9C70 /* PreviewSemanaSeguinte.swift in Sources */,
 				F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */,
 				0FCDFA082BF7CF8700DF9C70 /* IndiceView.swift in Sources */,
+				5DC066A92C01050E00E80444 /* AvisoResetarView.swift in Sources */,
 				F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */,
 				0FCDFA062BF68C9000DF9C70 /* EscolhasCentral.swift in Sources */,
 				5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */,
