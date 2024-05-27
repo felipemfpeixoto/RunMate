@@ -13,36 +13,30 @@ struct AvisoView: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 40)
-                .fill(Color.darkPurple)
-                .stroke(Color.lilacPurple, lineWidth: 4)
-                .frame(maxWidth: .infinity)
-                .frame(height: 300)
-                .padding(.horizontal, 20)
             
             VStack(spacing: 10) {
                 
-                Text("ATENÇÃO!")
-                    .font(Font.custom("Poppins-SemiBold", size: 22))
-                    .foregroundStyle(Color.turquoiseGreen)
-                    .padding(.bottom, 5)
-                    .padding(.top, 50)
+               Image("Aviso")
+                    .padding(.vertical, 30)
                 
                 
                 Text("Antes de se exercitar ou participar de atividades físicas intensas, como corrida, consulte seu médico ou profissional de saúde.")
-                    .font(Font.custom("Poppins-SemiBold", size: 16))
-                    .padding(.horizontal, 15)
+                    .font(Font.custom("Poppins-SemiBold", size: 18))
+                    .padding(.horizontal, 5)
                     .foregroundStyle(Color.white)
                     .multilineTextAlignment(.center)
+                    .padding(.vertical, 20)
+                   
                      
                 
                 
                 Text("Certifique-se de sua saúde cardiovascular e de condições médicas pré-existentes.")
-                    .font(Font.custom("Poppins-SemiBold", size: 16))
+                    .font(Font.custom("Poppins-SemiBold", size: 18))
                     .foregroundStyle(Color.white)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, 5)
                     .multilineTextAlignment(.center)
-                    .padding(.bottom, 10)
+                
+                   
                 
                 
                 Button(action: {
@@ -59,18 +53,18 @@ struct AvisoView: View {
                         
                     
                 })
-                .cornerRadius(18)
-                .padding(.top, 15)
+                .cornerRadius(11)
+                .padding(.top, 100)
+                
 
 
             }
             .padding(.vertical, 25)
             .padding(.horizontal, 30)
-            .cornerRadius(25)
-            
+                        
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.darkPurple.opacity(0.9).ignoresSafeArea())
+        .background(Color.oceanBlue.opacity(1).ignoresSafeArea())
         .navigationBarBackButtonHidden()
     }
 }
