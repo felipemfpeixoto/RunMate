@@ -36,13 +36,15 @@ struct ExercicioEmAndamentoView: View {
                 VStack{
                     HStack{
                         Spacer()
+                        
                         Button {
                             isShowingSelf = false
                         } label: {
                             Image(systemName: "xmark")
                                 .foregroundColor(.white)
+                                .padding(.trailing, 30)
+                                .padding(.bottom, 20)
                         }
-                        .padding(.trailing, 30)
                     }
                     
                     VStack {
@@ -116,7 +118,6 @@ struct ExercicioEmAndamentoView: View {
                         }
                         .disabled(!healthManager.isRunning)
                     }
-                    Spacer()
                 }
                 .padding()
                 
@@ -160,57 +161,5 @@ struct ExercicioEmAndamentoView: View {
         let minutes = (Int(secondElapsed) % 3600) / 60
         let seconds = Int(secondElapsed) % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-    }
-}
-
-import CoreLocation
-
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    var locationManager = CLLocationManager()
-    @Published var distance: Double = 0.0
-    private var lastLocation: CLLocation?
-    var isRunning: Bool = false
-    private var todasLocations: [CLLocation] = []
-    private let minDistanceChange: CLLocationDistance = 10 // Filtrar mudanças menores que 10 metros
-    private let minHorizontalAccuracy: CLLocationAccuracy = 70 // Aceitar apenas localizações com precisão horizontal melhor que 20 metros
-    
-    override init() {
-        super.init()
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        if self.locationManager.authorizationStatus == .notDetermined {
-            self.locationManager.requestWhenInUseAuthorization()
-        }
-        self.lastLocation = locationManager.location
-        self.locationManager.startUpdatingLocation()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if isRunning {
-            guard let newLocation = locations.last else { return }
-            print("Entrou")
-            // Filtrar localizações com baixa precisão
-            if newLocation.horizontalAccuracy < minHorizontalAccuracy {
-                print(newLocation.horizontalAccuracy)
-                return
-            }
-            print(newLocation.horizontalAccuracy)
-            
-            // Verificar distância mínima
-            if let lastLocation = lastLocation {
-                print("Feia")
-                let distanceDelta = newLocation.distance(from: lastLocation)
-                if distanceDelta < minDistanceChange {
-                    print("PKRL")
-                    return
-                }
-                distance += (distanceDelta/1000)
-                print("Distancia: ", distance)
-                self.lastLocation = newLocation
-            } else {
-                print("PKRL")
-                self.lastLocation = newLocation
-            }
-        }
     }
 }
