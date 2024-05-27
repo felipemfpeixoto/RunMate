@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PostHog
 
 struct ExercicioEmAndamentoView: View {
     
@@ -92,11 +93,13 @@ struct ExercicioEmAndamentoView: View {
                                     healthManager.pauseWorkout()
                                     stopWatchmanager.pause()
                                     locationManager.isRunning = false
+                                    PostHogSDK.shared.capture("Pausou Exercício")
                                 }
                             } else {
                                 healthManager.startWorkout()
                                 stopWatchmanager.start()
                                 locationManager.isRunning = true
+                                PostHogSDK.shared.capture("Começou Exercício")
                             }
                         }) {
                             let img = healthManager.isRunning ? (healthManager.isPaused ? "play.circle.fill" : "pause.circle.fill") : "play.circle.fill"
@@ -110,6 +113,7 @@ struct ExercicioEmAndamentoView: View {
                             healthManager.endWorkout()
                             stopWatchmanager.stop()
                             isShowingAviso = true
+                            PostHogSDK.shared.capture("Terminou Exercício")
                         }) {
                             Image(systemName: "stop.circle.fill")
                                 .resizable()
