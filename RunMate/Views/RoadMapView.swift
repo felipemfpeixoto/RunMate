@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PostHog
 
 struct RoadMapView: View {
     
@@ -23,6 +24,8 @@ struct RoadMapView: View {
     @Binding var telaSelecionada: TelaSelecionada
     
     @State var presentSemanaIndex: Semana?
+    
+    @State var enterTime: Date?
     
     var body: some View {
         VStack {
@@ -58,6 +61,16 @@ struct RoadMapView: View {
         .navigationBarBackButtonHidden()
         .onAppear {
             semanas = dao.paginaDeTreinamento.planoDeTreinamento.semanas
+            self.enterTime = Date()
+        }
+        .onDisappear {
+            if let enterTime = self.enterTime {
+                let duration = Date().timeIntervalSince(enterTime)
+                PostHogSDK.shared.capture("Screen Exited", properties: [
+                    "screen": "RoadMapView",
+                    "duration": duration
+                ])
+            }
         }
     }
     
@@ -73,20 +86,20 @@ struct RoadMapView: View {
 //                            self.semanaIndex = index
                             self.presentSemanaIndex = semana
                             if semanaIndex > dao.semanaAtual {
-//                                isShowingNextSheet.toggle()
+                                isShowingNextSheet.toggle()
+                                PostHogSDK.shared.capture("Viu semana \(index + 1) posterior à atual")
                             } else if semanaIndex == dao.semanaAtual {
                                 telaSelecionada = .home
+                                PostHogSDK.shared.capture("Navegou para SemanaView a partir do RoadMap")
                             } else {
                                 isShowingPrevious.toggle()
+                                PostHogSDK.shared.capture("Viu semana \(index + 1) anterior à semana atual")
                             }
                         } label: {
                             SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
                         }
                         .padding(.leading, semana.semana % 2 == 1  ? -30 : 15)
                         .padding(.top, -47)
-//                        .sheet(isPresented: $isShowingNextSheet) {
-//                            PreviewSemanaSeguinte(index: semanaIndex)
-//                        }
                         .sheet(item: $presentSemanaIndex, content: { semana in
                             PreviewSemanaSeguinte(index: semana.semana)
                         })

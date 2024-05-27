@@ -1,5 +1,4 @@
 {
-  "originHash" : "aa11017acc7914e4dc32495b45270bddc06483a5b1392111c7241c46abb243ff",
   "pins" : [
     {
       "identity" : "codableextensions",
@@ -16,9 +15,9 @@
       "location" : "https://github.com/PostHog/posthog-ios.git",
       "state" : {
         "branch" : "main",
-        "revision" : "b378bd66aaa41162ea4dc1b1ced5433c2af65c48"
+        "revision" : "dcb2b1d7733370d748160d7abc55eb3578ffb93d"
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

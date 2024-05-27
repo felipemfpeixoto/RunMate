@@ -7,11 +7,14 @@
 
 import SwiftUI
 import Charts
+import PostHog
 
 
 struct PerfilView: View {
     
     @Binding var isEditing: Bool
+    
+    @State var enterTime: Date?
     
     var body: some View {
         ZStack{
@@ -26,12 +29,24 @@ struct PerfilView: View {
                 
                 Button(action: {
                     isEditing = true
+                    PostHogSDK.shared.capture("Resetou escolha")
                 }, label: {
                     Text("Resetar Escolhas")
                 })
             }
         }
-            
+        .onAppear {
+            self.enterTime = Date()
+        }
+        .onDisappear {
+            if let enterTime = self.enterTime {
+                let duration = Date().timeIntervalSince(enterTime)
+                PostHogSDK.shared.capture("Screen Exited", properties: [
+                    "screen": "Perfil",
+                    "duration": duration
+                ])
+            }
+        }
     }
 }
 
