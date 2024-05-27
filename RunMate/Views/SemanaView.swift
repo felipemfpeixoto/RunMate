@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PostHog
 
 struct SemanaView: View {
     
@@ -38,6 +39,8 @@ struct SemanaView: View {
     var qtdSemanas: Int {
         return dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
     }
+    
+    @State var enterTime: Date?
    
     var body: some View {
         ZStack{
@@ -55,6 +58,16 @@ struct SemanaView: View {
                 }
                 .onAppear {
                     semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[semanaAtual].dias
+                    self.enterTime = Date()
+                }
+                .onDisappear {
+                    if let enterTime = self.enterTime {
+                        let duration = Date().timeIntervalSince(enterTime)
+                        PostHogSDK.shared.capture("Screen Exited", properties: [
+                            "screen": "Semana View",
+                            "duration": duration
+                        ])
+                    }
                 }
                 .onChange(of: dao.semanaAtual) { oldValue, newValue in
                     print("semana = " + String(newValue))
@@ -142,6 +155,7 @@ struct SemanaView: View {
             HStack{
                 Button {
                     apareceInfo = true
+                    PostHogSDK.shared.capture("Abriu Índice")
                 } label: {
                     Text(Image(systemName: "info.circle"))
                         .foregroundStyle(Color.turquoiseGreen)
@@ -219,6 +233,7 @@ struct SemanaView: View {
                             if dia.dia != (dao.diaAtual + 1) {
                                 self.updateDiaAtual(dia: dia)
                             }
+                            PostHogSDK.shared.capture("Viu treino \(dia) da semana \(semanaAtual + 1)")
                         }, label: {
                             diaLabel(dia: dia, isEqual: isEqual)
                         })

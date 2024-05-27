@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import PostHog
 
 struct ExercicioEmAndamentoView: View {
     
-    @EnvironmentObject var healthManager: HealthManager
+    var healthManager: HealthManager = HealthManager()
     
     var stopWatchmanager =  StopWatchManager()
     
@@ -27,6 +28,8 @@ struct ExercicioEmAndamentoView: View {
     
     @Binding var isShowingSelf: Bool
     
+    @ObservedObject var locationManager = LocationManager()
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -34,20 +37,20 @@ struct ExercicioEmAndamentoView: View {
                 VStack{
                     HStack{
                         Spacer()
+                        
                         Button {
                             isShowingSelf = false
                         } label: {
                             Image(systemName: "xmark")
                                 .foregroundColor(.white)
+                                .padding(.trailing, 30)
+                                .padding(.bottom, 20)
                         }
-                        .padding(.trailing, 30)
                     }
-                    Spacer()
-                    VStack{
-                        //                    Text("Velocidade Média: \(healthManager.averageSpeed, specifier: "%.2f") km/h")
-                        //                    Text("Calorias: \(healthManager.calories, specifier: "%d") kcal")
-                        VStack{
-                            Text("\(healthManager.distance, specifier: "%.2f")")
+                    
+                    VStack {
+                        VStack {
+                            Text("\(locationManager.distance, specifier: "%.2f")")
                                 .font(.custom("Poppins-Bold", size: 115))
                                 .foregroundStyle(.white)
                             Text("Quilômetros")
@@ -85,13 +88,18 @@ struct ExercicioEmAndamentoView: View {
                                 if healthManager.isPaused {
                                     healthManager.resumeWorkout()
                                     stopWatchmanager.start()
+                                    locationManager.isRunning = true
                                 } else {
                                     healthManager.pauseWorkout()
                                     stopWatchmanager.pause()
+                                    locationManager.isRunning = false
+                                    PostHogSDK.shared.capture("Pausou Exercício")
                                 }
                             } else {
                                 healthManager.startWorkout()
                                 stopWatchmanager.start()
+                                locationManager.isRunning = true
+                                PostHogSDK.shared.capture("Começou Exercício")
                             }
                         }) {
                             let img = healthManager.isRunning ? (healthManager.isPaused ? "play.circle.fill" : "pause.circle.fill") : "play.circle.fill"
@@ -105,6 +113,7 @@ struct ExercicioEmAndamentoView: View {
                             healthManager.endWorkout()
                             stopWatchmanager.stop()
                             isShowingAviso = true
+                            PostHogSDK.shared.capture("Terminou Exercício")
                         }) {
                             Image(systemName: "stop.circle.fill")
                                 .resizable()
@@ -113,14 +122,13 @@ struct ExercicioEmAndamentoView: View {
                         }
                         .disabled(!healthManager.isRunning)
                     }
-                    Spacer()
                 }
                 .padding()
                 
             }
             .overlay{
-                if isShowingAviso{
-                    ZStack{
+                if isShowingAviso {
+                    ZStack {
                         Color.blackBlue.opacity(0.8)
                         withAnimation(Animation.spring(duration: 0.75)) {
                             AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf)
@@ -159,4 +167,3 @@ struct ExercicioEmAndamentoView: View {
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
 }
-

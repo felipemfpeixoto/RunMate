@@ -27,44 +27,44 @@ struct AvisoConfirmacaoEtapa: View {
                     .opacity(0.2)
                     .ignoresSafeArea()
                 
-                RoundedRectangle(cornerRadius: 40)
+                RoundedRectangle(cornerRadius: 20)
                     .fill(Color.oceanBlue)
-                    .stroke(Color.turquoiseGreen, lineWidth: 4)
+                    .stroke(Color.turquoiseGreen, lineWidth: 0)
                     .frame(maxWidth: .infinity)
-                    .frame(height: 230)
-                    .padding(25)
+                    .frame(height: 280)
+                    .padding(35)
                 
-                VStack(spacing: 20) {
+                VStack{
                     
                     Text("ATENÇÃO")
                         .font(Font.custom("Poppins-SemiBold", size: 22))
                         .foregroundStyle(Color.turquoiseGreen)
+                        .padding(.bottom, 8)
                     
                     Text("Tem certeza que deseja finalizar esta corrida?")
                         .font(Font.custom("Poppins-SemiBold", size: 18))
                         .foregroundStyle(Color.white)
                         .multilineTextAlignment(.center)
-                }
-                .padding(.vertical, 25)
-                .padding(.horizontal, 30)
-                .cornerRadius(25)
-                VStack{
-                    
-                    VStack{
-                        
-                    }.frame(height: 220)
-                    
-                    HStack{
+                        .padding(.horizontal, 50)
+                        .padding(.bottom, 10)
+               
+//                .padding(.vertical, 25)
+               
+//                .cornerRadius(25)
+                
                         
                         Button(action: {apareceAtencao = false}, label: {
                             Text("CANCELAR")
-                                .foregroundColor(.turquoiseGreen)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
                                 .font(Font.custom("Poppins-SemiBold", size: 18))
                                 .padding(.vertical, 16)
-                                .padding(.horizontal, 20)
                                 .background(Color.lakeBlue)
+                            
                         })
                         .cornerRadius(18)
+                        .padding(.bottom, 2)
+                        .padding(.horizontal, 60)
                         
                         Button(action: {
                             withAnimation(Animation.spring(duration: 0.75)) {
@@ -90,17 +90,20 @@ struct AvisoConfirmacaoEtapa: View {
                         }, label: {
                             Text("FINALIZAR")
                                 .foregroundColor(.oceanBlue)
+                                .frame(maxWidth: .infinity)
                                 .font(Font.custom("Poppins-SemiBold", size: 18))
                                 .padding(.vertical, 16)
-                                .padding(.horizontal, 20)
                                 .background(Color.turquoiseGreen)
                         })
                         .cornerRadius(18)
-                    }
+                        .padding(.bottom, 2)
+                        .padding(.horizontal, 60)
+                    
                 }
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
+
 
