@@ -30,6 +30,10 @@ struct ExercicioEmAndamentoView: View {
     
     @ObservedObject var locationManager = LocationManager()
     
+    @State var calDiaria: Double = 0
+    @State var distDiaria: Double = 0
+    @State var velDiaria: Double = 0
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -111,6 +115,9 @@ struct ExercicioEmAndamentoView: View {
                         
                         Button(action: {
                             healthManager.endWorkout()
+                            calDiaria = healthManager.calories
+                            velDiaria = healthManager.averageSpeed
+                            distDiaria = locationManager.distance
                             stopWatchmanager.stop()
                             isShowingAviso = true
                             PostHogSDK.shared.capture("Terminou Exercício")
@@ -131,7 +138,7 @@ struct ExercicioEmAndamentoView: View {
                     ZStack {
                         Color.blackBlue.opacity(0.8)
                         withAnimation(Animation.spring(duration: 0.75)) {
-                            AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf)
+                            AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria)
                         }
                     }
                     

@@ -24,13 +24,18 @@ struct SemanaView: View {
         return dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios.isEmpty
     }
     
-    var semanaAtual: Int {
+    var intSemanaAtual: Int {
         dao.semanaAtual
     }
     
     var exerciciosDetalhados: [Exercicio] {
         return dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual].dias[dao.diaAtual].exercicios
     }
+    
+    var semanaAtual: Semana {
+        return dao.paginaDeTreinamento.planoDeTreinamento.semanas[dao.semanaAtual]
+    }
+
     
     var qtdElementos: Int {
         return dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
@@ -57,7 +62,7 @@ struct SemanaView: View {
                     footerView
                 }
                 .onAppear {
-                    semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[semanaAtual].dias
+                    semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[intSemanaAtual].dias
                     self.enterTime = Date()
                 }
                 .onDisappear {
@@ -95,7 +100,7 @@ struct SemanaView: View {
                 if isEmpty {
                     diaLivre
                 }
-                else if (semanaAtual + 1) == qtdElementos && dao.diaAtual == 6 {
+                else if (intSemanaAtual + 1) == qtdElementos && dao.diaAtual == 6 {
                     diaProva
                 }
                 else {
@@ -113,7 +118,7 @@ struct SemanaView: View {
         VStack {
             if dao.diasConcluidos.contains(dao.diaAtual) || dao.diaAtual == 0 {
                 if dao.diasConcluidos.contains(dao.diaAtual + 1){
-                    etapaConcluida
+                    
                 } else {
                     botaoEtapaNaoConcluida
                 }
@@ -125,6 +130,10 @@ struct SemanaView: View {
                 .fullScreenCover(isPresented: $isShowingExercicio, content: {
                     ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio)
                 })
+                .sheet(isPresented: $apareceParabens, content: {
+                    ParabénsView(semana: semanaAtual , index: intSemanaAtual)
+                })
+        
         }
         
     var parabensOverlay: some View {
@@ -203,11 +212,31 @@ struct SemanaView: View {
         var botaoEtapaNaoConcluida: some View {
             VStack{
                 Button(action: {
-                    withAnimation(Animation.spring(duration: 0.75)) {
-                        isShowingExercicio.toggle()
+                    if isEmpty{
+                        if dao.diasConcluidos.count == 6 {
+                            if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
+                                dao.semanaAtual = 0
+                                apareceParabensMeta = true
+                            } else {
+                                dao.diaAtual = 0
+                                dao.diasConcluidos = []
+                                dao.semanaAtual += 1
+                                withAnimation(Animation.bouncy(duration: 0.75)) {
+                                    apareceParabens = true
+                                }
+                            }
+                        } else {
+                            dao.diasConcluidos.append(dao.diaAtual+1)
+                            dao.diaAtual += 1
+                        }
+                    }
+                    else{
+                        withAnimation(Animation.spring(duration: 0.75)) {
+                            isShowingExercicio.toggle()
+                        }
                     }
                 }, label: {
-                    Text("COMEÇAR ETAPA")
+                    Text(isEmpty ? "CONCLUIR ETAPA" : "COMEÇAR ETAPA")
                         .font(Font.custom("Poppins-SemiBold", size: 18))
                         .foregroundStyle(Color.white)
                     Text(Image(systemName: "checkmark.seal.fill"))
@@ -233,7 +262,7 @@ struct SemanaView: View {
                             if dia.dia != (dao.diaAtual + 1) {
                                 self.updateDiaAtual(dia: dia)
                             }
-                            PostHogSDK.shared.capture("Viu treino \(dia) da semana \(semanaAtual + 1)")
+                            PostHogSDK.shared.capture("Viu treino \(dia) da semana \(intSemanaAtual + 1)")
                         }, label: {
                             diaLabel(dia: dia, isEqual: isEqual)
                         })

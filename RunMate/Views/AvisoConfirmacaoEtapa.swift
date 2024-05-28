@@ -21,6 +21,14 @@ struct AvisoConfirmacaoEtapa: View {
     
     @Binding var isSHowingSelf: Bool
     
+    @Binding var calDiaria: Double
+    @Binding var distDiaria: Double
+    @Binding var velDiaria: Double
+   
+//    var calSemanal: Double = dao.dadosSemanas[dao.semanaAtual].calorias
+//    var distSemanal: Double = dao.dadosSemanas[dao.semanaAtual].distância
+//    var velSemanal: Double = dao.dadosSemanas[dao.semanaAtual].velocidadeMédia
+    
     var body: some View {
             ZStack {
                 Color.blackBlue
@@ -47,10 +55,6 @@ struct AvisoConfirmacaoEtapa: View {
                         .multilineTextAlignment(.center)
                         .padding(.horizontal, 50)
                         .padding(.bottom, 10)
-               
-//                .padding(.vertical, 25)
-               
-//                .cornerRadius(25)
                 
                         
                         Button(action: {apareceAtencao = false}, label: {
@@ -67,6 +71,9 @@ struct AvisoConfirmacaoEtapa: View {
                         .padding(.horizontal, 60)
                         
                         Button(action: {
+                            dao.dadosSemanas[dao.semanaAtual].calorias = calDiaria/Double((dao.diaAtual + 1))
+                            dao.dadosSemanas[dao.semanaAtual].distância = distDiaria/Double((dao.diaAtual + 1))
+                            dao.dadosSemanas[dao.semanaAtual].velocidadeMédia = velDiaria/Double((dao.diaAtual + 1))
                             withAnimation(Animation.spring(duration: 0.75)) {
                                 isSHowingSelf.toggle()
                                 isShowingExAndamento.toggle()

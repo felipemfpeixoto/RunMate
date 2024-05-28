@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0FA184F92C04FD3A004B2B97 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA184F82C04FD3A004B2B97 /* PostHog */; };
-		0FA184FC2C04FD45004B2B97 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FA184FB2C04FD45004B2B97 /* CodableExtensions */; };
 		0FA57B072BE400F900EA9D99 /* RunMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B062BE400F900EA9D99 /* RunMateApp.swift */; };
 		0FA57B092BE400F900EA9D99 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B082BE400F900EA9D99 /* ContentView.swift */; };
 		0FA57B0B2BE400FD00EA9D99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FA57B0A2BE400FD00EA9D99 /* Assets.xcassets */; };
@@ -52,6 +51,7 @@
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
 		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
 		F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */; };
+		F9CBBA992C052DB8001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA982C052DB8001ACE10 /* CodableExtensions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,7 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FA184F92C04FD3A004B2B97 /* PostHog in Frameworks */,
-				0FA184FC2C04FD45004B2B97 /* CodableExtensions in Frameworks */,
+				F9CBBA992C052DB8001ACE10 /* CodableExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +268,7 @@
 			name = RunMate;
 			packageProductDependencies = (
 				0FA184F82C04FD3A004B2B97 /* PostHog */,
-				0FA184FB2C04FD45004B2B97 /* CodableExtensions */,
+				F9CBBA982C052DB8001ACE10 /* CodableExtensions */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -300,7 +300,7 @@
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
 				0FA184F72C04FD3A004B2B97 /* XCRemoteSwiftPackageReference "posthog-ios" */,
-				0FA184FA2C04FD45004B2B97 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F9CBBA972C052DB8001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -608,7 +608,7 @@
 				kind = branch;
 			};
 		};
-		0FA184FA2C04FD45004B2B97 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		F9CBBA972C052DB8001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -624,9 +624,9 @@
 			package = 0FA184F72C04FD3A004B2B97 /* XCRemoteSwiftPackageReference "posthog-ios" */;
 			productName = PostHog;
 		};
-		0FA184FB2C04FD45004B2B97 /* CodableExtensions */ = {
+		F9CBBA982C052DB8001ACE10 /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0FA184FA2C04FD45004B2B97 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = F9CBBA972C052DB8001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
 /* End XCSwiftPackageProductDependency section */
