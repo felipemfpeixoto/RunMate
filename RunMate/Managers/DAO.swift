@@ -26,11 +26,13 @@ let dao = DAO.instance
     
     var nivelDescricao: String = ""
     
-    var caloriasTotais: Int = 0
+    var caloriasTotais: Double = 0
     
-    var velocidadeMedia: Float = 0.0
+    var velocidadeTotal: Double = 0.0
     
-    var distanciaMedia: Float = 0.0
+    var distanciaTotal: Double = 0.0
+    
+    var paceMedio: Double = 0.0
     
     var dadosSemanas: [DadosSemana] = []
     
@@ -44,13 +46,17 @@ let dao = DAO.instance
         self.semanaAtual = 0
         self.diaAtual = 0
         self.diasConcluidos = []
-        for i in 0..<self.paginaDeTreinamento.planoDeTreinamento.semanas.count {
-            self.dadosSemanas.append(DadosSemana(velocidadeMédia: 0, calorias: 0, distância: 0))
+        for _ in 0..<self.paginaDeTreinamento.planoDeTreinamento.semanas.count {
+            self.dadosSemanas.append(DadosSemana(velocidadeMédia: 0, calorias: 0, distância: 0, paceMedio: 0))
         }
-        print(self.dadosSemanas.count)
+//        print(self.dadosSemanas.count)
         self.fcm = 220.0 - (dao.idade ?? 0)
         self.fcmDescricao = FCM(caminhada: "\(Int(dao.fcm*0.5)) BPM a \(Int(dao.fcm*0.65)) BPM", leve: "\(Int(dao.fcm*0.65)) BPM a \(Int(dao.fcm*0.75)) BPM", moderada: "\(Int(dao.fcm*0.75)) BPM a \(Int(dao.fcm*0.85)) BPM", forte: "\(Int(dao.fcm*0.85)) BPM a \(Int(dao.fcm*0.9)) BPM", muitoForte: "\(Int(dao.fcm*0.9)) BPM a \(Int(dao.fcm)) BPM")
         self.nivelDescricao = ""
+        self .paceMedio = 0.0
+        self.velocidadeTotal = 0.0
+        self.distanciaTotal = 0.0
+        self.caloriasTotais = 0.0
     }
 }
 

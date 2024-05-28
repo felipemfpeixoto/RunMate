@@ -11,6 +11,8 @@ import CoreMotion
 
 struct ExercicioEmAndamentoView: View {
     
+    @Environment(\.scenePhase) var scenePhase
+    
     var healthManager: HealthManager = HealthManager()
     
     var stopWatchmanager =  StopWatchManager()
@@ -31,11 +33,11 @@ struct ExercicioEmAndamentoView: View {
     
     @ObservedObject var locationManager = LocationManager()
     
-    // Exemplo de CoreMotion do gepetto
-    @State var distance: Double = 0.0
-    var motionManager = CMMotionManager()
-    @State var lastUpdateTime: Date?
-    @State var velocity: (x: Double, y: Double, z: Double) = (0, 0, 0)
+    @State var calDiaria: Double = 0
+    @State var distDiaria: Double = 0
+    @State var velDiaria: Double = 0
+    
+    @State var lastSavedDate = Date()
     
     var body: some View {
         NavigationStack{
@@ -120,6 +122,9 @@ struct ExercicioEmAndamentoView: View {
                         
                         Button(action: {
                             healthManager.endWorkout()
+                            calDiaria = healthManager.calories
+                            velDiaria = healthManager.averageSpeed
+                            distDiaria = locationManager.distance
                             stopWatchmanager.stop()
                             isShowingAviso = true
                             PostHogSDK.shared.capture("Terminou Exercício")
@@ -140,11 +145,24 @@ struct ExercicioEmAndamentoView: View {
                     ZStack {
                         Color.blackBlue.opacity(0.8)
                         withAnimation(Animation.spring(duration: 0.75)) {
-                            AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf)
+                            AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria)
                         }
                     }
                     
                 }
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                let difference = Date.now.timeIntervalSince1970 - lastSavedDate.timeIntervalSince1970
+                print(lastSavedDate.description)
+                print(Date.now.description)
+                stopWatchmanager.secondElapsed += difference
+                print(difference)
+            } else if newPhase == .background {
+                self.lastSavedDate = Date.now
+                print("background")
+                print(lastSavedDate.description)
             }
         }
     }

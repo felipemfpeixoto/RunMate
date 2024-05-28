@@ -16,9 +16,9 @@ struct EscolhaNivelView: View {
                     .foregroundStyle(.white)
                     .font(.title3.bold())
                     .font(Font.custom("Roboto-Regular", size: 22))
-                BotaoEscolha(texto: "Iniciante", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
-                BotaoEscolha(texto: "Intermediário", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
-                BotaoEscolha(texto: "Avançado", selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
+                BotaoEscolha(texto: String(localized: "Iniciante"), selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
+                BotaoEscolha(texto: String(localized: "Intermediário"), selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
+                BotaoEscolha(texto: String(localized: "Avançado"), selectedLevel: $selectedLevel, reallySelectedLevel: $filenameLevel)
                 
                 Spacer()
                 

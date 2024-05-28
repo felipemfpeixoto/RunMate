@@ -18,6 +18,7 @@ struct ParabénsView: View {
         ZStack {
             Color.blackBlue
                 .ignoresSafeArea()
+            Spacer()
             ScrollView {
                 VStack {
                     HStack {
