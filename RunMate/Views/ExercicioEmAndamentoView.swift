@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PostHog
+import CoreMotion
 
 struct ExercicioEmAndamentoView: View {
     
@@ -29,6 +30,12 @@ struct ExercicioEmAndamentoView: View {
     @Binding var isShowingSelf: Bool
     
     @ObservedObject var locationManager = LocationManager()
+    
+    // Exemplo de CoreMotion do gepetto
+    @State var distance: Double = 0.0
+    var motionManager = CMMotionManager()
+    @State var lastUpdateTime: Date?
+    @State var velocity: (x: Double, y: Double, z: Double) = (0, 0, 0)
     
     var body: some View {
         NavigationStack{
@@ -100,6 +107,8 @@ struct ExercicioEmAndamentoView: View {
                                 stopWatchmanager.start()
                                 locationManager.isRunning = true
                                 PostHogSDK.shared.capture("Começou Exercício")
+                                print("Comecou")
+//                                startAccelerometerUpdates()
                             }
                         }) {
                             let img = healthManager.isRunning ? (healthManager.isPaused ? "play.circle.fill" : "pause.circle.fill") : "play.circle.fill"
@@ -139,6 +148,43 @@ struct ExercicioEmAndamentoView: View {
             }
         }
     }
+    
+//    private func startAccelerometerUpdates() {
+//        if motionManager.isAccelerometerAvailable {
+//            motionManager.accelerometerUpdateInterval = 0.1 // Update interval in seconds
+//            
+//            motionManager.startAccelerometerUpdates(to: OperationQueue.main) { (data, error) in
+//                guard let data = data else {
+//                    return
+//                }
+//                print("Entrou")
+//                let currentTime = Date()
+//                let currentAcceleration = data.acceleration
+//                print(currentAcceleration)
+//                
+//                
+//                if contador == 10 {
+//                    aceleracaoTotal = aceleracaoTotal / 10
+//                    if let lastTime = self.lastUpdateTime {
+//                        print("Entrou2")
+//                        let deltaTime = currentTime.timeIntervalSince(lastTime)
+//                        
+//                        // Update total distance
+//                        let modulo = sqrt(currentAcceleration.x * currentAcceleration.x + currentAcceleration.y * currentAcceleration.y + currentAcceleration.z * currentAcceleration.z)
+//                        let deltaPosition = (modulo * (deltaTime * deltaTime)) / 2
+//                        let distanciaPercorrida = deltaPosition
+//                        self.distance += distanciaPercorrida/1000
+//                        print(distanciaPercorrida)
+//                        contador = 0
+//                    }
+//                } else {
+//                    aceleracaoTotal += currentAcceleration
+//                    contador += 1
+//                }
+//                self.lastUpdateTime = currentTime
+//            }
+//        }
+//    }
 }
 
 @Observable class StopWatchManager {
