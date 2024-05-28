@@ -49,4 +49,5 @@ struct DadosSemana: Codable {
     var velocidadeMédia: Double
     var calorias: Double
     var distância: Double
+    var paceMedio: Double
 }

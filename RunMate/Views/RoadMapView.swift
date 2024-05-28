@@ -79,35 +79,38 @@ struct RoadMapView: View {
         let semana = semanas[index]
         
         ZStack {
-                    VStack {
-                        Image( semana.semana % 2 == 1 ? "impar" : "par")
-                            .resizable()
-                        Button {
-//                            self.semanaIndex = index
-                            self.presentSemanaIndex = semana
-                            if semanaIndex > dao.semanaAtual {
-                                isShowingNextSheet.toggle()
-                                PostHogSDK.shared.capture("Viu semana \(index + 1) posterior à atual")
-                            } else if semanaIndex == dao.semanaAtual {
-                                telaSelecionada = .home
-                                PostHogSDK.shared.capture("Navegou para SemanaView a partir do RoadMap")
-                            } else {
-                                isShowingPrevious.toggle()
-                                PostHogSDK.shared.capture("Viu semana \(index + 1) anterior à semana atual")
-                            }
-                        } label: {
-                            SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
+                VStack {
+                    Image( semana.semana % 2 == 1 ? "impar" : "par")
+                        .resizable()
+                    Button {
+                        self.semanaIndex = index
+                        if semanaIndex > dao.semanaAtual {
+                            isShowingNextSheet.toggle()
+                            PostHogSDK.shared.capture("Viu semana \(index + 1) posterior à atual")
+                        } else if semanaIndex == dao.semanaAtual {
+                            telaSelecionada = .home
+                            PostHogSDK.shared.capture("Navegou para SemanaView a partir do RoadMap")
+                        } else {
+                            isShowingPrevious.toggle()
+                            PostHogSDK.shared.capture("Viu semana \(index + 1) anterior à semana atual")
                         }
-                        .padding(.leading, semana.semana % 2 == 1  ? -30 : 15)
-                        .padding(.top, -47)
-                        .sheet(item: $presentSemanaIndex, content: { semana in
-                            PreviewSemanaSeguinte(index: semana.semana)
-                        })
-                        .sheet(isPresented: $isShowingPrevious) {
-                            ParabénsView(semana: semana, index: index)
+                    } label: {
+                        if semana.semana % 2 == 1 {
+                                SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
+                        } else {
+                                SemanaRoadMap(semana: semana, isLocked: dao.semanaAtual < (semana.semana-1))
                         }
                     }
-                    .padding(.bottom, -25)
+                    .padding(.leading, semana.semana == 1  ? -30 : 10)
+                    .padding(.top, -47)
+                    .sheet(isPresented: $isShowingNextSheet) {
+                        PreviewSemanaSeguinte(index: semanaIndex)
+                    }
+                    .sheet(isPresented: $isShowingPrevious) {
+                        ParabénsView(semana: semana, index: index)
+                    }
                 }
+                .padding(.bottom, -25)
+            }
     }
 }

@@ -53,6 +53,9 @@
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
 		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
 		F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */; };
+		F9CBBA9C2C0667FF001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA9B2C0667FF001ACE10 /* CodableExtensions */; };
+		F9CBBA9F2C066807001ACE10 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA9E2C066807001ACE10 /* PostHog */; };
+		F9CBBAA12C066AA7001ACE10 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FCDFA122BFD1D2F00DF9C70 /* Poppins-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,8 +114,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				5D2CCF482C0679E8003026F5 /* PostHog in Frameworks */,
 				5D2CCF4B2C0679FC003026F5 /* CodableExtensions in Frameworks */,
+=======
+				F9CBBA9C2C0667FF001ACE10 /* CodableExtensions in Frameworks */,
+				F9CBBA9F2C066807001ACE10 /* PostHog in Frameworks */,
+>>>>>>> main
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9CBBAA12C066AA7001ACE10 /* Poppins-Bold.ttf in Resources */,
 				F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */,
 				F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */,
 				F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */,
@@ -606,20 +615,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5D2CCF462C0679E8003026F5 /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PostHog/posthog-ios.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		5D2CCF492C0679FC003026F5 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+        5D2CCF492C0679FC003026F5 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
 				branch = main;
 				kind = branch;
+			};
+		};
+        5D2CCF462C0679E8003026F5 /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PostHog/posthog-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

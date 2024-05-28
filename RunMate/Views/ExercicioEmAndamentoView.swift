@@ -7,8 +7,11 @@
 
 import SwiftUI
 import PostHog
+import CoreMotion
 
 struct ExercicioEmAndamentoView: View {
+    
+    @Environment(\.scenePhase) var scenePhase
     
     var healthManager: HealthManager = HealthManager()
     
@@ -29,6 +32,12 @@ struct ExercicioEmAndamentoView: View {
     @Binding var isShowingSelf: Bool
     
     @ObservedObject var locationManager = LocationManager()
+    
+    @State var calDiaria: Double = 0
+    @State var distDiaria: Double = 0
+    @State var velDiaria: Double = 0
+    
+    @State var lastSavedDate = Date()
     
     var body: some View {
         NavigationStack{
@@ -100,6 +109,8 @@ struct ExercicioEmAndamentoView: View {
                                 stopWatchmanager.start()
                                 locationManager.isRunning = true
                                 PostHogSDK.shared.capture("Começou Exercício")
+                                print("Comecou")
+//                                startAccelerometerUpdates()
                             }
                         }) {
                             let img = healthManager.isRunning ? (healthManager.isPaused ? "play.circle.fill" : "pause.circle.fill") : "play.circle.fill"
@@ -111,6 +122,9 @@ struct ExercicioEmAndamentoView: View {
                         
                         Button(action: {
                             healthManager.endWorkout()
+                            calDiaria = healthManager.calories
+                            velDiaria = healthManager.averageSpeed
+                            distDiaria = locationManager.distance
                             stopWatchmanager.stop()
                             isShowingAviso = true
                             PostHogSDK.shared.capture("Terminou Exercício")
@@ -131,14 +145,64 @@ struct ExercicioEmAndamentoView: View {
                     ZStack {
                         Color.blackBlue.opacity(0.8)
                         withAnimation(Animation.spring(duration: 0.75)) {
-                            AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf)
+                            AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria)
                         }
                     }
                     
                 }
             }
         }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                let difference = Date.now.timeIntervalSince1970 - lastSavedDate.timeIntervalSince1970
+                print(lastSavedDate.description)
+                print(Date.now.description)
+                stopWatchmanager.secondElapsed += difference
+                print(difference)
+            } else if newPhase == .background {
+                self.lastSavedDate = Date.now
+                print("background")
+                print(lastSavedDate.description)
+            }
+        }
     }
+    
+//    private func startAccelerometerUpdates() {
+//        if motionManager.isAccelerometerAvailable {
+//            motionManager.accelerometerUpdateInterval = 0.1 // Update interval in seconds
+//            
+//            motionManager.startAccelerometerUpdates(to: OperationQueue.main) { (data, error) in
+//                guard let data = data else {
+//                    return
+//                }
+//                print("Entrou")
+//                let currentTime = Date()
+//                let currentAcceleration = data.acceleration
+//                print(currentAcceleration)
+//                
+//                
+//                if contador == 10 {
+//                    aceleracaoTotal = aceleracaoTotal / 10
+//                    if let lastTime = self.lastUpdateTime {
+//                        print("Entrou2")
+//                        let deltaTime = currentTime.timeIntervalSince(lastTime)
+//                        
+//                        // Update total distance
+//                        let modulo = sqrt(currentAcceleration.x * currentAcceleration.x + currentAcceleration.y * currentAcceleration.y + currentAcceleration.z * currentAcceleration.z)
+//                        let deltaPosition = (modulo * (deltaTime * deltaTime)) / 2
+//                        let distanciaPercorrida = deltaPosition
+//                        self.distance += distanciaPercorrida/1000
+//                        print(distanciaPercorrida)
+//                        contador = 0
+//                    }
+//                } else {
+//                    aceleracaoTotal += currentAcceleration
+//                    contador += 1
+//                }
+//                self.lastUpdateTime = currentTime
+//            }
+//        }
+//    }
 }
 
 @Observable class StopWatchManager {
