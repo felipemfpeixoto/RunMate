@@ -10,6 +10,8 @@ import PostHog
 
 struct ExercicioEmAndamentoView: View {
     
+    @Environment(\.scenePhase) var scenePhase
+    
     var healthManager: HealthManager = HealthManager()
     
     var stopWatchmanager =  StopWatchManager()
@@ -33,6 +35,8 @@ struct ExercicioEmAndamentoView: View {
     @State var calDiaria: Double = 0
     @State var distDiaria: Double = 0
     @State var velDiaria: Double = 0
+    
+    @State var lastSavedDate = Date()
     
     var body: some View {
         NavigationStack{
@@ -143,6 +147,19 @@ struct ExercicioEmAndamentoView: View {
                     }
                     
                 }
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                let difference = Date.now.timeIntervalSince1970 - lastSavedDate.timeIntervalSince1970
+                print(lastSavedDate.description)
+                print(Date.now.description)
+                stopWatchmanager.secondElapsed += difference
+                print(difference)
+            } else if newPhase == .background {
+                self.lastSavedDate = Date.now
+                print("background")
+                print(lastSavedDate.description)
             }
         }
     }
