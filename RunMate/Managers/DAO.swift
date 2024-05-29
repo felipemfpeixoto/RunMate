@@ -36,6 +36,8 @@ let dao = DAO.instance
     
     var dadosSemanas: [DadosSemana] = []
     
+    var isPurchased: Bool = false
+    
     private init() {}
     
     func loadJsonFileFromObjective() {
@@ -57,6 +59,7 @@ let dao = DAO.instance
         self.velocidadeTotal = 0.0
         self.distanciaTotal = 0.0
         self.caloriasTotais = 0.0
+        self.isPurchased = false
     }
 }
 

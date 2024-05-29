@@ -1,6 +1,9 @@
 import SwiftUI
 
+
 struct RunMateProView: View {
+    
+    var store: Store = Store()
     var body: some View {
         ZStack {
             Color(.blackBlue).ignoresSafeArea()
@@ -84,8 +87,16 @@ struct RunMateProView: View {
                         }
                         .padding(.bottom, 25)
                         
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            
+                        Button(action: {
+                            Task {
+                                if let product = store.products.first {
+                                    if let transaction = try await store.purchase(product){
+                                        dao.isPurchased = true
+                                    }
+                                }
+                                
+                            }
+                        }, label: {
                             Text("COMPRAR PLANO PRO")
                                 .foregroundColor(.blackBlue)
                                 .frame(maxWidth: .infinity)
@@ -97,9 +108,6 @@ struct RunMateProView: View {
                         .cornerRadius(18)
                         .padding(.top, 30)
                         .padding(.horizontal, 40)
-                   
-                        
-                        
                     }
                     .padding(20)
                     
@@ -107,10 +115,8 @@ struct RunMateProView: View {
 
                 }
             }
-    //        .frame(maxWidth: .infinity, maxHeight: .infinity)
-             // Cor de fundo para a tela inteira
             .edgesIgnoringSafeArea(.all)
-        } // Ignora as áreas seguras
+        }
     }
 }
 

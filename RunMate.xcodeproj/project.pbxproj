@@ -40,12 +40,13 @@
 		0FCDFA142BFD3B1B00DF9C70 /* PosthogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA132BFD3B1B00DF9C70 /* PosthogManager.swift */; };
 		0FCDFA192BFFB38F00DF9C70 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */; };
 		5D2CCF452C065C86003026F5 /* RunMateProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2CCF442C065C86003026F5 /* RunMateProView.swift */; };
-		5D2CCF482C0679E8003026F5 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 5D2CCF472C0679E8003026F5 /* PostHog */; };
-		5D2CCF4B2C0679FC003026F5 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 5D2CCF4A2C0679FC003026F5 /* CodableExtensions */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
 		5DC066A92C01050E00E80444 /* AvisoResetarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC066A82C01050E00E80444 /* AvisoResetarView.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
+		F91761DA2C07BD5E00634C7A /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91761D92C07BD5E00634C7A /* StoreManager.swift */; };
 		F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */; };
+		F9B2C4A42C07B3430088DADD /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9B2C4A32C07B3430088DADD /* CodableExtensions */; };
+		F9B2C4A72C07B34F0088DADD /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F9B2C4A62C07B34F0088DADD /* PostHog */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
@@ -53,8 +54,6 @@
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
 		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
 		F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */; };
-		F9CBBA9C2C0667FF001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA9B2C0667FF001ACE10 /* CodableExtensions */; };
-		F9CBBA9F2C066807001ACE10 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA9E2C066807001ACE10 /* PostHog */; };
 		F9CBBAA12C066AA7001ACE10 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FCDFA122BFD1D2F00DF9C70 /* Poppins-Bold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +97,7 @@
 		5D8091212BED42F800986596 /* ConclusaoMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusaoMetaView.swift; sourceTree = "<group>"; };
 		5DC066A82C01050E00E80444 /* AvisoResetarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoResetarView.swift; sourceTree = "<group>"; };
 		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
+		F91761D92C07BD5E00634C7A /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 		F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoConfirmacaoEtapa.swift; sourceTree = "<group>"; };
 		F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D2CCF482C0679E8003026F5 /* PostHog in Frameworks */,
-				5D2CCF4B2C0679FC003026F5 /* CodableExtensions in Frameworks */,
+				F9B2C4A42C07B3430088DADD /* CodableExtensions in Frameworks */,
+				F9B2C4A72C07B34F0088DADD /* PostHog in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +233,7 @@
 				0FCDFA022BF6814200DF9C70 /* HealthManager.swift */,
 				0FCDFA132BFD3B1B00DF9C70 /* PosthogManager.swift */,
 				0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */,
+				F91761D92C07BD5E00634C7A /* StoreManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -273,8 +274,8 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				5D2CCF472C0679E8003026F5 /* PostHog */,
-				5D2CCF4A2C0679FC003026F5 /* CodableExtensions */,
+				F9B2C4A32C07B3430088DADD /* CodableExtensions */,
+				F9B2C4A62C07B34F0088DADD /* PostHog */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -305,8 +306,8 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				5D2CCF462C0679E8003026F5 /* XCRemoteSwiftPackageReference "posthog-ios" */,
-				5D2CCF492C0679FC003026F5 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F9B2C4A22C07B3430088DADD /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				F9B2C4A52C07B34F0088DADD /* XCRemoteSwiftPackageReference "posthog-ios" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -375,6 +376,7 @@
 				5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */,
 				0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */,
 				0FA57B332BE40CA900EA9D99 /* EscolhaObjetivoView.swift in Sources */,
+				F91761DA2C07BD5E00634C7A /* StoreManager.swift in Sources */,
 				0FA57B072BE400F900EA9D99 /* RunMateApp.swift in Sources */,
 				0FCDFA192BFFB38F00DF9C70 /* LocationManager.swift in Sources */,
 			);
@@ -610,7 +612,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-        5D2CCF492C0679FC003026F5 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		F9B2C4A22C07B3430088DADD /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -618,26 +620,26 @@
 				kind = branch;
 			};
 		};
-        5D2CCF462C0679E8003026F5 /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
+		F9B2C4A52C07B34F0088DADD /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/PostHog/posthog-ios.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.4.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5D2CCF472C0679E8003026F5 /* PostHog */ = {
+		F9B2C4A32C07B3430088DADD /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5D2CCF462C0679E8003026F5 /* XCRemoteSwiftPackageReference "posthog-ios" */;
-			productName = PostHog;
-		};
-		5D2CCF4A2C0679FC003026F5 /* CodableExtensions */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5D2CCF492C0679FC003026F5 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = F9B2C4A22C07B3430088DADD /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
+		};
+		F9B2C4A62C07B34F0088DADD /* PostHog */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F9B2C4A52C07B34F0088DADD /* XCRemoteSwiftPackageReference "posthog-ios" */;
+			productName = PostHog;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
