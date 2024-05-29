@@ -86,6 +86,20 @@ struct header: View {
                     .font(Font.custom("Roboto-Regular", size: 24))
                     .foregroundStyle(Color.turquoiseGreen)
                     .padding(.bottom, 15)
+                
+                NavigationLink(destination: RunMateProView(), label: {
+                    
+                    HStack{
+                        Text("RunMate Pro")
+                            .font(.custom("Poppins", size: 18))
+                        Image(systemName: "figure.run")
+                    }
+                    .foregroundColor(.turquoiseGreen)
+                    .padding(.horizontal, 5)
+                    padding(.vertical, 8)
+                    .background(Color.lakeBlue)
+                    .cornerRadius(11)
+                })
             }
             Spacer()
         }
@@ -95,10 +109,10 @@ struct header: View {
 
 struct progressBar: View {
     var body: some View {
-        var total: Int = dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
-        var progress: Int = dao.semanaAtual
-        var const: Double = Double(340/total)
-        var percent = (progress * 100)/total
+        let total: Int = dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
+        let progress: Int = dao.semanaAtual
+        let const: Double = Double(340/total)
+        let percent = (progress * 100)/total
         ZStack {
             RoundedRectangle(cornerRadius: 100)
                 .frame(width: 340, height: 19)

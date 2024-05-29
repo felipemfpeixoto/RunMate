@@ -37,7 +37,8 @@ struct ExercicioEmAndamentoView: View {
     @State var distDiaria: Double = 0
     @State var velDiaria: Double = 0
     
-    @State var lastSavedDate = Date()
+    @State var lastSavedDate: Date? = nil
+    @State var previousSavedDate: Date? = nil
     
     var body: some View {
         NavigationStack{
@@ -154,16 +155,19 @@ struct ExercicioEmAndamentoView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                let difference = Date.now.timeIntervalSince1970 - lastSavedDate.timeIntervalSince1970
-                print(lastSavedDate.description)
-                print(Date.now.description)
-                stopWatchmanager.secondElapsed += difference
-                print(difference)
-            } else if newPhase == .background {
-                self.lastSavedDate = Date.now
-                print("background")
-                print(lastSavedDate.description)
-            }
+                    if let lastDate = self.lastSavedDate {
+                        if lastDate != self.previousSavedDate {
+                            let difference = Date.now.timeIntervalSince1970 - lastDate.timeIntervalSince1970
+                            stopWatchmanager.secondElapsed += difference
+                            self.previousSavedDate = lastDate  // Atualize o valor anterior
+                        }
+                    }
+                    print("active")
+                } else if newPhase == .background {
+                    self.lastSavedDate = Date.now
+                    print("background")
+                    print(lastSavedDate?.description ?? "No date")
+                }
         }
     }
     
