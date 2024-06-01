@@ -27,6 +27,8 @@ struct RoadMapView: View {
     
     @State var enterTime: Date?
     
+    @Binding var showPro: Bool
+    
     var body: some View {
         VStack {
             HStack {
@@ -62,6 +64,9 @@ struct RoadMapView: View {
         .onAppear {
             semanas = dao.paginaDeTreinamento.planoDeTreinamento.semanas
             self.enterTime = Date()
+            if dao.isBlocked{
+                showPro = true
+            }
         }
         .onDisappear {
             if let enterTime = self.enterTime {
@@ -72,6 +77,9 @@ struct RoadMapView: View {
                 ])
             }
         }
+        .sheet(isPresented: $showPro, content: {
+            RunMateProView()
+        })
     }
     
     @ViewBuilder
@@ -83,16 +91,21 @@ struct RoadMapView: View {
                     Image( semana.semana % 2 == 1 ? "impar" : "par")
                         .resizable()
                     Button {
-                        self.semanaIndex = index
-                        if semanaIndex > dao.semanaAtual {
-                            isShowingNextSheet.toggle()
-                            PostHogSDK.shared.capture("Viu semana \(index + 1) posterior à atual")
-                        } else if semanaIndex == dao.semanaAtual {
-                            telaSelecionada = .home
-                            PostHogSDK.shared.capture("Navegou para SemanaView a partir do RoadMap")
-                        } else {
-                            isShowingPrevious.toggle()
-                            PostHogSDK.shared.capture("Viu semana \(index + 1) anterior à semana atual")
+                        if dao.isBlocked{
+                            showPro = true
+                        }
+                        else{
+                            self.semanaIndex = index
+                            if semanaIndex > dao.semanaAtual {
+                                isShowingNextSheet.toggle()
+                                PostHogSDK.shared.capture("Viu semana \(index + 1) posterior à atual")
+                            } else if semanaIndex == dao.semanaAtual {
+                                telaSelecionada = .home
+                                PostHogSDK.shared.capture("Navegou para SemanaView a partir do RoadMap")
+                            } else {
+                                isShowingPrevious.toggle()
+                                PostHogSDK.shared.capture("Viu semana \(index + 1) anterior à semana atual")
+                            }
                         }
                     } label: {
                         if semana.semana % 2 == 1 {

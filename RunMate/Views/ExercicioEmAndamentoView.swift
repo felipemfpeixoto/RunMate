@@ -35,7 +35,8 @@ struct ExercicioEmAndamentoView: View {
     @State var distDiaria: Double = 0
     @State var velDiaria: Double = 0
     
-    @State var lastSavedDate = Date()
+    @State var lastSavedDate: Date? = nil
+    @State var previousSavedDate: Date? = nil
     
     var body: some View {
         NavigationStack{

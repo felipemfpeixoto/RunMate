@@ -15,17 +15,28 @@ struct TelaTabView: View {
     
     @State var telaSelecionada: TelaSelecionada = .home
     
+    var isBlocked: Bool {
+        if !dao.isPurchased {
+            return dao.semanaAtual > 0 || dao.diaAtual > 4
+        }
+        else{
+            return false
+        }
+    }
+    
+    @State var showPro = false
+    
     var body: some View {
         TabView(selection: $telaSelecionada) {
             
-            SemanaView(isEditing: $isEditing)
+            SemanaView(isEditing: $isEditing, showPro: $showPro)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
                 }
                 .tag(TelaSelecionada.home)
             
-            RoadMapView(telaSelecionada: $telaSelecionada)
+            RoadMapView(telaSelecionada: $telaSelecionada, showPro: $showPro)
                 .tabItem {
                     Image(systemName: "road.lanes")
                     Text("Road Map")
@@ -45,6 +56,10 @@ struct TelaTabView: View {
         })
         .onAppear{
             UITabBar.appearance().barTintColor = .blackBlue
+            dao.isBlocked = isBlocked
+            if isBlocked{
+                showPro = true
+            }
         }
     }
 }

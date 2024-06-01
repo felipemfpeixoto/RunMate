@@ -46,7 +46,9 @@ struct SemanaView: View {
     }
     
     @State var enterTime: Date?
-   
+    
+    @Binding var showPro: Bool
+    
     var body: some View {
         ZStack{
             Color(.blackBlue).ignoresSafeArea()
@@ -82,6 +84,11 @@ struct SemanaView: View {
                 }
             }
         }
+        .onAppear{
+            if dao.isBlocked{
+                showPro = true
+            }
+        }
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $apareceInfo){
             IndiceView(apareceInfo: $apareceInfo)
@@ -91,6 +98,9 @@ struct SemanaView: View {
         }
         .fullScreenCover(isPresented: $isShowingExercicio) {
             ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio)
+        }
+        .sheet(isPresented: $showPro) { //ou fullSreenCover
+            RunMateProView()
         }
     }
     
@@ -212,27 +222,32 @@ struct SemanaView: View {
         var botaoEtapaNaoConcluida: some View {
             VStack{
                 Button(action: {
-                    if isEmpty{
-                        if dao.diasConcluidos.count == 6 {
-                            if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
-                                dao.semanaAtual = 0
-                                apareceParabensMeta = true
-                            } else {
-                                dao.diaAtual = 0
-                                dao.diasConcluidos = []
-                                dao.semanaAtual += 1
-                                withAnimation(Animation.bouncy(duration: 0.75)) {
-                                    apareceParabens = true
-                                }
-                            }
-                        } else {
-                            dao.diasConcluidos.append(dao.diaAtual+1)
-                            dao.diaAtual += 1
-                        }
+                    if dao.isBlocked {
+                        showPro = true
                     }
                     else{
-                        withAnimation(Animation.spring(duration: 0.75)) {
-                            isShowingExercicio.toggle()
+                        if isEmpty{
+                            if dao.diasConcluidos.count == 6 {
+                                if (dao.semanaAtual + 1) == dao.paginaDeTreinamento.planoDeTreinamento.semanas.count {
+                                    dao.semanaAtual = 0
+                                    apareceParabensMeta = true
+                                } else {
+                                    dao.diaAtual = 0
+                                    dao.diasConcluidos = []
+                                    dao.semanaAtual += 1
+                                    withAnimation(Animation.bouncy(duration: 0.75)) {
+                                        apareceParabens = true
+                                    }
+                                }
+                            } else {
+                                dao.diasConcluidos.append(dao.diaAtual+1)
+                                dao.diaAtual += 1
+                            }
+                        }
+                        else{
+                            withAnimation(Animation.spring(duration: 0.75)) {
+                                isShowingExercicio.toggle()
+                            }
                         }
                     }
                 }, label: {

@@ -85,8 +85,26 @@ struct header: View {
                 Text("\(dao.metaSelecionlada == "5KM" ? String(dao.metaSelecionlada.prefix(1)) : String(dao.metaSelecionlada.prefix(2))) km - \(dao.nivelSelecionado)")
                     .font(Font.custom("Roboto-Regular", size: 24))
                     .foregroundStyle(Color.turquoiseGreen)
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 5)
+                
+                
+                if !dao.isPurchased{
+                    NavigationLink(destination: RunMateProView(), label: {
+                        
+                        HStack{
+                            Text("RunMate Pro")
+                                .font(.custom("Poppins", size: 18))
+                            Image(systemName: "figure.run")
+                        }
+                        .foregroundColor(.turquoiseGreen)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
+                        .background(Color.lakeBlue)
+                        .cornerRadius(11)
+                    })
+                }
             }
+            .padding(.bottom, 15)
             Spacer()
         }
         .padding(.leading)
@@ -95,22 +113,22 @@ struct header: View {
 
 struct progressBar: View {
     var body: some View {
-        var total: Int = dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
-        var progress: Int = dao.semanaAtual
-        var const: Double = Double(340/total)
-        var percent = (progress * 100)/total
+        let total: Int = dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
+        let progress: Int = dao.semanaAtual
+        let const: Double = Double(340/total)
+        let percent = (progress * 100)/total
         ZStack {
             RoundedRectangle(cornerRadius: 100)
-                .frame(width: 340, height: 19)
+                .frame(width: 340, height: 25)
                 .foregroundStyle(Color.oceanBlue)
             HStack(spacing: 0) {
                 ZStack{
                     RoundedRectangle(cornerRadius: 100)
-                        .frame(width: CGFloat(progress) * const, height: 19)
+                        .frame(width: CGFloat(progress) * const, height: 25)
                         .foregroundStyle(Color.lilacPurple)
                     Text("\(percent)%")
                         .font(.custom("Roboto-Regular", size: 15))
-                        .foregroundStyle(.blackBlue)
+                        .foregroundStyle(progress == 0 ? .white : .blackBlue)
 
                 }
                 Spacer()
