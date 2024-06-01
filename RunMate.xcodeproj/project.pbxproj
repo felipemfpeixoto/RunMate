@@ -33,6 +33,8 @@
 		0FA57B422BE4117000EA9D99 /* BotaoDia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B412BE4117000EA9D99 /* BotaoDia.swift */; };
 		0FA57B442BE4119A00EA9D99 /* SemanaRoadMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B432BE4119A00EA9D99 /* SemanaRoadMap.swift */; };
 		0FA57B492BE42EB700EA9D99 /* EscolhaIdadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */; };
+		0FC6FD242C078F54003AE48B /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = 0FC6FD232C078F54003AE48B /* CodableExtensions */; };
+		0FC6FD272C078F61003AE48B /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = 0FC6FD262C078F61003AE48B /* PostHog */; };
 		0FCDFA032BF6814200DF9C70 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA022BF6814200DF9C70 /* HealthManager.swift */; };
 		0FCDFA062BF68C9000DF9C70 /* EscolhasCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA052BF68C9000DF9C70 /* EscolhasCentral.swift */; };
 		0FCDFA082BF7CF8700DF9C70 /* IndiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA072BF7CF8700DF9C70 /* IndiceView.swift */; };
@@ -50,8 +52,6 @@
 		F9CBBA7F2BF69025001ACE10 /* TelaTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA7E2BF69025001ACE10 /* TelaTabView.swift */; };
 		F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA832BF7CE1C001ACE10 /* PerfilView.swift */; };
 		F9CBBA8C2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */; };
-		F9CBBA9C2C0667FF001ACE10 /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA9B2C0667FF001ACE10 /* CodableExtensions */; };
-		F9CBBA9F2C066807001ACE10 /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F9CBBA9E2C066807001ACE10 /* PostHog */; };
 		F9CBBAA12C066AA7001ACE10 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0FCDFA122BFD1D2F00DF9C70 /* Poppins-Bold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -110,8 +110,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9CBBA9C2C0667FF001ACE10 /* CodableExtensions in Frameworks */,
-				F9CBBA9F2C066807001ACE10 /* PostHog in Frameworks */,
+				0FC6FD242C078F54003AE48B /* CodableExtensions in Frameworks */,
+				0FC6FD272C078F61003AE48B /* PostHog in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,8 +268,8 @@
 			);
 			name = RunMate;
 			packageProductDependencies = (
-				F9CBBA9B2C0667FF001ACE10 /* CodableExtensions */,
-				F9CBBA9E2C066807001ACE10 /* PostHog */,
+				0FC6FD232C078F54003AE48B /* CodableExtensions */,
+				0FC6FD262C078F61003AE48B /* PostHog */,
 			);
 			productName = RunMate;
 			productReference = 0FA57B032BE400F900EA9D99 /* RunMate.app */;
@@ -300,8 +300,8 @@
 			);
 			mainGroup = 0FA57AFA2BE400F900EA9D99;
 			packageReferences = (
-				F9CBBA9A2C0667FF001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */,
-				F9CBBA9D2C066807001ACE10 /* XCRemoteSwiftPackageReference "posthog-ios" */,
+				0FC6FD222C078F54003AE48B /* XCRemoteSwiftPackageReference "CodableExtensions" */,
+				0FC6FD252C078F61003AE48B /* XCRemoteSwiftPackageReference "posthog-ios" */,
 			);
 			productRefGroup = 0FA57B042BE400F900EA9D99 /* Products */;
 			projectDirPath = "";
@@ -512,8 +512,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Este aplicativo usa seus dados de saúde para fornecer estatísticas personalizadas de desempenho.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Este aplicativo utiliza seus dados de saúde para fornecer insights personalizados sobre suas atividades físicas e bem-estar. Esses dados nos ajudam a oferecer uma experiência mais rica e adequada às suas necessidades.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to calculate the distance you've moved.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to calculate the distance you've moved.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -553,8 +551,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunMate/Info.plist;
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Este aplicativo usa seus dados de saúde para fornecer estatísticas personalizadas de desempenho.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Este aplicativo utiliza seus dados de saúde para fornecer insights personalizados sobre suas atividades físicas e bem-estar. Esses dados nos ajudam a oferecer uma experiência mais rica e adequada às suas necessidades.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to calculate the distance you've moved.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to calculate the distance you've moved.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -604,7 +600,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F9CBBA9A2C0667FF001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
+		0FC6FD222C078F54003AE48B /* XCRemoteSwiftPackageReference "CodableExtensions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rvenieris/CodableExtensions.git";
 			requirement = {
@@ -612,25 +608,25 @@
 				kind = branch;
 			};
 		};
-		F9CBBA9D2C066807001ACE10 /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
+		0FC6FD252C078F61003AE48B /* XCRemoteSwiftPackageReference "posthog-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/PostHog/posthog-ios.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.4.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F9CBBA9B2C0667FF001ACE10 /* CodableExtensions */ = {
+		0FC6FD232C078F54003AE48B /* CodableExtensions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F9CBBA9A2C0667FF001ACE10 /* XCRemoteSwiftPackageReference "CodableExtensions" */;
+			package = 0FC6FD222C078F54003AE48B /* XCRemoteSwiftPackageReference "CodableExtensions" */;
 			productName = CodableExtensions;
 		};
-		F9CBBA9E2C066807001ACE10 /* PostHog */ = {
+		0FC6FD262C078F61003AE48B /* PostHog */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F9CBBA9D2C066807001ACE10 /* XCRemoteSwiftPackageReference "posthog-ios" */;
+			package = 0FC6FD252C078F61003AE48B /* XCRemoteSwiftPackageReference "posthog-ios" */;
 			productName = PostHog;
 		};
 /* End XCSwiftPackageProductDependency section */

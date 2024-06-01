@@ -24,6 +24,9 @@ struct AvisoConfirmacaoEtapa: View {
     @Binding var calDiaria: Double
     @Binding var distDiaria: Double
     @Binding var velDiaria: Double
+    
+    @Binding var locationManager: LocationManager
+    @Binding var stopWatchManager: StopWatchManager
    
 //    var calSemanal: Double = dao.dadosSemanas[dao.semanaAtual].calorias
 //    var distSemanal: Double = dao.dadosSemanas[dao.semanaAtual].distância
@@ -71,6 +74,10 @@ struct AvisoConfirmacaoEtapa: View {
                         .padding(.horizontal, 60)
                         
                         Button(action: {
+                            // Para de pegar as locations e zera o cronômetro
+                            locationManager.stopCollectingLocations()
+                            stopWatchManager.stop()
+                            
                             dao.dadosSemanas[dao.semanaAtual].calorias = calDiaria/Double((dao.diaAtual + 1))
                             dao.dadosSemanas[dao.semanaAtual].distância = distDiaria/Double((dao.diaAtual + 1))
                             dao.dadosSemanas[dao.semanaAtual].velocidadeMédia = velDiaria/Double((dao.diaAtual + 1))

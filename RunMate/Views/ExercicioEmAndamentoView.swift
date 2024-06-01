@@ -13,9 +13,7 @@ struct ExercicioEmAndamentoView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
-    var healthManager: HealthManager = HealthManager()
-    
-    var stopWatchmanager =  StopWatchManager()
+    @State var stopWatchManager =  StopWatchManager()
     
     @State var isRunning: Bool = false
     
@@ -31,7 +29,7 @@ struct ExercicioEmAndamentoView: View {
     
     @Binding var isShowingSelf: Bool
     
-    @ObservedObject var locationManager = LocationManager()
+    @State var locationManager = LocationManager()
     
     @State var calDiaria: Double = 0
     @State var distDiaria: Double = 0
@@ -47,13 +45,15 @@ struct ExercicioEmAndamentoView: View {
                     HStack{
                         Spacer()
                         
-                        Button {
-                            isShowingSelf = false
-                        } label: {
-                            Image(systemName: "xmark")
-                                .foregroundColor(.white)
-                                .padding(.trailing, 30)
-                                .padding(.bottom, 20)
+                        if !locationManager.isRunning {
+                            Button {
+                                isShowingSelf = false
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.white)
+                                    .padding(.trailing, 30)
+                                    .padding(.bottom, 20)
+                            }
                         }
                     }
                     
@@ -75,7 +75,7 @@ struct ExercicioEmAndamentoView: View {
                         .cornerRadius(20)
                         
                         VStack(spacing: -9){
-                            Text(stopWatchmanager.formattedTime)
+                            Text(stopWatchManager.formattedTime)
                                 .font(.custom("Poppins-Bold", size: 40))
                                 .foregroundStyle(.white)
                             Text("DURAÇÃO")
@@ -93,27 +93,25 @@ struct ExercicioEmAndamentoView: View {
                     
                     HStack (spacing: 30){
                         Button(action: {
-                            if healthManager.isRunning {
-                                if healthManager.isPaused {
-                                    healthManager.resumeWorkout()
-                                    stopWatchmanager.start()
+                            if locationManager.isRunning {
+                                if locationManager.isPaused {
+                                    locationManager.resumeCollectingLocations()
+                                    stopWatchManager.start()
                                     locationManager.isRunning = true
                                 } else {
-                                    healthManager.pauseWorkout()
-                                    stopWatchmanager.pause()
+                                    locationManager.stopCollectingLocations()
+                                    stopWatchManager.pause()
                                     locationManager.isRunning = false
+                                    locationManager.isPaused = true
                                     PostHogSDK.shared.capture("Pausou Exercício")
                                 }
                             } else {
-                                healthManager.startWorkout()
-                                stopWatchmanager.start()
+                                stopWatchManager.start()
                                 locationManager.isRunning = true
                                 PostHogSDK.shared.capture("Começou Exercício")
-                                print("Comecou")
-//                                startAccelerometerUpdates()
                             }
                         }) {
-                            let img = healthManager.isRunning ? (healthManager.isPaused ? "play.circle.fill" : "pause.circle.fill") : "play.circle.fill"
+                            let img = locationManager.isRunning ? (locationManager.isPaused ? "play.circle.fill" : "pause.circle.fill") : "play.circle.fill"
                             Image(systemName: img)
                                 .resizable()
                                 .frame(width: 75, height: 75)
@@ -121,11 +119,9 @@ struct ExercicioEmAndamentoView: View {
                         }
                         
                         Button(action: {
-                            healthManager.endWorkout()
-                            calDiaria = healthManager.calories
-                            velDiaria = healthManager.averageSpeed
-                            distDiaria = locationManager.distance
-                            stopWatchmanager.stop()
+//                            calDiaria = healthManager.calories
+//                            velDiaria = healthManager.averageSpeed
+//                            distDiaria = locationManager.distance
                             isShowingAviso = true
                             PostHogSDK.shared.capture("Terminou Exercício")
                         }) {
@@ -134,21 +130,19 @@ struct ExercicioEmAndamentoView: View {
                                 .frame(width: 75, height: 75)
                                 .foregroundColor(.white)
                         }
-                        .disabled(!healthManager.isRunning)
+                        .disabled(!locationManager.isRunning)
                     }
                 }
                 .padding()
                 
             }
-            .overlay{
-                if isShowingAviso {
-                    ZStack {
-                        Color.blackBlue.opacity(0.8)
-                        withAnimation(Animation.spring(duration: 0.75)) {
-                            AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria)
-                        }
+            .fullScreenCover(isPresented: $isShowingAviso) {
+                ZStack {
+                    Color.blackBlue.opacity(0.8)
+                        .ignoresSafeArea()
+                    withAnimation(Animation.spring(duration: 0.75)) {
+                        AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria, locationManager: $locationManager, stopWatchManager: $stopWatchManager)
                     }
-                    
                 }
             }
         }
@@ -157,7 +151,7 @@ struct ExercicioEmAndamentoView: View {
                 let difference = Date.now.timeIntervalSince1970 - lastSavedDate.timeIntervalSince1970
                 print(lastSavedDate.description)
                 print(Date.now.description)
-                stopWatchmanager.secondElapsed += difference
+                stopWatchManager.secondElapsed += difference
                 print(difference)
             } else if newPhase == .background {
                 self.lastSavedDate = Date.now
@@ -166,43 +160,6 @@ struct ExercicioEmAndamentoView: View {
             }
         }
     }
-    
-//    private func startAccelerometerUpdates() {
-//        if motionManager.isAccelerometerAvailable {
-//            motionManager.accelerometerUpdateInterval = 0.1 // Update interval in seconds
-//            
-//            motionManager.startAccelerometerUpdates(to: OperationQueue.main) { (data, error) in
-//                guard let data = data else {
-//                    return
-//                }
-//                print("Entrou")
-//                let currentTime = Date()
-//                let currentAcceleration = data.acceleration
-//                print(currentAcceleration)
-//                
-//                
-//                if contador == 10 {
-//                    aceleracaoTotal = aceleracaoTotal / 10
-//                    if let lastTime = self.lastUpdateTime {
-//                        print("Entrou2")
-//                        let deltaTime = currentTime.timeIntervalSince(lastTime)
-//                        
-//                        // Update total distance
-//                        let modulo = sqrt(currentAcceleration.x * currentAcceleration.x + currentAcceleration.y * currentAcceleration.y + currentAcceleration.z * currentAcceleration.z)
-//                        let deltaPosition = (modulo * (deltaTime * deltaTime)) / 2
-//                        let distanciaPercorrida = deltaPosition
-//                        self.distance += distanciaPercorrida/1000
-//                        print(distanciaPercorrida)
-//                        contador = 0
-//                    }
-//                } else {
-//                    aceleracaoTotal += currentAcceleration
-//                    contador += 1
-//                }
-//                self.lastUpdateTime = currentTime
-//            }
-//        }
-//    }
 }
 
 @Observable class StopWatchManager {
