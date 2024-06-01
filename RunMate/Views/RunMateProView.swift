@@ -26,7 +26,7 @@ struct RunMateProView: View {
 
                     Image("BonequinhosCorrendo")
                 }
-                .padding(.bottom, 50)
+                .padding(.bottom, 30)
               
                 
                 ZStack {
@@ -92,6 +92,7 @@ struct RunMateProView: View {
                                 if let product = store.products.first {
                                     if let transaction = try await store.purchase(product){
                                         dao.isPurchased = true
+                                        dao.isBlocked = false
                                     }
                                 }
                                 

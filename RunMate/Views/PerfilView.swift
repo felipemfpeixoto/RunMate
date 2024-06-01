@@ -87,21 +87,24 @@ struct header: View {
                     .foregroundStyle(Color.turquoiseGreen)
                     .padding(.bottom, 5)
                 
-                NavigationLink(destination: RunMateProView(), label: {
-                    
-                    HStack{
-                        Text("RunMate Pro")
-                            .font(.custom("Poppins", size: 18))
-                        Image(systemName: "figure.run")
-                    }
-                    .foregroundColor(.turquoiseGreen)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 10)
-                    .background(Color.lakeBlue)
-                    .cornerRadius(11)
-                })
-                .padding(.bottom, 15)
+                
+                if !dao.isPurchased{
+                    NavigationLink(destination: RunMateProView(), label: {
+                        
+                        HStack{
+                            Text("RunMate Pro")
+                                .font(.custom("Poppins", size: 18))
+                            Image(systemName: "figure.run")
+                        }
+                        .foregroundColor(.turquoiseGreen)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 10)
+                        .background(Color.lakeBlue)
+                        .cornerRadius(11)
+                    })
+                }
             }
+            .padding(.bottom, 15)
             Spacer()
         }
         .padding(.leading)

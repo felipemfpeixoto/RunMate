@@ -38,6 +38,8 @@ let dao = DAO.instance
     
     var isPurchased: Bool = false
     
+    var isBlocked: Bool = false
+    
     private init() {}
     
     func loadJsonFileFromObjective() {
@@ -60,6 +62,7 @@ let dao = DAO.instance
         self.distanciaTotal = 0.0
         self.caloriasTotais = 0.0
         self.isPurchased = false
+        self.isBlocked = false         
     }
 }
 
