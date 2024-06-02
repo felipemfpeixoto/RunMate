@@ -45,10 +45,20 @@ struct SemanaView: View {
         return dao.paginaDeTreinamento.planoDeTreinamento.semanas.count
     }
     
+    var isBlocked: Bool {
+        if !dao.isPurchased {
+            return dao.semanaAtual > 0 || dao.diaAtual > 4
+        }
+        else{
+            return false
+        }
+    }
+    
     @State var enterTime: Date?
     
-    @Binding var showPro: Bool
+    @State var showPro: Bool = dao.isBlocked
     
+
     var body: some View {
         ZStack{
             Color(.blackBlue).ignoresSafeArea()
@@ -84,6 +94,12 @@ struct SemanaView: View {
                 }
             }
         }
+        .onChange(of: isBlocked){
+            dao.isBlocked = isBlocked
+//            if dao.isBlocked{
+//                showPro = true
+//            }
+        }
         .onAppear{
             if dao.isBlocked{
                 showPro = true
@@ -100,7 +116,7 @@ struct SemanaView: View {
             ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio)
         }
         .sheet(isPresented: $showPro) { //ou fullSreenCover
-            RunMateProView()
+            RunMateProView(isEditing: $isEditing)
         }
     }
     

@@ -24,6 +24,7 @@ var data: [DadosSemana] = [
 
 struct PerfilView: View {
     @State private var selectedWeek: String? = nil
+    
     @Binding var isEditing: Bool
     
     @State var enterTime: Date?
@@ -33,7 +34,7 @@ struct PerfilView: View {
             Color.blackBlue.ignoresSafeArea()
             VStack(alignment: .leading){
                 Spacer()
-                header()
+                header(isEditing: $isEditing)
                     .padding(.top, 20)
                 progressBar()
                     .padding(.bottom, 25)
@@ -75,6 +76,7 @@ struct PerfilView: View {
 }
 
 struct header: View {
+    @Binding var isEditing: Bool
     var body: some View {
         HStack(){
             VStack(alignment: .leading){
@@ -89,7 +91,7 @@ struct header: View {
                 
                 
                 if !dao.isPurchased{
-                    NavigationLink(destination: RunMateProView(), label: {
+                    NavigationLink(destination: RunMateProView(isEditing: $isEditing), label: {
                         
                         HStack{
                             Text("RunMate Pro")
