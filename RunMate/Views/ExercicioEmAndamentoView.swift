@@ -35,7 +35,7 @@ struct ExercicioEmAndamentoView: View {
     @State var distDiaria: Double = 0
     @State var velDiaria: Double = 0
     
-    @State var lastSavedDate: Date? = nil
+    @State var lastSavedDate: Date = Date()
     @State var previousSavedDate: Date? = nil
     
     var body: some View {
@@ -149,11 +149,13 @@ struct ExercicioEmAndamentoView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                let difference = Date.now.timeIntervalSince1970 - lastSavedDate.timeIntervalSince1970
-                print(lastSavedDate.description)
-                print(Date.now.description)
-                stopWatchManager.secondElapsed += difference
-                print(difference)
+                let lastDate = self.lastSavedDate
+                if lastDate != self.previousSavedDate {
+                    let difference = Date.now.timeIntervalSince(lastDate)
+                    stopWatchManager.secondElapsed += difference
+                    self.previousSavedDate = lastDate
+                }
+                print("active")
             } else if newPhase == .background {
                 self.lastSavedDate = Date.now
                 print("background")
