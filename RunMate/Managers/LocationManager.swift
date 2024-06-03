@@ -58,7 +58,10 @@ import CoreLocation
                 // Calcular a aceleração
                 if let lastTimestamp = lastTimestamp {
                     if currentSpeed > 0.27 && currentSpeed < 5 { // valores para caminhada == 1km/h e corrida muito forte == 18 km/h
-                        let speedDelta = currentSpeed - lastSpeed
+                        var speedDelta = currentSpeed - lastSpeed
+                        if speedDelta < 0 {
+                            speedDelta = speedDelta * -1
+                        }
                         let timeSinceLastUpdate = newLocation.timestamp.timeIntervalSince(lastTimestamp)
                         if timeSinceLastUpdate > 0 {
                             let currentAcceleration = speedDelta / timeSinceLastUpdate // Calcula a aceleração

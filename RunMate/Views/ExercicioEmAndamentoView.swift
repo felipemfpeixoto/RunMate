@@ -149,15 +149,15 @@ struct ExercicioEmAndamentoView: View {
         }
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .active {
-                let difference = Date.now.timeIntervalSince1970 - lastSavedDate.timeIntervalSince1970
-                print(lastSavedDate.description)
+                let difference = Date.now.timeIntervalSince1970 - lastSavedDate!.timeIntervalSince1970
+                print(lastSavedDate!.description)
                 print(Date.now.description)
                 stopWatchManager.secondElapsed += difference
                 print(difference)
             } else if newPhase == .background {
                 self.lastSavedDate = Date.now
                 print("background")
-                print(lastSavedDate.description)
+                print(lastSavedDate!.description)
             }
         }
     }
