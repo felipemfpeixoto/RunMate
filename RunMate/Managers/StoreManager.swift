@@ -117,7 +117,6 @@ class Store: NSObject, ObservableObject  {
                     
                     return transaction
             }
-            
             //The transaction is verified. Deliver content to the user.
            
         case .userCancelled, .pending:
@@ -176,23 +175,15 @@ class Store: NSObject, ObservableObject  {
 
         //Update the store information with the purchased products.
         self.purchasedProducts = nonConsumables
-
-        //Check the `subscriptionGroupStatus` to learn the auto-renewable subscription state to determine whether the customer
-        //is new (never subscribed), active, or inactive (expired subscription). This app has only one subscription
-        //group, so products in the subscriptions array all belong to the same group. The statuses that
-        //`product.subscription.status` returns apply to the entire subscription group.
-//        subscriptionGroupStatus = try? await subscriptions.first?.subscription?.status.first?.state
     }
 
 
     func sortByPrice(_ products: [Product]) -> [Product] {
         products.sorted(by: { return $0.price < $1.price })
     }
-
-//    func convertCoinId(coinId: String) -> Int{
-//        let separatedCoin = coinId.split(separator: "coins")
-//        let coinValue = Int(String(separatedCoin.first ?? "0")) ?? 0
-//        return coinValue
-//    }
+    
+    func restore() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
 }
 

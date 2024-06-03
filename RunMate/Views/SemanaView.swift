@@ -56,7 +56,7 @@ struct SemanaView: View {
     
     @State var enterTime: Date?
     
-    @State var showPro: Bool = dao.isBlocked
+    @Binding var showPro: Bool
     
 
     var body: some View {
@@ -96,13 +96,11 @@ struct SemanaView: View {
         }
         .onChange(of: isBlocked){
             dao.isBlocked = isBlocked
-//            if dao.isBlocked{
-//                showPro = true
-//            }
         }
         .onAppear{
-            if dao.isBlocked{
+            if !dao.isPurchased {
                 showPro = true
+                
             }
         }
         .navigationBarBackButtonHidden()
@@ -115,8 +113,8 @@ struct SemanaView: View {
         .fullScreenCover(isPresented: $isShowingExercicio) {
             ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio, exercicios: exerciciosDetalhados)
         }
-        .sheet(isPresented: $showPro) { //ou fullSreenCover
-            RunMateProView(isEditing: $isEditing)
+        .sheet(isPresented: $showPro) {
+            RunMateProView(isEditing: $isEditing, showPro: $showPro)
         }
     }
     
@@ -290,6 +288,7 @@ struct SemanaView: View {
                         let myButtonStyle = diaEstiloButton(isEqual: isEqual, diaConcluido: dao.diasConcluidos.contains(dia.dia))
                         
                         Button(action: {
+                            showPro = true
                             if dia.dia != (dao.diaAtual + 1) {
                                 self.updateDiaAtual(dia: dia)
                             }
