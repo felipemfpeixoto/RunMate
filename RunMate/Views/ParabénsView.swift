@@ -6,14 +6,6 @@ struct ParabénsView: View {
     let semana: Semana
     let index: Int
     
-    // dados apenas para criação da tela
-    let calorias: Double = 347
-    let velocidadeMedia: Double = 3.6
-    let distanciaTotal: Int = 8
-    let paceMedio: Int = 324
-    let paceMedioMin: Int = 324 / 60
-    let paceMedioSeg: Int = 324 % 60
-    
     @State var dadosSemana: DadosSemana?
     
     var body: some View {
@@ -22,140 +14,141 @@ struct ParabénsView: View {
                 .ignoresSafeArea()
             if dadosSemana == nil {
                 ProgressView()
-            }
-            ScrollView {
-                VStack {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("\(semana.semana)ª Semana")
-                                .font(.custom("Poppins-SemiBold", size: 24))
-                                .foregroundStyle(.white)
-                            Text("CONCLUÍDA")
-                                .font(.custom("Poppins-SemiBold", size: 18))
-                                .foregroundStyle(Color.lilacPurple)
-                        }
-                        Spacer()
-                    }
-                    ZStack {
-                        VStack {
-                            Text("PARABÉNS!")
-                                .font(.custom("Poppins-SemiBold", size: 18))
-                                .foregroundStyle(Color.darkPurple)
+            } else {
+                ScrollView {
+                    VStack {
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("\(semana.semana)ª Semana")
+                                    .font(.custom("Poppins-SemiBold", size: 24))
+                                    .foregroundStyle(.white)
+                                Text("CONCLUÍDA")
+                                    .font(.custom("Poppins-SemiBold", size: 18))
+                                    .foregroundStyle(Color.lilacPurple)
+                            }
                             Spacer()
-                            Text("Esta semana você queimou calorias equivalentes a 10 barras de chocolate")
-                                .multilineTextAlignment(.center)
-                                .font(.custom("Poppins-SemiBold", size: 16))
-                                .foregroundStyle(Color.darkPurple)
-                        }.padding(10)
-                    }
-                    .frame(height: 115)
-                    .padding()
-                    .background(Color.turquoiseGreen)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .overlay(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
-                        Image("chocolate")
-                            .alignmentGuide(HorizontalAlignment.trailing) { dimension in
-                                UIScreen.main.bounds.width * 0.30
+                        }
+                        ZStack {
+                            VStack {
+                                Text("PARABÉNS!")
+                                    .font(.custom("Poppins-SemiBold", size: 18))
+                                    .foregroundStyle(Color.darkPurple)
+                                Spacer()
+                                Text("Esta semana você queimou calorias equivalentes a 10 barras de chocolate")
+                                    .multilineTextAlignment(.center)
+                                    .font(.custom("Poppins-SemiBold", size: 16))
+                                    .foregroundStyle(Color.darkPurple)
+                            }.padding(10)
+                        }
+                        .frame(height: 115)
+                        .padding()
+                        .background(Color.turquoiseGreen)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .overlay(alignment: Alignment(horizontal: .trailing, vertical: .top)) {
+                            Image("chocolate")
+                                .alignmentGuide(HorizontalAlignment.trailing) { dimension in
+                                    UIScreen.main.bounds.width * 0.30
+                                }
+                                .alignmentGuide(VerticalAlignment.top) { dimension in
+                                    35
+                                }
+                        }
+                        
+                        LazyVGrid(columns: Array(repeating: GridItem(spacing: 10), count: 2)) {
+                            ZStack {
+                                Color.darkPurple
+                                    .cornerRadius(15)
+                                VStack {
+                                    HStack(alignment: .top){
+                                        Text("Velocidade Média")
+                                            .multilineTextAlignment(.leading)
+                                            .font(.custom("Poppins-SemiBold", size: 16))
+                                            .foregroundStyle(.white)
+                                        Spacer()
+                                        Image("raio")
+                                    }
+                                    Spacer()
+                                    HStack {
+                                        Text("\(dadosSemana?.velocidadeMédia ?? 0) km/h")
+                                            .font(.custom("Poppins-SemiBold", size: 26))
+                                            .foregroundStyle(.white)
+                                        Spacer()
+                                    }
+                                }.padding()
                             }
-                            .alignmentGuide(VerticalAlignment.top) { dimension in
-                                35
+                            ZStack {
+                                Color.darkPurple
+                                    .cornerRadius(15)
+                                VStack {
+                                    HStack(alignment: .top){
+                                        Text("Calorias")
+                                            .multilineTextAlignment(.leading)
+                                            .font(.custom("Poppins-SemiBold", size: 16))
+                                            .foregroundStyle(.white)
+                                        Spacer()
+                                        Image("fuego")
+                                    }
+                                    Spacer()
+                                    HStack {
+                                        Text("\(dadosSemana?.calorias ?? 0) kcal")
+                                            .font(.custom("Poppins-SemiBold", size: 26))
+                                            .foregroundStyle(.white)
+                                        Spacer()
+                                    }
+                                }.padding()
                             }
+                            ZStack {
+                                Color.darkPurple
+                                    .cornerRadius(15)
+                                VStack {
+                                    HStack(alignment: .top){
+                                        Text("Distância")
+                                            .multilineTextAlignment(.leading)
+                                            .font(.custom("Poppins-SemiBold", size: 16))
+                                            .foregroundStyle(.white)
+                                        Spacer()
+                                        Image("bandeirinha")
+                                    }
+                                    Spacer()
+                                    HStack {
+                                        Text("\(dadosSemana?.distância ?? 0) km")
+                                            .font(.custom("Poppins-SemiBold", size: 26))
+                                            .foregroundStyle(.white)
+                                        Spacer()
+                                    }
+                                }.padding()
+                            }
+                            ZStack {
+                                Color.darkPurple
+                                    .cornerRadius(15)
+                                VStack {
+                                    HStack(alignment: .top){
+                                        Text("Pace Médio")
+                                            .multilineTextAlignment(.leading)
+                                            .font(.custom("Poppins-SemiBold", size: 16))
+                                            .foregroundStyle(.white)
+                                        Spacer()
+                                        Image("corredor")
+                                    }
+                                    Spacer()
+                                    HStack {
+                                        Text("\(dadosSemana?.paceMedio ?? 0) minutos")
+                                            .font(.custom("Poppins-SemiBold", size: 26))
+                                            .foregroundStyle(.white)
+                                        Spacer()
+                                    }
+                                }.padding()
+                            }
+                        }
+                        
+                        scrollViewHorizontal
+                            .padding(.top)
+                        contentView
                     }
-                    
-                    LazyVGrid(columns: Array(repeating: GridItem(spacing: 10), count: 2)) {
-                        ZStack {
-                            Color.darkPurple
-                                .cornerRadius(15)
-                            VStack {
-                                HStack(alignment: .top){
-                                    Text("Velocidade Média")
-                                        .multilineTextAlignment(.leading)
-                                        .font(.custom("Poppins-SemiBold", size: 16))
-                                        .foregroundStyle(.white)
-                                    Spacer()
-                                    Image("raio")
-                                }
-                                Spacer()
-                                HStack {
-                                    Text("\(velocidadeMedia.formatted()) km/h")
-                                        .font(.custom("Poppins-SemiBold", size: 26))
-                                        .foregroundStyle(.white)
-                                    Spacer()
-                                }
-                            }.padding()
-                        }
-                        ZStack {
-                            Color.darkPurple
-                                .cornerRadius(15)
-                            VStack {
-                                HStack(alignment: .top){
-                                    Text("Calorias")
-                                        .multilineTextAlignment(.leading)
-                                        .font(.custom("Poppins-SemiBold", size: 16))
-                                        .foregroundStyle(.white)
-                                    Spacer()
-                                    Image("fuego")
-                                }
-                                Spacer()
-                                HStack {
-                                    Text("\(calorias.formatted()) kcal")
-                                        .font(.custom("Poppins-SemiBold", size: 26))
-                                        .foregroundStyle(.white)
-                                    Spacer()
-                                }
-                            }.padding()
-                        }
-                        ZStack {
-                            Color.darkPurple
-                                .cornerRadius(15)
-                            VStack {
-                                HStack(alignment: .top){
-                                    Text("Distância")
-                                        .multilineTextAlignment(.leading)
-                                        .font(.custom("Poppins-SemiBold", size: 16))
-                                        .foregroundStyle(.white)
-                                    Spacer()
-                                    Image("bandeirinha")
-                                }
-                                Spacer()
-                                HStack {
-                                    Text("\(distanciaTotal) km")
-                                        .font(.custom("Poppins-SemiBold", size: 26))
-                                        .foregroundStyle(.white)
-                                    Spacer()
-                                }
-                            }.padding()
-                        }
-                        ZStack {
-                            Color.darkPurple
-                                .cornerRadius(15)
-                            VStack {
-                                HStack(alignment: .top){
-                                    Text("Pace Médio")
-                                        .multilineTextAlignment(.leading)
-                                        .font(.custom("Poppins-SemiBold", size: 16))
-                                        .foregroundStyle(.white)
-                                    Spacer()
-                                    Image("corredor")
-                                }
-                                Spacer()
-                                HStack {
-                                    Text("\(paceMedioMin):\(paceMedioSeg)")
-                                        .font(.custom("Poppins-SemiBold", size: 26))
-                                        .foregroundStyle(.white)
-                                    Spacer()
-                                }
-                            }.padding()
-                        }
-                    }
-                    
-                    scrollViewHorizontal
-                        .padding(.top)
-                    contentView
                 }
+                .padding()
+                .ignoresSafeArea()
             }
-            .padding()
-            .ignoresSafeArea()
         }
         .onAppear {
             dadosSemana = dao.dadosSemanas[index]

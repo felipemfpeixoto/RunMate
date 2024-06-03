@@ -40,7 +40,7 @@ import CoreLocation
         paceMedio = getAveragePace(timeInMinutes: timeInMinutes)
         
         
-        
+        dao.dadosSemanas[dao.semanaAtual].distância += self.distance
         dao.dadosSemanas[dao.semanaAtual].calorias += calorias
         if dao.diaAtual == 0 {
             dao.dadosSemanas[dao.semanaAtual].velocidadeMédia = velocidadeMedia
