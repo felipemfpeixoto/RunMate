@@ -38,6 +38,8 @@ struct ExercicioEmAndamentoView: View {
     @State var lastSavedDate: Date = Date()
     @State var previousSavedDate: Date? = nil
     
+    var exercicios: [Exercicio]
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -57,7 +59,7 @@ struct ExercicioEmAndamentoView: View {
                             }
                         }
                     }
-                    
+                    ScrollView(.vertical) {
                     VStack {
                         VStack {
                             Text("\(locationManager.distance, specifier: "%.2f")")
@@ -74,7 +76,7 @@ struct ExercicioEmAndamentoView: View {
                         .frame(width: 360, height: 303)
                         .background(Color.oceanBlue)
                         .cornerRadius(20)
-                        
+
                         VStack(spacing: -9){
                             Text(stopWatchManager.formattedTime)
                                 .font(.custom("Poppins-Bold", size: 40))
@@ -82,13 +84,32 @@ struct ExercicioEmAndamentoView: View {
                             Text("DURAÇÃO")
                                 .font(.custom("Poppins-Bold", size: 15))
                                 .foregroundStyle(.turquoiseGreen)
+                            
+                            
                         }
                         .frame(width: 306, height: 95)
                         .background(Color.oceanBlue)
                         .cornerRadius(20)
-                        .padding(.top, 29)
-                        .padding(.bottom, 69)
+                        .padding(.top, 20)
+                        .padding(.bottom, 20)
                         
+                        
+                        
+                            VStack {
+                                ExerciciosDetalhadosView(exercicios: exercicios, isLocked: false, isOverview: false)
+                            }
+                            .padding(.bottom, 20)
+                        
+//                        .overlay(
+//                                   LinearGradient(
+//                                       gradient: Gradient(colors: [.clear, .blackBlue]),
+//                                       startPoint: .top,
+//                                       endPoint: .bottom
+//                                   )
+//                                   .edgesIgnoringSafeArea(.all)
+//                               )
+                        
+                    }
                     }
                     .font(Font.custom("Roboto-Regular", size: 20))
                     

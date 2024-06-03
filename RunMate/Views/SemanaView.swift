@@ -113,7 +113,7 @@ struct SemanaView: View {
             ConclusaoMetaView()
         }
         .fullScreenCover(isPresented: $isShowingExercicio) {
-            ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio)
+            ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio, exercicios: exerciciosDetalhados)
         }
         .sheet(isPresented: $showPro) { //ou fullSreenCover
             RunMateProView(isEditing: $isEditing)
@@ -154,7 +154,7 @@ struct SemanaView: View {
                     ConclusaoMetaView()
                 })
                 .fullScreenCover(isPresented: $isShowingExercicio, content: {
-                    ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio)
+                    ExercicioEmAndamentoView(apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingSelf: $isShowingExercicio, exercicios: exerciciosDetalhados)
                 })
                 .sheet(isPresented: $apareceParabens, content: {
                     ParabénsView(semana: semanaAtual , index: intSemanaAtual)
