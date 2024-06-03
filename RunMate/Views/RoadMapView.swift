@@ -23,11 +23,13 @@ struct RoadMapView: View {
     
     @Binding var telaSelecionada: TelaSelecionada
     
+    @Binding var isEditing: Bool
+    
     @State var presentSemanaIndex: Semana?
     
     @State var enterTime: Date?
     
-    @Binding var showPro: Bool
+    @State var showPro: Bool = dao.isBlocked
     
     var body: some View {
         VStack {
@@ -58,15 +60,15 @@ struct RoadMapView: View {
                     }
                 }
             }
-        }
+        }   
         .background(.blackBlue)
         .navigationBarBackButtonHidden()
         .onAppear {
             semanas = dao.paginaDeTreinamento.planoDeTreinamento.semanas
             self.enterTime = Date()
-            if dao.isBlocked{
-                showPro = true
-            }
+//            if dao.isBlocked{
+//                showPro = true
+//            }
         }
         .onDisappear {
             if let enterTime = self.enterTime {
@@ -78,7 +80,7 @@ struct RoadMapView: View {
             }
         }
         .sheet(isPresented: $showPro, content: {
-            RunMateProView()
+            RunMateProView(isEditing: $isEditing)
         })
     }
     
