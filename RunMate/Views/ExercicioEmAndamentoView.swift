@@ -48,16 +48,16 @@ struct ExercicioEmAndamentoView: View {
                     HStack{
                         Spacer()
                         
-                        if !locationManager.isRunning {
-                            Button {
-                                isShowingSelf = false
-                            } label: {
-                                Image(systemName: "xmark")
-                                    .foregroundColor(.white)
-                                    .padding(.trailing, 30)
-                                    .padding(.bottom, 20)
-                            }
-                        }
+//                        if !locationManager.isRunning {
+//                            Button {
+//                                isShowingSelf = false
+//                            } label: {
+//                                Image(systemName: "xmark")
+//                                    .foregroundColor(.white)
+//                                    .padding(.trailing, 30)
+//                                    .padding(.bottom, 20)
+//                            }
+//                        }
                     }
                     ScrollView(.vertical) {
                     VStack {
@@ -121,6 +121,7 @@ struct ExercicioEmAndamentoView: View {
                                     locationManager.resumeCollectingLocations()
                                     stopWatchManager.start()
                                     locationManager.isRunning = true
+                                    locationManager.isPaused = false
                                 } else {
                                     stopWatchManager.pause()
                                     locationManager.isRunning = false
@@ -130,6 +131,7 @@ struct ExercicioEmAndamentoView: View {
                             } else {
                                 stopWatchManager.start()
                                 locationManager.isRunning = true
+                                locationManager.isPaused = false
                                 PostHogSDK.shared.capture("Começou Exercício")
                             }
                         }) {
@@ -188,30 +190,34 @@ struct ExercicioEmAndamentoView: View {
 
 @Observable class StopWatchManager {
     var secondElapsed = 0.0
-    var timer = Timer()
-    
+    var timer: Timer?
+
     func start() {
+        // Invalidar o timer anterior antes de criar um novo
+        timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { timer in
             self.secondElapsed += 0.01
         }
     }
-    
+
     func stop() {
-        timer.invalidate()
+        timer?.invalidate()
+        timer = nil
         secondElapsed = 0
     }
-    
+
     func pause() {
-        timer.invalidate()
+        timer?.invalidate()
+        timer = nil
     }
-    
+
     var formattedTime: String {
         let hours = Int(secondElapsed) / 3600
         let minutes = (Int(secondElapsed) % 3600) / 60
         let seconds = Int(secondElapsed) % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
-    
+
     var timeInMinutes: Int {
         let minutes = (Int(secondElapsed) % 3600) / 60
         return minutes
