@@ -146,7 +146,7 @@ struct caloriesChart: View {
             .padding(.bottom, 30)
             
             Chart {
-                ForEach(dao.dadosSemanas.indices, id: \.self) { index in
+                ForEach(0..<dao.semanaAtual+1, id: \.self) { index in
                     let isSemanaAtual = index == dao.semanaAtual
                     let cal = dao.dadosSemanas[index].calorias
                     BarMark(
@@ -207,7 +207,7 @@ struct distanceChart: View {
             .padding(.bottom, 30)
             
             Chart {
-                ForEach(dao.dadosSemanas.indices, id: \.self) { index in
+                ForEach(0..<dao.semanaAtual+1, id: \.self) { index in
                     let dist = dao.dadosSemanas[index].distância
                     LineMark(
                         x: .value("Semana", "SEM \(index + 1)"),
@@ -276,7 +276,7 @@ struct speedChart: View {
             .padding(.bottom, 30)
             
             Chart {
-                ForEach(dao.dadosSemanas.indices, id: \.self) { index in
+                ForEach(0..<dao.semanaAtual+1, id: \.self) { index in
                     let vel = dao.dadosSemanas[index].velocidadeMédia
                     LineMark(
                         x: .value("Semana", "SEM \(index + 1)"),

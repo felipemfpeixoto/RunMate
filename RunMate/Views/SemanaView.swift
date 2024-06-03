@@ -98,7 +98,7 @@ struct SemanaView: View {
             dao.isBlocked = isBlocked
         }
         .onAppear{
-            if !dao.isPurchased {
+            if !dao.isPurchased && dao.diaAtual>0 {
                 showPro = true
                 
             }
@@ -288,7 +288,9 @@ struct SemanaView: View {
                         let myButtonStyle = diaEstiloButton(isEqual: isEqual, diaConcluido: dao.diasConcluidos.contains(dia.dia))
                         
                         Button(action: {
-                            showPro = true
+                            if !dao.isPurchased{
+                                showPro = true
+                            }
                             if dia.dia != (dao.diaAtual + 1) {
                                 self.updateDiaAtual(dia: dia)
                             }

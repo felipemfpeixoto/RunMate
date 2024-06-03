@@ -7,7 +7,7 @@ struct RunMateProView: View {
     @State var showSemana: Bool = false
     @Binding var isEditing: Bool
     @Binding var showPro: Bool
-    
+    @Environment(\.dismiss) var dismiss
     @State var preco: String = ""
     var body: some View {
         ZStack {
@@ -18,7 +18,7 @@ struct RunMateProView: View {
                     Text("RunMatePRO")
                         .font(Font.custom("Poppins-SemiBold", size: 32))
                         .foregroundStyle(Color.turquoiseGreen)
-                        .padding(.top, 50)
+                        .padding(.top, 30)
                         .padding(.bottom, 10)
                     
                     Text("Para continuar aprimorando sua performance adquira o plano PRO.")
@@ -31,7 +31,7 @@ struct RunMateProView: View {
                     
                     Image("BonequinhosCorrendo")
                         .resizable()
-                        .frame(width: 300, height: 80)
+                        .frame(width: 261.19, height: 80)
                 }
                 .padding(.bottom, 30)
                 
@@ -40,13 +40,26 @@ struct RunMateProView: View {
                     
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color.oceanBlue)
-                        .frame(height: 530)
-                    
-                    
+                        .frame(height: 500)
+        
                     VStack(spacing: 0) {
                             
-                        price()
-                            .padding(.bottom, 20)
+                        VStack (spacing: -5){
+                            Text("Valor promocional por tempo limitado!")
+                                .font(Font.custom("Poppins-SemiBold", size: 19))
+                                .foregroundStyle(Color.white)
+                                .multilineTextAlignment(.center)
+                                .padding(.bottom, 8)
+                            
+                            Text("R$4.90")
+                                .font(Font.custom("Poppins-SemiBold", size: 32))
+                                .foregroundStyle(Color.turquoiseGreen)
+                            Text("R$9.90")
+                                .font(Font.custom("Poppins-SemiBold", size: 22))
+                                .foregroundStyle(Color.white).opacity(0.7)
+                                .strikethrough()
+                        }
+                        .padding(.bottom, 20)
                     
                         VStack(alignment: .leading, spacing: 15) {
                             HStack {
@@ -56,7 +69,7 @@ struct RunMateProView: View {
                                 
                                 
                                 Text("Desbloqueie todas as semanas de treinamento")
-                                    .font(Font.custom("Poppins-Medium", size: 18))
+                                    .font(Font.custom("Poppins-Medium", size: 15))
                                     .foregroundStyle(Color.white)
                                 
                             }
@@ -66,7 +79,7 @@ struct RunMateProView: View {
                                     .font(.system(size: 25))
                                 
                                 Text("Tenha acesso ao monitoramento de treinos")
-                                    .font(Font.custom("Poppins-Medium", size: 18))
+                                    .font(Font.custom("Poppins-Medium", size: 15))
                                     .foregroundStyle(Color.white)
                                 
                             }
@@ -76,7 +89,7 @@ struct RunMateProView: View {
                                     .font(.system(size: 25))
                                 
                                 Text("Desbrave o RoadMap e tenha acesso a preview dos treinos")
-                                    .font(Font.custom("Poppins-Medium", size: 18))
+                                    .font(Font.custom("Poppins-Medium", size: 15))
                                     .foregroundStyle(Color.white)
                                 
                                 
@@ -89,7 +102,8 @@ struct RunMateProView: View {
                                     if let transaction = try await store.purchase(product){
                                         dao.isPurchased = true
                                         dao.isBlocked = false
-                                        showPro = false
+//                                        showPro = false
+                                        dismiss()
                                     }
                                 }
                                 
@@ -108,7 +122,15 @@ struct RunMateProView: View {
                         .padding(.horizontal, 40)
                         
                         Button(action: {
-                            store.restore()
+                            Task{
+                                await store.refreshPurchasedProducts()
+                                if store.purchasedProducts.count > 0 {
+                                    dao.isPurchased = true
+                                    dao.isBlocked = false
+//                                    showPro = false
+                                    dismiss()
+                                }
+                            }
                         }, label: {
                             Text("Restaurar compras")
                         })
@@ -124,46 +146,11 @@ struct RunMateProView: View {
             }
             .edgesIgnoringSafeArea(.all)
         }
-        .onChange(of: dao.isPurchased){
-            if dao.isPurchased{
-                showSemana = true
-            }
-        }
-        .navigationDestination(isPresented: $showSemana, destination: { SemanaView(isEditing: $isEditing, showPro: $showPro)
-        })
-    }
-}
-
-struct price: View {
-    var body: some View {
-        
-        if dao.diaAtual < 5 {
-            VStack (spacing: -5){
-                Text("Valor promocional por tempo limitado!")
-                    .font(Font.custom("Poppins-SemiBold", size: 22))
-                    .foregroundStyle(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.bottom, 5)
-    
-                Text("R$4.90")
-                    .font(Font.custom("Poppins-SemiBold", size: 32))
-                    .foregroundStyle(Color.turquoiseGreen)
-                Text("R$9.90")
-                    .font(Font.custom("Poppins-SemiBold", size: 22))
-                    .foregroundStyle(Color.white).opacity(0.7)
-                    .strikethrough()
-            }
-        }else{
-            VStack {
-                Text("RunMate PRO")
-                    .font(Font.custom("Poppins-SemiBold", size: 22))
-                    .foregroundStyle(Color.white)
-                Text("R$9.90")
-                    .font(Font.custom("Poppins-SemiBold", size: 32))
-                    .foregroundStyle(Color.turquoiseGreen)
-            }
-        }
-            
+//        .onChange(of: dao.isPurchased){
+//            if dao.isPurchased{
+//                showSemana = true
+//            }
+//        }
     }
 }
 
