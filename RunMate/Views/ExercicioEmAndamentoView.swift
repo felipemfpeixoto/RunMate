@@ -112,6 +112,16 @@ struct ExercicioEmAndamentoView: View {
                     }
                     }
                     .font(Font.custom("Roboto-Regular", size: 20))
+                    .overlay(alignment: .bottom) {
+                        LinearGradient(
+                            gradient: Gradient(colors: [.clear, .blackBlue]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .edgesIgnoringSafeArea(.all)
+                        .allowsHitTesting(false)
+                        .frame(height: 100)
+                    }
                     
                     HStack (spacing: 30){
                         Button(action: {

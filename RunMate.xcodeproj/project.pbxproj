@@ -42,13 +42,12 @@
 		0FCDFA142BFD3B1B00DF9C70 /* PosthogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA132BFD3B1B00DF9C70 /* PosthogManager.swift */; };
 		0FCDFA192BFFB38F00DF9C70 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */; };
 		5D2CCF452C065C86003026F5 /* RunMateProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2CCF442C065C86003026F5 /* RunMateProView.swift */; };
+		5D616FEA2C0E48BB00F98DE1 /* ExercicioConcluidoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616FE92C0E48BB00F98DE1 /* ExercicioConcluidoView.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
 		5DC066A92C01050E00E80444 /* AvisoResetarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC066A82C01050E00E80444 /* AvisoResetarView.swift */; };
 		5DF051F42BE58B120009757A /* ParabénsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF051F32BE58B120009757A /* ParabénsView.swift */; };
 		F91761DA2C07BD5E00634C7A /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91761D92C07BD5E00634C7A /* StoreManager.swift */; };
 		F948B6212BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift in Sources */ = {isa = PBXBuildFile; fileRef = F948B6202BEE90C0004A3A9F /* AvisoConfirmacaoEtapa.swift */; };
-		F9B2C4A42C07B3430088DADD /* CodableExtensions in Frameworks */ = {isa = PBXBuildFile; productRef = F9B2C4A32C07B3430088DADD /* CodableExtensions */; };
-		F9B2C4A72C07B34F0088DADD /* PostHog in Frameworks */ = {isa = PBXBuildFile; productRef = F9B2C4A62C07B34F0088DADD /* PostHog */; };
 		F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA942BE4144D0007E115 /* Poppins-SemiBold.ttf */; };
 		F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA932BE414490007E115 /* Poppins-Medium.ttf */; };
 		F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B5BA952BE414550007E115 /* Roboto-Bold.ttf */; };
@@ -96,6 +95,7 @@
 		0FCDFA132BFD3B1B00DF9C70 /* PosthogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosthogManager.swift; sourceTree = "<group>"; };
 		0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5D2CCF442C065C86003026F5 /* RunMateProView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMateProView.swift; sourceTree = "<group>"; };
+		5D616FE92C0E48BB00F98DE1 /* ExercicioConcluidoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercicioConcluidoView.swift; sourceTree = "<group>"; };
 		5D8091212BED42F800986596 /* ConclusaoMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusaoMetaView.swift; sourceTree = "<group>"; };
 		5DC066A82C01050E00E80444 /* AvisoResetarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvisoResetarView.swift; sourceTree = "<group>"; };
 		5DF051F32BE58B120009757A /* ParabénsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParabénsView.swift"; sourceTree = "<group>"; };
@@ -193,6 +193,7 @@
 				0FA57B482BE42EB700EA9D99 /* EscolhaIdadeView.swift */,
 				0FA57B342BE40E8700EA9D99 /* ExerciciosDetalhadosView.swift */,
 				F9CBBA8B2BF7E0B3001ACE10 /* ExercicioEmAndamentoView.swift */,
+				5D616FE92C0E48BB00F98DE1 /* ExercicioConcluidoView.swift */,
 				0FA57B362BE40E9400EA9D99 /* SemanaView.swift */,
 				0FA57B3A2BE40EDA00EA9D99 /* SemanaConcluidaView.swift */,
 				0FA57B3C2BE40EE900EA9D99 /* RoadMapView.swift */,
@@ -355,6 +356,7 @@
 				0FA57B422BE4117000EA9D99 /* BotaoDia.swift in Sources */,
 				5D2CCF452C065C86003026F5 /* RunMateProView.swift in Sources */,
 				0FA57B2F2BE4072F00EA9D99 /* DAO.swift in Sources */,
+				5D616FEA2C0E48BB00F98DE1 /* ExercicioConcluidoView.swift in Sources */,
 				0FA57B312BE40C9C00EA9D99 /* EscolhaNivelView.swift in Sources */,
 				F9CBBA842BF7CE1C001ACE10 /* PerfilView.swift in Sources */,
 				0FA57B242BE4024100EA9D99 /* Models.swift in Sources */,
