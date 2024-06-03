@@ -159,7 +159,7 @@ struct ExercicioEmAndamentoView: View {
             } else if newPhase == .background {
                 self.lastSavedDate = Date.now
                 print("background")
-                print(lastSavedDate!.description)
+                print(lastSavedDate.description)
             }
         }
     }
