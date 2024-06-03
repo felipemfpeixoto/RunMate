@@ -14,11 +14,15 @@ struct ParabénsView: View {
     let paceMedioMin: Int = 324 / 60
     let paceMedioSeg: Int = 324 % 60
     
+    @State var dadosSemana: DadosSemana?
+    
     var body: some View {
         ZStack {
             Color.blackBlue
                 .ignoresSafeArea()
-            Spacer()
+            if dadosSemana == nil {
+                ProgressView()
+            }
             ScrollView {
                 VStack {
                     HStack {
@@ -152,6 +156,9 @@ struct ParabénsView: View {
             }
             .padding()
             .ignoresSafeArea()
+        }
+        .onAppear {
+            dadosSemana = dao.dadosSemanas[index]
         }
     }
     

@@ -131,7 +131,6 @@ struct ExercicioEmAndamentoView: View {
                                     stopWatchManager.start()
                                     locationManager.isRunning = true
                                 } else {
-                                    locationManager.stopCollectingLocations()
                                     stopWatchManager.pause()
                                     locationManager.isRunning = false
                                     locationManager.isPaused = true
@@ -173,7 +172,7 @@ struct ExercicioEmAndamentoView: View {
                     Color.blackBlue.opacity(0.8)
                         .ignoresSafeArea()
                     withAnimation(Animation.spring(duration: 0.75)) {
-                        AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria, locationManager: $locationManager, stopWatchManager: $stopWatchManager)
+                        AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria, locationManager: $locationManager, stopWatchManager: $stopWatchManager, tempoMinutos: stopWatchManager.timeInMinutes)
                     }
                 }
             }
@@ -220,5 +219,10 @@ struct ExercicioEmAndamentoView: View {
         let minutes = (Int(secondElapsed) % 3600) / 60
         let seconds = Int(secondElapsed) % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+    
+    var timeInMinutes: Int {
+        let minutes = (Int(secondElapsed) % 3600) / 60
+        return minutes
     }
 }
