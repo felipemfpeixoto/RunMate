@@ -100,15 +100,6 @@ struct ExercicioEmAndamentoView: View {
                             }
                             .padding(.bottom, 20)
                         
-//                        .overlay(
-//                                   LinearGradient(
-//                                       gradient: Gradient(colors: [.clear, .blackBlue]),
-//                                       startPoint: .top,
-//                                       endPoint: .bottom
-//                                   )
-//                                   .edgesIgnoringSafeArea(.all)
-//                               )
-                        
                     }
                     }
                     .font(Font.custom("Roboto-Regular", size: 20))
