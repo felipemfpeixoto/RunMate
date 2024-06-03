@@ -24,12 +24,12 @@ struct TelaTabView: View {
         }
     }
     
-    @State var showPro = false
+    @State var showPro = dao.isBlocked
     
     var body: some View {
         TabView(selection: $telaSelecionada) {
             
-            SemanaView(isEditing: $isEditing)
+            SemanaView(isEditing: $isEditing, showPro: $showPro)
                 .tabItem {
                     Image(systemName: "house.fill")
                     Text("Home")
@@ -43,7 +43,7 @@ struct TelaTabView: View {
                 }
                 .tag(TelaSelecionada.roadmap)
             
-            PerfilView(isEditing: $isEditing)
+            PerfilView(isEditing: $isEditing, showPro: $showPro)
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Perfil")

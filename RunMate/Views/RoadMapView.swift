@@ -80,7 +80,7 @@ struct RoadMapView: View {
             }
         }
         .sheet(isPresented: $showPro, content: {
-            RunMateProView(isEditing: $isEditing)
+            RunMateProView(isEditing: $isEditing, showPro: $showPro)
         })
     }
     

@@ -27,6 +27,8 @@ struct PerfilView: View {
     
     @Binding var isEditing: Bool
     
+    @Binding var showPro: Bool
+    
     @State var enterTime: Date?
     
     var body: some View {
@@ -34,7 +36,7 @@ struct PerfilView: View {
             Color.blackBlue.ignoresSafeArea()
             VStack(alignment: .leading){
                 Spacer()
-                header(isEditing: $isEditing)
+                header(isEditing: $isEditing, showPro: $showPro)
                     .padding(.top, 20)
                 progressBar()
                     .padding(.bottom, 25)
@@ -77,6 +79,7 @@ struct PerfilView: View {
 
 struct header: View {
     @Binding var isEditing: Bool
+    @Binding var showPro: Bool
     var body: some View {
         HStack(){
             VStack(alignment: .leading){
@@ -91,7 +94,7 @@ struct header: View {
                 
                 
                 if !dao.isPurchased{
-                    NavigationLink(destination: RunMateProView(isEditing: $isEditing), label: {
+                    NavigationLink(destination: RunMateProView(isEditing: $isEditing, showPro: $showPro), label: {
                         
                         HStack{
                             Text("RunMate Pro")

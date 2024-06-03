@@ -4,8 +4,11 @@ import SwiftUI
 struct RunMateProView: View {
     
     var store: Store = Store()
-    @State var navigate: Bool = false
+    @State var showSemana: Bool = false
     @Binding var isEditing: Bool
+    @Binding var showPro: Bool
+    
+    @State var preco: String = ""
     var body: some View {
         ZStack {
             Color(.blackBlue).ignoresSafeArea()
@@ -27,6 +30,8 @@ struct RunMateProView: View {
                     
                     
                     Image("BonequinhosCorrendo")
+                        .resizable()
+                        .frame(width: 300, height: 80)
                 }
                 .padding(.bottom, 30)
                 
@@ -35,24 +40,14 @@ struct RunMateProView: View {
                     
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color.oceanBlue)
-                        .frame(height: 500)
+                        .frame(height: 530)
                     
                     
                     VStack(spacing: 0) {
-                        VStack {
                             
-                            Text("RunMate PRO")
-                                .font(Font.custom("Poppins-SemiBold", size: 22))
-                                .foregroundStyle(Color.white)
-                            
-                            
-                            Text("R$4.99")
-                                .font(Font.custom("Poppins-SemiBold", size: 32))
-                                .foregroundStyle(Color.turquoiseGreen)
-                            
-                            
-                        } .padding(.bottom, 40)
-                        
+                        price()
+                            .padding(.bottom, 20)
+                    
                         VStack(alignment: .leading, spacing: 15) {
                             HStack {
                                 Image(systemName: "checkmark.seal.fill")
@@ -87,7 +82,6 @@ struct RunMateProView: View {
                                 
                             }
                         }
-                        .padding(.bottom, 25)
                         
                         Button(action: {
                             Task {
@@ -95,6 +89,7 @@ struct RunMateProView: View {
                                     if let transaction = try await store.purchase(product){
                                         dao.isPurchased = true
                                         dao.isBlocked = false
+                                        showPro = false
                                     }
                                 }
                                 
@@ -106,11 +101,20 @@ struct RunMateProView: View {
                                 .font(Font.custom("Poppins-SemiBold", size: 20))
                                 .padding(.vertical, 16)
                                 .background(Color.turquoiseGreen)
-                            
+     
                         })
                         .cornerRadius(18)
                         .padding(.top, 30)
                         .padding(.horizontal, 40)
+                        
+                        Button(action: {
+                            store.restore()
+                        }, label: {
+                            Text("Restaurar compras")
+                        })
+                        .padding(.top, 10)
+                        .foregroundColor(.turquoiseGreen)
+                        .font(Font.custom("Poppins-Medium", size: 15))
                     }
                     .padding(20)
                     
@@ -122,17 +126,47 @@ struct RunMateProView: View {
         }
         .onChange(of: dao.isPurchased){
             if dao.isPurchased{
-                navigate = true
+                showSemana = true
             }
         }
-        .background(
-            NavigationLink(destination: SemanaView(isEditing: $isEditing), isActive: $navigate) {
-                EmptyView()
+        .navigationDestination(isPresented: $showSemana, destination: { SemanaView(isEditing: $isEditing, showPro: $showPro)
+        })
+    }
+}
+
+struct price: View {
+    var body: some View {
+        
+        if dao.diaAtual < 5 {
+            VStack (spacing: -5){
+                Text("Valor promocional por tempo limitado!")
+                    .font(Font.custom("Poppins-SemiBold", size: 22))
+                    .foregroundStyle(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 5)
+    
+                Text("R$4.90")
+                    .font(Font.custom("Poppins-SemiBold", size: 32))
+                    .foregroundStyle(Color.turquoiseGreen)
+                Text("R$9.90")
+                    .font(Font.custom("Poppins-SemiBold", size: 22))
+                    .foregroundStyle(Color.white).opacity(0.7)
+                    .strikethrough()
             }
-        )
+        }else{
+            VStack {
+                Text("RunMate PRO")
+                    .font(Font.custom("Poppins-SemiBold", size: 22))
+                    .foregroundStyle(Color.white)
+                Text("R$9.90")
+                    .font(Font.custom("Poppins-SemiBold", size: 32))
+                    .foregroundStyle(Color.turquoiseGreen)
+            }
+        }
+            
     }
 }
 
 #Preview {
-    RunMateProView( isEditing: .constant(false))
+    RunMateProView( isEditing: .constant(false), showPro: .constant(false))
 }
