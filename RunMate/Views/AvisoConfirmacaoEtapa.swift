@@ -35,7 +35,6 @@ struct AvisoConfirmacaoEtapa: View {
     var body: some View {
             ZStack {
                 Color.blackBlue
-                    .opacity(0.2)
                     .ignoresSafeArea()
                 
                 RoundedRectangle(cornerRadius: 20)
