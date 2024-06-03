@@ -9,7 +9,7 @@ import SwiftUI
 struct PreviewSemanaSeguinte: View {
     
     let index: Int
-    @State var semana: Semana?
+    var semana: Semana
     let gridItems = [GridItem(.fixed(150)), GridItem(.fixed(200))]
     
     var body: some View {
@@ -20,9 +20,6 @@ struct PreviewSemanaSeguinte: View {
                 headerPrincipal
                 contentView
                 Spacer()
-            }
-            .onAppear {
-                semana = dao.paginaDeTreinamento.planoDeTreinamento.semanas[index]
             }
             .onChange(of: dao.semanaAtual) { oldValue, newValue in
                 print("semana = " + String(newValue))
@@ -53,7 +50,7 @@ struct PreviewSemanaSeguinte: View {
     
     var minhaMeta: some View {
         VStack(alignment: .leading) {
-            Text("\(semana?.semana ?? 1)ª Semana")
+            Text("\(semana.semana)ª Semana")
                 .font(Font.custom("Roboto-Bold", size: 28))
                 .foregroundStyle(Color.white)
             
@@ -83,7 +80,7 @@ struct PreviewSemanaSeguinte: View {
     var scrollViewHorizontal: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(semana?.dias ?? [], id: \.dia) { dia in
+                ForEach(semana.dias, id: \.dia) { dia in
                     let isEqual = dia.dia == (dao.diaAtual + 1)
                     let myButtonStyle = diaEstiloButton(isEqual: isEqual)
 
@@ -183,5 +180,5 @@ struct PreviewSemanaSeguinte: View {
 }
 
 #Preview {
-    PreviewSemanaSeguinte(index: 1)
+    PreviewSemanaSeguinte(index: 1, semana: Semana(semana: 1, dias: []))
 }

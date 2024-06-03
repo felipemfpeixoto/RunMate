@@ -38,6 +38,8 @@ struct ExercicioEmAndamentoView: View {
     @State var lastSavedDate: Date = Date()
     @State var previousSavedDate: Date? = nil
     
+    var exercicios: [Exercicio]
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -57,7 +59,7 @@ struct ExercicioEmAndamentoView: View {
                             }
                         }
                     }
-                    
+                    ScrollView(.vertical) {
                     VStack {
                         VStack {
                             Text("\(locationManager.distance, specifier: "%.2f")")
@@ -74,7 +76,7 @@ struct ExercicioEmAndamentoView: View {
                         .frame(width: 360, height: 303)
                         .background(Color.oceanBlue)
                         .cornerRadius(20)
-                        
+
                         VStack(spacing: -9){
                             Text(stopWatchManager.formattedTime)
                                 .font(.custom("Poppins-Bold", size: 40))
@@ -82,15 +84,35 @@ struct ExercicioEmAndamentoView: View {
                             Text("DURAÇÃO")
                                 .font(.custom("Poppins-Bold", size: 15))
                                 .foregroundStyle(.turquoiseGreen)
+                            
+                            
                         }
                         .frame(width: 306, height: 95)
                         .background(Color.oceanBlue)
                         .cornerRadius(20)
-                        .padding(.top, 29)
-                        .padding(.bottom, 69)
+                        .padding(.top, 20)
+                        .padding(.bottom, 20)
+                        
+                        
+                        
+                            VStack {
+                                ExerciciosDetalhadosView(exercicios: exercicios, isLocked: false, isOverview: false)
+                            }
+                            .padding(.bottom, 20)
                         
                     }
+                    }
                     .font(Font.custom("Roboto-Regular", size: 20))
+                    .overlay(alignment: .bottom) {
+                        LinearGradient(
+                            gradient: Gradient(colors: [.clear, .blackBlue]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .edgesIgnoringSafeArea(.all)
+                        .allowsHitTesting(false)
+                        .frame(height: 100)
+                    }
                     
                     HStack (spacing: 30){
                         Button(action: {
@@ -100,7 +122,6 @@ struct ExercicioEmAndamentoView: View {
                                     stopWatchManager.start()
                                     locationManager.isRunning = true
                                 } else {
-                                    locationManager.stopCollectingLocations()
                                     stopWatchManager.pause()
                                     locationManager.isRunning = false
                                     locationManager.isPaused = true
@@ -142,7 +163,7 @@ struct ExercicioEmAndamentoView: View {
                     Color.blackBlue.opacity(0.8)
                         .ignoresSafeArea()
                     withAnimation(Animation.spring(duration: 0.75)) {
-                        AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria, locationManager: $locationManager, stopWatchManager: $stopWatchManager)
+                        AvisoConfirmacaoEtapa(apareceAtencao: $isShowingAviso, apareceParabensMeta: $apareceParabensMeta, apareceParabens: $apareceParabens, isEditing: $isEditing, isShowingExAndamento: $isShowingAviso, isSHowingSelf: $isShowingSelf, calDiaria: $calDiaria, distDiaria: $distDiaria, velDiaria: $velDiaria, locationManager: $locationManager, stopWatchManager: $stopWatchManager, tempoMinutos: stopWatchManager.timeInMinutes)
                     }
                 }
             }
@@ -189,5 +210,10 @@ struct ExercicioEmAndamentoView: View {
         let minutes = (Int(secondElapsed) % 3600) / 60
         let seconds = Int(secondElapsed) % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+    
+    var timeInMinutes: Int {
+        let minutes = (Int(secondElapsed) % 3600) / 60
+        return minutes
     }
 }

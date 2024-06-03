@@ -9,19 +9,6 @@ import SwiftUI
 import Charts
 import PostHog
 
-
-var data: [DadosSemana] = [
-    DadosSemana(velocidadeMédia: 5.5, calorias: 150, distância: 5, paceMedio: 8.3),
-    DadosSemana(velocidadeMédia: 9.5, calorias: 200, distância: 3.5, paceMedio: 9),
-    DadosSemana(velocidadeMédia: 8.0, calorias: 250, distância: 8, paceMedio: 6.7),
-    DadosSemana(velocidadeMédia: 5.5, calorias: 150, distância: 5, paceMedio: 7.3),
-    DadosSemana(velocidadeMédia: 9.5, calorias: 200, distância: 3.5, paceMedio: 7),
-    DadosSemana(velocidadeMédia: 8.0, calorias: 250, distância: 10, paceMedio: 6.9),
-    DadosSemana(velocidadeMédia: 5.5, calorias: 150, distância: 5, paceMedio: 8),
-    DadosSemana(velocidadeMédia: 9.5, calorias: 200, distância: 3.5, paceMedio: 6),
-    DadosSemana(velocidadeMédia: 8.0, calorias: 250, distância: 8, paceMedio: 5.9)
-]
-
 struct PerfilView: View {
     @State private var selectedWeek: String? = nil
     
@@ -159,9 +146,9 @@ struct caloriesChart: View {
             .padding(.bottom, 30)
             
             Chart {
-                ForEach(data.indices, id: \.self) { index in
+                ForEach(dao.dadosSemanas.indices, id: \.self) { index in
                     let isSemanaAtual = index == dao.semanaAtual
-                    let cal = data[index].calorias
+                    let cal = dao.dadosSemanas[index].calorias
                     BarMark(
                         x: .value("Semana", "SEM \(index + 1)"),
                         y: .value("Calorias", cal)
@@ -207,7 +194,7 @@ struct distanceChart: View {
     
     var body: some View {
         
-        let maxDistance = data.map { $0.distância }.max() ?? 0.0
+        let maxDistance = dao.dadosSemanas.map { $0.distância }.max() ?? 0.0
         let yMax = maxDistance + yBuffer
 
         VStack (alignment:.leading){
@@ -220,8 +207,8 @@ struct distanceChart: View {
             .padding(.bottom, 30)
             
             Chart {
-                ForEach(data.indices, id: \.self) { index in
-                    let dist = data[index].distância
+                ForEach(dao.dadosSemanas.indices, id: \.self) { index in
+                    let dist = dao.dadosSemanas[index].distância
                     LineMark(
                         x: .value("Semana", "SEM \(index + 1)"),
                         y: .value("Distancia", dist)
@@ -268,6 +255,7 @@ struct distanceChart: View {
     }
 }
 
+
 struct speedChart: View {
     
     let weeksXWindowChart = 4
@@ -275,7 +263,7 @@ struct speedChart: View {
     
     var body: some View {
         
-        let maxSpeed = data.map { $0.velocidadeMédia }.max() ?? 0.0
+        let maxSpeed = dao.dadosSemanas.map { $0.velocidadeMédia }.max() ?? 0.0
         let yMax = maxSpeed + yBuffer
 
         VStack (alignment:.leading){
@@ -288,8 +276,8 @@ struct speedChart: View {
             .padding(.bottom, 30)
             
             Chart {
-                ForEach(data.indices, id: \.self) { index in
-                    let vel = data[index].velocidadeMédia
+                ForEach(dao.dadosSemanas.indices, id: \.self) { index in
+                    let vel = dao.dadosSemanas[index].velocidadeMédia
                     LineMark(
                         x: .value("Semana", "SEM \(index + 1)"),
                         y: .value("Velocidade", vel)

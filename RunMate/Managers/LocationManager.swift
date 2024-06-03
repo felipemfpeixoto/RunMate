@@ -15,6 +15,10 @@ import CoreLocation
     private let maxDistanceChange: CLLocationDistance = 30
     var isPaused: Bool = false
     
+    var calorias: Double = 0
+    var velocidadeMedia: Double = 0
+    var paceMedio: Double = 0
+    
     override init() {
         super.init()
         self.locationManager.delegate = self
@@ -29,8 +33,22 @@ import CoreLocation
         self.locationManager.showsBackgroundLocationIndicator = true
     }
     
-    func stopCollectingLocations() {
+    func stopCollectingLocations(timeInMinutes: Double) {
         self.locationManager.stopUpdatingLocation()
+        calorias = getCalories()
+        velocidadeMedia = getAveragePace(timeInMinutes: timeInMinutes)
+        paceMedio = getAveragePace(timeInMinutes: timeInMinutes)
+        
+        
+        dao.dadosSemanas[dao.semanaAtual].distância += self.distance
+        dao.dadosSemanas[dao.semanaAtual].calorias += calorias
+        if dao.diaAtual == 0 {
+            dao.dadosSemanas[dao.semanaAtual].velocidadeMédia = velocidadeMedia
+            dao.dadosSemanas[dao.semanaAtual].paceMedio = paceMedio
+        } else {
+            dao.dadosSemanas[dao.semanaAtual].velocidadeMédia = (dao.dadosSemanas[dao.semanaAtual].velocidadeMédia + velocidadeMedia) / 2
+            dao.dadosSemanas[dao.semanaAtual].paceMedio = (dao.dadosSemanas[dao.semanaAtual].paceMedio + paceMedio) / 2
+        }
     }
     
     func resumeCollectingLocations() {
@@ -87,51 +105,18 @@ import CoreLocation
             }
         }
     }
+    
+    func getCalories() -> Double {
+        let caloriesBurnedPerKilometer: Double = 60.0
+        return self.distance * caloriesBurnedPerKilometer
+    }
+    
+    func getAveragePace(timeInMinutes: Double) -> Double {
+        return timeInMinutes / self.distance
+    }
+    
+    func getAverageSpeed(timeInMinutes: Double) -> Double {
+        let timeInHours = timeInMinutes / 60.0
+        return self.distance / timeInHours
+    }
 }
-
-
-
-//import CoreLocation
-//
-//class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-//    var locationManager = CLLocationManager()
-//    @Published var distance: Double = 0.0
-//    private var lastLocation: CLLocation?
-//    var isRunning: Bool = false
-//    private var todasLocations: [CLLocation] = []
-//    private let minDistanceChange: CLLocationDistance = 10 // Filtrar mudanças menores que 10 metros
-//    private let minHorizontalAccuracy: CLLocationAccuracy = 50 // Aceitar apenas localizações com precisão horizontal melhor que 20 metros
-//    private let maxDistanceChange: CLLocationDistance = 30
-//    
-//    override init() {
-//        super.init()
-//        self.locationManager.delegate = self
-//        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        if self.locationManager.authorizationStatus == .notDetermined {
-//            self.locationManager.requestWhenInUseAuthorization()
-//        }
-//        self.lastLocation = locationManager.location
-//        self.locationManager.startUpdatingLocation()
-//    }
-//    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if isRunning {
-//            guard let newLocation = locations.last else { return }
-//            // Filtrar localizações com baixa precisão
-//            if newLocation.horizontalAccuracy > minHorizontalAccuracy || newLocation.horizontalAccuracy < 0 {
-//                return
-//            }
-//            
-//            // Verificar distância mínima
-//            if let lastLocation = lastLocation {
-//                let distanceDelta = newLocation.distance(from: lastLocation)
-//                if distanceDelta < minDistanceChange || distanceDelta > maxDistanceChange {
-//                    return
-//                }
-//                distance += (distanceDelta/1000)
-//                self.lastLocation = newLocation
-//                return
-//            }
-//        }
-//    }
-//}

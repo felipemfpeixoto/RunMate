@@ -31,6 +31,8 @@ struct RoadMapView: View {
     
     @State var showPro: Bool = dao.isBlocked
     
+    @State var semanaDaVez: Semana? = nil
+    
     var body: some View {
         VStack {
             HStack {
@@ -87,6 +89,7 @@ struct RoadMapView: View {
     @ViewBuilder
     func semanaDaVez(for index: Int) -> some View {
         let semana = semanas[index]
+        var semanaSelecionada: SemanaSelecionada?
         
         ZStack {
                 VStack {
@@ -99,12 +102,16 @@ struct RoadMapView: View {
                         else{
                             self.semanaIndex = index
                             if semanaIndex > dao.semanaAtual {
+                                semanaDaVez = semanas[index]
+                                semanaSelecionada = .proxima
                                 isShowingNextSheet.toggle()
                                 PostHogSDK.shared.capture("Viu semana \(index + 1) posterior à atual")
                             } else if semanaIndex == dao.semanaAtual {
                                 telaSelecionada = .home
                                 PostHogSDK.shared.capture("Navegou para SemanaView a partir do RoadMap")
                             } else {
+                                semanaDaVez = semanas[index]
+                                semanaSelecionada = .anterior
                                 isShowingPrevious.toggle()
                                 PostHogSDK.shared.capture("Viu semana \(index + 1) anterior à semana atual")
                             }
@@ -118,14 +125,19 @@ struct RoadMapView: View {
                     }
                     .padding(.leading, semana.semana == 1  ? -30 : 10)
                     .padding(.top, -47)
-                    .sheet(isPresented: $isShowingNextSheet) {
-                        PreviewSemanaSeguinte(index: semanaIndex)
-                    }
-                    .sheet(isPresented: $isShowingPrevious) {
-                        ParabénsView(semana: semana, index: index)
-                    }
+                    .sheet(item: $semanaDaVez, content: { item in
+                        if semanaSelecionada == .anterior {
+                            ParabénsView(semana: item, index: index)
+                        } else {
+                            PreviewSemanaSeguinte(index: semanaIndex, semana: semanaDaVez ?? semanas[index])
+                        }
+                    })
                 }
                 .padding(.bottom, -25)
-            }
+        }
     }
+}
+
+enum SemanaSelecionada {
+    case anterior, atual, proxima
 }
