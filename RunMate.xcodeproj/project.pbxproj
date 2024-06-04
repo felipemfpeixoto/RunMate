@@ -39,6 +39,8 @@
 		0FCDFA112BFBDC4400DF9C70 /* PreviewSemanaSeguinte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA102BFBDC4400DF9C70 /* PreviewSemanaSeguinte.swift */; };
 		0FCDFA142BFD3B1B00DF9C70 /* PosthogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA132BFD3B1B00DF9C70 /* PosthogManager.swift */; };
 		0FCDFA192BFFB38F00DF9C70 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */; };
+		0FFCC97F2C0F866C003CBEC1 /* RunMateStore.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0FFCC97E2C0F866C003CBEC1 /* RunMateStore.storekit */; };
+		0FFCC9812C0F87E5003CBEC1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FFCC9802C0F87E5003CBEC1 /* StoreKit.framework */; };
 		5D2CCF452C065C86003026F5 /* RunMateProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2CCF442C065C86003026F5 /* RunMateProView.swift */; };
 		5D616FEA2C0E48BB00F98DE1 /* ExercicioConcluidoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616FE92C0E48BB00F98DE1 /* ExercicioConcluidoView.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
@@ -94,6 +96,8 @@
 		0FCDFA122BFD1D2F00DF9C70 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		0FCDFA132BFD3B1B00DF9C70 /* PosthogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosthogManager.swift; sourceTree = "<group>"; };
 		0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		0FFCC97E2C0F866C003CBEC1 /* RunMateStore.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = RunMateStore.storekit; sourceTree = "<group>"; };
+		0FFCC9802C0F87E5003CBEC1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5D2CCF442C065C86003026F5 /* RunMateProView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMateProView.swift; sourceTree = "<group>"; };
 		5D616FE92C0E48BB00F98DE1 /* ExercicioConcluidoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercicioConcluidoView.swift; sourceTree = "<group>"; };
 		5D8091212BED42F800986596 /* ConclusaoMetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusaoMetaView.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFCC9812C0F87E5003CBEC1 /* StoreKit.framework in Frameworks */,
 				F904F5472C0E59C60050720B /* CodableExtensions in Frameworks */,
 				F904F54A2C0E59CE0050720B /* PostHog in Frameworks */,
 			);
@@ -127,6 +132,7 @@
 		0FA57AFA2BE400F900EA9D99 = {
 			isa = PBXGroup;
 			children = (
+				0FFCC97E2C0F866C003CBEC1 /* RunMateStore.storekit */,
 				0FA57B052BE400F900EA9D99 /* RunMate */,
 				0FA57B042BE400F900EA9D99 /* Products */,
 				F9B5BA9D2BE553B90007E115 /* Frameworks */,
@@ -256,6 +262,7 @@
 		F9B5BA9D2BE553B90007E115 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FFCC9802C0F87E5003CBEC1 /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -329,6 +336,7 @@
 				F9CBBAA12C066AA7001ACE10 /* Poppins-Bold.ttf in Resources */,
 				F9B5BA992BE5266D0007E115 /* Poppins-Medium.ttf in Resources */,
 				F9B5BA9A2BE5266D0007E115 /* Roboto-Bold.ttf in Resources */,
+				0FFCC97F2C0F866C003CBEC1 /* RunMateStore.storekit in Resources */,
 				F9B5BA9B2BE5266D0007E115 /* Roboto-Regular.ttf in Resources */,
 				F9B5BA982BE526640007E115 /* Poppins-SemiBold.ttf in Resources */,
 				0FA57B1A2BE4016F00EA9D99 /* avancado5K.json in Resources */,

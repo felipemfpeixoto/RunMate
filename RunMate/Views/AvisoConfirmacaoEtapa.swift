@@ -79,9 +79,9 @@ struct AvisoConfirmacaoEtapa: View {
                             locationManager.stopCollectingLocations(timeInMinutes: Double(tempoMinutos))
                             stopWatchManager.stop()
                             
-                            dao.dadosSemanas[dao.semanaAtual].calorias = calDiaria/Double((dao.diaAtual + 1))
-                            dao.dadosSemanas[dao.semanaAtual].distância = distDiaria/Double((dao.diaAtual + 1))
-                            dao.dadosSemanas[dao.semanaAtual].velocidadeMédia = velDiaria/Double((dao.diaAtual + 1))
+                            dao.dadosSemanas[dao.semanaAtual].calorias = calDiaria/Double(dao.diaAtual + 1)
+                            dao.dadosSemanas[dao.semanaAtual].distância = distDiaria/Double(dao.diaAtual + 1)
+                            dao.dadosSemanas[dao.semanaAtual].velocidadeMédia = velDiaria/Double(dao.diaAtual + 1)
                             withAnimation(Animation.spring(duration: 0.75)) {
                                 isSHowingSelf.toggle()
                                 isShowingExAndamento.toggle()

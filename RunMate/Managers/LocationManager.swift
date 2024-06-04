@@ -36,7 +36,7 @@ import CoreLocation
     func stopCollectingLocations(timeInMinutes: Double) {
         self.locationManager.stopUpdatingLocation()
         calorias = getCalories()
-        velocidadeMedia = getAveragePace(timeInMinutes: timeInMinutes)
+        velocidadeMedia = getAverageSpeed(timeInMinutes: timeInMinutes)
         paceMedio = getAveragePace(timeInMinutes: timeInMinutes)
         
         
@@ -75,7 +75,8 @@ import CoreLocation
                 
                 // Calcular a aceleração
                 if let lastTimestamp = lastTimestamp {
-                    if currentSpeed > 0.27 && currentSpeed < 5 { // valores para caminhada == 1km/h e corrida muito forte == 18 km/h
+                    // 0.27 && currentSpeed < 5
+                    if currentSpeed > 0.0 && currentSpeed < 20 { // valores para caminhada == 1km/h e corrida muito forte == 18 km/h
                         var speedDelta = currentSpeed - lastSpeed
                         if speedDelta < 0 {
                             speedDelta = speedDelta * -1
@@ -112,11 +113,19 @@ import CoreLocation
     }
     
     func getAveragePace(timeInMinutes: Double) -> Double {
-        return timeInMinutes / self.distance
+        let averageSpeed = (self.distance == 0 ? timeInMinutes / self.distance : 0)
+        if averageSpeed.isNaN {
+            return 0
+        }
+        return averageSpeed
     }
     
     func getAverageSpeed(timeInMinutes: Double) -> Double {
         let timeInHours = timeInMinutes / 60.0
-        return self.distance / timeInHours
+        let averageSpeed = self.distance / timeInHours
+        if averageSpeed.isNaN {
+            return 0
+        }
+        return averageSpeed
     }
 }

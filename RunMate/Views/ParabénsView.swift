@@ -8,6 +8,8 @@ struct ParabénsView: View {
     
     @State var dadosSemana: DadosSemana?
     
+    @State var qtdBarras: Int = 0
+    
     var body: some View {
         ZStack {
             Color.blackBlue
@@ -69,7 +71,7 @@ struct ParabénsView: View {
                                     }
                                     Spacer()
                                     HStack {
-                                        Text("\(dadosSemana?.velocidadeMédia ?? 0) km/h")
+                                        Text("\(dadosSemana?.velocidadeMédia.formatted() ?? "0") km/h")
                                             .font(.custom("Poppins-SemiBold", size: 26))
                                             .foregroundStyle(.white)
                                         Spacer()
@@ -90,7 +92,7 @@ struct ParabénsView: View {
                                     }
                                     Spacer()
                                     HStack {
-                                        Text("\(dadosSemana?.calorias ?? 0) kcal")
+                                        Text("\(dadosSemana?.calorias.formatted() ?? "0") kcal")
                                             .font(.custom("Poppins-SemiBold", size: 26))
                                             .foregroundStyle(.white)
                                         Spacer()
@@ -111,7 +113,7 @@ struct ParabénsView: View {
                                     }
                                     Spacer()
                                     HStack {
-                                        Text("\(dadosSemana?.distância ?? 0) km")
+                                        Text("\(dadosSemana?.distância.formatted() ?? "0") km")
                                             .font(.custom("Poppins-SemiBold", size: 26))
                                             .foregroundStyle(.white)
                                         Spacer()
@@ -132,7 +134,7 @@ struct ParabénsView: View {
                                     }
                                     Spacer()
                                     HStack {
-                                        Text("\(dadosSemana?.paceMedio ?? 0) minutos")
+                                        Text("\(dadosSemana?.paceMedio.formatted() ?? "0") minutos")
                                             .font(.custom("Poppins-SemiBold", size: 26))
                                             .foregroundStyle(.white)
                                         Spacer()
@@ -152,6 +154,8 @@ struct ParabénsView: View {
         }
         .onAppear {
             dadosSemana = dao.dadosSemanas[index]
+            let calorias = dadosSemana?.calorias
+            qtdBarras = Int(calorias ?? 0) / 445
         }
     }
     
