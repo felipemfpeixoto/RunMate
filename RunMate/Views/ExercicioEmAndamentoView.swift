@@ -48,16 +48,25 @@ struct ExercicioEmAndamentoView: View {
                     HStack{
                         Spacer()
                         
-//                        if !locationManager.isRunning {
-//                            Button {
-//                                isShowingSelf = false
-//                            } label: {
-//                                Image(systemName: "xmark")
-//                                    .foregroundColor(.white)
-//                                    .padding(.trailing, 30)
-//                                    .padding(.bottom, 20)
-//                            }
-//                        }
+                        if !locationManager.isRunning {
+                            Button {
+                                isShowingSelf = false
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.white)
+                                    .padding(.trailing, 30)
+                                    .padding(.bottom, 20)
+                            }
+                        }else{
+                            Button {
+                                isShowingSelf = false
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.blackBlue)
+                                    .padding(.trailing, 30)
+                                    .padding(.bottom, 20)
+                            }.disabled(true)
+                        }
                     }
                     ScrollView(.vertical) {
                     VStack {
