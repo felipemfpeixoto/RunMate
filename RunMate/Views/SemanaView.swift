@@ -98,7 +98,7 @@ struct SemanaView: View {
             dao.isBlocked = isBlocked
         }
         .onAppear{
-            if !dao.isPurchased && dao.diaAtual>0 {
+            if !dao.isPurchased && dao.diaAtual > 0 {
                 showPro = true
                 
             }
@@ -259,9 +259,8 @@ struct SemanaView: View {
                             }
                         }
                         else{
-                            withAnimation(Animation.spring(duration: 0.75)) {
-                                isShowingExercicio.toggle()
-                            }
+                            isShowingExercicio.toggle()
+                            
                         }
                     }
                 }, label: {
