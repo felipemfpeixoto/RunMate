@@ -1,8 +1,7 @@
+//  Store.swift
+//  PecanhaCaller
 //
-//  StoreManager.swift
-//  RunMate
-//
-//  Created by Giovana Nogueira on 29/05/24.
+//  Created by Pedro Peçanha on 22/05/24.
 //
 
 import Foundation
@@ -17,122 +16,110 @@ public enum StoreError: Error {
 }
 
 
-class Store: NSObject, ObservableObject  {
+class MonetarioModel: NSObject, ObservableObject  {
     
-
-    @Published private(set) var products: [Product]
-    @Published private(set) var purchasedProducts: [Product] = []
+    
+    @Published var purchasedNonConsumableProducts: [Product] = []
+    @Published var nonConsumableProducts: [Product] = []
     @Published private(set) var subscriptionGroupStatus: RenewalState?
     
+    @Published var pizzaIsUnlocked = false
+    @Published var sushiIsUnlocked = false
     var updateListenerTask: Task<Void, Error>? = nil
-
-
+    
+    
     override init() {
-        //Initialize empty products, and then do a product request asynchronously to fill them in.
-        products = []
         
         super.init()
-      
+        
         print(Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt")
-
-        //Start a transaction listener as close to app launch as possible so you don't miss any transactions.
-
+                
         Task {
-            //During store initialization, request products from the App Store.
             await requestProducts()
-
-            //Deliver products that the customer purchases.
+            
             await refreshPurchasedProducts()
             updateListenerTask = listenForTransactions()
-
+            
         }
-
+        
     }
-
+    
     deinit {
         updateListenerTask?.cancel()
     }
-
+    
     func listenForTransactions() -> Task<Void, Error> {
         return Task.detached {
-            //Iterate through any transactions that don't come from a direct call to `purchase()`.
             for await result in Transaction.updates {
                 do {
                     let transaction = try self.checkVerified(result)
-
-                    //Deliver products to the user.
+                    
                     await self.refreshPurchasedProducts()
-
-                    //Always finish a transaction.
+                    
                     await transaction.finish()
                 } catch {
-                    //StoreKit has a transaction that fails verification. Don't deliver content to the user.
                     print("Transaction failed verification")
                 }
             }
         }
     }
-
+    
     @MainActor
     func requestProducts() async {
         do {
-            let storeProducts = try await Product.products(for: ["runMatePro"])
+            //ids dos produtos que voce pode comprar.
+            let storeProducts = try await Product.products(for: ["A4B7I24I4", "99878"])
             
-            //Filter the products into categories based on their type.
             for product in storeProducts {
                 switch product.type {
                 case .nonConsumable:
 //                    Adiciona na lista de nonConsumable
-                    self.products.append(product)
+                    nonConsumableProducts.append(product)
                 default:
                     print("Unknown product")
                 }
             }
-
-            //Sort each product category by price, lowest to highest, to update the store.
-//            self.products = sortByPrice(products)
+            
         } catch {
             print("Failed product request from the App Store server: \(error)")
         }
     }
-
+    
     func purchase(_ product: Product) async throws -> Transaction? {
-        //Begin purchasing the `Product` the user selects.
         let result = try await product.purchase()
-
+        
         switch result {
         case .success(let verification):
-                
+            
             switch verification {
-                case .unverified(let transaction, let verificationError):
-                    return nil
-                case .verified(let transaction):
-                    await refreshPurchasedProducts()
-                    
-                    //Always finish a transaction.
-                    await transaction.finish()
-                    
-                    return transaction
+            case .unverified(let transaction, let verificationError):
+                return nil
+            case .verified(let transaction)://se a pessoa terminou a transação
+                await refreshPurchasedProducts()
+                
+                await transaction.finish()
+                
+                return transaction
             }
-            //The transaction is verified. Deliver content to the user.
-           
+            
+            
         case .userCancelled, .pending:
             return nil
         default:
             return nil
         }
     }
-
+    
     func isPurchased(_ product: Product) async throws -> Bool {
         //Determine whether the user purchases a given product.
         switch product.type {
         case .nonConsumable:
-            return purchasedProducts.contains(product)
+            return nonConsumableProducts.contains(product)
         default:
             return false
         }
     }
-
+    
     func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         //Check whether the JWS passes StoreKit verification.
         switch result {
@@ -145,7 +132,7 @@ class Store: NSObject, ObservableObject  {
         }
     }
     
-    
+    //pega as compras do usuario
     @MainActor
     func refreshPurchasedProducts() async {
         var nonConsumables: [Product] = []
@@ -154,33 +141,29 @@ class Store: NSObject, ObservableObject  {
         for await result in Transaction.currentEntitlements {
             
             switch result {
-                case .verified(let transaction):
-                    switch transaction.productType {
-                    case .nonConsumable:
-                        if let coin = products.first(where: { $0.id == transaction.productID }) {
-                            nonConsumables.append(coin)
-                        }
-                    default:
-                        break
+            case .verified(let transaction):
+                switch transaction.productType {
+                case .nonConsumable:
+                    if let coin = nonConsumableProducts.first(where: { $0.id == transaction.productID }) {
+                        nonConsumables.append(coin)
                     }
+                default:
+                    break
+                }
                 
-                case .unverified(let transaction, let error):
-                    print(error)
+            case .unverified(let transaction, let error):
+                print(error)
             }
             
         }
-
-        //Update the store information with the purchased products.
-        self.purchasedProducts = nonConsumables
+        // produtos que comprou -> purchasedNonConsumableProducts
+        // produtos que comprou -> nonConsumables
+        self.purchasedNonConsumableProducts = nonConsumables
+        
     }
-
-
+    
+    
     func sortByPrice(_ products: [Product]) -> [Product] {
         products.sorted(by: { return $0.price < $1.price })
     }
-    
-    func restore() {
-        SKPaymentQueue.default().restoreCompletedTransactions()
-    }
 }
-

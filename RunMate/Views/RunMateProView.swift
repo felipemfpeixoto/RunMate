@@ -1,14 +1,17 @@
 import SwiftUI
+import StoreKit
+import PostHog
 
 
 struct RunMateProView: View {
-    
-    var store: Store = Store()
     @State var showSemana: Bool = false
     @Binding var isEditing: Bool
     @Binding var showPro: Bool
     @Environment(\.dismiss) var dismiss
     @State var preco: String = ""
+    
+    @StateObject var store: Store = Store()
+    
     var body: some View {
         ZStack {
             Color(.blackBlue).ignoresSafeArea()
@@ -97,6 +100,7 @@ struct RunMateProView: View {
                         }
                         
                         Button(action: {
+                            PostHogSDK.shared.capture("apertouComprar")
                             Task {
                                 if let product = store.products.first {
                                     if let transaction = try await store.purchase(product){

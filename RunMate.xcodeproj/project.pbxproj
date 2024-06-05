@@ -40,7 +40,7 @@
 		0FCDFA142BFD3B1B00DF9C70 /* PosthogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA132BFD3B1B00DF9C70 /* PosthogManager.swift */; };
 		0FCDFA192BFFB38F00DF9C70 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDFA182BFFB38F00DF9C70 /* LocationManager.swift */; };
 		0FFCC97F2C0F866C003CBEC1 /* RunMateStore.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 0FFCC97E2C0F866C003CBEC1 /* RunMateStore.storekit */; };
-		0FFCC9812C0F87E5003CBEC1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FFCC9802C0F87E5003CBEC1 /* StoreKit.framework */; };
+		0FFCC9912C10E1D3003CBEC1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FFCC9802C0F87E5003CBEC1 /* StoreKit.framework */; };
 		5D2CCF452C065C86003026F5 /* RunMateProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2CCF442C065C86003026F5 /* RunMateProView.swift */; };
 		5D616FEA2C0E48BB00F98DE1 /* ExercicioConcluidoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D616FE92C0E48BB00F98DE1 /* ExercicioConcluidoView.swift */; };
 		5D8091222BED42F800986596 /* ConclusaoMetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8091212BED42F800986596 /* ConclusaoMetaView.swift */; };
@@ -120,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FFCC9812C0F87E5003CBEC1 /* StoreKit.framework in Frameworks */,
+				0FFCC9912C10E1D3003CBEC1 /* StoreKit.framework in Frameworks */,
 				F904F5472C0E59C60050720B /* CodableExtensions in Frameworks */,
 				F904F54A2C0E59CE0050720B /* PostHog in Frameworks */,
 			);
