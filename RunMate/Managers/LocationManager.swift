@@ -59,9 +59,9 @@ import CoreLocation
         if isRunning {
             guard let newLocation = locations.last else { return }
             // Filtrar localizações com baixa precisão
-//            if newLocation.horizontalAccuracy > minHorizontalAccuracy || newLocation.horizontalAccuracy < 0 {
-//                return
-//            }
+            //            if newLocation.horizontalAccuracy > minHorizontalAccuracy || newLocation.horizontalAccuracy < 0 {
+            //                return
+            //            }
             
             // Verificar distância mínima
             if let lastLocation = lastLocation {
@@ -76,25 +76,27 @@ import CoreLocation
                 // Calcular a aceleração
                 if let lastTimestamp = lastTimestamp {
                     // 0.27 && currentSpeed < 5
-                    if currentSpeed > 0.0 && currentSpeed < 20 { // valores para caminhada == 1km/h e corrida muito forte == 18 km/h
+                    if currentSpeed > 0.0 && currentSpeed < 6 {
                         var speedDelta = currentSpeed - lastSpeed
                         if speedDelta < 0 {
                             speedDelta = speedDelta * -1
                         }
                         let timeSinceLastUpdate = newLocation.timestamp.timeIntervalSince(lastTimestamp)
+                        print("TimeSinceLastUpdate: ", timeSinceLastUpdate)
                         if timeSinceLastUpdate > 0 {
                             let currentAcceleration = speedDelta / timeSinceLastUpdate // Calcula a aceleração
-                            if currentAcceleration < 5 && currentAcceleration > 0.28 { // Assumindo um timestemp de 1s para a equação V = Vo + at
+                            if currentAcceleration < 5 { // Assumindo um timestemp de 1s para a equação V = Vo + at
                                 DispatchQueue.main.async {
                                     self.distance += distanceDelta / 1000
-                                    self.acceleration = currentAcceleration
+                                    //                                    self.acceleration = currentAcceleration
                                     self.lastLocation = newLocation
                                     // Atualizar as variáveis para a próxima leitura
                                     self.lastSpeed = currentSpeed
                                     self.lastTimestamp = newLocation.timestamp
-                                    print("PASSOU:", currentAcceleration)
                                 }
-                            } else {
+                                print("PASSOU:", distanceDelta)
+                                
+                            }  else {
                                 print("Aceleração fora das medidas:", currentAcceleration)
                             }
                         }
@@ -102,9 +104,10 @@ import CoreLocation
                         print("Velocidade inválida: ", currentSpeed)
                     }
                 }
-                return
+                
             }
         }
+        return
     }
     
     func getCalories() -> Double {
